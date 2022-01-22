@@ -6,15 +6,20 @@ import { Routes, Route } from 'react-router-dom';
 // Components
 import Home from '../Home';
 import Header from '../Header';
+import Footer from '../Footer';
 
 const App = () => {
   return (
     <div className='app'>
+      
       <Header />
+
       <Routes>
         {/* General route */}
         <Route path='/' element={<Home />} />
       </Routes>
+
+      <Footer />
 
     </div>
   )

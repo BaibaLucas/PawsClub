@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom';
 
 /* Local imports */
 import logo from '../../assets/images/pawslogo1.png'
-import Home from '../Home';
+
 
 // Components
 
