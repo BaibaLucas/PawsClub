@@ -7021,6 +7021,13 @@ react-scripts@5.0.0:
   optionalDependencies:
     fsevents "^2.3.2"
 
+react-social-icons@^5.8.0:
+  version "5.8.0"
+  resolved "https://registry.yarnpkg.com/react-social-icons/-/react-social-icons-5.8.0.tgz#78e549fff729e6294e377b87f51f526277895d69"
+  integrity sha512-Mm2lX+yK1jQ+aJFE6fKkopHmzWpOHoX4xo+m3LF+i+z2Qx6n9KRvSmwztDPbusbo+Bq0g6lrzhb7smL16sSRBQ==
+  dependencies:
+    prop-types "^15.7.2"
+
 react@^17.0.2:
   version "17.0.2"
   resolved "https://registry.yarnpkg.com/react/-/react-17.0.2.tgz#d0b5cc516d29eb3eee383f75b62864cfb6800037"
