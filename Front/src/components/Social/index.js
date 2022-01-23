@@ -6,6 +6,24 @@ import { SocialIcon } from 'react-social-icons';
 
 // Components
 
+/** SocialIcon DOC
+ * 
+ * https://jaketrent.github.io/react-social-icons/
+ * 
+ * 
+ * @param url = By default, pass the url of your social network, and the icon will be detected from the url
+ * 
+ * @param network = Social network choice
+ * 
+ * @param bgColor = Background Color
+ * 
+ * @param fgColor = icon color
+ * 
+ * @param label = label
+ * 
+ * <SocialIcon network bgColor fgColor label url />
+ */
+
 const Social = () => {
   return (
     <div className='social'>
