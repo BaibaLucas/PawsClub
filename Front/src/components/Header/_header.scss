@@ -1,9 +1,9 @@
 .header{
-  position: sticky;
+  position: fixed;
   z-index: 100;
   .container{
     background-color: $dark-grey;
-    width: 100%;
+    width: 100vw;
     height: 100px;
     display:flex;
     justify-content: space-between;
