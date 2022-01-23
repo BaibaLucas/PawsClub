@@ -26,6 +26,7 @@
       flex-direction: column;
       text-align: center;
       &__title{
+        letter-spacing: 0.2rem;
         font-weight: bold;
         font-size: 1.2rem;
         margin-bottom: 0.7rem;
@@ -33,12 +34,14 @@
       &__items{
         color: white;
         margin-bottom: 0.4rem;
+        font-weight: bold;
       }
     }
     &__law{
       width: 100%;
       text-align: center;
       margin-top: 1rem;
+      border: solid 5px $mid-grey;
       &__desc{
         font-style: italic;
         margin-bottom: 1rem;
@@ -46,6 +49,7 @@
       &__link{
         color: white;
         margin-bottom: 0.5rem;
+        font-weight: bold;
       }
     }
   }
