@@ -1,0 +1,12 @@
+.social{
+  .container{
+    &__list{
+      display:flex;
+      flex-direction: row;
+      justify-content: space-around;
+      &__items{
+        margin: 0.3rem;
+      }
+    }
+  }
+}

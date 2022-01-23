@@ -3,7 +3,8 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 
 /* Local imports */
-import logo from '../../assets/images/pawslogo1.png'
+import logo from '../../assets/images/pawslogo1.png';
+import Social from '../Social';
 // Components
 
 const Footer = () => {
@@ -16,7 +17,7 @@ const Footer = () => {
           </NavLink>
         </div>
         <div className='container__social'>
-          SOCIAL COMPONENT
+          <Social />
         </div>
         <div className='container__nav'>
           <div className='container__nav__title'>

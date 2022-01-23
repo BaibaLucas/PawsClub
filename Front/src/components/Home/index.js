@@ -11,6 +11,7 @@ import sylvanas from '../../assets/images/sylvanas.jpg';
 import clawlogo from '../../assets/images/clawlogo.jpg';
 import talent from '../../assets/images/talent.png';
 
+
 // Components
 
 const Home = () => {
