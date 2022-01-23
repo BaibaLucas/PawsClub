@@ -19,7 +19,6 @@ const Home = () => {
       <div className='container'>
         <div className='container__presentation'>
           <img className='container__presentation__image' src={illust} alt='illust'/>
-        <span className='container__presentation__title'> PAWS </span>
         <div className='container__presentation__content'>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean interdum nisi tortor, porta ornare turpis placerat sit amet.
         </div>
