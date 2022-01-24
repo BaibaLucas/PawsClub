@@ -3,18 +3,17 @@
     display:flex;
     flex-direction: column;
     align-items: center;
-    background-color: $dark-grey;
-    -webkit-box-shadow: 5px 5px 15px 5px #212121; 
-    box-shadow: 5px 5px 15px 5px #212121;
+    background-color: $grey;
     margin: 1rem;
     color: white;
+    padding: 0rem 0rem 1rem 0rem;
     &__pawslogo{
       margin: 1rem 0rem 0rem 0rem;
       width: 200px;
       height: 50px;
       text-align: center;
       img{
-        width: 200px;
+        width: 160px;
         height: 50px;
       }
     }
@@ -29,19 +28,21 @@
         letter-spacing: 0.2rem;
         font-weight: bold;
         font-size: 1.2rem;
-        margin-bottom: 0.7rem;
+        margin-bottom: 1rem;
       }
       &__items{
         color: white;
-        margin-bottom: 0.4rem;
+        margin-bottom: 0.8rem;
         font-weight: bold;
+        text-transform: uppercase;
+        letter-spacing: 0.1rem;
       }
     }
     &__law{
       width: 100%;
       text-align: center;
       margin-top: 1rem;
-      border: solid 5px $mid-grey;
+      
       &__desc{
         font-style: italic;
         margin-bottom: 1rem;
