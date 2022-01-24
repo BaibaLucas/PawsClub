@@ -3,13 +3,15 @@ import React from 'react';
 
 /* Local imports */
 import illust from '../../assets/images/pawspaper.jpg';
-import newsimg from '../../assets/images/paws_black_logo.png';
 import ow from '../../assets/images/owlogo.png';
 import lol from '../../assets/images/leagueOf.jpeg';
 import wow from '../../assets/images/shadowlandsWoW.png';
 import sylvanas from '../../assets/images/sylvanas.jpg';
 import clawlogo from '../../assets/images/clawlogo.jpg';
 import talent from '../../assets/images/talent.png';
+import addon from '../../assets/images/addon.png';
+import dogs from '../../assets/images/dogs1.png';
+import down from '../../assets/images/down.jpg';
 
 
 // Components
@@ -30,7 +32,7 @@ const Home = () => {
           </div>
           <div className='container__news__box'>
             <div className='container__news__box__card'>
-              <img className='container__news__box__card__image' src={newsimg} alt='news illustration' />
+              <img className='container__news__box__card__image' src={addon} alt='news illustration' />
               <div className='container__news__box__card__title'>
                 Lorem ipsum dolor sit amet !
               </div>
@@ -39,7 +41,7 @@ const Home = () => {
               </div>
             </div>
             <div className='container__news__box__card'>
-              <img className='container__news__box__card__image' src={newsimg} alt='news illustration' />
+              <img className='container__news__box__card__image' src={dogs} alt='news illustration' />
               <div className='container__news__box__card__title'>
                 Lorem ipsum dolor sit amet !
               </div>
@@ -48,7 +50,7 @@ const Home = () => {
               </div>
             </div>
             <div className='container__news__box__card'>
-              <img className='container__news__box__card__image' src={newsimg} alt='news illustration' />
+              <img className='container__news__box__card__image' src={down} alt='news illustration' />
               <div className='container__news__box__card__title'>
                 Lorem ipsum dolor sit amet !
               </div>
