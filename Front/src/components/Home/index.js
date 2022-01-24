@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom';
 
 /* Local imports */
 import illust from '../../assets/images/pawspaper.jpg';
-import ow from '../../assets/images/owlogo.png';
+import diablo3 from '../../assets/images/diablo3.png';
 import lol from '../../assets/images/leagueOf.jpeg';
 import wow from '../../assets/images/shadowlandsWoW.png';
 import sylvanas from '../../assets/images/sylvanas.jpg';
@@ -67,13 +67,13 @@ const Home = () => {
           </div>
 
         </div>
-        <div className='container_linesup'>
+        <div className='container__linesup'>
           <div className='container__linesup__title'>
             Lines-up
           </div>
           <div className='container__linesup__box'>
             <a className='container__linesup__box__card' href='#'>
-              <img className='container__linesup__box__card__image' src={ow} alt='linesup illustration' />
+              <img className='container__linesup__box__card__image' src={diablo3} alt='linesup illustration' />
             </a>
             <a className='container__linesup__box__card' href='#'>
               <img className='container__linesup__box__card__image' src={lol} alt='linesup illustration' />
@@ -81,6 +81,11 @@ const Home = () => {
             <a className='container__linesup__box__card' href='#'>
               <img className='container__linesup__box__card__image' src={wow} alt='linesup illustration' />
             </a>
+          </div>
+          <div className='container__linesup__more'>
+              <NavLink className='container__linesup__more__link' to='#'>
+                More lines-up
+              </NavLink>
           </div>
         </div>
         <div className='container_stream'>

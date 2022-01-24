@@ -93,26 +93,61 @@
       }
     }
     &__linesup{
+      margin: 1.5rem 0rem;
+      -webkit-box-shadow: 5px 5px 15px 5px #212121; 
+      box-shadow: 5px 5px 15px 5px #212121;
+      border-radius: 0 20px 0 0;
+      width: 100%;
+      flex-direction: column;
       &__title{
         font-weight: bold;
         font-size: 1.3rem;
         color: white;
         padding: 0.5rem;
         background-color: #212121;
+        border-radius: 0 20px 0 0;
       }
       &__box{
         display: flex;
-        flex-direction: column;
-        justify-content: space-evenly;
+        scroll-behavior: smooth;
+        width: 100%;
+        padding: 0.3rem;
+        overflow: scroll;
+        &::-webkit-scrollbar{
+          display:none;
+        }
         &__card{
-          margin: 0 0 1rem 0;
-          background-color: #212121;
-          -webkit-box-shadow: 5px 5px 15px 5px #212121; 
-          box-shadow: 5px 5px 15px 5px #212121;
-          img{
-            height: 250px;
-            width: 100%;
+          width: 325px;
+          height: 250px;
+          margin: 0.2rem;
+          border: solid 1px $yellow;
+          border-radius: 20px;
+
+          &:first-child{
+            margin-left: 0rem;
           }
+          img{
+            height: 100%;
+            width: 315px;
+            border-radius: 20px;
+          }
+        }
+      }
+      &__more{
+        &__link{
+          color: $dark-grey;
+          text-decoration: none;
+          background-color: #F0FF00;
+          font-weight: bold;
+          font-size: 1.1rem;
+          text-transform: uppercase;
+          text-align: center;
+          display: block;
+          float: right;
+          padding: 0.4rem;
+          border-radius: 0 20px 0 0;
+          margin-bottom: 0.3rem;
+          margin-right: 0.3rem;
         }
       }
     }
