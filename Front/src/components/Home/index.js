@@ -88,8 +88,8 @@ const Home = () => {
               </NavLink>
           </div>
         </div>
-        <div className='container_stream'>
-        <div className='container__linesup__title'>
+        <div className='container__stream'>
+        <div className='container__stream__title'>
             Stream
           </div>
           <div className='container__stream__box'>
@@ -111,6 +111,11 @@ const Home = () => {
                 Aenean interdum nisi tortor
               </div>
             </a>
+          </div>
+          <div className='container__stream__more'>
+            <NavLink className='container__stream__more__link' to='#'>
+              More Stream
+            </NavLink>
           </div>
         </div>
       </div>
