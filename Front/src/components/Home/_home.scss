@@ -152,35 +152,58 @@
       }
     }
     &__stream{
+      margin: 1.5rem 0rem;
+      -webkit-box-shadow: 5px 5px 15px 5px #212121; 
+      box-shadow: 5px 5px 15px 5px #212121;
+      border-radius: 0 20px 0 0;
+      &__title{
+        font-weight: bold;
+        font-size: 1.3rem;
+        color: white;
+        padding: 0.5rem;
+        background-color: #212121;
+        border-radius: 0 20px 0 0;
+      }
       &__box{
         display: flex;
         flex-direction: column;
         justify-content: space-evenly;
-        a{
-          color: white;
-          text-decoration: none;
-        }
+        padding: 0.3rem;
         &__card{
+          border-radius: 20px;
+          border: solid 1px $yellow;
           margin: 0 0 1rem 0;
           background-color: #212121;
-          -webkit-box-shadow: 5px 5px 15px 5px #212121; 
-          box-shadow: 5px 5px 15px 5px #212121;
-          position: relative;
+          text-decoration: none;
           img{
+            border-radius: 20px 20px 0 0;
             height: 250px;
             width: 100%;
           }
           &__title{
+            font-size: 1.5rem;
             font-weight: bold;
-            font-size: 1.3rem;
             color: white;
-            padding: 0.5rem;
-            background-color: #49494983;
-            position: absolute;
-            bottom: 0;
-            width: 100%;
             text-align: center;
+            padding: 1rem;
           }
+        }
+      }
+      &__more{
+        &__link{
+          color: $dark-grey;
+          text-decoration: none;
+          background-color: #F0FF00;
+          font-weight: bold;
+          font-size: 1.1rem;
+          text-transform: uppercase;
+          text-align: center;
+          display: block;
+          float: right;
+          padding: 0.4rem;
+          border-radius: 0 20px 0 0;
+          margin-bottom: 0.3rem;
+          margin-right: 0.3rem;
         }
       }
     }
