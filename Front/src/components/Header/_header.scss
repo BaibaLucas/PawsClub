@@ -2,9 +2,9 @@
   position: fixed;
   z-index: 100;
   .container{
-    background-color: $dark-grey;
+    background-color: $grey;
     width: 100vw;
-    height: 100px;
+    height: 80px;
     display:flex;
     justify-content: space-between;
     flex-direction: row;
@@ -19,7 +19,7 @@
       }
     }
     &__nav{
-      width: 50px;
+      width: 40px;
       margin: 0 1rem;
       span{
         display: block;

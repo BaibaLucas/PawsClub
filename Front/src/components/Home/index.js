@@ -1,5 +1,6 @@
 /* Package imports */
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 
 /* Local imports */
 import illust from '../../assets/images/pawspaper.jpg';
@@ -57,6 +58,11 @@ const Home = () => {
               <div className='container__news__box__card__date'>
                 21 january 2022
               </div>
+            </div>
+            <div className='container__news__more'>
+              <NavLink className='container__news__more__link' to='#'>
+                More news
+              </NavLink>
             </div>
           </div>
 
