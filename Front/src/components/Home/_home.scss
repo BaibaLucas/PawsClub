@@ -1,5 +1,6 @@
 .home {
   height: 100%;
+  padding-top: 6rem;
   .container{
     height: 100%;
     display: flex;
@@ -7,9 +8,9 @@
     justify-content: space-between;
     align-items: center;
     background-color: $grey;
-    padding: 1rem;
-    padding-top: 100px;
+    margin-top: 3rem;
     margin: 0rem 1rem;
+    padding: 1rem 0.5rem;
     &__presentation{
       background-color: $dark-grey;
       display: inline-block;
