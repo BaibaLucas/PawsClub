@@ -1,14 +1,22 @@
 /* Package imports */
-import React from 'react';
+import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 
 /* Local imports */
-import logo from '../../assets/images/pawswhite.png'
+
+import logo from '../../assets/images/pawswhite.png';
+import Burger from './burger/index';
+import Menu from './menu/index';
 
 
 // Components
 
-const Header = () => {
+const Header = ({}) => {
+
+  // Burger State
+  const [open, setOpen] = useState(false);
+
+
   return (
     <div className='header'>
       <div className='container'>
@@ -18,9 +26,8 @@ const Header = () => {
           </NavLink>
         </div>
         <div className='container__nav'>
-            <span />
-						<span />
-						<span />
+            <Burger open={open} setOpen={setOpen} />
+            <Menu open={open} setOpen={setOpen} />
         </div>
       </div>
     </div>
