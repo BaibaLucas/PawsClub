@@ -1,15 +1,18 @@
 /* Package imports */
 import React from 'react';
+import { NavLink } from 'react-router-dom';
 
 /* Local imports */
 import illust from '../../assets/images/pawspaper.jpg';
-import newsimg from '../../assets/images/paws_black_logo.png';
-import ow from '../../assets/images/owlogo.png';
+import diablo3 from '../../assets/images/diablo3.png';
 import lol from '../../assets/images/leagueOf.jpeg';
 import wow from '../../assets/images/shadowlandsWoW.png';
 import sylvanas from '../../assets/images/sylvanas.jpg';
 import clawlogo from '../../assets/images/clawlogo.jpg';
 import talent from '../../assets/images/talent.png';
+import addon from '../../assets/images/addon.png';
+import dogs from '../../assets/images/dogs1.png';
+import down from '../../assets/images/down.jpg';
 
 
 // Components
@@ -30,7 +33,7 @@ const Home = () => {
           </div>
           <div className='container__news__box'>
             <div className='container__news__box__card'>
-              <img className='container__news__box__card__image' src={newsimg} alt='news illustration' />
+              <img className='container__news__box__card__image' src={addon} alt='news illustration' />
               <div className='container__news__box__card__title'>
                 Lorem ipsum dolor sit amet !
               </div>
@@ -39,7 +42,7 @@ const Home = () => {
               </div>
             </div>
             <div className='container__news__box__card'>
-              <img className='container__news__box__card__image' src={newsimg} alt='news illustration' />
+              <img className='container__news__box__card__image' src={dogs} alt='news illustration' />
               <div className='container__news__box__card__title'>
                 Lorem ipsum dolor sit amet !
               </div>
@@ -48,24 +51,29 @@ const Home = () => {
               </div>
             </div>
             <div className='container__news__box__card'>
-              <img className='container__news__box__card__image' src={newsimg} alt='news illustration' />
+              <img className='container__news__box__card__image' src={down} alt='news illustration' />
               <div className='container__news__box__card__title'>
                 Lorem ipsum dolor sit amet !
               </div>
               <div className='container__news__box__card__date'>
                 21 january 2022
               </div>
+            </div>
+            <div className='container__news__more'>
+              <NavLink className='container__news__more__link' to='#'>
+                More news
+              </NavLink>
             </div>
           </div>
 
         </div>
-        <div className='container_linesup'>
+        <div className='container__linesup'>
           <div className='container__linesup__title'>
             Lines-up
           </div>
           <div className='container__linesup__box'>
             <a className='container__linesup__box__card' href='#'>
-              <img className='container__linesup__box__card__image' src={ow} alt='linesup illustration' />
+              <img className='container__linesup__box__card__image' src={diablo3} alt='linesup illustration' />
             </a>
             <a className='container__linesup__box__card' href='#'>
               <img className='container__linesup__box__card__image' src={lol} alt='linesup illustration' />
@@ -74,9 +82,14 @@ const Home = () => {
               <img className='container__linesup__box__card__image' src={wow} alt='linesup illustration' />
             </a>
           </div>
+          <div className='container__linesup__more'>
+              <NavLink className='container__linesup__more__link' to='#'>
+                More lines-up
+              </NavLink>
+          </div>
         </div>
-        <div className='container_stream'>
-        <div className='container__linesup__title'>
+        <div className='container__stream'>
+        <div className='container__stream__title'>
             Stream
           </div>
           <div className='container__stream__box'>
@@ -98,6 +111,11 @@ const Home = () => {
                 Aenean interdum nisi tortor
               </div>
             </a>
+          </div>
+          <div className='container__stream__more'>
+            <NavLink className='container__stream__more__link' to='#'>
+              More Stream
+            </NavLink>
           </div>
         </div>
       </div>
