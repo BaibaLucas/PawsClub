@@ -3,7 +3,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 
 /* Local imports */
-import logo from '../../assets/images/pawslogo1.png'
+import logo from '../../assets/images/pawswhite.png'
 
 
 // Components
