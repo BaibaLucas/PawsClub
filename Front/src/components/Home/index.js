@@ -17,7 +17,7 @@ import down from '../../assets/images/down.jpg';
 
 // Components
 
-const Home = () => {
+const Home = ({ open }) => {
   return (
     <div className='home'>
       <div className='container'>

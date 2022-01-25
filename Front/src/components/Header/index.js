@@ -6,11 +6,12 @@ import { NavLink } from 'react-router-dom';
 
 import logo from '../../assets/images/pawswhite.png';
 import Burger from './burger/index';
+import Menu from './menu/index';
 
 
 // Components
 
-const Header = () => {
+const Header = ({}) => {
 
   // Burger State
   const [open, setOpen] = useState(false);
@@ -26,6 +27,7 @@ const Header = () => {
         </div>
         <div className='container__nav'>
             <Burger open={open} setOpen={setOpen} />
+            <Menu open={open} setOpen={setOpen} />
         </div>
       </div>
     </div>

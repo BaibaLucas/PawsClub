@@ -25,18 +25,16 @@
         transform: rotate(0);
       }
     &.active{
+      z-index: 100;
       &:first-child{
         transform: rotate(45deg);
-        background: $dark-grey;
       }
       &:nth-child(2){
         transform: rotate(20px);
         opacity: 0;
-        background: $dark-grey;
       }
       &:nth-child(3){
         transform: rotate(-45deg);
-        background: $dark-grey;
       }
     }
   }
