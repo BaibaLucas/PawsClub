@@ -73,10 +73,10 @@ const Menu = ({ open, setOpen }) => {
               Join Us
             </li>
           </NavLink>
-          <NavLink className='menu__nav__list__item' activeClassName='activeBg' onClick={close} exact to ='#'>
+          <NavLink className='menu__nav__list__item' activeClassName='activeBg' onClick={close} exact to ='/about'>
             <MdQuestionAnswer size={50} />
             <li className='menu__nav__list__item__name'>
-              Who are us
+              Who we are
             </li>
           </NavLink>
         </ul>
