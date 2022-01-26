@@ -67,7 +67,7 @@ const Menu = ({ open, setOpen }) => {
               Lines-up
             </li>
           </NavLink>
-          <NavLink className='menu__nav__list__item' activeClassName='activeBg' onClick={close} exact to ='#'>
+          <NavLink className='menu__nav__list__item' activeClassName='activeBg' onClick={close} exact to ='/joinus'>
             <FaHandsHelping size={50} />
             <li className='menu__nav__list__item__name'>
               Join Us

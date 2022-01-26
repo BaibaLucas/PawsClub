@@ -1,0 +1,31 @@
+.joinus{
+  height: 100vh;
+  background-color: $dark-grey;
+  .container{
+    height: 100%;
+    padding: 5rem 1rem 0rem 1rem;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    &__title{
+      padding-top: 2rem;
+      font-size: 2rem;
+      font-weight: bold;
+    }
+    &__content{
+      margin-top: 4rem;
+      font-size: 1.2rem;
+    }
+    &__discord{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 3rem;
+      height: 30%;
+      border-radius: 20px;
+      background-color: $mid-grey;
+      
+    }
+  }
+}
