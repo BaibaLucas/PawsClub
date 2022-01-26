@@ -28,21 +28,46 @@ const Footer = () => {
                 home
               </div>
             </NavLink>
-            <NavLink to='#'>
+            <NavLink to='/news'>
               <div className='container__nav__items'>
                 news
               </div>
             </NavLink>
-            <NavLink to='#'>
+            <NavLink to='/roster'>
               <div className='container__nav__items'>
                 roster
               </div>
             </NavLink>
-            <NavLink to='#'>
+            <NavLink to='/stream'>
               <div className='container__nav__items'>
                 streams
               </div>
-            </NavLink>  
+            </NavLink>
+            <NavLink to='/login'>
+              <div className='container__nav__items'>
+                se connecter
+              </div>
+            </NavLink>
+            <NavLink to='/signup'>
+              <div className='container__nav__items'>
+                S'inscrire
+              </div>
+            </NavLink>
+            <NavLink to='/linesup'>
+              <div className='container__nav__items'>
+                lines-up
+              </div>
+            </NavLink>
+            <NavLink to='/joinus'>
+              <div className='container__nav__items'>
+                Join Us
+              </div>
+            </NavLink> 
+            <NavLink to='/about'>
+              <div className='container__nav__items'>
+                Who we are
+              </div>
+            </NavLink> 
         </div>
         <div className='container__law'>
           <div className='container__law__desc'>
