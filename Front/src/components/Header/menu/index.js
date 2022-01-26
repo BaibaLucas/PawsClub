@@ -31,7 +31,7 @@ const Menu = ({ open, setOpen }) => {
               Home
             </li>
           </NavLink>
-          <NavLink className='menu__nav__list__item' activeClassName='activeBg' onClick={close} exact to ='#'>
+          <NavLink className='menu__nav__list__item' activeClassName='activeBg' onClick={close} exact to ='/login'>
             <BiUserCircle size={50} />
             <li className='menu__nav__list__item__name'>
               Login

@@ -1,0 +1,46 @@
+.login{
+  height: 100vh;
+  padding-top: 5rem;
+  .container{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding: 5rem 1rem 0rem 1rem;
+    &__title{
+      color: $yellow;
+      font-weight: bold;
+      font-size: 2rem;
+      text-transform: uppercase;
+      text-align: center;
+      padding-bottom: 5rem;
+    }
+    &__form{
+     display: flex;
+     flex-direction: column;
+     justify-content: space-evenly;
+     height: 50%;
+     background-color: $grey;
+     border-radius: 20px;
+     padding: 1rem;
+     &__label{
+       color: $yellow;
+       font-size: 1.5rem;
+     }
+     &__input{
+       font-size: 1.3rem;
+       padding: 1rem;
+       border-radius: 10px;
+     }
+     &__button{
+       margin-top: 1rem;
+       background-color: $yellow;
+       border-radius: 10px;
+       color: $dark-grey;
+       font-size: 1.5rem;
+       padding: 1.2rem 0rem;
+       font-weight: bold;
+       
+     }
+    }
+  }
+}
