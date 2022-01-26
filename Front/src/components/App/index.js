@@ -9,6 +9,7 @@ import Header from '../Header';
 import Footer from '../Footer';
 import Login from '../Login';
 import Signup from '../Signup';
+import JoinUs from '../JoinUs';
 
 const App = () => {
   return (
@@ -21,6 +22,7 @@ const App = () => {
         <Route path='/' element={<Home />} />
         <Route path='/login' element={<Login />} />
         <Route path='/signup' element={<Signup />} />
+        <Route path='/joinus' element={<JoinUs />} />
       </Routes>
 
       <Footer />
