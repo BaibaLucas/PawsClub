@@ -10,6 +10,7 @@ import Footer from '../Footer';
 import Login from '../Login';
 import Signup from '../Signup';
 import JoinUs from '../JoinUs';
+import About from '../About';
 
 const App = () => {
   return (
@@ -23,6 +24,7 @@ const App = () => {
         <Route path='/login' element={<Login />} />
         <Route path='/signup' element={<Signup />} />
         <Route path='/joinus' element={<JoinUs />} />
+        <Route path='/about' element={<About />} />
       </Routes>
 
       <Footer />
