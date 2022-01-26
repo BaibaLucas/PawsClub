@@ -37,7 +37,7 @@ const Menu = ({ open, setOpen }) => {
               Login
             </li>
           </NavLink>
-          <NavLink className='menu__nav__list__item' activeClassName='activeBg' onClick={close} exact to ='#'>
+          <NavLink className='menu__nav__list__item' activeClassName='activeBg' onClick={close} exact to ='/signup'>
             <RiUserAddFill size={50} />
             <li className='menu__nav__list__item__name'>
               Sign-Up
