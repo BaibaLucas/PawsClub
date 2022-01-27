@@ -15,9 +15,10 @@
 @import '../components/Footer/footer';
 @import '../components/Social/social';
 @import '../components/Login/login';
-@import '../components/Signup/signup';
+@import '../components/SignUp/signup';
 @import '../components/JoinUs/joinus';
 @import '../components/About/about';
+@import '../components//LinesUp/linesup';
 
 
 /* Base */
@@ -27,10 +28,19 @@ body {
   font-family: 'Lato', sans-serif;
   height: 100%;
   width: 100%;
+  color: white;
 }
 
 /* Upgrade */
 
 *{
   box-sizing: border-box;
+}
+h1{
+  font-size: 2rem;
+  font-weight: bold;
+}
+a{
+  text-decoration: none;
+  color: white;
 }
