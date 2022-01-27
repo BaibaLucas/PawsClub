@@ -28,10 +28,19 @@ body {
   font-family: 'Lato', sans-serif;
   height: 100%;
   width: 100%;
+  color: white;
 }
 
 /* Upgrade */
 
 *{
   box-sizing: border-box;
+}
+h1{
+  font-size: 2rem;
+  font-weight: bold;
+}
+a{
+  text-decoration: none;
+  color: white;
 }
