@@ -43,25 +43,25 @@ const Menu = ({ open, setOpen }) => {
               Sign-Up
             </li>
           </NavLink>
-          <NavLink className='menu__nav__list__item' activeClassName='activeBg' onClick={close} exact to ='#'>
+          <NavLink className='menu__nav__list__item' activeClassName='activeBg' onClick={close} exact to ='/news'>
             <BsNewspaper size={50} />
             <li className='menu__nav__list__item__name'>
               News
             </li>
           </NavLink>
-          <NavLink className='menu__nav__list__item' activeClassName='activeBg' onClick={close} exact to ='#'>
+          <NavLink className='menu__nav__list__item' activeClassName='activeBg' onClick={close} exact to ='/roster'>
             <RiTeamFill size={50} />
             <li className='menu__nav__list__item__name'>
               Roster
             </li>
           </NavLink>
-          <NavLink className='menu__nav__list__item' activeClassName='activeBg' onClick={close} exact to ='#'>
+          <NavLink className='menu__nav__list__item' activeClassName='activeBg' onClick={close} exact to ='/streams'>
             <MdLiveTv size={50} />
             <li className='menu__nav__list__item__name'>
               Streams
             </li>
           </NavLink>
-          <NavLink className='menu__nav__list__item' activeClassName='activeBg' onClick={close} exact to ='#'>
+          <NavLink className='menu__nav__list__item' activeClassName='activeBg' onClick={close} exact to ='/linesup'>
             <RiGamepadLine size={50} />
             <li className='menu__nav__list__item__name'>
               Lines-up

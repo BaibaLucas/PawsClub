@@ -5,7 +5,7 @@ import React from 'react';
 
 // Components
 
-const Signup = ({}) => {
+const SignUp = ({}) => {
   return (
     <div className='signup'>
       <div className='container'>
@@ -50,4 +50,4 @@ const Signup = ({}) => {
   )
 };
 
-export default Signup;
+export default SignUp;
