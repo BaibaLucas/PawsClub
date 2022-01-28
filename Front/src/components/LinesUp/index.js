@@ -22,7 +22,7 @@ const LinesUp = () => {
           </div>
         </div>
         <div className='container__box'>
-          <NavLink to='#'>
+          <NavLink to='/section'>
             <div className='container__box__card'>
               <img className='container__box__card__image' src={wow} alt='wow illustration' />
               <div className='container__box__card__title'>
@@ -33,7 +33,7 @@ const LinesUp = () => {
               </div>
             </div>
           </NavLink>
-          <NavLink to='#'>
+          <NavLink to='/section'>
             <div className='container__box__card'>
               <img className='container__box__card__image' src={lol} alt='lol illustration' />
               <div className='container__box__card__title'>
@@ -44,7 +44,7 @@ const LinesUp = () => {
               </div>
             </div>
           </NavLink>
-          <NavLink to='#'>
+          <NavLink to='/section'>
             <div className='container__box__card'>
               <img className='container__box__card__image' src={diablo3} alt='d3 illustration' />
               <div className='container__box__card__title'>

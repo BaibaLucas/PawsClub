@@ -72,15 +72,15 @@ const Home = ({ open }) => {
             Lines-up
           </div>
           <div className='container__linesup__box'>
-            <a className='container__linesup__box__card' href='#'>
+            <NavLink className='container__linesup__box__card' to='/section'>
               <img className='container__linesup__box__card__image' src={diablo3} alt='linesup illustration' />
-            </a>
-            <a className='container__linesup__box__card' href='#'>
+            </NavLink>
+            <NavLink className='container__linesup__box__card' to='/section'>
               <img className='container__linesup__box__card__image' src={lol} alt='linesup illustration' />
-            </a>
-            <a className='container__linesup__box__card' href='#'>
+            </NavLink>
+            <NavLink className='container__linesup__box__card' to='/section'>
               <img className='container__linesup__box__card__image' src={wow} alt='linesup illustration' />
-            </a>
+            </NavLink>
           </div>
           <div className='container__linesup__more'>
               <NavLink className='container__linesup__more__link' to='#'>

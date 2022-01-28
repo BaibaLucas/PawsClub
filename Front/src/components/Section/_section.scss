@@ -1,0 +1,10 @@
+.section{
+  height: 100%;
+  .container{
+    padding-top: 5rem;
+    border: solid 2px red;
+    &__presentation{
+      border: solid 2px purple;
+    }
+  }
+}
