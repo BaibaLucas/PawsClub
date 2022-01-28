@@ -3,8 +3,52 @@
   .container{
     padding-top: 5rem;
     border: solid 2px red;
+    display: flex;
+    text-align: center;
+    flex-direction: column;
     &__presentation{
       border: solid 2px purple;
+      margin-top: 2rem;
+      display: flex;
+      flex-direction: column;
+      &__title{
+        margin-bottom: 2rem;
+        text-transform: uppercase;
+      }
+    }
+    &__content{
+      border: solid 2px yellow;
+      margin-top: 2rem;
+      display: flex;
+      flex-direction: column;
+      &__nav{
+        border: solid 2px green;
+        display: flex;
+        justify-content: space-around;
+        &__item{
+          text-transform: uppercase;
+          font-weight: bold;
+          background-color: $yellow;
+          color: $dark-grey;
+          padding: 0.5rem;
+          border-radius: 10px;
+        }
+      }
+      &__box{
+        border: solid 2px red;
+        display: flex;
+        flex-direction: column;
+        &__title{
+          margin-top: 1rem;
+        }
+        &__card{
+          border: solid 2px blue;
+          &__image{
+            width: 300px;
+            height: 150px;
+          }
+        }
+      }
     }
   }
 }

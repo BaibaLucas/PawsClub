@@ -35,7 +35,7 @@ const Section = () => {
           </div>
           <div className='container__content__box'>
             <div className='container__content__box__title'>
-              News
+              <h1>News</h1>
             </div>
             <div className='container__content__box__card'>
               <img className='container__content__box__card__image' alt='news illustration' src={down} />
