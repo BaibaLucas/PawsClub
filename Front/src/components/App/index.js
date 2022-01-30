@@ -12,6 +12,7 @@ import Signup from '../SignUp';
 import JoinUs from '../JoinUs';
 import About from '../About';
 import LinesUp from '../LinesUp';
+import Section from '../Section';
 
 const App = () => {
   return (
@@ -27,6 +28,7 @@ const App = () => {
         <Route path='/linesup' element={<LinesUp />} />
         <Route path='/joinus' element={<JoinUs />} />
         <Route path='/about' element={<About />} />
+        <Route path='/section' element={<Section />} />
       </Routes>
 
       <Footer />
