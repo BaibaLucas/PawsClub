@@ -1,30 +1,36 @@
 .section{
   height: 100%;
+  padding-top: 6rem;
   .container{
-    padding-top: 5rem;
-    border: solid 2px red;
     display: flex;
     text-align: center;
     flex-direction: column;
+    background-color: $grey;
+    margin: 0rem 1rem;
     &__presentation{
-      border: solid 2px purple;
+      background-color: $dark-grey;
       margin-top: 2rem;
+      padding: 1rem;
       display: flex;
       flex-direction: column;
+      box-shadow: 5px 5px 15px 5px #212121;
       &__title{
         margin-bottom: 2rem;
         text-transform: uppercase;
       }
     }
     &__content{
-      border: solid 2px yellow;
+      box-shadow: 5px 5px 15px 5px #212121;
       margin-top: 2rem;
       display: flex;
       flex-direction: column;
       &__nav{
-        border: solid 2px green;
+        margin: 1rem;
         display: flex;
         justify-content: space-around;
+        background-color: $dark-grey;
+        padding: 1rem;
+        border-radius: 20px;
         &__item{
           text-transform: uppercase;
           font-weight: bold;
@@ -35,18 +41,71 @@
         }
       }
       &__box{
-        border: solid 2px red;
+        box-shadow: 5px 5px 15px 5px #212121;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+        padding: 0.3rem;
+        &__title{
+          padding: 1rem;
+        }
+        &__card{
+          border-radius: 20px;
+          border: solid 1px $yellow;
+          margin: 0 0 1rem 0;
+          background-color: #212121;
+          box-shadow: 5px 5px 15px 5px #212121;
+          img{
+            border-radius: 20px 20px 0 0;
+            height: 250px;
+            width: 100%;
+          }
+          &__title{
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: white;
+            text-align: center;
+            padding: 1rem;
+          }
+          &__date{
+            color: white;
+            text-align: center;
+            font-style: italic;
+            padding: 0rem 0.5rem 1rem 0.5rem;
+          }
+        }
+      }
+      &__roster{
         display: flex;
         flex-direction: column;
         &__title{
-          margin-top: 1rem;
+          margin: 1rem;
         }
         &__card{
-          border: solid 2px blue;
-          &__image{
-            width: 300px;
-            height: 150px;
+          margin: 1rem;
+          display: flex;
+          padding: 1rem 1rem;
+          align-items: center;
+          background-color: #212121;
+          box-shadow: 5px 5px 15px 5px #212121;
+          img{
+            border-radius: 50%;
           }
+          &__name{
+            margin-left: 2rem;
+            font-size: 2rem;
+            font-weight: bold;
+          }
+        }
+      }
+      &__info{
+        text-align: center;
+        margin-top: 1rem;
+        &__title{
+          margin: 1rem;
+        }
+        &__desc{
+          margin: 1rem;
         }
       }
     }
