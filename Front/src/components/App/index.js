@@ -13,6 +13,7 @@ import JoinUs from '../JoinUs';
 import About from '../About';
 import LinesUp from '../LinesUp';
 import Section from '../Section';
+import News from '../News';
 
 const App = () => {
   return (
@@ -29,6 +30,7 @@ const App = () => {
         <Route path='/joinus' element={<JoinUs />} />
         <Route path='/about' element={<About />} />
         <Route path='/section' element={<Section />} />
+        <Route path='/news' element={<News />} />
       </Routes>
 
       <Footer />
