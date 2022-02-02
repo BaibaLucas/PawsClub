@@ -6,6 +6,7 @@ import addon from '../../assets/images/addon.png';
 import dogs from '../../assets/images/dogs1.png';
 import down from '../../assets/images/down.jpg';
 import avatar from '../../assets/images/avatar.jpg';
+import { NavLink } from 'react-router-dom';
 
 // Components
 
@@ -37,33 +38,39 @@ const Section = () => {
             <div className='container__content__box__title'>
               <h1>News</h1>
             </div>
-            <div className='container__content__box__card'>
-              <img className='container__content__box__card__image' alt='news illustration' src={down} />
-              <div className='container__content__box__card__title'>
-                Lorem ipsum dolor sit amet !
+            <NavLink to='/newsdetails'>
+              <div className='container__content__box__card'>
+                <img className='container__content__box__card__image' alt='news illustration' src={down} />
+                <div className='container__content__box__card__title'>
+                  Lorem ipsum dolor sit amet !
+                </div>
+                <div className='container__content__box__card__date'>
+                  21 january 2022
+                </div>
               </div>
-              <div className='container__content__box__card__date'>
-                21 january 2022
+            </NavLink>
+            <NavLink to='/newsdetails'>
+              <div className='container__content__box__card'>
+                <img className='container__content__box__card__image' alt='news illustration' src={addon}/>
+                <div className='container__content__box__card__title'>
+                  Lorem ipsum dolor sit amet !
+                </div>
+                <div className='container__content__box__card__date'>
+                  21 january 2022
+                </div>
               </div>
-            </div>
-            <div className='container__content__box__card'>
-              <img className='container__content__box__card__image' alt='news illustration' src={addon}/>
-              <div className='container__content__box__card__title'>
-                Lorem ipsum dolor sit amet !
+            </NavLink>
+            <NavLink to='/newsdetails'>
+              <div className='container__content__box__card'>
+                <img className='container__content__box__card__image' alt='news illustration' src={dogs}/>
+                <div className='container__content__box__card__title'>
+                  Lorem ipsum dolor sit amet !
+                </div>
+                <div className='container__content__box__card__date'>
+                  21 january 2022
+                </div>
               </div>
-              <div className='container__content__box__card__date'>
-                21 january 2022
-              </div>
-            </div>
-            <div className='container__content__box__card'>
-              <img className='container__content__box__card__image' alt='news illustration' src={dogs}/>
-              <div className='container__content__box__card__title'>
-                Lorem ipsum dolor sit amet !
-              </div>
-              <div className='container__content__box__card__date'>
-                21 january 2022
-              </div>
-            </div>
+            </NavLink>
           </div>
           <div className='container__content__roster'>
             <div className='container__content__roster__title'>
