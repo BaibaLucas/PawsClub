@@ -6,6 +6,7 @@ import talent from '../../assets/images/talent.png';
 import addon from '../../assets/images/addon.png';
 import dogs from '../../assets/images/dogs1.png';
 import down from '../../assets/images/down.jpg';
+import { NavLink } from 'react-router-dom';
 // Components
 
 const News = () => {
@@ -32,42 +33,50 @@ const News = () => {
           </div>
           <div className='container__news'>
             <div className='container__news__box'>
+             <NavLink to='/newsdetails'>
               <div className='container__news__box__card'>
-                <img className='container__news__box__card__image' alt='news illust' src={talent}/>
-                <div className='container__news__box__card__title'>
-                  Lorem ipsum dolor sit amet !
+                  <img className='container__news__box__card__image' alt='news illust' src={talent}/>
+                  <div className='container__news__box__card__title'>
+                    Lorem ipsum dolor sit amet !
+                  </div>
+                  <div className='container__news__box__card__date'>
+                  21 january 2022
+                  </div>
                 </div>
-                <div className='container__news__box__card__date'>
-                21 january 2022
-                </div>
-              </div>
+             </NavLink>
+             <NavLink to='/newsdetails'>
               <div className='container__news__box__card'>
-                <img className='container__news__box__card__image' alt='news illust' src={addon}/>
-                <div className='container__news__box__card__title'>
-                  Lorem ipsum dolor sit amet !
+                  <img className='container__news__box__card__image' alt='news illust' src={dogs}/>
+                  <div className='container__news__box__card__title'>
+                    Lorem ipsum dolor sit amet !
+                  </div>
+                  <div className='container__news__box__card__date'>
+                  21 january 2022
+                  </div>
                 </div>
-                <div className='container__news__box__card__date'>
-                21 january 2022
-                </div>
-              </div>
+             </NavLink>
+             <NavLink to='/newsdetails'>
               <div className='container__news__box__card'>
-                <img className='container__news__box__card__image' alt='news illust' src={dogs}/>
-                <div className='container__news__box__card__title'>
-                  Lorem ipsum dolor sit amet !
-                </div>
-                <div className='container__news__box__card__date'>
-                21 january 2022
-                </div>
-              </div>
+                  <img className='container__news__box__card__image' alt='news illust' src={down}/>
+                  <div className='container__news__box__card__title'>
+                    Lorem ipsum dolor sit amet !
+                  </div>
+                  <div className='container__news__box__card__date'>
+                  21 january 2022
+                  </div>
+                </div> 
+             </NavLink>
+             <NavLink to='/newsdetails'>
               <div className='container__news__box__card'>
-                <img className='container__news__box__card__image' alt='news illust' src={down}/>
-                <div className='container__news__box__card__title'>
-                  Lorem ipsum dolor sit amet !
+                  <img className='container__news__box__card__image' alt='news illust' src={addon}/>
+                  <div className='container__news__box__card__title'>
+                    Lorem ipsum dolor sit amet !
+                  </div>
+                  <div className='container__news__box__card__date'>
+                  21 january 2022
+                  </div>
                 </div>
-                <div className='container__news__box__card__date'>
-                21 january 2022
-                </div>
-              </div>
+             </NavLink>
             </div>
           </div>
         </div>

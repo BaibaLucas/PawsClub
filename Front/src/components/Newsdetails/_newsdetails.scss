@@ -1,0 +1,42 @@
+.newsdetails{
+  height: 100%;
+  padding-top: 6rem;
+  .container{
+    margin: 0rem 1rem;
+    padding: 1rem 0.5rem;
+    background-color: $grey;
+    &__details{
+      display: flex;
+      flex-direction: column;
+      &__back{
+        display: flex;
+        align-items: center;
+        &__logo{
+          margin-right: 0.5rem;
+        }
+        &__content{
+          text-transform: uppercase;
+        }
+      }
+      &__image{
+        margin-top: 1rem;
+        height: 250px;
+      }
+      &__date{
+        margin-top: 0.5rem;
+        text-align: end;
+      }
+      &__title{
+        margin: 1rem 0rem;
+      }
+      &__content{
+        font-size: 1.1rem;
+        line-height: 1.2rem;
+      }
+      &__author{
+        text-align: end;
+        margin-top: 0.5rem;
+      }
+    }
+  }
+}

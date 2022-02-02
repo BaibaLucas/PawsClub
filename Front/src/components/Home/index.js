@@ -32,33 +32,39 @@ const Home = () => {
             Latest news
           </div>
           <div className='container__news__box'>
-            <div className='container__news__box__card'>
-              <img className='container__news__box__card__image' src={addon} alt='news illustration' />
-              <div className='container__news__box__card__title'>
-                Lorem ipsum dolor sit amet !
-              </div>
-              <div className='container__news__box__card__date'>
-                21 january 2022
-              </div>
-            </div>
-            <div className='container__news__box__card'>
-              <img className='container__news__box__card__image' src={dogs} alt='news illustration' />
-              <div className='container__news__box__card__title'>
-                Lorem ipsum dolor sit amet !
-              </div>
-              <div className='container__news__box__card__date'>
-                21 january 2022
-              </div>
-            </div>
-            <div className='container__news__box__card'>
-              <img className='container__news__box__card__image' src={down} alt='news illustration' />
-              <div className='container__news__box__card__title'>
-                Lorem ipsum dolor sit amet !
-              </div>
-              <div className='container__news__box__card__date'>
-                21 january 2022
-              </div>
-            </div>
+              <NavLink to='/newsdetails'>
+                <div className='container__news__box__card'>
+                  <img className='container__news__box__card__image' src={addon} alt='news illustration' />
+                  <div className='container__news__box__card__title'>
+                    Lorem ipsum dolor sit amet !
+                  </div>
+                  <div className='container__news__box__card__date'>
+                    21 january 2022
+                  </div>
+                </div>
+              </NavLink>
+              <NavLink to='/newsdetails'>
+                <div className='container__news__box__card'>
+                  <img className='container__news__box__card__image' src={dogs} alt='news illustration' />
+                  <div className='container__news__box__card__title'>
+                    Lorem ipsum dolor sit amet !
+                  </div>
+                  <div className='container__news__box__card__date'>
+                    21 january 2022
+                  </div>
+                </div>
+              </NavLink>
+              <NavLink to='/newsdetails'>
+                <div className='container__news__box__card'>
+                  <img className='container__news__box__card__image' src={down} alt='news illustration' />
+                  <div className='container__news__box__card__title'>
+                    Lorem ipsum dolor sit amet !
+                  </div>
+                  <div className='container__news__box__card__date'>
+                    21 january 2022
+                  </div>
+                </div>
+              </NavLink>
             <div className='container__news__more'>
               <NavLink className='container__news__more__link' to='#'>
                 More news
