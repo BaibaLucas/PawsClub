@@ -14,6 +14,7 @@ import About from '../About';
 import LinesUp from '../LinesUp';
 import Section from '../Section';
 import News from '../News';
+import Newsdetails from '../Newsdetails';
 
 const App = () => {
   return (
@@ -31,6 +32,7 @@ const App = () => {
         <Route path='/about' element={<About />} />
         <Route path='/section' element={<Section />} />
         <Route path='/news' element={<News />} />
+        <Route path='/newsdetails' element={<Newsdetails />} />
       </Routes>
 
       <Footer />
