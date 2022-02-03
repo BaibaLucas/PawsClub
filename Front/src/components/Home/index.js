@@ -99,24 +99,24 @@ const Home = () => {
             Stream
           </div>
           <div className='container__stream__box'>
-            <a className='container__stream__box__card' href='#'>
+            <NavLink className='container__stream__box__card' to='/streams'>
               <img className='container__stream__box__card__image' src={talent} alt='stream illustration' />
               <div className='container__stream__box__card__title'>
                 Aenean interdum nisi tortor
               </div>
-            </a>
-            <a className='container__stream__box__card' href='#'>
+            </NavLink>
+            <NavLink className='container__stream__box__card' to='/streams'>
               <img className='container__stream__box__card__image' src={sylvanas} alt='stream illustration' />
               <div className='container__stream__box__card__title'>
                 Aenean interdum nisi tortor
               </div>
-            </a>
-            <a className='container__stream__box__card' href='#'>
+            </NavLink>
+            <NavLink className='container__stream__box__card' to='/streams'>
               <img className='container__stream__box__card__image' src={clawlogo} alt='stream illustration' />
               <div className='container__stream__box__card__title'>
                 Aenean interdum nisi tortor
               </div>
-            </a>
+            </NavLink>
           </div>
           <div className='container__stream__more'>
             <NavLink className='container__stream__more__link' to='#'>
