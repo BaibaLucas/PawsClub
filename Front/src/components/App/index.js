@@ -16,6 +16,7 @@ import Section from '../Section';
 import News from '../News';
 import Newsdetails from '../Newsdetails';
 import Streams from '../Streams';
+import Account from '../Account';
 
 const App = () => {
   return (
@@ -35,6 +36,7 @@ const App = () => {
         <Route path='/news' element={<News />} />
         <Route path='/newsdetails' element={<Newsdetails />} />
         <Route path='/streams' element={<Streams />} />
+        <Route path='/account' element={<Account />} />
       </Routes>
 
       <Footer />
