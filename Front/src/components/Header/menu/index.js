@@ -10,6 +10,7 @@ import { MdLiveTv } from 'react-icons/md';
 import { RiGamepadLine } from 'react-icons/ri';
 import { FaHandsHelping } from 'react-icons/fa';
 import { MdQuestionAnswer } from 'react-icons/md';
+import { MdManageAccounts } from 'react-icons/md';
 
 /* Local imports */
 
@@ -41,6 +42,12 @@ const Menu = ({ open, setOpen }) => {
             <RiUserAddFill size={50} />
             <li className='menu__nav__list__item__name'>
               Sign-Up
+            </li>
+          </NavLink>
+          <NavLink className='menu__nav__list__item' activeClassName='activeBg' onClick={close} exact to ='/account'>
+            <MdManageAccounts size={50} />
+            <li className='menu__nav__list__item__name'>
+              Account
             </li>
           </NavLink>
           <NavLink className='menu__nav__list__item' activeClassName='activeBg' onClick={close} exact to ='/news'>
