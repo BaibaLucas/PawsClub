@@ -17,6 +17,7 @@ import News from '../News';
 import Newsdetails from '../Newsdetails';
 import Streams from '../Streams';
 import Account from '../Account';
+import Roster from '../Roster';
 
 const App = () => {
   return (
@@ -37,6 +38,9 @@ const App = () => {
         <Route path='/newsdetails' element={<Newsdetails />} />
         <Route path='/streams' element={<Streams />} />
         <Route path='/account' element={<Account />} />
+        <Route path='/roster' element={<Roster />} />
+
+
       </Routes>
 
       <Footer />
