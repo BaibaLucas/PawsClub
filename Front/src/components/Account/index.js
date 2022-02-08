@@ -53,10 +53,9 @@ const Account = () => {
       <div className='account'>
         <div className='container'>
           <div className='container__title'>
-            MY account
+            <h1>MY account</h1>
           </div>
           <div className='container__card'>
-          
           <div className='container__card__header'>
           <NavLink to ='/account/update' > 
             <div className='container__card__header__image'>
@@ -85,7 +84,7 @@ const Account = () => {
                 </div>
                 <div className='container__card__content__username__box__right'>
                 {!openUsername && (
-                  <button className='container__card__content__username__box__right__button' onClick={usernameClick}>
+                  <button className='container__card__content__username__box__right button' onClick={usernameClick}>
                   Edit
                 </button>
                 )}
@@ -103,10 +102,10 @@ const Account = () => {
                   id='editusername'
                   placeholder='username'
                 />
-                <button className='container__card__content__username__button' type='submit'>
+                <button className='container__card__content__username button' type='submit'>
                   Save
                 </button>
-                <button className='container__card__content__username__button' type='reset' onClick={usernameClick}>
+                <button className='container__card__content__username button' type='reset' onClick={usernameClick}>
                   Cancel
                 </button>
               </form>
@@ -126,7 +125,7 @@ const Account = () => {
                 </div>
                 <div className='container__card__content__email__box__right'>
                 {!openEmail && (
-                  <button className='container__card__content__email__box__right__button' onClick={emailClick}>
+                  <button className='container__card__content__email__box__right button' onClick={emailClick}>
                   Edit
                 </button>
                 )}
@@ -145,10 +144,10 @@ const Account = () => {
                   id='editemail'
                   placeholder='email'
                 />
-                <button className='container__card__content__email__button' type='submit'>
+                <button className='container__card__content__email button' type='submit'>
                   Save
                 </button>
-                <button className='container__card__content__email__button' type='reset' onClick={emailClick}>
+                <button className='container__card__content__email button' type='reset' onClick={emailClick}>
                   Cancel
                 </button>
               </form>
@@ -168,7 +167,7 @@ const Account = () => {
                 </div>
                 <div className='container__card__content__password__box__right'>
                 {!openPassword && (
-                  <button className='container__card__content__password__box__right__button' onClick={passwordClick}>
+                  <button className='container__card__content__password__box__right button' onClick={passwordClick}>
                   Edit
                 </button>
                 )}
@@ -186,24 +185,16 @@ const Account = () => {
                   id='editpassword'
                   placeholder='password'
                 />
-                <button className='container__card__content__password__button' type='submit'>
+                <button className='container__card__content__password button' type='submit'>
                   Save
                 </button>
-                <button className='container__card__content__password__button' type='reset' onClick={passwordClick}>
+                <button className='container__card__content__password button' type='reset' onClick={passwordClick}>
                   Cancel
                 </button>
               </form>
               </>
             )}
             </div>
-          </div>
-          <div className='uploadimg__container__successfully'>
-            <div className='uploadimg__container__successfully__msg'>
-              Img update successfully
-            </div>
-            <button className='uploadimg__container__successfully__button'>
-              <Link to ='/'>Back Home</Link>
-            </button>
           </div>
           </div>
         </div>
