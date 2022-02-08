@@ -1,0 +1,71 @@
+.roster{
+  height: 100%;
+  padding-top: 6rem;
+  .container{
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+    background-color: $grey;
+    margin: 0rem 1rem;
+    &__presentation{
+      margin-top: 2rem;
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      &__title{
+        margin-bottom: 2rem;
+        text-transform: uppercase;
+      }
+    }
+    &__content{
+      box-shadow: 5px 5px 15px 5px #212121;
+      margin-top: 2rem;
+      display: flex;
+      flex-direction: column;
+      &__nav{
+        margin: 1rem;
+        display: flex;
+        justify-content: space-around;
+        background-color: $dark-grey;
+        padding: 1rem;
+        border-radius: 20px;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        overflow-y: auto;
+        &__item{
+          text-transform: uppercase;
+          font-weight: bold;
+          background-color: $yellow;
+          color: $dark-grey;
+          padding: 0.5rem;
+          border-radius: 10px;
+          margin: 0rem 0.3rem;
+        }
+      }
+      &__roster{
+        display: flex;
+        flex-direction: column;
+        &__title{
+          margin: 1rem;
+        }
+        &__card{
+          margin: 1rem;
+          display: flex;
+          padding: 1rem 1rem;
+          align-items: center;
+          background-color: #212121;
+          box-shadow: 5px 5px 15px 5px #212121;
+          img{
+            border-radius: 50%;
+          }
+          &__name{
+            margin-left: 2rem;
+            font-size: 2rem;
+            font-weight: bold;
+          }
+        }
+      }
+    }
+  }
+}
