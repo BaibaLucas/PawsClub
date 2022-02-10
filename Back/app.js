@@ -2,14 +2,12 @@
 const express = require('express');
 
 /* Local required */
+const router = require('./app/routers/router');
 
 /* Server */
-
 const app = express();
 
-app.get('/', (req, res) => {
-  res.send('Server up')
-});
+app.use(router);
 
 app.listen(3001, () => {
   console.log('Server running on :', 3001);
