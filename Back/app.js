@@ -1,5 +1,6 @@
 /* Package required */
 const express = require('express');
+require('dotenv').config({ path: '../.env'});
 
 /* Local required */
 const router = require('./app/routers/router');
