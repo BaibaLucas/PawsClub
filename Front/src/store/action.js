@@ -3,7 +3,8 @@
 // Auth types
 export const CHANGE_AUTH_FIELD = 'CHANGE_AUTH_FIELD';
 export const SIGNUP_SUCCESS = 'SIGNUP_SUCCESS';
-export const USER_CREATION_FAILED = 'USER_CREATION_FAILED';
+export const AUTH_FAILED = 'AUTH_FAILED';
+export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 
 /* Actions */
 
@@ -17,7 +18,11 @@ export const signUpSuccess = (user) => ({
   type: SIGNUP_SUCCESS,
   ...user,
 });
-export const userCreationFailed = (data) => ({
-  type: USER_CREATION_FAILED,
+export const authFailed = (data) => ({
+  type: AUTH_FAILED,
+  ...data,
+});
+export const loginSuccess = (data) => ({
+  type: LOGIN_SUCCESS,
   ...data,
 });

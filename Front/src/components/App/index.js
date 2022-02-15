@@ -7,7 +7,7 @@ import { Routes, Route } from 'react-router-dom';
 import Home from '../Home';
 import Header from '../Header';
 import Footer from '../Footer';
-import Login from '../Login';
+import Login from '../../containers/Login';
 import Signup from '../../containers/SignUp';
 import JoinUs from '../JoinUs';
 import About from '../About';

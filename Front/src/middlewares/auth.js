@@ -7,7 +7,8 @@ import { apiUrl } from './url';
 // Action
 import { 
   signUpSuccess,
-  userCreationFailed,
+  authFailed,
+  loginSuccess,
  } from '../store/action';
 
 
@@ -31,25 +32,51 @@ const Auth = (store) => (next) => (action) => {
       };
       axios(config)
         .then((response) => {
-          console.log('RESPONSE AFTER CALL', response);
           if (response.status !== 200) {
             throw response.error;
           } else {
-            console.log('Reponse OK =>', response);
             store.dispatch(signUpSuccess(response.data.data));
           }
         }).catch((error) => {
           if (error.response.status === 401) {
-            console.log('Votre mot de passe doit contenir au minimum une majuscule, un nombre et un caractère spéciale.');
-            console.log('err.Res', error.response);
-            console.log('err.Res.data.message', error.response.data.message);
-            store.dispatch(userCreationFailed(error.response.data));
+            store.dispatch(authFailed(error.response.data));
           } else {
             console.log('Error has been appeared 2 =>', error);
           }
         });
         break;
     };
+
+    case 'LOGIN': {
+      const { auth: { email, password } } = store.getState();
+      const config = {
+        method: 'post',
+        url: `${apiUrl}/login`,
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        data: {
+          email,
+          password,
+        },
+      };
+      axios(config)
+      .then((response) => {
+        if (response.status !== 200) {
+          throw response.error;
+        } else {
+          store.dispatch(loginSuccess(response.data.data));
+        }
+      }).catch((error) => {
+        if (error.response.status === 401 || 404) {
+          store.dispatch(authFailed(error.response.data));
+        } else {
+          console.log('Error has been appeared 2 =>', error);
+        }
+      });
+      break;
+    };
+
 
     default: 
       next(action);
