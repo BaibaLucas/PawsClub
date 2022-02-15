@@ -8,7 +8,7 @@ import Home from '../Home';
 import Header from '../Header';
 import Footer from '../Footer';
 import Login from '../Login';
-import Signup from '../SignUp';
+import Signup from '../../containers/SignUp';
 import JoinUs from '../JoinUs';
 import About from '../About';
 import LinesUp from '../LinesUp';
