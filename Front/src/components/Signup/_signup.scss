@@ -31,6 +31,9 @@
        padding: 1rem;
        border-radius: 10px;
      }
+     &__error{
+       color: red;
+     }
      &__button{
        margin-top: 1rem;
        background-color: $yellow;
