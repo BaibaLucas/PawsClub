@@ -26,61 +26,61 @@ const Menu = ({ open, setOpen }) => {
     <div className={open ? 'menu active' : 'menu'}>
       <nav className='menu__nav'>
         <ul className='menu__nav__list'>
-          <NavLink className='menu__nav__list__item' activeClassName='activeBg' onClick={close} exact to ='/'>
+          <NavLink className='menu__nav__list__item'  onClick={close} to='/'>
             <AiFillHome size={50}/>
             <li className='menu__nav__list__item__name'>
               Home
             </li>
           </NavLink>
-          <NavLink className='menu__nav__list__item' activeClassName='activeBg' onClick={close} exact to ='/login'>
+          <NavLink className='menu__nav__list__item'  onClick={close} to='/login'>
             <BiUserCircle size={50} />
             <li className='menu__nav__list__item__name'>
               Login
             </li>
           </NavLink>
-          <NavLink className='menu__nav__list__item' activeClassName='activeBg' onClick={close} exact to ='/signup'>
+          <NavLink className='menu__nav__list__item'  onClick={close} to='/signup'>
             <RiUserAddFill size={50} />
             <li className='menu__nav__list__item__name'>
               Sign-Up
             </li>
           </NavLink>
-          <NavLink className='menu__nav__list__item' activeClassName='activeBg' onClick={close} exact to ='/account'>
+          <NavLink className='menu__nav__list__item'  onClick={close} to='/account'>
             <MdManageAccounts size={50} />
             <li className='menu__nav__list__item__name'>
               Account
             </li>
           </NavLink>
-          <NavLink className='menu__nav__list__item' activeClassName='activeBg' onClick={close} exact to ='/news'>
+          <NavLink className='menu__nav__list__item'  onClick={close} to='/news'>
             <BsNewspaper size={50} />
             <li className='menu__nav__list__item__name'>
               News
             </li>
           </NavLink>
-          <NavLink className='menu__nav__list__item' activeClassName='activeBg' onClick={close} exact to ='/roster'>
+          <NavLink className='menu__nav__list__item'  onClick={close} to='/roster'>
             <RiTeamFill size={50} />
             <li className='menu__nav__list__item__name'>
               Roster
             </li>
           </NavLink>
-          <NavLink className='menu__nav__list__item' activeClassName='activeBg' onClick={close} exact to ='/streams'>
+          <NavLink className='menu__nav__list__item'  onClick={close} to='/streams'>
             <MdLiveTv size={50} />
             <li className='menu__nav__list__item__name'>
               Streams
             </li>
           </NavLink>
-          <NavLink className='menu__nav__list__item' activeClassName='activeBg' onClick={close} exact to ='/linesup'>
+          <NavLink className='menu__nav__list__item'  onClick={close} to='/linesup'>
             <RiGamepadLine size={50} />
             <li className='menu__nav__list__item__name'>
               Lines-up
             </li>
           </NavLink>
-          <NavLink className='menu__nav__list__item' activeClassName='activeBg' onClick={close} exact to ='/joinus'>
+          <NavLink className='menu__nav__list__item'  onClick={close} to='/joinus'>
             <FaHandsHelping size={50} />
             <li className='menu__nav__list__item__name'>
               Join Us
             </li>
           </NavLink>
-          <NavLink className='menu__nav__list__item' activeClassName='activeBg' onClick={close} exact to ='/about'>
+          <NavLink className='menu__nav__list__item'  onClick={close} to='/about'>
             <MdQuestionAnswer size={50} />
             <li className='menu__nav__list__item__name'>
               Who we are
