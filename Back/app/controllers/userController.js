@@ -18,29 +18,27 @@ module.exports = {
       const regexPassword = /(?=.*[\d])(?=.*[A-Z])(?=.*[a-z])(?=.*[!@#$%^&*])[\w!@#$%^&*]{8,}/;
       const verification = regexPassword.test(newUser.password);
       console.log(verification);
-
       if (!verification) {
         console.log('verification failed')
-        res.status('401').json({data: newUser});
+        res.status('401').json({message: 'Votre mot de passe doit contenir au minimum une majuscule, un nombre et un caractère spéciale.'});
       };
-
       if (verification) {
         const hashedPassword = bcrypt.hashSync(newUser.password, saltRounds);
-
         const createdUser = await userDatamapper.createNewUser({
           username: newUser.username,
           email: newUser.email,
           password: hashedPassword,
         });
-
-        res.json({
-          status: 200,
+        res.status('200').json({
           message: 'new user created',
           data: createdUser,
         })
       }
-
     } catch (error) {
+      console.log('erreur ici', error);
+      if (error.constraint === 'user_email_key') {
+        res.status('401').json({message: 'Email already exists'});
+      }
       next(error);
     }
   },
