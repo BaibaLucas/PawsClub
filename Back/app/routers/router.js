@@ -3,12 +3,13 @@ const express = require('express');
 
 /* Local required */
 const userController = require('../controllers/userController');
+const loginController = require('../controllers/loginController');
 
 /* Router */
 const router = express.Router();
 
 // Accessible without being connected
-router.post('/login'); // LOGIN
+router.post('/login', loginController.login); // LOGIN
 router.post('/user', userController.createNewUser); // CREATE USER
 router.get('/user'); // GET ALL USERS
 router.get('/user/:id'); // GET USER BY ID

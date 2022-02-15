@@ -15,5 +15,7 @@ module.exports = {
       return null
     }
     return result.rows[0];
-  }
-}
+  },
+
+  
+};
