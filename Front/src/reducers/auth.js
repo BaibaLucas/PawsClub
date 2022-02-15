@@ -2,7 +2,8 @@
 import {
   CHANGE_AUTH_FIELD,
   SIGNUP_SUCCESS,
-  USER_CREATION_FAILED,
+  AUTH_FAILED,
+  LOGIN_SUCCESS,
 } from '../store/action';
 
 /* Initial State user infos */
@@ -42,11 +43,22 @@ const Reducer = (oldState = initialState, action = {}) => {
         logged: true,
       };
     
-    case USER_CREATION_FAILED:
+    case AUTH_FAILED:
       return {
         ...oldState,
         error: true,
         msg: action.message,
+      };
+
+    case LOGIN_SUCCESS:
+      return {
+        ...oldState,
+        id: action.id,
+        username: action.username,
+        email: action.email,
+        imgprofil: action.profilurl,
+        password: '',
+        logged: true,
       };
 
     default:
