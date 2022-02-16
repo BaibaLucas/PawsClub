@@ -4,6 +4,7 @@ const express = require('express');
 /* Local required */
 const userController = require('../controllers/userController');
 const loginController = require('../controllers/loginController');
+const newsController = require('../controllers/newsController');
 
 /* Router */
 const router = express.Router();
@@ -13,7 +14,7 @@ router.post('/login', loginController.login); // LOGIN
 router.post('/user', userController.createNewUser); // CREATE USER
 router.get('/user', userController.getAllUsers); // GET ALL USERS
 router.get('/user/:id(\\d+)', userController.getOneUser); // GET USER BY ID
-router.get('/news');  // GET ALL NEWS
+router.get('/news', newsController.getAllNews);  // GET ALL NEWS
 router.get('/news/:id'); // GET NEWS BY ID 
 router.post('/searchNews'); // GET NEWS BY LINE-UP
 router.post('/searchUser'); // GET USERS BY SEARCHBAR
