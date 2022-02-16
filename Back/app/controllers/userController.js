@@ -56,4 +56,17 @@ module.exports = {
     }
   },
 
+  /* Get One User */
+  async getOneUser(req, res, next) {
+    try {
+        const userId = req.params.id;
+        const oneUser = await userDataMapper.oneUser(userId);
+        res.status('200').json({
+            data: oneUser
+        });
+    } catch(error) {
+        next(error);
+    }
+  },
+
 };
