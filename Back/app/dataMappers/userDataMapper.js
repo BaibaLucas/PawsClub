@@ -17,5 +17,19 @@ module.exports = {
     return result.rows[0];
   },
 
-  
+  /* Get All Users */
+  async getAllUsers() {
+    const result = await client.query('SELECT u.id, u.username, u.email, u.password, u.profilurl, r.id AS role_id, r.name FROM "user" AS u JOIN "role" AS r ON u.role_id = r.id');
+    return result.rows;
+  },
+
+  /* Get One User */
+  async oneUser(userId) {
+    const result = await client.query('SELECT * FROM "user" JOIN "role" ON "user".role_id = "role".id WHERE "user".id = $1', [userId]);
+    if (result.rowCount == 0) {
+        return null;
+    }
+    return result.rows[0];
+  },
+
 };

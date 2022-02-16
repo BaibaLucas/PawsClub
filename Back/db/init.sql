@@ -85,4 +85,18 @@ INSERT INTO "section"("name", "title", "description", "content") VALUES
 ('Rocket League', 'Rocket League', 'Bienvenue sur la section Rocket League de la communauté PAWS.', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In efficitur ut massa in fermentum. Curabitur varius laoreet mauris, et scelerisque ante tempor ac. Nunc eu fringilla dolor. Duis semper eget dui sit amet tincidunt. Mauris molestie ex semper dolor finibus blandit. In eget sem turpis. Morbi sollicitudin est sit amet massa tincidunt sagittis. Nam blandit tempor semper. Nam convallis venenatis purus, eu molestie sapien vulputate consequat. Suspendisse fermentum volutpat ornare. Cras ut nisl felis. Maecenas sit amet metus egestas lacus euismod lacinia ac quis urna. Aliquam erat volutpat. Nulla elementum enim a urna feugiat pharetra.'),
 ('Diablo 3', 'Diablo 3', 'Bienvenue sur la section Diablo 3 de la communauté PAWS.', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In efficitur ut massa in fermentum. Curabitur varius laoreet mauris, et scelerisque ante tempor ac. Nunc eu fringilla dolor. Duis semper eget dui sit amet tincidunt. Mauris molestie ex semper dolor finibus blandit. In eget sem turpis. Morbi sollicitudin est sit amet massa tincidunt sagittis. Nam blandit tempor semper. Nam convallis venenatis purus, eu molestie sapien vulputate consequat. Suspendisse fermentum volutpat ornare. Cras ut nisl felis. Maecenas sit amet metus egestas lacus euismod lacinia ac quis urna. Aliquam erat volutpat. Nulla elementum enim a urna feugiat pharetra.');
 
+-------------------------------------
+--- /!\ CAN'T WORK IF WE HAVNT CREATE SOME USERS/TAG BEFORE INSERT VALUES
+-------------------------------------
+INSERT INTO "tag"("name") VALUES
+('Try');
+('Try2');
+INSERT INTO "news"("title", "subtitle", "content", "newsurl", "date", "time", "user_id", "tag_id") VALUES
+('TITLE1', 'suBTITLE1', 'Content1', 'http://myphotourlnews.fr', '02/16/2022', '13:00', '4', '1');
+('TITLE2', 'suBTITLE2', 'Content2', 'http://myphotourlnews.fr', '02/16/2022', '14:00', '6', '2');
+-------------------------------------
+--- /!\ CAN'T WORK IF WE HAVNT CREATE SOME USERS/TAG BEFORE INSERT VALUES
+-------------------------------------
+
+
 COMMIT;

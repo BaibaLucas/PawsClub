@@ -3,7 +3,8 @@ const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 
 /* Local required */
-const userDatamapper = require('../dataMappers/userDataMapper');
+const userDataMapper = require('../dataMappers/userDataMapper');
+
 
 /* Controllers */
 
@@ -24,7 +25,7 @@ module.exports = {
       };
       if (verification) {
         const hashedPassword = bcrypt.hashSync(newUser.password, saltRounds);
-        const createdUser = await userDatamapper.createNewUser({
+        const createdUser = await userDataMapper.createNewUser({
           username: newUser.username,
           email: newUser.email,
           password: hashedPassword,
@@ -35,7 +36,7 @@ module.exports = {
         })
       }
     } catch (error) {
-      console.log('erreur ici', error);
+      console.log(error);
       if (error.constraint === 'user_email_key') {
         res.status('401').json({message: 'Email already exists'});
       }
@@ -43,4 +44,29 @@ module.exports = {
     }
   },
 
+  /* Get All Users */
+  async getAllUsers(req, res, next) {
+    try {
+        console.log('je suis bien dans le controller');
+        const allUsers = await userDataMapper.getAllUsers();
+        res.status('200').json({
+            data: allUsers
+        });
+    } catch(error) {
+        next(error);
+    }
+  },
+
+  /* Get One User */
+  async getOneUser(req, res, next) {
+    try {
+        const userId = req.params.id;
+        const oneUser = await userDataMapper.oneUser(userId);
+        res.status('200').json({
+            data: oneUser
+        });
+    } catch(error) {
+        next(error);
+    }
+  },
 };
