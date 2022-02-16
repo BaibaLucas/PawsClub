@@ -11,7 +11,7 @@ const router = express.Router();
 // Accessible without being connected
 router.post('/login', loginController.login); // LOGIN
 router.post('/user', userController.createNewUser); // CREATE USER
-router.get('/user'); // GET ALL USERS
+router.get('/user', userController.getAllUsers); // GET ALL USERS
 router.get('/user/:id'); // GET USER BY ID
 router.get('/news');  // GET ALL NEWS
 router.get('/news/:id'); // GET NEWS BY ID 

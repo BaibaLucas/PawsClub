@@ -17,5 +17,10 @@ module.exports = {
     return result.rows[0];
   },
 
+  /* Get All Users */
+  async getAllUsers() {
+    const result = await client.query('SELECT u.id, u.username, u.email, u.password, u.profilurl, r.id AS role_id, r.name FROM "user" AS u JOIN "role" AS r ON u.role_id = r.id');
+    return result.rows;
+  },
   
 };
