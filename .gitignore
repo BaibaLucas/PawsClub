@@ -5,6 +5,8 @@
 /.pnp
 .pnp.js
 node_modules/
+/Users/lucasbaiba/Documents/Workspace/REACT.nosync/pawsclubv1/Front/node_modules
+/log
 
 # testing
 /coverage
