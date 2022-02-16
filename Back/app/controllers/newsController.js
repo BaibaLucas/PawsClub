@@ -18,6 +18,18 @@ module.exports = {
     } catch(error) {
         next(error);
     }
-},
+  },
+  /* Get One News */
+  async getOneNews(req, res, next) {
+    try {
+        const newsId = req.params.id;
+        const oneNews = await newsDataMapper.getOneNews(newsId);
+        res.status('200').json({
+            data: oneNews
+        });
+    } catch(error) {
+        next(error);
+    }
+  },
 
 };

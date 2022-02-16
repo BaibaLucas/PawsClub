@@ -14,6 +14,14 @@ module.exports = {
         return null
     }
     return result.rows;
-},
+  },
+
+  async getOneNews(newsId) {
+    const result = await client.query('SELECT n.id, n.title, n.subtitle, n.content, n.newsurl, n.date, n.time, u.id AS user_id, u.username FROM "news" AS n JOIN "user" AS u ON n.user_id = u.id WHERE n.id=$1', [newsId]);
+    if (result.rowCount == 0) {
+        return null
+    }
+    return result.rows;
+  },
 
 };

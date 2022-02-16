@@ -15,7 +15,7 @@ router.post('/user', userController.createNewUser); // CREATE USER
 router.get('/user', userController.getAllUsers); // GET ALL USERS
 router.get('/user/:id(\\d+)', userController.getOneUser); // GET USER BY ID
 router.get('/news', newsController.getAllNews);  // GET ALL NEWS
-router.get('/news/:id'); // GET NEWS BY ID 
+router.get('/news/:id(\\d+)', newsController.getOneNews); // GET NEWS BY ID 
 router.post('/searchNews'); // GET NEWS BY LINE-UP
 router.post('/searchUser'); // GET USERS BY SEARCHBAR
 router.get('/lineup'); // GET ALL LINES-UP

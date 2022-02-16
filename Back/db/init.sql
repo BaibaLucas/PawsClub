@@ -87,9 +87,12 @@ INSERT INTO "section"("name", "title", "description", "content") VALUES
 -------------------------------------
 --- /!\ CAN'T WORK IF WE HAVNT CREATE SOME USERS/TAG BEFORE INSERT VALUES
 -------------------------------------
-INSERT INTO "tag"("name") VALUES ('Try');
+INSERT INTO "tag"("name") VALUES
+('Try');
+('Try2');
 INSERT INTO "news"("title", "subtitle", "content", "newsurl", "date", "time", "user_id", "tag_id") VALUES
 ('TITLE1', 'suBTITLE1', 'Content1', 'http://myphotourlnews.fr', '02/16/2022', '13:00', '4', '1');
+('TITLE2', 'suBTITLE2', 'Content2', 'http://myphotourlnews.fr', '02/16/2022', '14:00', '6', '2');
 -------------------------------------
 --- /!\ CAN'T WORK IF WE HAVNT CREATE SOME USERS/TAG BEFORE INSERT VALUES
 -------------------------------------
