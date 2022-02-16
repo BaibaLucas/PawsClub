@@ -84,6 +84,7 @@ INSERT INTO "section"("name", "title", "description", "content") VALUES
 ('League Of Legends', 'League Of Legends', 'Bienvenue sur la section League of Legends de la communauté PAWS. Préparez vous pour la nouvelle campagne de Guerande !','Lorem ipsum dolor sit amet, consectetur adipiscing elit. In efficitur ut massa in fermentum. Curabitur varius laoreet mauris, et scelerisque ante tempor ac. Nunc eu fringilla dolor. Duis semper eget dui sit amet tincidunt. Mauris molestie ex semper dolor finibus blandit. In eget sem turpis. Morbi sollicitudin est sit amet massa tincidunt sagittis. Nam blandit tempor semper. Nam convallis venenatis purus, eu molestie sapien vulputate consequat. Suspendisse fermentum volutpat ornare. Cras ut nisl felis. Maecenas sit amet metus egestas lacus euismod lacinia ac quis urna. Aliquam erat volutpat. Nulla elementum enim a urna feugiat pharetra.'),
 ('Rocket League', 'Rocket League', 'Bienvenue sur la section Rocket League de la communauté PAWS.', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In efficitur ut massa in fermentum. Curabitur varius laoreet mauris, et scelerisque ante tempor ac. Nunc eu fringilla dolor. Duis semper eget dui sit amet tincidunt. Mauris molestie ex semper dolor finibus blandit. In eget sem turpis. Morbi sollicitudin est sit amet massa tincidunt sagittis. Nam blandit tempor semper. Nam convallis venenatis purus, eu molestie sapien vulputate consequat. Suspendisse fermentum volutpat ornare. Cras ut nisl felis. Maecenas sit amet metus egestas lacus euismod lacinia ac quis urna. Aliquam erat volutpat. Nulla elementum enim a urna feugiat pharetra.'),
 ('Diablo 3', 'Diablo 3', 'Bienvenue sur la section Diablo 3 de la communauté PAWS.', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In efficitur ut massa in fermentum. Curabitur varius laoreet mauris, et scelerisque ante tempor ac. Nunc eu fringilla dolor. Duis semper eget dui sit amet tincidunt. Mauris molestie ex semper dolor finibus blandit. In eget sem turpis. Morbi sollicitudin est sit amet massa tincidunt sagittis. Nam blandit tempor semper. Nam convallis venenatis purus, eu molestie sapien vulputate consequat. Suspendisse fermentum volutpat ornare. Cras ut nisl felis. Maecenas sit amet metus egestas lacus euismod lacinia ac quis urna. Aliquam erat volutpat. Nulla elementum enim a urna feugiat pharetra.');
+
 -------------------------------------
 --- /!\ CAN'T WORK IF WE HAVNT CREATE SOME USERS/TAG BEFORE INSERT VALUES
 -------------------------------------
@@ -96,5 +97,6 @@ INSERT INTO "news"("title", "subtitle", "content", "newsurl", "date", "time", "u
 -------------------------------------
 --- /!\ CAN'T WORK IF WE HAVNT CREATE SOME USERS/TAG BEFORE INSERT VALUES
 -------------------------------------
+
 
 COMMIT;

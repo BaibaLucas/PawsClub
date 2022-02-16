@@ -5,6 +5,7 @@ const bcrypt = require('bcrypt');
 /* Local required */
 const userDataMapper = require('../dataMappers/userDataMapper');
 
+
 /* Controllers */
 
 module.exports = {
@@ -68,5 +69,4 @@ module.exports = {
         next(error);
     }
   },
-
 };
