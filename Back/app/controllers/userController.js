@@ -69,4 +69,18 @@ module.exports = {
         next(error);
     }
   },
+
+  /* Search Users */
+  async searchUsers(req, res, next) {
+    try {
+        const user = req.body;
+        const searchUsers = await userDataMapper.searchUsers(user);
+        res.status('200').json({
+            message: 'Users list',
+            data: searchUsers
+        });
+    } catch(error) {
+        next(error);
+    }
+  },
 };
