@@ -5,6 +5,7 @@ const express = require('express');
 const userController = require('../controllers/userController');
 const loginController = require('../controllers/loginController');
 const newsController = require('../controllers/newsController');
+const sectionController = require('../controllers/sectionController');
 
 
 /* Router */
@@ -17,10 +18,10 @@ router.get('/user', userController.getAllUsers); // GET ALL USERS
 router.get('/user/:id(\\d+)', userController.getOneUser); // GET USER BY ID
 router.get('/news', newsController.getAllNews);  // GET ALL NEWS
 router.get('/news/:id(\\d+)', newsController.getOneNews); // GET NEWS BY ID 
-router.post('/searchNews'); // GET NEWS BY LINE-UP
-router.post('/searchUser'); // GET USERS BY SEARCHBAR
-router.get('/lineup'); // GET ALL LINES-UP
-router.get('/lineup/:id'); // GET LINEUP BY ID
+router.post('/searchNews', newsController.searchNews); // GET NEWS BY LINE-UP
+router.post('/searchUser', userController.searchUsers); // GET USERS BY SEARCHBAR
+router.get('/lineup', sectionController.getAllSections); // GET ALL LINES-UP
+router.get('/lineup/:id', sectionController.getOneSection); // GET LINEUP BY ID
 
 // Accessible while connected
 

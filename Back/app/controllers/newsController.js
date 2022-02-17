@@ -32,4 +32,18 @@ module.exports = {
     }
   },
 
+  /* Search News */
+  async searchNews(req, res, next) {
+    try {
+        const news = req.body;
+        const searchNews = await newsDataMapper.searchNews(news);
+        res.status('200').json({
+            message: 'News list',
+            data: searchNews
+        });
+    } catch(error) {
+        next(error);
+    }
+  },
+
 };
