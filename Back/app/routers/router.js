@@ -21,12 +21,12 @@ router.get('/news/:id(\\d+)', newsController.getOneNews); // GET NEWS BY ID
 router.post('/searchNews', newsController.searchNews); // GET NEWS BY LINE-UP
 router.post('/searchUser', userController.searchUsers); // GET USERS BY SEARCHBAR
 router.get('/lineup', sectionController.getAllSections); // GET ALL LINES-UP
-router.get('/lineup/:id', sectionController.getOneSection); // GET LINEUP BY ID
+router.get('/lineup/:id(\\d+)', sectionController.getOneSection); // GET LINEUP BY ID
 
 // Accessible while connected
 
 // Accessible only for ID user
-router.patch('/user/:id'); // MODIFY USER
+router.patch('/user/:id(\\d+)', userController.updateUser); // MODIFY USER
 router.delete('/user/:id'); // DELETE USER
 
 // Accessible only for moderator

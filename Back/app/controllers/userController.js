@@ -83,4 +83,14 @@ module.exports = {
         next(error);
     }
   },
+
+  /* Update user */
+  async updateUser(req, res, next) {
+    try {
+      console.log('req ->', req.params);
+    } catch(error) {
+      next(error);
+    }
+  },
+
 };
