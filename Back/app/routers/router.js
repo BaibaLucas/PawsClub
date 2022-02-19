@@ -7,6 +7,8 @@ const loginController = require('../controllers/loginController');
 const newsController = require('../controllers/newsController');
 const sectionController = require('../controllers/sectionController');
 const authMW = require('../middleware/auth');
+const modMW = require('../middleware/mod');
+const adminMW = require('../middleware/admin');
 
 
 /* Router */
@@ -42,8 +44,8 @@ router.post('/lineup'); // CREATE LINES-UP
 router.patch('/lineup/:id'); // MODIFY LINEUP BY ID
 router.delete('/lineup/:id'); // DELETE LINEUP BY ID
 
-// TRY + TEST
-router.post('/test', authMW);
+// TEST 
+router.post('/test', modMW);
 
 module.exports = router;
 
