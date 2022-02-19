@@ -6,6 +6,7 @@ const userController = require('../controllers/userController');
 const loginController = require('../controllers/loginController');
 const newsController = require('../controllers/newsController');
 const sectionController = require('../controllers/sectionController');
+const authMW = require('../middleware/auth');
 
 
 /* Router */
@@ -40,6 +41,9 @@ router.post('/admin'); // ADMIN LOGIN
 router.post('/lineup'); // CREATE LINES-UP
 router.patch('/lineup/:id'); // MODIFY LINEUP BY ID
 router.delete('/lineup/:id'); // DELETE LINEUP BY ID
+
+// TRY + TEST
+router.post('/test', authMW);
 
 module.exports = router;
 

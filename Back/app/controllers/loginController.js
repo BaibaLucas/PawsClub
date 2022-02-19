@@ -23,7 +23,6 @@ module.exports = {
           res.status('401').json({message: 'Veuillez retaper votre mot de passe.'});
         }
         if (verification) {
-          const userId = login.id;
           const jwtContent = {userId: login.id, roleId: login.role_id};
           const jwtOptions = {
             algorithm: 'HS256',
