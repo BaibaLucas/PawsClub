@@ -57,4 +57,14 @@ module.exports = {
     }
   },
 
+  /* Update User */
+  async updateUser(userId, userToUpdate) {
+    console.log('TRY 6')
+    const result = await client.query('UPDATE "user" SET username=$1, email=$2, password=$3 WHERE id=$4 RETURNING *', [userToUpdate.username, userToUpdate.email, userToUpdate.password, userId]);
+    if (result.rowCount == 0) {
+        return null;
+    }
+    return result.rows;
+},
+
 };

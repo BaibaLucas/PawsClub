@@ -87,9 +87,50 @@ module.exports = {
   /* Update user */
   async updateUser(req, res, next) {
     try {
-      console.log('req ->', req.params);
+      //avant d'updater un user, vérif du role du user :
+      //si c'est un administrateur, il peut modifier n'importe quel user
+      //si ce n'est pas un administrateur, il ne peut modifier que son profil
+      const token = req.headers.authorization.split(' ');
+      const tokenDecoded = jwt.verify(token[1], process.env.JWTSECRET);
+      const tokenRoleId = tokenDecoded.roleId;
+      const tokenUserId = tokenDecoded.userId;
+      console.log('TRY 1')
+
+      if (tokenRoleId === 2 || (tokenRoleId === 1 && tokenUserId == req.params.id)) {
+          userId = req.params.id;
+          console.log('TRY 2')
+      } else {
+          res.status('403').json({message : 'Accès interdit : impossible de modifier un autre membre'});
+          console.log('TRY 3')
+          next(error);
+      };
+
+      const userToUpdate = req.body;
+      const regexPassword = /(?=.*[\d])(?=.*[A-Z])(?=.*[a-z])(?=.*[!@#$%^&*])[\w!@#$%^&*]{8,}/;
+      const test = regexPassword.test(userToUpdate.password);
+      console.log('TRY 4')
+
+      if (test) {
+        console.log('TRY 5')
+          const saltRounds = 10;
+          const hashedPassword = bcrypt.hashSync(userToUpdate.password, saltRounds);
+          const userUpdated = await userDataMapper.updateUser(userId, {
+            username: userToUpdate.username,
+            email: userToUpdate.email,
+            password: hashedPassword,
+            });
+          res.json({
+              message: 'user updated',
+              data: userUpdated
+          });
+      } else {
+          res.json({
+              message: 'le mot de passe doit contenir au moins 8 caractères dont 1 majuscule, 1 minuscule, 1chiffre, 1 caractère spécial',
+              data: userToUpdate.email
+          });
+      }
     } catch(error) {
-      next(error);
+        next(error);
     }
   },
 

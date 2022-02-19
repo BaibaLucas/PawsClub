@@ -29,7 +29,7 @@ router.get('/lineup/:id(\\d+)', sectionController.getOneSection); // GET LINEUP 
 // Accessible while connected
 
 // Accessible only for ID user
-router.patch('/user/:id(\\d+)', userController.updateUser); // MODIFY USER
+router.patch('/user/:id(\\d+)', authMW, userController.updateUser); // MODIFY USER
 router.delete('/user/:id'); // DELETE USER
 
 // Accessible only for moderator
