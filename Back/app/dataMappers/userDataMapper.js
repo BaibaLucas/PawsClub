@@ -59,12 +59,64 @@ module.exports = {
 
   /* Update User */
   async updateUser(userId, userToUpdate) {
-    console.log('TRY 6')
     const result = await client.query('UPDATE "user" SET username=$1, email=$2, password=$3 WHERE id=$4 RETURNING *', [userToUpdate.username, userToUpdate.email, userToUpdate.password, userId]);
     if (result.rowCount == 0) {
         return null;
     }
     return result.rows;
-},
+  },
+
+  /* Update Only Username */
+  async updateUsername(userId, userToUpdate) {
+    const result = await client.query('UPDATE "user" SET username=$1 WHERE id=$2 RETURNING *', [userToUpdate.username, userId]);
+    if (result.rowCount == 0) {
+        return null;
+    }
+    return result.rows;
+  },
+  /* Update Only Password */
+  async updatePassword(userId, userToUpdate) {
+    const result = await client.query('UPDATE "user" SET password=$1 WHERE id=$2 RETURNING *', [userToUpdate.password, userId]);
+    if (result.rowCount == 0) {
+        return null;
+    }
+    return result.rows;
+  },
+
+  /* Update Only Email */
+  async updateEmail(userId, userToUpdate) {
+    const result = await client.query('UPDATE "user" SET email=$1 WHERE id=$2 RETURNING *', [userToUpdate.email, userId]);
+    if (result.rowCount == 0) {
+        return null;
+    }
+    return result.rows;
+  },
+  
+  /* Update Username & Password */
+  async updateNamePassword(userId, userToUpdate) {
+    const result = await client.query('UPDATE "user" SET username=$1, password=$2  WHERE id=$3 RETURNING *', [userToUpdate.username, userToUpdate.password, userId]);
+    if (result.rowCount == 0) {
+        return null;
+    }
+    return result.rows;
+  },
+
+  /* Update Username & Mail */
+  async updateNameMail(userId, userToUpdate) {
+    const result = await client.query('UPDATE "user" SET username=$1, email=$2  WHERE id=$3 RETURNING *', [userToUpdate.username, userToUpdate.email, userId]);
+    if (result.rowCount == 0) {
+        return null;
+    }
+    return result.rows;
+  },
+
+  /* Update Password & Mail */
+  async updatePasswordMail(userId, userToUpdate) {
+    const result = await client.query('UPDATE "user" SET password=$1, email=$2  WHERE id=$3 RETURNING *', [userToUpdate.password, userToUpdate.email, userId]);
+    if (result.rowCount == 0) {
+        return null;
+    }
+    return result.rows;
+  },
 
 };
