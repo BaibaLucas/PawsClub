@@ -87,31 +87,136 @@ module.exports = {
   /* Update user */
   async updateUser(req, res, next) {
     try {
-      //avant d'updater un user, vérif du role du user :
-      //si c'est un administrateur, il peut modifier n'importe quel user
-      //si ce n'est pas un administrateur, il ne peut modifier que son profil
       const token = req.headers.authorization.split(' ');
       const tokenDecoded = jwt.verify(token[1], process.env.JWTSECRET);
       const tokenRoleId = tokenDecoded.roleId;
       const tokenUserId = tokenDecoded.userId;
-      console.log('TRY 1')
-
-      if (tokenRoleId === 2 || (tokenRoleId === 1 && tokenUserId == req.params.id)) {
-          userId = req.params.id;
-          console.log('TRY 2')
+      // 1° Step Verif if user is admin or only member
+      if (tokenRoleId === 3 || (tokenRoleId === 1 && tokenUserId == req.params.id)) {
+        userId = req.params.id;
       } else {
           res.status('403').json({message : 'Accès interdit : impossible de modifier un autre membre'});
-          console.log('TRY 3')
           next(error);
       };
-
       const userToUpdate = req.body;
-      const regexPassword = /(?=.*[\d])(?=.*[A-Z])(?=.*[a-z])(?=.*[!@#$%^&*])[\w!@#$%^&*]{8,}/;
-      const test = regexPassword.test(userToUpdate.password);
-      console.log('TRY 4')
+      console.log('userToUpdate =>', userToUpdate);
+      if (userToUpdate.password.length === 0 && userToUpdate.email.length === 0) {
+        /* UPDATE ONLY NAME */
+        console.log('ONLY NAME');
+        const userUpdated = await userDataMapper.updateUsername(userId, {
+        username: userToUpdate.username,
+        });
+        res.json({
+          message: 'user updated',
+          data: userUpdated
+        });
+        console.log('userUpdated', userUpdated);
+      } else if (userToUpdate.username.length === 0 && userToUpdate.email.length === 0) {
+        /* UPDATE ONLY PW */
+        console.log('ONLY PW');
+        const regexPassword = /(?=.*[\d])(?=.*[A-Z])(?=.*[a-z])(?=.*[!@#$%^&*])[\w!@#$%^&*]{8,}/;
+        const pwverif = regexPassword.test(userToUpdate.password);
+        // PW VERIF OK
+        console.log(pwverif);
+        if (pwverif) {
+          const saltRounds = 10;
+          const hashedPassword = bcrypt.hashSync(userToUpdate.password, saltRounds);
+          const userUpdated = await userDataMapper.updatePassword(userId, {
+            password: hashedPassword,
+            });
+            res.json({
+              message: 'user updated',
+              data: userUpdated
+            });
+            console.log('userUpdated', userUpdated);
+          } else {
+            res.json({
+              message: 'le mot de passe doit contenir au moins 8 caractères dont 1 majuscule, 1 minuscule, 1chiffre, 1 caractère spécial',
+              data: userToUpdate
+            });
+          }
+      } else if (userToUpdate.password.length === 0 && userToUpdate.username.length === 0) {
+        /* UPDATE ONLY EMAIL */
+        console.log('ONLY EMAIL');
+        const userUpdated = await userDataMapper.updateEmail(userId, {
+          email: userToUpdate.email,
+          });
+          res.json({
+            message: 'user updated',
+            data: userUpdated
+          });
+          console.log('userUpdated', userUpdated);
+      } else if (userToUpdate.email.length === 0) {
+        /* UPDATE NAME & PASSWORD */
+        console.log('NAME & PASSWORD');
+        const regexPassword = /(?=.*[\d])(?=.*[A-Z])(?=.*[a-z])(?=.*[!@#$%^&*])[\w!@#$%^&*]{8,}/;
+        const pwverif = regexPassword.test(userToUpdate.password);
+        // PW VERIF OK
+        console.log(pwverif);
+        if (pwverif) {
+          const saltRounds = 10;
+          const hashedPassword = bcrypt.hashSync(userToUpdate.password, saltRounds);
+          const userUpdated = await userDataMapper.updateNamePassword(userId, {
+            username: userToUpdate.username,
+            password: hashedPassword,
+            });
+            res.json({
+              message: 'user updated',
+              data: userUpdated
+            });
+            console.log('userUpdated', userUpdated);
+          } else {
+            res.json({
+              message: 'le mot de passe doit contenir au moins 8 caractères dont 1 majuscule, 1 minuscule, 1chiffre, 1 caractère spécial',
+              data: userToUpdate
+            });
+          }
+      } else if (userToUpdate.password.length === 0) {
+        /* UPDATE NAME & MAIL */
+        console.log('NAME & EMAIL');
+        const userUpdated = await userDataMapper.updateNameMail(userId, {
+          username: userToUpdate.username,
+          email: userToUpdate.email,
+          });
+          res.json({
+            message: 'user updated',
+            data: userUpdated
+          });
+          console.log('userUpdated', userUpdated);
 
-      if (test) {
-        console.log('TRY 5')
+      } else if (userToUpdate.username.length === 0) {
+        /* UPDATE PASSWORD & MAIL */
+        console.log('PASSWORD & EMAIL');
+        const regexPassword = /(?=.*[\d])(?=.*[A-Z])(?=.*[a-z])(?=.*[!@#$%^&*])[\w!@#$%^&*]{8,}/;
+        const pwverif = regexPassword.test(userToUpdate.password);
+        // PW VERIF OK
+        console.log(pwverif);
+        if (pwverif) {
+          const saltRounds = 10;
+          const hashedPassword = bcrypt.hashSync(userToUpdate.password, saltRounds);
+          const userUpdated = await userDataMapper.updatePasswordMail(userId, {
+            password: hashedPassword,
+            email: userToUpdate.email,
+            });
+            res.json({
+              message: 'user updated',
+              data: userUpdated
+            });
+            console.log('userUpdated', userUpdated);
+          } else {
+            res.json({
+              message: 'le mot de passe doit contenir au moins 8 caractères dont 1 majuscule, 1 minuscule, 1chiffre, 1 caractère spécial',
+              data: userToUpdate
+            });
+          }
+      } else {
+        /* UPDATE ALL */
+        console.log('ALL');
+        const regexPassword = /(?=.*[\d])(?=.*[A-Z])(?=.*[a-z])(?=.*[!@#$%^&*])[\w!@#$%^&*]{8,}/;
+        const pwverif = regexPassword.test(userToUpdate.password);
+        // PW VERIF OK
+        console.log(pwverif);
+        if (pwverif) {
           const saltRounds = 10;
           const hashedPassword = bcrypt.hashSync(userToUpdate.password, saltRounds);
           const userUpdated = await userDataMapper.updateUser(userId, {
@@ -119,15 +224,17 @@ module.exports = {
             email: userToUpdate.email,
             password: hashedPassword,
             });
-          res.json({
+            res.json({
               message: 'user updated',
               data: userUpdated
-          });
-      } else {
-          res.json({
+            });
+            console.log('userUpdated', userUpdated);
+          } else {
+            res.json({
               message: 'le mot de passe doit contenir au moins 8 caractères dont 1 majuscule, 1 minuscule, 1chiffre, 1 caractère spécial',
-              data: userToUpdate.email
-          });
+              data: userToUpdate
+            });
+          }
       }
     } catch(error) {
         next(error);
