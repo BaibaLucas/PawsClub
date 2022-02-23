@@ -59,6 +59,31 @@ module.exports = {
     }
   },
 
-    
+  /* Create News */
+  async createNews(news) {
+      const result = await client.query('INSERT INTO "news"(title, subtitle, content, newsurl, date, time, user_id, tag_id) VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING *', [news.title, news.subtitle, news.content, news.newsurl, news.date, news.time, news.userId, news.tagId]);
+      if (result.rowCount == 0) {
+        return null
+      }
+      return result.rows[0];
+  },
+
+  /* Update News */
+  async updateNews(news, newsId) {
+    const result = await client.query('UPDATE "news" SET title=$1, subtitle=$2, content=$3, newsurl=$4, date=$5, time=$6, user_id=$7, tag_id=$8 WHERE id=$9 RETURNING *', [news.title, news.subtitle, news.content, news.newsurl, news.date, news.time, news.userId, news.tagId, newsId]);
+    if (result.rowCount == 0) {
+        return null;
+    }
+    return result.rows;
+  },
+
+  /* Delete News */
+  async deleteNews(newsId) {
+    const result = await client.query('DELETE FROM "news" WHERE id=$1 RETURNING *', [newsId]);
+    if (result.rowCount == 0) {
+      return null;
+    }
+    return result.rows;
+  },
 
 };

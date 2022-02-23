@@ -13,7 +13,7 @@ const modMW = (req, res, next) => {
     console.log('tokenDecoded', tokenDecoded);
     const tokenRoleId = tokenDecoded.roleId;
     console.log('tokenRoleId', tokenRoleId);
-    if (tokenRoleId === 2) {
+    if (tokenRoleId === 2 || tokenRoleId === 3) {
       console.log('Access allowed : Moderator');
       return next();
     } else {

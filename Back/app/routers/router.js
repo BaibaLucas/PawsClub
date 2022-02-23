@@ -33,9 +33,9 @@ router.patch('/user/:id(\\d+)', authMW, userController.updateUser); // MODIFY US
 router.delete('/user/:id(\\d+)', authMW, userController.deleteUser); // DELETE USER
 
 // Accessible only for moderator
-router.post('/news'); // CREATE NEWS
-router.patch('/news/:id'); // MODIFY NEWS
-router.delete('/news/:id'); // DELETE NEWS
+router.post('/news', modMW, newsController.createNews); // CREATE NEWS
+router.patch('/news/:id', modMW, newsController.updateNews); // MODIFY NEWS
+router.delete('/news/:id', modMW, newsController.deleteNews); // DELETE NEWS
 
 
 // Accessible only for admin
