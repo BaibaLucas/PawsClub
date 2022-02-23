@@ -30,7 +30,7 @@ router.get('/lineup/:id(\\d+)', sectionController.getOneSection); // GET LINEUP 
 
 // Accessible only for ID user
 router.patch('/user/:id(\\d+)', authMW, userController.updateUser); // MODIFY USER
-router.delete('/user/:id'); // DELETE USER
+router.delete('/user/:id(\\d+)', authMW, userController.deleteUser); // DELETE USER
 
 // Accessible only for moderator
 router.post('/news'); // CREATE NEWS
