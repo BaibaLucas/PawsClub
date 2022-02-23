@@ -119,4 +119,13 @@ module.exports = {
     return result.rows;
   },
 
+  /* Delete user */
+  async deleteUser(userId) {
+    const result = await client.query('DELETE FROM "user" WHERE id=$1 RETURNING *', [userId]);
+    if (result.rowCount == 0) {
+      return null;
+    }
+    return result.rows;
+  },
+
 };

@@ -241,4 +241,29 @@ module.exports = {
     }
   },
 
+  /* Delete user */
+  async deleteUser(req, res, next) {
+    try {
+      const token = req.headers.authorization.split(' ');
+      const tokenDecoded = jwt.verify(token[1], process.env.JWTSECRET);
+      const tokenRoleId = tokenDecoded.roleId;
+      const tokenUserId = tokenDecoded.userId;
+      // 1° Step Verif if user is admin or only member
+      if (tokenRoleId === 3 || (tokenRoleId === 1 && tokenUserId == req.params.id)) {
+        userId = req.params.id;
+      } else {
+          res.status('403').json({message : 'Accès interdit : impossible de supprimer un autre membre'});
+          next(error);
+      };
+      const deleteUserId = userId;
+      const userDeleted = await userDataMapper.deleteUser(deleteUserId);
+            res.json({
+                message: 'deleted user',
+                data: userDeleted
+            });
+    } catch(error){
+      next(error);
+    }
+  },
+
 };
