@@ -39,7 +39,7 @@ router.delete('/news/:id', modMW, newsController.deleteNews); // DELETE NEWS
 
 
 // Accessible only for admin
-router.post('/admin'); // ADMIN LOGIN
+router.post('/admin', loginController.adminLogin); // ADMIN LOGIN
 router.post('/lineup'); // CREATE LINES-UP
 router.patch('/lineup/:id'); // MODIFY LINEUP BY ID
 router.delete('/lineup/:id'); // DELETE LINEUP BY ID
