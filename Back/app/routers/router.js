@@ -34,15 +34,15 @@ router.delete('/user/:id(\\d+)', authMW, userController.deleteUser); // DELETE U
 
 // Accessible only for moderator
 router.post('/news', modMW, newsController.createNews); // CREATE NEWS
-router.patch('/news/:id', modMW, newsController.updateNews); // MODIFY NEWS
-router.delete('/news/:id', modMW, newsController.deleteNews); // DELETE NEWS
+router.patch('/news/:id(\\d+)', modMW, newsController.updateNews); // MODIFY NEWS
+router.delete('/news/:id(\\d+)', modMW, newsController.deleteNews); // DELETE NEWS
 
 
 // Accessible only for admin
 router.post('/admin', loginController.adminLogin); // ADMIN LOGIN
-router.post('/lineup'); // CREATE LINES-UP
-router.patch('/lineup/:id'); // MODIFY LINEUP BY ID
-router.delete('/lineup/:id'); // DELETE LINEUP BY ID
+router.post('/lineup', adminMW, sectionController.createSection); // CREATE LINES-UP
+router.patch('/lineup/:id(\\d+)', adminMW, sectionController.updateSection); // MODIFY LINEUP BY ID
+router.delete('/lineup/:id(\\d+)', adminMW, sectionController.deleteSection); // DELETE LINEUP BY ID
 
 // TEST 
 router.post('/test', modMW);
