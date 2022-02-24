@@ -25,4 +25,31 @@ module.exports = {
     return result.rows[0];
   },
 
+  /* Create Section */
+  async createSection(section) {
+    const result = await client.query('INSERT INTO "section"(name, title, description, content) VALUES ($1, $2, $3, $4) RETURNING *', [section.name, section.title, section.description, section.content]);
+    if (result.rowCount == 0) {
+      return null
+    }
+    return result.rows[0];
+  },
+
+  /* Update Section */
+  async updateSection(section, sectionId) {
+    const result = await client.query('UPDATE "section" SET name=$1, title=$2, description=$3, content=$4 WHERE id=$5 RETURNING *', [section.name, section.title, section.description, section.content, sectionId]);
+    if (result.rowCount == 0) {
+        return null;
+    }
+    return result.rows;
+  },
+
+  /* Delete Section */
+  async deleteSection(sectionId) {
+    const result = await client.query('DELETE FROM "section" WHERE id=$1 RETURNING *', [sectionId]);
+    if (result.rowCount == 0) {
+      return null;
+    }
+    return result.rows;
+  },
+
 };
