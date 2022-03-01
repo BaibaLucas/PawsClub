@@ -44,7 +44,7 @@ router.post('/lineup', adminMW, sectionController.createSection); // CREATE LINE
 router.patch('/lineup/:id(\\d+)', adminMW, sectionController.updateSection); // MODIFY LINEUP BY ID
 router.delete('/lineup/:id(\\d+)', adminMW, sectionController.deleteSection); // DELETE LINEUP BY ID
 
-// TEST 
+// TEST
 router.post('/test', modMW);
 
 module.exports = router;

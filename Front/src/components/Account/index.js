@@ -1,14 +1,22 @@
 /* Package imports */
-import React, { useState } from 'react';
-import { Link, Navigate, NavLink } from 'react-router-dom';
-import { MdAddPhotoAlternate } from 'react-icons/md';
+import React, { useEffect, useState } from 'react';
+import { Link, useNavigate, NavLink } from 'react-router-dom';
+import { MdAddPhotoAlternate, MdNavigateBefore } from 'react-icons/md';
 
 /* Local imports */
 import defaultPic from '../../assets/images/defaultPic.jpeg';
 
 // Components
 
-const Account = () => {
+const Account = ({ username, email, password, logged, handleChange, handleSubmit }) => {
+
+  /** Redirect to /login if user is not logged */
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (!logged) {
+      return navigate("/login");
+    }
+  });
 
   /** States for opening form edit */
   const [openUsername, setOpenUsername] = useState(false);
@@ -33,19 +41,25 @@ const Account = () => {
   };
   
   /** Handle input value */
+  const onChange = (event) => {
+    handleChange(event.target.value, event.target.name);
+  }
   
   /** Handle submit value {refactoring}*/
   const onSubmitUsername = (event) => {
     event.preventDefault();
     setOpenUsername(false);
+    handleSubmit();
   };
   const onSubmitPassword = (event) => {
     event.preventDefault();
     setOpenPassword(false);
+    handleSubmit();
   };
   const onSubmitEmail = (event) => {
     event.preventDefault();
     setOpenEmail(false);
+    handleSubmit();
   };
   
   
@@ -66,7 +80,7 @@ const Account = () => {
             </div>
           </NavLink>
             <div className='container__card__header__name'>
-              username
+              {username}
             </div>
           </div>
           {/* DETAILS */}
@@ -79,7 +93,7 @@ const Account = () => {
                   Display name
                 </div>
                 <div className='container__card__content__username__box__left__name'>
-                  username
+                {username}
                 </div>
                 </div>
                 <div className='container__card__content__username__box__right'>
@@ -98,9 +112,11 @@ const Account = () => {
                 <input 
                   className='container__card__content__username__form__input'
                   type='text'
-                  name='editusername'
+                  name='username'
                   id='editusername'
                   placeholder='username'
+                  value={username}
+                  onChange={onChange}
                 />
                 <button className='container__card__content__username button' type='submit'>
                   Save
@@ -120,7 +136,7 @@ const Account = () => {
                   Email
                 </div>
                 <div className='container__card__content__email__box__left__name'>
-                  email
+                  {email}
                 </div>
                 </div>
                 <div className='container__card__content__email__box__right'>
@@ -137,12 +153,13 @@ const Account = () => {
               <form className='container__card__content__email__form' onSubmit={onSubmitEmail}>
                 <label className='container__card__content__email__form__label' htmlFor="email">Change Email</label>
                 <input 
-                  
                   className='container__card__content__email__form__input'
                   type='email'
-                  name='editemail'
+                  name='email'
                   id='editemail'
                   placeholder='email'
+                  value={email}
+                  onChange={onChange}
                 />
                 <button className='container__card__content__email button' type='submit'>
                   Save
@@ -181,9 +198,11 @@ const Account = () => {
                 <input 
                   className='container__card__content__password__form__input'
                   type='editpassword'
-                  name='editpassword'
+                  name='password'
                   id='editpassword'
                   placeholder='password'
+                  value={password}
+                  onChange={onChange}
                 />
                 <button className='container__card__content__password button' type='submit'>
                   Save

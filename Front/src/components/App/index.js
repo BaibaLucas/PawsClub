@@ -6,7 +6,7 @@ import { Routes, Route } from 'react-router-dom';
 // Components
 import Home from '../../containers/Home';
 import Header from '../../containers/Header';
-import Footer from '../Footer';
+import Footer from '../../containers/Footer';
 import Login from '../../containers/Login';
 import Signup from '../../containers/SignUp';
 import JoinUs from '../JoinUs';
@@ -16,7 +16,7 @@ import Section from '../Section';
 import News from '../News';
 import Newsdetails from '../Newsdetails';
 import Streams from '../Streams';
-import Account from '../Account';
+import Account from '../../containers/Account';
 import Roster from '../Roster';
 
 const App = ({ loadNewsData, loadSectionsData, loadStreamersData }) => {
@@ -32,7 +32,6 @@ const App = ({ loadNewsData, loadSectionsData, loadStreamersData }) => {
     <div className='app'>
       
       <Header />
-
       <Routes>
         {/* General route */}
         <Route path='/' element={<Home />} />
@@ -47,8 +46,6 @@ const App = ({ loadNewsData, loadSectionsData, loadStreamersData }) => {
         <Route path='/streams' element={<Streams />} />
         <Route path='/account' element={<Account />} />
         <Route path='/roster' element={<Roster />} />
-
-
       </Routes>
 
       <Footer />

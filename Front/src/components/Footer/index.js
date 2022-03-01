@@ -7,7 +7,7 @@ import logo from '../../assets/images/pawswhite.png';
 import Social from '../Social';
 // Components
 
-const Footer = () => {
+const Footer = ({ logged }) => {
   return(
     <div className='footer'>
       <div className='container'>
@@ -43,16 +43,27 @@ const Footer = () => {
                 streams
               </div>
             </NavLink>
-            <NavLink to='/login'>
+            {/* Case : user logged */}
+            {logged && 
+              <NavLink to='/account'>
+              <div className='container__nav__items'>
+                Account
+              </div>
+              </NavLink>
+            }
+            {/* Case : user is not logged */}
+            {!logged && <>
+              <NavLink to='/login'>
               <div className='container__nav__items'>
                 se connecter
               </div>
-            </NavLink>
-            <NavLink to='/signup'>
+              </NavLink>
+              <NavLink to='/signup'>
               <div className='container__nav__items'>
                 S'inscrire
               </div>
-            </NavLink>
+              </NavLink>
+            </>}
             <NavLink to='/linesup'>
               <div className='container__nav__items'>
                 lines-up
