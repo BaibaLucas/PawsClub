@@ -16,7 +16,7 @@ import { MdManageAccounts } from 'react-icons/md';
 
 // Components
 
-const Menu = ({ open, setOpen }) => {
+const Menu = ({ open, setOpen, logged }) => {
 
   const close = () => {
     setOpen(!open);
@@ -32,24 +32,31 @@ const Menu = ({ open, setOpen }) => {
               Home
             </li>
           </NavLink>
-          <NavLink className='menu__nav__list__item'  onClick={close} to='/login'>
-            <BiUserCircle size={50} />
-            <li className='menu__nav__list__item__name'>
-              Login
-            </li>
-          </NavLink>
-          <NavLink className='menu__nav__list__item'  onClick={close} to='/signup'>
-            <RiUserAddFill size={50} />
-            <li className='menu__nav__list__item__name'>
-              Sign-Up
-            </li>
-          </NavLink>
-          <NavLink className='menu__nav__list__item'  onClick={close} to='/account'>
+          {/* Case : user logged */}
+          {logged && 
+            <NavLink className='menu__nav__list__item'  onClick={close} to='/account'>
             <MdManageAccounts size={50} />
             <li className='menu__nav__list__item__name'>
               Account
             </li>
           </NavLink>
+          }
+          {/* Case : user is not logged */}
+          {!logged && <>
+            <NavLink className='menu__nav__list__item'  onClick={close} to='/login'>
+            <BiUserCircle size={50} />
+            <li className='menu__nav__list__item__name'>
+              Login
+            </li>
+            </NavLink>
+            <NavLink className='menu__nav__list__item'  onClick={close} to='/signup'>
+            <RiUserAddFill size={50} />
+              <li className='menu__nav__list__item__name'>
+                Sign-Up
+              </li>
+            </NavLink>
+          </> 
+          }
           <NavLink className='menu__nav__list__item'  onClick={close} to='/news'>
             <BsNewspaper size={50} />
             <li className='menu__nav__list__item__name'>

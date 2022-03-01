@@ -5,7 +5,7 @@ import { Routes, Route } from 'react-router-dom';
 /* Local imports */
 // Components
 import Home from '../../containers/Home';
-import Header from '../Header';
+import Header from '../../containers/Header';
 import Footer from '../Footer';
 import Login from '../../containers/Login';
 import Signup from '../../containers/SignUp';
