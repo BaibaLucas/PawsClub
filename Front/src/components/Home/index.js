@@ -17,7 +17,8 @@ import down from '../../assets/images/down.jpg';
 
 // Components
 
-const Home = () => {
+const Home = ({ news, sections }) => {
+
   return (
     <div className='home'>
       <div className='container'>
@@ -32,39 +33,19 @@ const Home = () => {
             Latest news
           </div>
           <div className='container__news__box'>
-              <NavLink to='/newsdetails'>
-                <div className='container__news__box__card'>
+            {news.map((news => {
+              return (
+                <div key={news.id} className='container__news__box__card'>
                   <img className='container__news__box__card__image' src={addon} alt='news illustration' />
                   <div className='container__news__box__card__title'>
-                    Lorem ipsum dolor sit amet !
+                    {news.title}
                   </div>
                   <div className='container__news__box__card__date'>
-                    21 january 2022
+                    {news.date}
                   </div>
                 </div>
-              </NavLink>
-              <NavLink to='/newsdetails'>
-                <div className='container__news__box__card'>
-                  <img className='container__news__box__card__image' src={dogs} alt='news illustration' />
-                  <div className='container__news__box__card__title'>
-                    Lorem ipsum dolor sit amet !
-                  </div>
-                  <div className='container__news__box__card__date'>
-                    21 january 2022
-                  </div>
-                </div>
-              </NavLink>
-              <NavLink to='/newsdetails'>
-                <div className='container__news__box__card'>
-                  <img className='container__news__box__card__image' src={down} alt='news illustration' />
-                  <div className='container__news__box__card__title'>
-                    Lorem ipsum dolor sit amet !
-                  </div>
-                  <div className='container__news__box__card__date'>
-                    21 january 2022
-                  </div>
-                </div>
-              </NavLink>
+              )
+            }))}
             <div className='container__news__more'>
               <NavLink className='container__news__more__link' to='#'>
                 More news
@@ -78,7 +59,17 @@ const Home = () => {
             Lines-up
           </div>
           <div className='container__linesup__box'>
-            <NavLink className='container__linesup__box__card' to='/section'>
+            {sections.map((section => {
+              return (
+                <NavLink key={section.id} className='container__linesup__box__card' to='/section'>
+                  <img className='container__linesup__box__card__image' src={diablo3} alt='linesup illustration' />
+                  <div className='container__linesup__box__card__title'>
+                    {section.name}
+                  </div>
+                </NavLink>
+              )
+            }))}
+            {/* <NavLink className='container__linesup__box__card' to='/section'>
               <img className='container__linesup__box__card__image' src={diablo3} alt='linesup illustration' />
             </NavLink>
             <NavLink className='container__linesup__box__card' to='/section'>
@@ -86,7 +77,7 @@ const Home = () => {
             </NavLink>
             <NavLink className='container__linesup__box__card' to='/section'>
               <img className='container__linesup__box__card__image' src={wow} alt='linesup illustration' />
-            </NavLink>
+            </NavLink> */}
           </div>
           <div className='container__linesup__more'>
               <NavLink className='container__linesup__more__link' to='#'>
