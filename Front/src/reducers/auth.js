@@ -4,6 +4,7 @@ import {
   SIGNUP_SUCCESS,
   AUTH_FAILED,
   LOGIN_SUCCESS,
+  EDIT_USER_SUCCESS,
 } from '../store/action';
 
 /* Initial State user infos */
@@ -13,6 +14,7 @@ const initialState = {
   email: '',
   password: '',
   profilurl: '',
+  token: '',
   logged: false,
   error: false,
   msg: '',
@@ -54,6 +56,19 @@ const Reducer = (oldState = initialState, action = {}) => {
       return {
         ...oldState,
         id: action.id,
+        token: action.token,
+        username: action.username,
+        email: action.email,
+        imgprofil: action.profilurl,
+        password: '',
+        logged: true,
+      };
+
+    case EDIT_USER_SUCCESS:
+      return {
+        ...oldState,
+        id: action.id,
+        token: action.token,
         username: action.username,
         email: action.email,
         imgprofil: action.profilurl,

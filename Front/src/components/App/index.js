@@ -16,7 +16,7 @@ import Section from '../Section';
 import News from '../News';
 import Newsdetails from '../Newsdetails';
 import Streams from '../Streams';
-import Account from '../Account';
+import Account from '../../containers/Account';
 import Roster from '../Roster';
 
 const App = ({ loadNewsData, loadSectionsData, loadStreamersData }) => {

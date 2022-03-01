@@ -9,6 +9,7 @@ import {
   signUpSuccess,
   authFailed,
   loginSuccess,
+  editUserSuccess,
  } from '../store/action';
 
 
@@ -65,7 +66,8 @@ const Auth = (store) => (next) => (action) => {
         if (response.status !== 200) {
           throw response.error;
         } else {
-          store.dispatch(loginSuccess(response.data.data));
+          console.log(response.data);
+          store.dispatch(loginSuccess(response.data.data, response.data.token));
         }
       }).catch((error) => {
         if (error.response.status === 401 || 404) {
@@ -75,6 +77,36 @@ const Auth = (store) => (next) => (action) => {
         }
       });
       break;
+    };
+
+    case 'EDIT_USER': {
+      const { auth: { username, email, password, id, token } } = store.getState();
+
+      const config = {
+        method: 'patch',
+        url: `${apiUrl}/user/${id}`,
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Baerer ${token}`,
+        },
+        data: {
+          username,
+          email,
+          password,
+        },
+      };
+      axios(config)
+        .then((response) => {
+          console.log('ICI');
+          if (response.status !== 200) {
+            throw response.error;
+          } else {
+            console.log(response.data);
+          }
+        }).catch((error) => {
+          console.log('Oups !', error);
+        });
+        break;
     };
 
 
