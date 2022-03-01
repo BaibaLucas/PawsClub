@@ -1,5 +1,5 @@
 /* Package imports */
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
 
 /* Local imports */
@@ -19,7 +19,16 @@ import Streams from '../Streams';
 import Account from '../Account';
 import Roster from '../Roster';
 
-const App = () => {
+const App = ({ loadNewsData, loadSectionsData, loadStreamersData }) => {
+
+  // Loading News - Sections - Streamers
+  useEffect(() => {
+    loadNewsData();
+    loadSectionsData();
+    loadStreamersData();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
   return (
     <div className='app'>
       
