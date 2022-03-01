@@ -3,11 +3,13 @@ import { combineReducers } from 'redux';
 
 /* Local imports */
 import authReducers from './auth';
-import apiReducers from './api';
+import newsReducers from './news';
+import sectionsReducers from './sections';
 
 
 /* Reducer */
 export default combineReducers({
   auth: authReducers,
-  api: apiReducers,
+  news: newsReducers,
+  sections: sectionsReducers,
 });

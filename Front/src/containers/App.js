@@ -17,17 +17,12 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
 
   loadNewsData: () => {
-    dispatch({ type: 'GET_NEWS' });
+    dispatch({type: 'GET_NEWS'});
   },
 
   loadSectionsData: () => {
-    dispatch({ type: 'GET_CATEGORIES' });
+    dispatch({type: 'GET_SECTIONS'});
   },
-
-  loadStreamersData: () => {
-    dispatch({ type: 'GET_STREAMERS' });
-  },
-
 
 });
 

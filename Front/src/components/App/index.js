@@ -4,7 +4,7 @@ import { Routes, Route } from 'react-router-dom';
 
 /* Local imports */
 // Components
-import Home from '../Home';
+import Home from '../../containers/Home';
 import Header from '../Header';
 import Footer from '../Footer';
 import Login from '../../containers/Login';
@@ -25,7 +25,6 @@ const App = ({ loadNewsData, loadSectionsData, loadStreamersData }) => {
   useEffect(() => {
     loadNewsData();
     loadSectionsData();
-    loadStreamersData();
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
