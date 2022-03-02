@@ -10,7 +10,11 @@ import { NavLink } from 'react-router-dom';
 
 // Components
 
-const Section = () => {
+const Section = ({ sections }) => {
+
+  console.log(sections);
+
+  
   return(
     <div className='section'>
       <div className='container'>

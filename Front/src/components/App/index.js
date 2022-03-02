@@ -11,7 +11,7 @@ import Login from '../../containers/Login';
 import Signup from '../../containers/SignUp';
 import JoinUs from '../JoinUs';
 import About from '../About';
-import LinesUp from '../LinesUp';
+import LinesUp from '../../containers/LinesUp';
 import Section from '../Section';
 import News from '../../containers/News';
 import Newsdetails from '../Newsdetails';

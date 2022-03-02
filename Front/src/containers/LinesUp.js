@@ -2,23 +2,22 @@
 import { connect } from 'react-redux';
 
 /* Local imports */
-import News from '../components/News';
-
+import LinesUp from '../components/LinesUp';
 
 // Action
 
 /* Container */
 
-// Component States (News)
+// Component States (LinesUp)
 const mapStateToProps = (state) => ({
-  news: state.news.news,
   sections: state.sections.sections,
 });
 
-// Component Func (News)
+// Component Func (LinesUp)
 const mapDispatchToProps = (dispatch) => ({
 
 
+  
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(News);
+export default connect(mapStateToProps, mapDispatchToProps)(LinesUp);
