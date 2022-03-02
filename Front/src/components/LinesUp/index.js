@@ -9,7 +9,9 @@ import wow from '../../assets/images/shadowlandsWoW.png';
 
 // Components
 
-const LinesUp = () => {
+const LinesUp = ({ sections }) => {
+
+  console.log(sections);
   return(
     <div className='linesup'>
       <div className='container'>
@@ -22,39 +24,20 @@ const LinesUp = () => {
           </div>
         </div>
         <div className='container__box'>
-          <NavLink to='/section'>
-            <div className='container__box__card'>
+          {sections.map((section => {
+            return(
+            <NavLink key={section.id} to='/section'>
+            <div  className='container__box__card'>
               <img className='container__box__card__image' src={wow} alt='wow illustration' />
               <div className='container__box__card__title'>
-                WoW
+                {section.name}
               </div>
               <div className='container__box__card__status'>
                 Open
               </div>
             </div>
           </NavLink>
-          <NavLink to='/section'>
-            <div className='container__box__card'>
-              <img className='container__box__card__image' src={lol} alt='lol illustration' />
-              <div className='container__box__card__title'>
-                LoL
-              </div>
-              <div className='container__box__card__status'>
-                Open
-              </div>
-            </div>
-          </NavLink>
-          <NavLink to='/section'>
-            <div className='container__box__card'>
-              <img className='container__box__card__image' src={diablo3} alt='d3 illustration' />
-              <div className='container__box__card__title'>
-                Diablo 3
-              </div>
-              <div className='container__box__card__status'>
-                SOON
-              </div>
-            </div>
-          </NavLink>
+          )}))}
         </div>
       </div>
     </div>

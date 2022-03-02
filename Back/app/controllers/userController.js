@@ -98,7 +98,7 @@ module.exports = {
         userId = req.params.id;
       } else {
           res.status('403').json({message : 'Accès interdit : impossible de modifier un autre membre'});
-          next(error);
+          next();
       };
       const userToUpdate = req.body;
       console.log('userToUpdate =>', userToUpdate);

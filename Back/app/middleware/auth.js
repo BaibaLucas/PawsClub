@@ -9,13 +9,13 @@ const authMW = (req, res, next) => {
     console.log('Token', token);
     console.log('Token[0]', token[0]);
     console.log('Token[1]', token[1]);
-    if (token[0] === 'Bearer' && jwt.verify(token[1], process.env.JWTSECRET)) {
+    const pb = jwt.verify(token[1], process.env.JWTSECRET);
+    if (token[0] === 'Baerer' && jwt.verify(token[1], process.env.JWTSECRET)) {
       console.log('Access allowed : Member');
       return next();
     } else {
       console.log('Access denied : Only member');
-      res.status('403').json({message : 'Access denied : Only member'});
-      next();
+      return res.status('403').json({message : 'Access denied : Only member'});
     }
   } catch (error) {
     next(error);

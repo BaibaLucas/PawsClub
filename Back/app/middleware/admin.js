@@ -18,8 +18,7 @@ const adminMW = (req, res, next) => {
       return next();
     } else {
       console.log('Access denied : Only Admin');
-      res.status('403').json({message : 'Access denied : Only Admin'});
-      next();
+      return res.status('403').json({message : 'Access denied : Only Admin'});
     }
   } catch (error) {
     next(error);

@@ -11,6 +11,8 @@ export const EDIT_USER_SUCCESS = 'EDIT_USER_SUCCESS';
 export const GET_NEWS_SUCCESS = 'GET_NEWS_SUCCESS';
 // Lineup types
 export const GET_SECTIONS_SUCCESS = 'GET_SECTIONS_SUCCESS';
+// Sections types
+export const GET_ROSTER_SUCCESS = 'GET_ROSTER_SUCCESS';
 
 /* Actions */
 
@@ -47,5 +49,11 @@ export const getNewsSuccess = (data) => ({
 // Lineup actions
 export const getSectionsSuccess = (data) => ({
   type: GET_SECTIONS_SUCCESS,
+  data,
+});
+
+// Sections actions
+export const getRosterSuccess = (data) => ({
+  type: GET_ROSTER_SUCCESS,
   data,
 });

@@ -11,13 +11,13 @@ import Login from '../../containers/Login';
 import Signup from '../../containers/SignUp';
 import JoinUs from '../JoinUs';
 import About from '../About';
-import LinesUp from '../LinesUp';
+import LinesUp from '../../containers/LinesUp';
 import Section from '../Section';
-import News from '../News';
+import News from '../../containers/News';
 import Newsdetails from '../Newsdetails';
 import Streams from '../Streams';
 import Account from '../../containers/Account';
-import Roster from '../Roster';
+import Roster from '../../containers/Roster';
 
 const App = ({ loadNewsData, loadSectionsData, loadStreamersData }) => {
 

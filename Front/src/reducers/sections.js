@@ -1,11 +1,13 @@
 /* Actions */
 import {
   GET_SECTIONS_SUCCESS,
+  GET_ROSTER_SUCCESS,
 } from '../store/action';
 
 /* Initial State user infos */
 const initialState = {
   sections: [],
+  roster: [],
 };
 
 /* Api Paws Sections reducer */
@@ -17,7 +19,14 @@ const Reducer = (oldState = initialState, action = {}) => {
       return {
         ...oldState,
         sections: action.data
+      };
+
+    case GET_ROSTER_SUCCESS:
+      return {
+        ...oldState,
+        roster: action.data
       }
+
     default:
       return {...oldState}
   }

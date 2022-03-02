@@ -1,11 +1,17 @@
 /* Package imports */
-import React from 'react';
+import React, { useEffect } from 'react';
 
 /* Local imports */
 import avatar from '../../assets/images/avatar.jpg';
 // Components
 
-const Roster = () => {
+const Roster = ({ loadRoster, roster }) => {
+
+  useEffect(() => {
+    loadRoster();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+  console.log(roster);
   return(
     <div className='roster'>
       <div className='container'>
@@ -35,42 +41,16 @@ const Roster = () => {
             <div className='container__content__roster__title'>
               <h1>Roster</h1>
             </div>
-            <div className='container__content__roster__card'>
-              <img className='container__content__roster__card__image' alt='user profil' src={avatar}/>
-              <div className='container__content__roster__card__name'>
-                Name
-              </div>
-            </div>
-            <div className='container__content__roster__card'>
-              <img className='container__content__roster__card__image' alt='user profil' src={avatar}/>
-              <div className='container__content__roster__card__name'>
-                Name
-              </div>
-            </div>
-            <div className='container__content__roster__card'>
-              <img className='container__content__roster__card__image' alt='user profil' src={avatar}/>
-              <div className='container__content__roster__card__name'>
-                Name
-              </div>
-            </div>
-            <div className='container__content__roster__card'>
-              <img className='container__content__roster__card__image' alt='user profil' src={avatar}/>
-              <div className='container__content__roster__card__name'>
-                Name
-              </div>
-            </div>
-            <div className='container__content__roster__card'>
-              <img className='container__content__roster__card__image' alt='user profil' src={avatar}/>
-              <div className='container__content__roster__card__name'>
-                Name
-              </div>
-            </div>
-            <div className='container__content__roster__card'>
-              <img className='container__content__roster__card__image' alt='user profil' src={avatar}/>
-              <div className='container__content__roster__card__name'>
-                Name
-              </div>
-            </div>
+            {roster.map((member => {
+              return (
+                <div key={member.id} className='container__content__roster__card'>
+                  <img className='container__content__roster__card__image' alt='user profil' src={avatar}/>
+                  <div className='container__content__roster__card__name'>
+                    {member.username}
+                  </div>
+                </div>
+              )
+            }))}
             </div>
           </div>
         </div>
