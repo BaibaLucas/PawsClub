@@ -13,7 +13,7 @@ import JoinUs from '../JoinUs';
 import About from '../About';
 import LinesUp from '../LinesUp';
 import Section from '../Section';
-import News from '../News';
+import News from '../../containers/News';
 import Newsdetails from '../Newsdetails';
 import Streams from '../Streams';
 import Account from '../../containers/Account';
