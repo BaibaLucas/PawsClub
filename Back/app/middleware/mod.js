@@ -18,8 +18,7 @@ const modMW = (req, res, next) => {
       return next();
     } else {
       console.log('Access denied : Only moderator');
-      res.status('403').json({message : 'Access denied : Only moderator'});
-      next();
+      return res.status('403').json({message : 'Access denied : Only moderator'});
     }
   } catch (error) {
     next(error);

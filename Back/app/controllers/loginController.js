@@ -28,7 +28,7 @@ module.exports = {
             algorithm: 'HS256',
             expiresIn: '3h'
           };
-          res.status('200').json({
+          return res.status('200').json({
             message: 'utilisateur connecté',
             data: login,
             token: jwt.sign(jwtContent, process.env.JWTSECRET, jwtOptions)
