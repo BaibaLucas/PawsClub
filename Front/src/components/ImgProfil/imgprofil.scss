@@ -1,0 +1,78 @@
+.imgprofil{
+  height: 100%;
+  padding-top: 6rem;
+  &__container{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    background-color: $grey;
+    margin: 0rem 1rem;
+    padding: 1rem 0.5rem;
+    &__title{
+      text-transform: uppercase;
+      margin: 1rem;
+      border-radius: 20px;
+    }
+    &__form{
+      color: white;
+      background-color: $dark-grey;
+      display: flex;
+      flex-direction: column;
+      margin: 2rem 0.5rem;
+      text-align: center;
+      align-items: center;
+      border: 2px solid $yellow;
+      padding: 1rem;
+      border-radius: 20px;
+      &__label{
+        font-size: 1.5rem;
+        font-weight: bold;
+        margin-top: 2rem;
+      }
+      &__input{
+        margin: 1rem;
+        padding: 1rem;
+        &::-webkit-file-upload-button{
+          visibility: hidden;
+        }
+        &::before{
+          content: 'Image';
+          display: inline-block;
+          font-size: 1rem;
+          background-color: $yellow;
+          border-radius: 0 15px 0 0;
+          color: $dark-grey;
+          border: none;
+          outline: none;
+          padding: 1rem;
+          font-weight: bold;
+          cursor: pointer;
+        }
+        &:hover::before {
+          border-color: $grey;
+        }
+        &:hover:active::before{
+          background: $grey;
+        }
+      }
+      &__button{
+        color: $dark-grey;
+        text-decoration: none;
+        background-color: #F0FF00;
+        font-weight: bold;
+        font-size: 1rem;
+        text-transform: uppercase;
+        text-align: center;
+        display: block;
+        float: right;
+        padding: 0.6rem;
+        border-radius: 0 15px 0 0;
+        margin-bottom: 0.3rem;
+        margin-right: 0.3rem;
+      }
+    }
+  }
+}
