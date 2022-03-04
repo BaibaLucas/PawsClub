@@ -10,6 +10,7 @@ import {
   authFailed,
   loginSuccess,
   editUserSuccess,
+  imgUploadSuccess,
  } from '../store/action';
 
 
@@ -107,6 +108,28 @@ const Auth = (store) => (next) => (action) => {
           console.log('Oups !', error);
         });
         break;
+    };
+
+    case 'UPDATE_IMG_PROFIL': {
+      const { auth: { id, token } } = store.getState();
+      const formData = new FormData();
+      formData.append(`myImage`, action.formData);
+      const config = {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+        'Authorization': `Baerer ${token}`,
+      }
+      };
+      axios.post(`${apiUrl}/user/image/${id}`, formData, config)
+        .then((response) => {
+          console.log('The file is successfully uploaded');
+          console.log('response.data --->', response.data);
+          console.log("imgProfile---->", response.data.data.profilurl);
+          store.dispatch(imgUploadSuccess(response.data.data));
+        }).catch((error) => {
+          console.log('Oups', error);
+        });
+      break;
     };
 
 

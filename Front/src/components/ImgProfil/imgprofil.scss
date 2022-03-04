@@ -21,42 +21,41 @@
       background-color: $dark-grey;
       display: flex;
       flex-direction: column;
+      justify-content: space-evenly;
       margin: 2rem 0.5rem;
       text-align: center;
       align-items: center;
       border: 2px solid $yellow;
       padding: 1rem;
       border-radius: 20px;
+      width: 95%;
+      height: calc(100vh - 250px);
+      &__image{
+        height: 200px;
+        width: 200px;
+        border-radius: 50%;
+        img{
+          height: 200px;
+          width: 200px;
+          border-radius: 50%;
+          border: solid 3px $yellow;
+        }
+      }
       &__label{
         font-size: 1.5rem;
         font-weight: bold;
-        margin-top: 2rem;
+        display: inline-block;
+        cursor: pointer;
+        color: $dark-grey;
+        text-decoration: none;
+        background-color: #F0FF00;
+        text-transform: uppercase;
+        text-align: center;
+        padding: 0.6rem;
+        border-radius: 0 15px 0 0;
       }
       &__input{
-        margin: 1rem;
-        padding: 1rem;
-        &::-webkit-file-upload-button{
-          visibility: hidden;
-        }
-        &::before{
-          content: 'Image';
-          display: inline-block;
-          font-size: 1rem;
-          background-color: $yellow;
-          border-radius: 0 15px 0 0;
-          color: $dark-grey;
-          border: none;
-          outline: none;
-          padding: 1rem;
-          font-weight: bold;
-          cursor: pointer;
-        }
-        &:hover::before {
-          border-color: $grey;
-        }
-        &:hover:active::before{
-          background: $grey;
-        }
+        display: none;
       }
       &__button{
         color: $dark-grey;

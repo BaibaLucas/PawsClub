@@ -8,7 +8,7 @@ import defaultPic from '../../assets/images/defaultPic.jpeg';
 
 // Components
 
-const Account = ({ username, email, password, logged, handleChange, handleSubmit }) => {
+const Account = ({ username, email, password, imgprofil, logged, handleChange, handleSubmit }) => {
 
   /** Redirect to /login if user is not logged */
   const navigate = useNavigate();
@@ -76,7 +76,7 @@ const Account = ({ username, email, password, logged, handleChange, handleSubmit
               <div className='container__card__header__image__icon'>
               <MdAddPhotoAlternate size={40} color={'#EA92DD'}/>
               </div>
-              <img src={defaultPic} alt='avatar' />
+              <img src={imgprofil} alt='avatar' />
             </div>
           </NavLink>
             <div className='container__card__header__name'>
