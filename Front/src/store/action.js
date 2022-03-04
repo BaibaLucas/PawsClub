@@ -13,6 +13,8 @@ export const GET_NEWS_SUCCESS = 'GET_NEWS_SUCCESS';
 export const GET_SECTIONS_SUCCESS = 'GET_SECTIONS_SUCCESS';
 // Sections types
 export const GET_ROSTER_SUCCESS = 'GET_ROSTER_SUCCESS';
+// Image Types
+export const IMG_UPLOAD_SUCCESS = 'IMG_UPLOAD_SUCCESS';
 
 /* Actions */
 
@@ -56,4 +58,10 @@ export const getSectionsSuccess = (data) => ({
 export const getRosterSuccess = (data) => ({
   type: GET_ROSTER_SUCCESS,
   data,
+});
+
+// Image actions
+export const imgUploadSuccess = (user) => ({
+  type: IMG_UPLOAD_SUCCESS,
+  ...user,
 });

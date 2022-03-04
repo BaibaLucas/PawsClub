@@ -5,6 +5,7 @@ import {
   AUTH_FAILED,
   LOGIN_SUCCESS,
   EDIT_USER_SUCCESS,
+  IMG_UPLOAD_SUCCESS,
 } from '../store/action';
 
 /* Initial State user infos */
@@ -13,7 +14,7 @@ const initialState = {
   username: '',
   email: '',
   password: '',
-  profilurl: '',
+  imgprofil: '',
   token: '',
   logged: false,
   error: false,
@@ -75,6 +76,17 @@ const Reducer = (oldState = initialState, action = {}) => {
         password: '',
         logged: true,
       };
+
+      case IMG_UPLOAD_SUCCESS:
+        return {
+          ...oldState,
+          id: action.id,
+          username: action.username,
+          email: action.email,
+          imgprofil: action.profilurl,
+          password: '',
+          isLogged: true,
+        };
 
     default:
       return {...oldState}

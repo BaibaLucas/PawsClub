@@ -6,6 +6,7 @@ const userController = require('../controllers/userController');
 const loginController = require('../controllers/loginController');
 const newsController = require('../controllers/newsController');
 const sectionController = require('../controllers/sectionController');
+const imageController = require('../controllers/imageController');
 const authMW = require('../middleware/auth');
 const modMW = require('../middleware/mod');
 const adminMW = require('../middleware/admin');
@@ -31,6 +32,8 @@ router.get('/lineup/:id(\\d+)', sectionController.getOneSection); // GET LINEUP 
 // Accessible only for ID user
 router.patch('/user/:id(\\d+)', authMW, userController.updateUser); // MODIFY USER
 router.delete('/user/:id(\\d+)', authMW, userController.deleteUser); // DELETE USER
+router.post('/user/image/:id(\\d+)', authMW, imageController.uploadUserImg); // UPLOAD USER PROFIL PICTURE
+
 
 // Accessible only for moderator
 router.post('/news', modMW, newsController.createNews); // CREATE NEWS

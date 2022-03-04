@@ -15,7 +15,9 @@ const mapStateToProps = (state) => ({
   logged: state.auth.logged,
   username: state.auth.username,
   email: state.auth.email,
-  password: state.auth.password
+  password: state.auth.password,
+  avatar: state.auth.profilurl,
+  imgprofil: state.auth.imgprofil,
 });
 
 // Component Func (Account)
