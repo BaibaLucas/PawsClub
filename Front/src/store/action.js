@@ -61,7 +61,8 @@ export const getRosterSuccess = (data) => ({
 });
 
 // Image actions
-export const imgUploadSuccess = (user) => ({
+export const imgUploadSuccess = (user, message) => ({
   type: IMG_UPLOAD_SUCCESS,
   ...user,
+  message,
 });

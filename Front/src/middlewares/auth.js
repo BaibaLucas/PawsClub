@@ -125,7 +125,8 @@ const Auth = (store) => (next) => (action) => {
           console.log('The file is successfully uploaded');
           console.log('response.data --->', response.data);
           console.log("imgProfile---->", response.data.data.profilurl);
-          store.dispatch(imgUploadSuccess(response.data.data));
+          console.log('message', response.data.message);
+          store.dispatch(imgUploadSuccess(response.data.data, response.data.message));
         }).catch((error) => {
           console.log('Oups', error);
         });

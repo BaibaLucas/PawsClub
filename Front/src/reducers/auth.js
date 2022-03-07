@@ -18,6 +18,7 @@ const initialState = {
   token: '',
   logged: false,
   error: false,
+  success: false,
   msg: '',
 };
 
@@ -86,7 +87,17 @@ const Reducer = (oldState = initialState, action = {}) => {
           imgprofil: action.profilurl,
           password: '',
           isLogged: true,
+          msg: action.message,
+          success: true,
         };
+
+      case 'CHANGE_STATUS': {
+        return {
+          ...oldState,
+          msg: '',
+          success: false,
+        }
+      }
 
     default:
       return {...oldState}

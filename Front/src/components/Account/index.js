@@ -61,6 +61,15 @@ const Account = ({ username, email, password, imgprofil, logged, handleChange, h
     setOpenEmail(false);
     handleSubmit();
   };
+
+  // If user haven't profile picture return default pic
+  const usrImg = () => {
+    if (imgprofil === null) {
+      return defaultPic
+    } else {
+      return imgprofil;
+    }
+  }
   
   
     return (
@@ -74,9 +83,9 @@ const Account = ({ username, email, password, imgprofil, logged, handleChange, h
           <NavLink to ='/account/update' > 
             <div className='container__card__header__image'>
               <div className='container__card__header__image__icon'>
-              <MdAddPhotoAlternate size={40} color={'#EA92DD'}/>
+              <MdAddPhotoAlternate size={40} color={'#FAFF00'}/>
               </div>
-              <img src={imgprofil} alt='avatar' />
+              <img src={usrImg()} alt='avatar' />
             </div>
           </NavLink>
             <div className='container__card__header__name'>
