@@ -86,6 +86,7 @@ const Reducer = (oldState = initialState, action = {}) => {
           imgprofil: action.profilurl,
           password: '',
           isLogged: true,
+          msg: action.message,
         };
 
     default:

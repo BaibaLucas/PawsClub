@@ -1,6 +1,7 @@
 /* Package imports */
 import React, { useState } from 'react';
 import { MdNextPlan } from 'react-icons/md';
+import { NavLink } from 'react-router-dom';
 
 /* Local imports */
 import defaultPic from '../../assets/images/defaultPic.jpeg';
@@ -9,18 +10,24 @@ import { dataURLtoFile } from '../../utils';
 
 // Components
 
-const ImgProfil = ({ handleSubmit }) => {
+const ImgProfil = ({ handleSubmit, imgprofil, msg }) => {
 
   // Set Avatar
   const [image, setImage] = useState(null);
 
 
-  // If user haven't profile picture return default pic
+  /**  usrImg
+  - If user select picture return this
+  - Else if user have imgprofil return this
+  - else user havn't select picture and havn't imgprofil upload return default pic.
+  */
   const usrImg = () => {
-    if (image === null) {
-      return defaultPic
+    if (image !== null) {
+      return image
+    } else if(imgprofil !== null){
+      return imgprofil;
     } else {
-      return image;
+      return defaultPic;
     }
   }
 
@@ -33,6 +40,7 @@ const ImgProfil = ({ handleSubmit }) => {
         setImage(reader.result);
       });
     };
+    console.log('image', image);
   }
 
   // Handle submit image
@@ -67,6 +75,14 @@ const ImgProfil = ({ handleSubmit }) => {
           <button className='imgprofil__container__form__button' type='submit'>
             Valider
           </button>
+          {msg && (
+            <>
+            <div className='imgprofil__container__form__msg'>{msg}</div>
+            <NavLink to='/account'>
+            <button> Account </button>
+            </NavLink>
+            </>
+          )}
         </form>
       </div>
     </div>

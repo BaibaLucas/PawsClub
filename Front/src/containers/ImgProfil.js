@@ -10,7 +10,8 @@ import ImgProfil from '../components/ImgProfil';
 
 // Component States (imgProfil)
 const mapStateToProps = (state) => ({
-  
+  imgprofil: state.auth.imgprofil,
+  msg: state.auth.msg,
 });
 
 // Component Func (imgProfil)
