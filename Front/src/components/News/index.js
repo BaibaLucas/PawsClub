@@ -1,5 +1,5 @@
 /* Package imports */
-import React from 'react';
+import React, { useEffect } from 'react';
 
 /* Local imports */
 import addon from '../../assets/images/addon.png';
@@ -7,6 +7,24 @@ import { NavLink } from 'react-router-dom';
 // Components
 
 const News = ({ news, loadNewsData, sections }) => {
+
+  /**  NewsImg
+  - If user select picture return this
+  - else user havn't select picture and havn't imgnews upload return default pic.
+  */
+
+  // Loading News - Sections - Streamers
+  useEffect(() => {
+    loadNewsData();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+  const newsImg = (newsurl) => {
+    if (newsurl.length === 0 || newsurl === 'blabla' || newsurl === 'http://myphotourlnews.fr') {
+      return addon
+    } else {
+      return newsurl;
+    }
+  };
 
   console.log(news);
   console.log(sections);
@@ -31,7 +49,7 @@ const News = ({ news, loadNewsData, sections }) => {
             {news.map((news => {
               return (
                 <div key={news.id} className='container__news__box__card'>
-                  <img className='container__news__box__card__image' src={addon} alt='news illustration' />
+                  <img className='container__news__box__card__image' src={newsImg(news.newsurl)} alt='news illustration' />
                   <div className='container__news__box__card__title'>
                     {news.title}
                   </div>

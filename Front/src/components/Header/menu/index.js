@@ -44,12 +44,6 @@ const Menu = ({ open, setOpen, logged, role }) => {
           }
           {/* Case : user is not logged */}
           {!logged && <>
-            <NavLink className='menu__nav__list__item'  onClick={close} to='/createnews'>
-            <MdCreateNewFolder size={50} />
-            <li className='menu__nav__list__item__name'>
-              Create News
-            </li>
-          </NavLink>
             <NavLink className='menu__nav__list__item'  onClick={close} to='/login'>
             <BiUserCircle size={50} />
             <li className='menu__nav__list__item__name'>
@@ -64,6 +58,12 @@ const Menu = ({ open, setOpen, logged, role }) => {
             </NavLink>
           </> 
           }
+          <NavLink className='menu__nav__list__item'  onClick={close} to='/createnews'>
+            <MdCreateNewFolder size={50} />
+            <li className='menu__nav__list__item__name'>
+              Create News
+            </li>
+          </NavLink>
           <NavLink className='menu__nav__list__item'  onClick={close} to='/news'>
             <BsNewspaper size={50} />
             <li className='menu__nav__list__item__name'>

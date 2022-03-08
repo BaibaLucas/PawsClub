@@ -3,6 +3,7 @@ const jwt = require('jsonwebtoken');
 
 /* Local required */
 const newsDataMapper = require('../dataMappers/newsDataMapper');
+const upload = require('../middleware/upload');
 
 /* Controllers */
 
@@ -50,13 +51,32 @@ module.exports = {
   async createNews(req, res, next) {
     try {
         const news = req.body;
-        console.log(news);
-        const newsCreated = await newsDataMapper.createNews(news);
-        res.json({
-            message: 'News created',
-            data: newsCreated
-        });
+        console.log('news', news);
+        // Create current date
+        const today = new Date();
+        const day = String(today.getDate()).padStart(2, '0');
+        const month = String(today.getMonth() + 1).padStart(2, '0');
+        const year = today.getFullYear();
+        const date = month + '/' + day + '/' + year;
+        // Create current time
+        const time = new Date();
+        const hours = time.getHours();
+        const mins = time.getMinutes();
+        const timeatm = hours + ':' + mins;
+        console.log('today', date);
+        console.log('time', timeatm);
+        // FUTUR TAG REWORK
+        const tag = 2;
+        console.log('news', news);
+        url = 'blabla';
+        const createdNews = await newsDataMapper.createNews(url, news, date, timeatm, tag);
+        res.status(200).json({
+            data: createdNews,
+            message: 'Votre news à été créer avec succès'
+          });
+          console.log('NEWS CREATED SUCCESSFULLY');
     } catch(error) {
+      console.log('NEWS CONTROLLER CREATENEWS ---> ERROR ');
         next(error);
     }
   },

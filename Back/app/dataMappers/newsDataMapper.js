@@ -60,8 +60,8 @@ module.exports = {
   },
 
   /* Create News */
-  async createNews(news) {
-      const result = await client.query('INSERT INTO "news"(title, subtitle, content, newsurl, date, time, user_id, tag_id) VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING *', [news.title, news.subtitle, news.content, news.newsurl, news.date, news.time, news.userId, news.tagId]);
+  async createNews(url, news, today, time, tag) {
+      const result = await client.query('INSERT INTO "news"(title, subtitle, content, newsurl, date, time, user_id, tag_id) VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING *', [news.title, news.subtitle, news.content, url, today, time, news.user_id, tag]);
       if (result.rowCount == 0) {
         return null
       }

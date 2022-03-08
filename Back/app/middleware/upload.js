@@ -27,7 +27,8 @@ const s3 = new aws.S3({
   region: process.env.S3_BUCKET_REGION,
 });
 
-const upload = (bucketName, desc) =>
+const upload = (bucketName, desc) => 
+  
   multer({
     storage: multerS3({
       s3: s3,

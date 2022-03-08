@@ -14,6 +14,11 @@ const mapStateToProps = (state) => ({
   title: state.news.title,
   subtitle: state.news.subtitle,
   content: state.news.content,
+  tag: state.news.tag,
+  next: state.news.next,
+  logged: state.auth.logged,
+  msg: state.news.msg,
+  success: state.news.success,
   
 });
 
@@ -24,8 +29,16 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(changeNewsField(value, name));
   },
 
-  handleSubmit: (formData) => {
-    dispatch({ type: 'CREATE_NEWS', formData});
+  handleSubmit: () => {
+    dispatch({ type: 'CREATE_NEWS'});
+  },
+
+  handleImgSubmit: (formData) => {
+    dispatch({type: 'UPDATE_IMG_NEWS', formData});
+  },
+
+  handleSuccess: () => {
+    dispatch({type: 'CHANGE_NEWS_STATUS' });
   },
 
 });

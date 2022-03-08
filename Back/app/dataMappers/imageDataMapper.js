@@ -15,4 +15,13 @@ module.exports = {
     }
     return result.rows[0];
   },
+
+  /* Upload news picture */
+  async uploadNewsImg(imgUrl, id) {
+    const result = await client.query('UPDATE "news" SET "newsurl"=$1 WHERE "id"=$2 RETURNING *', [imgUrl, id]);
+    if (result.rowCount == 0) {
+      return null
+    }
+    return result.rows[0];
+  },
 };

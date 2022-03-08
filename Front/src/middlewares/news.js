@@ -7,6 +7,8 @@ import { apiUrl } from './url';
 // Action
 import { 
   getNewsSuccess,
+  newsContentSuccess,
+  imgNewsUploadSuccess,
 } from '../store/action';
 
 
@@ -30,8 +32,42 @@ const News = (store) => (next) => (action) => {
       }
     case 'CREATE_NEWS': {
       const { 
-        news: { title, subtitle, content },
+        news: { title, subtitle, content, tag },
         auth: { id, token }
+      } = store.getState();
+      const config = {
+        method: 'post',
+        url: `${apiUrl}/news`,
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Baerer ${token}`,
+        },
+        data: {
+          title,
+          subtitle,
+          content,
+          tag,
+          user_id: id,
+        }
+      };
+      axios(config)
+        .then((response) => {
+          if (response.status !== 200) {
+            throw response.error;
+          } else {
+            console.log('response.data', response.data);
+            store.dispatch(newsContentSuccess(response.data));
+          }
+        }).catch((error) => {
+          console.log(error, 'ERROR');
+        });
+      break;
+    };
+
+    case 'UPDATE_IMG_NEWS': {
+      const { 
+        news: { id },
+        auth: { token }
       } = store.getState();
       const formData = new FormData();
       formData.append(`myImage`, action.formData);
@@ -39,21 +75,15 @@ const News = (store) => (next) => (action) => {
       headers: {
         'Content-Type': 'multipart/form-data',
         'Authorization': `Baerer ${token}`,
-      },
-      data: {
-        title,
-        subtitle,
-        content,
-        user_id: id,
-      },
+      }
       };
-      axios.post(`${apiUrl}/news`, formData, config)
+      axios.post(`${apiUrl}/news/image/${id}`, formData, config)
         .then((response) => {
           console.log('The file is successfully uploaded');
           console.log('response.data --->', response.data);
           console.log("imgProfile---->", response.data.data.profilurl);
           console.log('message', response.data.message);
-          // store.dispatch(imgUploadSuccess(response.data.data, response.data.message));
+          store.dispatch(imgNewsUploadSuccess(response.data.data, response.data.message));
         }).catch((error) => {
           console.log('Oups', error);
         });

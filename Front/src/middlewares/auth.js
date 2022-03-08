@@ -102,7 +102,7 @@ const Auth = (store) => (next) => (action) => {
           if (response.status !== 200) {
             throw response.error;
           } else {
-            console.log(response.data);
+            store.dispatch(editUserSuccess(response.data));
           }
         }).catch((error) => {
           console.log('Oups !', error);
@@ -122,10 +122,6 @@ const Auth = (store) => (next) => (action) => {
       };
       axios.post(`${apiUrl}/user/image/${id}`, formData, config)
         .then((response) => {
-          console.log('The file is successfully uploaded');
-          console.log('response.data --->', response.data);
-          console.log("imgProfile---->", response.data.data.profilurl);
-          console.log('message', response.data.message);
           store.dispatch(imgUploadSuccess(response.data.data, response.data.message));
         }).catch((error) => {
           console.log('Oups', error);

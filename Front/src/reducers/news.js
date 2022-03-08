@@ -2,15 +2,21 @@
 import {
   GET_NEWS_SUCCESS,
   CHANGE_NEWS_FIELD,
+  NEWS_CONTENT_SUCCESS,
+  IMG_NEWS_UPLOAD_SUCCESS
 } from '../store/action';
 
 /* Initial State user infos */
 const initialState = {
   news: [],
-  id: null,
-  title: null,
-  subtitle: null,
-  content: null,
+  id: '',
+  title: '',
+  subtitle: '',
+  content: '',
+  tag: '',
+  next: false,
+  msg: '',
+  success: false,
 
 };
 
@@ -30,6 +36,37 @@ const Reducer = (oldState = initialState, action = {}) => {
         ...oldState,
         [action.name]: action.value,
       };
+
+    case NEWS_CONTENT_SUCCESS:
+      return {
+        ...oldState,
+        id: action.data.data.id,
+        title: action.data.data.title,
+        subtitle: action.data.data.subtitle,
+        content: action.data.data.content,
+        next: true,
+      }
+
+    case IMG_NEWS_UPLOAD_SUCCESS:
+      return {
+        ...oldState,
+        id: action.id,
+        title: action.title,
+        subtitle: action.subtitle,
+        content: action.content,
+        newsurl: action.newsurl,
+        msg: action.message,
+        success: true,
+      }
+
+    case 'CHANGE_STATUS': {
+      return {
+        ...oldState,
+        msg: '',
+        success: false,
+        next: false,
+      }
+    }
     default:
       return {...oldState}
   }

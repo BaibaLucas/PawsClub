@@ -37,7 +37,7 @@ const ImgProfil = ({ handleSubmit, imgprofil, msg, success, logged, handleSucces
     } else {
       return defaultPic;
     }
-  }
+  };
 
   // Handle Value file image
   const onSelectFile = async (event) => {
@@ -48,7 +48,7 @@ const ImgProfil = ({ handleSubmit, imgprofil, msg, success, logged, handleSucces
         setImage(reader.result);
       });
     };
-  }
+  };
 
   // Handle submit image
   const onSubmit = async (event) => {
@@ -57,7 +57,7 @@ const ImgProfil = ({ handleSubmit, imgprofil, msg, success, logged, handleSucces
     const canvasDataUrl = canvas.toDataURL('image/jpeg');
     const convertedUrlToFile = dataURLtoFile(canvasDataUrl, 'profil-picture.jpeg');
     handleSubmit(convertedUrlToFile);
-  }
+  };
 
   // Refresh Success statue for reset message
   const refreshStatus = () => {
