@@ -9,6 +9,7 @@ export const EDIT_USER_SUCCESS = 'EDIT_USER_SUCCESS';
 
 // News types
 export const GET_NEWS_SUCCESS = 'GET_NEWS_SUCCESS';
+export const CHANGE_NEWS_FIELD = 'CHANGE_NEWS_FIELD';
 // Lineup types
 export const GET_SECTIONS_SUCCESS = 'GET_SECTIONS_SUCCESS';
 // Sections types
@@ -46,6 +47,11 @@ export const editUserSuccess = (data) => ({
 export const getNewsSuccess = (data) => ({
   type: GET_NEWS_SUCCESS,
   data,
+});
+export const changeNewsField = (value, name) => ({
+  type: CHANGE_NEWS_FIELD,
+  value,
+  name,
 });
 
 // Lineup actions

@@ -8,11 +8,11 @@ import { dataURLtoFile } from '../../utils';
 
 // Components
 
-const CreateNews = ({ title, handleSubmit, subtitle, content }) => {
+const CreateNews = ({ title, handleChange, handleSubmit, subtitle, content }) => {
 
   /* Handle Change */
   const onChange = (event) => {
-    // handleChange(event.target.value, event.target.name)
+    handleChange(event.target.value, event.target.name)
   };
 
 
@@ -47,7 +47,7 @@ const CreateNews = ({ title, handleSubmit, subtitle, content }) => {
     event.preventDefault();
     const canvas = await getCanvasImage(image);
     const canvasDataUrl = canvas.toDataURL('image/jpeg');
-    const convertedUrlToFile = dataURLtoFile(canvasDataUrl, 'profil-picture.jpeg');
+    const convertedUrlToFile = dataURLtoFile(canvasDataUrl, 'news-picture.jpeg');
     handleSubmit(convertedUrlToFile);
   }
 
