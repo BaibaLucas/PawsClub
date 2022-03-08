@@ -18,6 +18,9 @@ const mapStateToProps = (state) => ({
 // Component Func (News)
 const mapDispatchToProps = (dispatch) => ({
 
+  loadNewsData: () => {
+    dispatch({type: 'GET_NEWS'});
+  },
 
 });
 

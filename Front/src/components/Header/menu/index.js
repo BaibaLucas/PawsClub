@@ -11,12 +11,13 @@ import { RiGamepadLine } from 'react-icons/ri';
 import { FaHandsHelping } from 'react-icons/fa';
 import { MdQuestionAnswer } from 'react-icons/md';
 import { MdManageAccounts } from 'react-icons/md';
+import { MdCreateNewFolder } from 'react-icons/md';
 
 /* Local imports */
 
 // Components
 
-const Menu = ({ open, setOpen, logged }) => {
+const Menu = ({ open, setOpen, logged, role }) => {
 
   const close = () => {
     setOpen(!open);
@@ -57,6 +58,12 @@ const Menu = ({ open, setOpen, logged }) => {
             </NavLink>
           </> 
           }
+          <NavLink className='menu__nav__list__item'  onClick={close} to='/createnews'>
+            <MdCreateNewFolder size={50} />
+            <li className='menu__nav__list__item__name'>
+              Create News
+            </li>
+          </NavLink>
           <NavLink className='menu__nav__list__item'  onClick={close} to='/news'>
             <BsNewspaper size={50} />
             <li className='menu__nav__list__item__name'>

@@ -38,6 +38,7 @@ router.post('/user/image/:id(\\d+)', authMW, imageController.uploadUserImg); // 
 // Accessible only for moderator
 router.post('/news', modMW, newsController.createNews); // CREATE NEWS
 router.patch('/news/:id(\\d+)', modMW, newsController.updateNews); // MODIFY NEWS
+router.post('/news/image/:id(\\d+)', modMW, imageController.uploadNewsImg); // UPLOAD NEWS PICTURE
 router.delete('/news/:id(\\d+)', modMW, newsController.deleteNews); // DELETE NEWS
 
 

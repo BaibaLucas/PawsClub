@@ -9,6 +9,9 @@ export const EDIT_USER_SUCCESS = 'EDIT_USER_SUCCESS';
 
 // News types
 export const GET_NEWS_SUCCESS = 'GET_NEWS_SUCCESS';
+export const CHANGE_NEWS_FIELD = 'CHANGE_NEWS_FIELD';
+export const NEWS_CONTENT_SUCCESS = 'NEWS_CONTENT_SUCCESS';
+export const IMG_NEWS_UPLOAD_SUCCESS = 'IMG_NEWS_UPLOAD_SUCCESS';
 // Lineup types
 export const GET_SECTIONS_SUCCESS = 'GET_SECTIONS_SUCCESS';
 // Sections types
@@ -47,6 +50,20 @@ export const getNewsSuccess = (data) => ({
   type: GET_NEWS_SUCCESS,
   data,
 });
+export const changeNewsField = (value, name) => ({
+  type: CHANGE_NEWS_FIELD,
+  value,
+  name,
+});
+export const newsContentSuccess = (data) => ({
+  type: NEWS_CONTENT_SUCCESS,
+  data,
+});
+export const imgNewsUploadSuccess = (news, message) => ({
+  type: IMG_NEWS_UPLOAD_SUCCESS,
+  ...news,
+  message,
+})
 
 // Lineup actions
 export const getSectionsSuccess = (data) => ({
