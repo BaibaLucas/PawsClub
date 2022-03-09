@@ -20,6 +20,7 @@ import Account from '../../containers/Account';
 import Roster from '../../containers/Roster';
 import ImgProfil from '../../containers/ImgProfil';
 import CreateNews from '../../containers/CreateNews';
+import Admin from '../../containers/Admin';
 
 const App = ({ loadNewsData, loadSectionsData, loadStreamersData }) => {
 
@@ -50,6 +51,7 @@ const App = ({ loadNewsData, loadSectionsData, loadStreamersData }) => {
         <Route path='/account/update' element={<ImgProfil />} />
         <Route path='/roster' element={<Roster />} />
         <Route path='/createnews' element={<CreateNews />} />
+        <Route path='/admin' element={<Admin />} />
       </Routes>
 
       <Footer />

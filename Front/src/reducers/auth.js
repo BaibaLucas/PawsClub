@@ -6,6 +6,8 @@ import {
   LOGIN_SUCCESS,
   EDIT_USER_SUCCESS,
   IMG_UPLOAD_SUCCESS,
+  ADMIN_LOGIN_SUCCESS,
+  ADMIN_AUTH_FAILED,
 } from '../store/action';
 
 /* Initial State user infos */
@@ -15,6 +17,7 @@ const initialState = {
   email: '',
   password: '',
   imgprofil: '',
+  role_id: '',
   token: '',
   logged: false,
   error: false,
@@ -44,6 +47,7 @@ const Reducer = (oldState = initialState, action = {}) => {
         email: action.email,
         password: '',
         profilurl: action.profilurl,
+        role_id: action.role_id,
         logged: true,
       };
     
@@ -62,6 +66,7 @@ const Reducer = (oldState = initialState, action = {}) => {
         username: action.username,
         email: action.email,
         imgprofil: action.profilurl,
+        role_id: action.role_id,
         password: '',
         logged: true,
       };
@@ -74,6 +79,7 @@ const Reducer = (oldState = initialState, action = {}) => {
         username: action.username,
         email: action.email,
         imgprofil: action.profilurl,
+        role_id: action.role_id,
         password: '',
         logged: true,
       };
@@ -85,20 +91,40 @@ const Reducer = (oldState = initialState, action = {}) => {
           username: action.username,
           email: action.email,
           imgprofil: action.profilurl,
+          role_id: action.role_id,
           password: '',
           isLogged: true,
           msg: action.message,
           success: true,
         };
 
-      case 'CHANGE_STATUS': {
+      case 'CHANGE_STATUS': 
         return {
           ...oldState,
           msg: '',
           success: false,
-        }
-      }
+        };
+      
+      case ADMIN_LOGIN_SUCCESS:
+        return {
+          ...oldState,
+        id: action.id,
+        token: action.token,
+        username: action.username,
+        email: action.email,
+        imgprofil: action.profilurl,
+        role_id: action.role_id,
+        password: '',
+        logged: true,
+        };
 
+      case ADMIN_AUTH_FAILED:
+        return {
+          ...oldState,
+          error: true,
+          msg: action.message,
+        };
+        
     default:
       return {...oldState}
   }

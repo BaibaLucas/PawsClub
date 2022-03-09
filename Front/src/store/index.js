@@ -9,6 +9,7 @@ import rootReducer from '../reducers';
 import authMiddleware from '../middlewares/auth';
 import newsMiddleware from '../middlewares/news';
 import sectionsMiddleware from '../middlewares/sections';
+import adminMiddleware from '../middlewares/admin';
 
 /* Store */
 const store = createStore(
@@ -17,6 +18,7 @@ const store = createStore(
     applyMiddleware(authMiddleware),
     applyMiddleware(newsMiddleware),
     applyMiddleware(sectionsMiddleware),
+    applyMiddleware(adminMiddleware),
   ),
 );
 

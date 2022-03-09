@@ -18,6 +18,9 @@ export const GET_SECTIONS_SUCCESS = 'GET_SECTIONS_SUCCESS';
 export const GET_ROSTER_SUCCESS = 'GET_ROSTER_SUCCESS';
 // Image Types
 export const IMG_UPLOAD_SUCCESS = 'IMG_UPLOAD_SUCCESS';
+// Admin Types
+export const ADMIN_AUTH_FAILED = 'ADMIN_AUTH_FAILED';
+export const ADMIN_LOGIN_SUCCESS = 'ADMIN_LOGIN_SUCCESS';
 
 /* Actions */
 
@@ -82,4 +85,15 @@ export const imgUploadSuccess = (user, message) => ({
   type: IMG_UPLOAD_SUCCESS,
   ...user,
   message,
+});
+
+// Admin actions
+export const AdminAuthFailed = (data) => ({
+  type: ADMIN_AUTH_FAILED,
+  ...data,
+});
+export const AdminLoginSuccess = (data, token) => ({
+  type: ADMIN_LOGIN_SUCCESS,
+  ...data,
+  token,
 });
