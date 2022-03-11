@@ -1,13 +1,55 @@
 /* Package imports */
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 
 
 /* Local imports */
 import defaultPic from '../../assets/images/defaultPic.jpeg';
+import Admin from '../../middlewares/admin';
 
 // Components
 
-const AdminDashboardUsers = () => {
+const AdminDashboardUsers = ({ loadUsers, users, handleChange, submitRole, selectedUser, user_id, username }) => {
+
+  // Loading Users
+  useEffect(() => {
+    loadUsers();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  console.log(user_id);
+  const usrImg = (imgprofil) => {
+    if (imgprofil === null) {
+      return defaultPic
+    } else {
+      return imgprofil;
+    }
+  }
+
+  // Return role as string by Id
+  const memberRole = (role) => {
+    if (role === 1) {
+      return 'membre';
+    } else if (role === 2){
+      return 'moderator'
+    } else {
+      return 'admin';
+    }
+  }
+
+  const onChange = (event) => {
+    handleChange(event.target.value, event.target.name);
+  };
+
+  const handleSubmitRole = (event) => {
+    event.preventDefault();
+    submitRole();
+  }
+
+  const selectUser = (id, username) => {
+    selectedUser(id, username);
+  };
+
+  
 
   const [openUpdate, setOpenUpdate] = useState(false);
   const [openDelete, setOpenDelete] = useState(false);
@@ -21,9 +63,6 @@ const AdminDashboardUsers = () => {
     console.log('click')
   };
 
-  const close = () => {
-    setOpenUpdate(false);
-  }
 
 
   return(
@@ -32,7 +71,8 @@ const AdminDashboardUsers = () => {
         <div className='container__title'>
           <h1> USERS DASHBOARD </h1>
         </div>
-        <div className='container__choice'>
+        {user_id.length !== 0 && (
+          <div className='container__choice'>
           <div className='container__choice__item' onClick={openModalUpdate}>
             UPDATE
           </div>
@@ -40,97 +80,24 @@ const AdminDashboardUsers = () => {
             DELETE
           </div>
         </div>
+        )}
         <div className='container__box'>
-          <div className='container__box__card'>
-            <img className='container__box__card__img' alt='avatar' src={defaultPic}/>
-            <div className='container__box__card__username'>
-              Reape
-            </div>
-            <div className='container__box__card__role'>
-              membre
-            </div>
-          </div>
-          <div className='container__box__card'>
-            <img className='container__box__card__img' alt='avatar' src={defaultPic}/>
-            <div className='container__box__card__username'>
-              Reape
-            </div>
-            <div className='container__box__card__role'>
-              membre
-            </div>
-          </div>
-          <div className='container__box__card'>
-            <img className='container__box__card__img' alt='avatar' src={defaultPic}/>
-            <div className='container__box__card__username'>
-              Reape
-            </div>
-            <div className='container__box__card__role'>
-              membre
-            </div>
-          </div>
-          <div className='container__box__card'>
-            <img className='container__box__card__img' alt='avatar' src={defaultPic}/>
-            <div className='container__box__card__username'>
-              Reape
-            </div>
-            <div className='container__box__card__role'>
-              membre
-            </div>
-          </div>
-          <div className='container__box__card'>
-            <img className='container__box__card__img' alt='avatar' src={defaultPic}/>
-            <div className='container__box__card__username'>
-              Reape
-            </div>
-            <div className='container__box__card__role'>
-              membre
-            </div>
-          </div>
-          <div className='container__box__card'>
-            <img className='container__box__card__img' alt='avatar' src={defaultPic}/>
-            <div className='container__box__card__username'>
-              Reape
-            </div>
-            <div className='container__box__card__role'>
-              membre
-            </div>
-          </div>
-          <div className='container__box__card'>
-            <img className='container__box__card__img' alt='avatar' src={defaultPic}/>
-            <div className='container__box__card__username'>
-              Reape
-            </div>
-            <div className='container__box__card__role'>
-              membre
-            </div>
-          </div>
-          <div className='container__box__card'>
-            <img className='container__box__card__img' alt='avatar' src={defaultPic}/>
-            <div className='container__box__card__username'>
-              Reape
-            </div>
-            <div className='container__box__card__role'>
-              membre
-            </div>
-          </div>
-          <div className='container__box__card'>
-            <img className='container__box__card__img' alt='avatar' src={defaultPic}/>
-            <div className='container__box__card__username'>
-              Reape
-            </div>
-            <div className='container__box__card__role'>
-              membre
-            </div>
-          </div>
-          <div className='container__box__card'>
-            <img className='container__box__card__img' alt='avatar' src={defaultPic}/>
-            <div className='container__box__card__username'>
-              Reape
-            </div>
-            <div className='container__box__card__role'>
-              membre
-            </div>
-          </div>
+        {users.map((user => {
+              return (
+                <div key={user.id}
+                className='container__box__card'
+                onClick={() => selectUser(user.id, user.username)}  
+                >
+                  <img className='container__box__card__image' alt='user profil' src={usrImg(user.profilurl)}/>
+                  <div className='container__box__card__username'>
+                    {user.username}
+                  </div>
+                  <div className='container__box__card__role'>
+                    {memberRole(user.role_id)}
+                  </div>
+                </div>
+              )
+            }))}
         </div>
         {openUpdate && (
           <div className='container__modal'>
@@ -139,19 +106,23 @@ const AdminDashboardUsers = () => {
                 MODAL UPDATE
               </div>
               <div className='container__modal__update__user'>
-                user
+                {username}
               </div>
               <form className='container__modal__update__form'>
-                <select name="role" id ='role_select' className="container__modal__update__form__select">
-                  <option value=''>Choose a Role</option>
-                  <option value='Moderator'>moderator</option>
-                  <option value="Member">member</option>
+                <select name='role_id'
+                className="container__modal__update__form__select" 
+                onChange={onChange}
+                >
+                  <option value=''>Role</option>
+                  <option value='3'>Admin</option>
+                  <option value='2'>Moderator</option>
+                  <option value='1'>Member</option>
                 </select>
                 <div className='container__modal__update__button'>
-                  <button onClick={close}>
+                  <button onClick={handleSubmitRole}>
                     Valider
                   </button>
-                  <button>
+                  <button onClick={handleSubmitRole}>
                     Annuler
                   </button>
                 </div>

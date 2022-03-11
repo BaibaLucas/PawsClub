@@ -10,6 +10,7 @@ import authMiddleware from '../middlewares/auth';
 import newsMiddleware from '../middlewares/news';
 import sectionsMiddleware from '../middlewares/sections';
 import adminMiddleware from '../middlewares/admin';
+import usersMiddleware from '../middlewares/users';
 
 /* Store */
 const store = createStore(
@@ -19,6 +20,7 @@ const store = createStore(
     applyMiddleware(newsMiddleware),
     applyMiddleware(sectionsMiddleware),
     applyMiddleware(adminMiddleware),
+    applyMiddleware(usersMiddleware),
   ),
 );
 

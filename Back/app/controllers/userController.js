@@ -102,7 +102,22 @@ module.exports = {
       };
       const userToUpdate = req.body;
       console.log('userToUpdate =>', userToUpdate);
-      if (userToUpdate.password.length === 0 && userToUpdate.email.length === 0) {
+      if (typeof userToUpdate.password == 'undefined' && typeof userToUpdate.email == 'undefined' && typeof userToUpdate.username == 'undefined'){
+        /* UPDATE ONLY ROLE */
+        console.log('ONLY ROLE');
+        try {
+          const userUpdated = await userDataMapper.updateRole(userId, {
+            role_id: userToUpdate.role_id,
+            });
+            res.json({
+              message: 'user updated',
+              data: userUpdated
+            });
+            console.log('userUpdated', userUpdated);
+        } catch (error) {
+          next();
+        }
+      } else if (userToUpdate.password.length === 0 && userToUpdate.email.length === 0) {
         /* UPDATE ONLY NAME */
         console.log('ONLY NAME');
         try {

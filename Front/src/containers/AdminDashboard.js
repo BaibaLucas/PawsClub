@@ -10,13 +10,12 @@ import AdminDashboard from '../components/AdminDashboard';
 
 // Component States (Admin)
 const mapStateToProps = (state) => ({
-  
+  username: state.auth.username,
+  imgprofil: state.auth.imgprofil,
 });
 
 // Component Func (Admin)
 const mapDispatchToProps = (dispatch) => ({
-
-
 
 });
 

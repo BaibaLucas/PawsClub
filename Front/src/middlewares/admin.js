@@ -7,7 +7,7 @@ import { apiUrl } from './url';
 // Action
 import {
   AdminAuthFailed,
-  AdminLoginSuccess
+  AdminLoginSuccess,
  } from '../store/action';
 
 

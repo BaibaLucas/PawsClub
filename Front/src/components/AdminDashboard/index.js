@@ -1,5 +1,5 @@
 /* Package imports */
-import React from 'react';
+import React, { useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import { AiFillTag } from 'react-icons/ai';
 import { BsNewspaper } from 'react-icons/bs';
@@ -10,14 +10,27 @@ import { RiTeamFill } from 'react-icons/ri';
 import defaultPic from '../../assets/images/defaultPic.jpeg';
 // Components
 
-const AdminDashboard = () => {
+const AdminDashboard = ({ username, imgprofil }) => {
+
+
+  // If user haven't profile picture return default pic
+  const usrImg = () => {
+    if (imgprofil === null) {
+      return defaultPic
+    } else {
+      return imgprofil;
+    }
+  }
+
+
+
   return(
     <div className='admindashboard'>
       <div className='container'>
         <div className='container__admin'>
-          <img className='container__admin__img' alt='user_img' src={defaultPic}/>
+          <img className='container__admin__img' alt='user_img' src={usrImg()}/>
           <div className='container__admin__username'>
-          Username
+          {username}
           </div>
         </div>
         <nav className='container__nav'>

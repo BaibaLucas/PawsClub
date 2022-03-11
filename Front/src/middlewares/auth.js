@@ -131,37 +131,6 @@ const Auth = (store) => (next) => (action) => {
       break;
     };
 
-    case 'ADMIN_LOGIN': {
-      const { auth: { email, password } } = store.getState();
-      const config = {
-        method: 'post',
-        url: `${apiUrl}/admin`,
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        data: {
-          email,
-          password,
-        },
-      };
-      axios(config)
-      .then((response) => {
-        if (response.status !== 200) {
-          throw response.error;
-        } else {
-          console.log(response.data);
-          store.dispatch(AdminLoginSuccess(response.data.data, response.data.token));
-        }
-      }).catch((error) => {
-        if (error.response.status === 401 || 404) {
-          store.dispatch(AdminAuthFailed(error.response.data));
-        } else {
-          console.log('Error has been appeared 2 =>', error);
-        }
-      });
-      break;
-    };
-
 
     default: 
       next(action);

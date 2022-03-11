@@ -16,6 +16,10 @@ export const IMG_NEWS_UPLOAD_SUCCESS = 'IMG_NEWS_UPLOAD_SUCCESS';
 export const GET_SECTIONS_SUCCESS = 'GET_SECTIONS_SUCCESS';
 // Sections types
 export const GET_ROSTER_SUCCESS = 'GET_ROSTER_SUCCESS';
+// Users types
+export const GET_USERS_SUCCESS = 'GET_USERS_SUCCESS';
+export const CHANGE_USERS_FIELD = 'CHANGE_USERS_FIELD';
+export const SELECT_USER = 'SELECT_USER';
 // Image Types
 export const IMG_UPLOAD_SUCCESS = 'IMG_UPLOAD_SUCCESS';
 // Admin Types
@@ -78,6 +82,22 @@ export const getSectionsSuccess = (data) => ({
 export const getRosterSuccess = (data) => ({
   type: GET_ROSTER_SUCCESS,
   data,
+});
+
+// Users actions
+export const getUsersSuccess = (data) => ({
+  type: GET_USERS_SUCCESS,
+  data,
+});
+export const changeUsersField = (value, name) => ({
+  type: CHANGE_USERS_FIELD,
+  value,
+  name,
+});
+export const selectUser = (id, username) => ({
+  type: SELECT_USER,
+  id,
+  username,
 });
 
 // Image actions

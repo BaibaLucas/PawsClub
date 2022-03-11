@@ -66,6 +66,15 @@ module.exports = {
     return result.rows;
   },
 
+  /* Update Only Role */
+  async updateRole(userId, userToUpdate) {
+    const result = await client.query('UPDATE "user" SET role_id=$1 WHERE id=$2 RETURNING *', [userToUpdate.role_id, userId]);
+    if (result.rowCount == 0) {
+        return null;
+    }
+    return result.rows;
+  },
+
   /* Update Only Username */
   async updateUsername(userId, userToUpdate) {
     const result = await client.query('UPDATE "user" SET username=$1 WHERE id=$2 RETURNING *', [userToUpdate.username, userId]);
@@ -74,6 +83,7 @@ module.exports = {
     }
     return result.rows;
   },
+
   /* Update Only Password */
   async updatePassword(userId, userToUpdate) {
     const result = await client.query('UPDATE "user" SET password=$1 WHERE id=$2 RETURNING *', [userToUpdate.password, userId]);
