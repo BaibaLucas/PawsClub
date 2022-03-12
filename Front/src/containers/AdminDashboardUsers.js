@@ -35,9 +35,13 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch({type: 'SUBMIT_ROLE'});
   },
 
+  submitDelete: () => {
+    dispatch({type: 'DELETE_USER'});
+  },
+
   selectedUser: (id, username) => {
     dispatch(selectUser(id, username));
-  }
+  },
 
 });
 

@@ -58,7 +58,33 @@ const Admin = (store) => (next) => (action) => {
           console.log('Oups !', error);
         });
         break;
-    };
+    }
+
+    case 'DELETE_USER': {
+      const { users: { user_id },
+              auth: { token },
+    } = store.getState();
+      const config = {
+        method: 'delete',
+        url: `${apiUrl}/user/${user_id}`,
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Baerer ${token}`,
+        },
+      };
+      axios(config)
+        .then((response) => {
+          if (response.status !==200) {
+            throw response.error;
+          } else {
+            // store.dispatch(deleteUserSuccess(response.data));
+            console.log(response.data);
+          }
+        }).catch((error) => {
+          console.log('Oups !', error);
+        });
+        break;
+    }
     
     default: 
       next(action);

@@ -8,7 +8,7 @@ import Admin from '../../middlewares/admin';
 
 // Components
 
-const AdminDashboardUsers = ({ loadUsers, users, handleChange, submitRole, selectedUser, user_id, username }) => {
+const AdminDashboardUsers = ({ loadUsers, users, handleChange, submitRole, selectedUser, user_id, username, submitDelete }) => {
 
   // Loading Users
   useEffect(() => {
@@ -42,7 +42,14 @@ const AdminDashboardUsers = ({ loadUsers, users, handleChange, submitRole, selec
 
   const handleSubmitRole = (event) => {
     event.preventDefault();
+    setOpenUpdate(!openUpdate);
     submitRole();
+  };
+
+  const handleSubmitDelete = (event) => {
+    event.preventDefault();
+    setOpenDelete(!openDelete);
+    submitDelete();
   }
 
   const selectUser = (id, username) => {
@@ -122,7 +129,7 @@ const AdminDashboardUsers = ({ loadUsers, users, handleChange, submitRole, selec
                   <button onClick={handleSubmitRole}>
                     Valider
                   </button>
-                  <button onClick={handleSubmitRole}>
+                  <button onClick={openModalUpdate}>
                     Annuler
                   </button>
                 </div>
@@ -137,10 +144,10 @@ const AdminDashboardUsers = ({ loadUsers, users, handleChange, submitRole, selec
                 MODAL DELETE
               </div>
               <div className='container__modal__delete__user'>
-                User
+                {username}
               </div>
                 <div className='container__modal__update__button'>
-                  <button onClick={openModalDelete}>
+                  <button onClick={handleSubmitDelete}>
                     Valider
                   </button>
                   <button onClick={openModalDelete}>

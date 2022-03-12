@@ -304,6 +304,7 @@ module.exports = {
                 message: 'deleted user',
                 data: userDeleted
             });
+            console.log('User deleted');
     } catch(error){
       next(error);
     }
