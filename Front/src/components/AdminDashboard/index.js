@@ -1,5 +1,5 @@
 /* Package imports */
-import React, { useEffect } from 'react';
+import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { AiFillTag } from 'react-icons/ai';
 import { BsNewspaper } from 'react-icons/bs';
@@ -53,7 +53,7 @@ const AdminDashboard = ({ username, imgprofil }) => {
                 News
               </li>
             </NavLink>
-            <NavLink className='container__nav__list__item' to='/admin/dashboard/tag'>
+            <NavLink className='container__nav__list__item' to='/admin/dashboard/tags'>
             <AiFillTag size={50}/>
               <li className='menu__nav__list__item__name'>
                 Tag

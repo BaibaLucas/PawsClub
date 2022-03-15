@@ -5,44 +5,39 @@ import axios from 'axios';
 import { apiUrl } from './url';
 
 // Action
-import {
-  getUsersSuccess,
- } from '../store/action';
+import { 
+  getTagsSuccess,
+} from '../store/action';
 
 
-/* Users MiddleWare */
-const Admin = (store) => (next) => (action) => {
+/* Paws API Tags MiddleWare */
+const Tags = (store) => (next) => (action) => {
+
   switch (action.type) {
 
-    case 'GET_USERS': {
-      axios.get(`${apiUrl}/user`)
+    case 'GET_TAGS': {
+      axios.get(`${apiUrl}/tag`)
         .then((response) => {
           if (response.status !== 200) {
             throw response.error;
           } else {
-            console.log(response.data);
-            store.dispatch(getUsersSuccess(response.data.data));
+            store.dispatch(getTagsSuccess(response.data.data));
           }
         }).catch((error) => {
           console.log('Savage error Appeared', error);
         });
         break;
     }
-
-    case 'SUBMIT_ROLE': {
-      const { users: { user_id, role_id },
-              auth: { token },
-    } = store.getState();
-
+    case 'SUBMIT_TAG': {
+      const { tags: { tag_name } } = store.getState();
       const config = {
-        method: 'patch',
-        url: `${apiUrl}/user/${user_id}`,
+        method: 'post',
+        url: `${apiUrl}/tag`,
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': `Baerer ${token}`,
         },
         data: {
-          role_id
+          tag_name
         },
       };
       axios(config)
@@ -60,16 +55,13 @@ const Admin = (store) => (next) => (action) => {
         break;
     }
 
-    case 'DELETE_USER': {
-      const { users: { user_id },
-              auth: { token },
-    } = store.getState();
+    case 'DELETE_TAG': {
+      const { tags: { tag_id } } = store.getState();
       const config = {
         method: 'delete',
-        url: `${apiUrl}/user/${user_id}`,
+        url: `${apiUrl}/tag/${tag_id}`,
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': `Baerer ${token}`,
         },
       };
       axios(config)
@@ -85,10 +77,11 @@ const Admin = (store) => (next) => (action) => {
         });
         break;
     }
-    
+
     default: 
       next(action);
   }
+
 };
 
-export default Admin;
+export default Tags;

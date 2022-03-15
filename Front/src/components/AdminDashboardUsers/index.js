@@ -4,7 +4,6 @@ import React, {useState, useEffect} from 'react';
 
 /* Local imports */
 import defaultPic from '../../assets/images/defaultPic.jpeg';
-import Admin from '../../middlewares/admin';
 
 // Components
 

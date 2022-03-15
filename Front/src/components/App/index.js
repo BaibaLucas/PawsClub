@@ -23,6 +23,7 @@ import CreateNews from '../../containers/CreateNews';
 import Admin from '../../containers/Admin';
 import AdminDashboard from '../../containers/AdminDashboard';
 import AdminDashboardUsers from '../../containers/AdminDashboardUsers'
+import AdminDashboardTags from '../../containers/AdminDashboardTags'
 
 const App = ({ loadNewsData, loadSectionsData, loadStreamersData }) => {
 
@@ -56,6 +57,7 @@ const App = ({ loadNewsData, loadSectionsData, loadStreamersData }) => {
         <Route path='/admin' element={<Admin />} />
         <Route path='/admin/dashboard' element={<AdminDashboard />} />
         <Route path='/admin/dashboard/users' element={<AdminDashboardUsers />} />
+        <Route path='/admin/dashboard/tags' element={<AdminDashboardTags />} />
       </Routes>
 
       <Footer />

@@ -25,6 +25,10 @@ export const IMG_UPLOAD_SUCCESS = 'IMG_UPLOAD_SUCCESS';
 // Admin Types
 export const ADMIN_AUTH_FAILED = 'ADMIN_AUTH_FAILED';
 export const ADMIN_LOGIN_SUCCESS = 'ADMIN_LOGIN_SUCCESS';
+// Tags Types
+export const GET_TAGS_SUCCESS = 'GET_TAGS_SUCCESS';
+export const CHANGE_TAGS_FIELD = 'CHANGE_TAGS_FIELD';
+export const SELECT_TAG = 'SELECT_TAG';
 
 /* Actions */
 
@@ -105,6 +109,22 @@ export const imgUploadSuccess = (user, message) => ({
   type: IMG_UPLOAD_SUCCESS,
   ...user,
   message,
+});
+
+// Tags actions
+export const getTagsSuccess = (data) => ({
+  type: GET_TAGS_SUCCESS,
+  data,
+});
+export const changeTagsField = (value, name) => ({
+  type: CHANGE_TAGS_FIELD,
+  value,
+  name,
+});
+export const selectTag = (id, name) => ({
+  type: SELECT_TAG,
+  id,
+  name,
 });
 
 // Admin actions
