@@ -69,8 +69,8 @@ module.exports = {
   },
 
   /* Update News */
-  async updateNews(news, newsId) {
-    const result = await client.query('UPDATE "news" SET title=$1, subtitle=$2, content=$3, newsurl=$4, date=$5, time=$6, user_id=$7, tag_id=$8 WHERE id=$9 RETURNING *', [news.title, news.subtitle, news.content, news.newsurl, news.date, news.time, news.userId, news.tagId, newsId]);
+  async updateNews(url, news, today, time, tag, newsId) {
+    const result = await client.query('UPDATE "news" SET title=$1, subtitle=$2, content=$3, newsurl=$4, date=$5, time=$6, tag_id=$7 WHERE id=$8 RETURNING *', [news.title, news.subtitle, news.content, url, today, time, tag, newsId]);
     if (result.rowCount == 0) {
         return null;
     }
