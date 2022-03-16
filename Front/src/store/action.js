@@ -12,6 +12,7 @@ export const GET_NEWS_SUCCESS = 'GET_NEWS_SUCCESS';
 export const CHANGE_NEWS_FIELD = 'CHANGE_NEWS_FIELD';
 export const NEWS_CONTENT_SUCCESS = 'NEWS_CONTENT_SUCCESS';
 export const IMG_NEWS_UPLOAD_SUCCESS = 'IMG_NEWS_UPLOAD_SUCCESS';
+export const SELECT_NEWS = 'SELECT_NEWS';
 // Lineup types
 export const GET_SECTIONS_SUCCESS = 'GET_SECTIONS_SUCCESS';
 export const GET_ROSTER_SUCCESS = 'GET_ROSTER_SUCCESS';
@@ -76,7 +77,15 @@ export const imgNewsUploadSuccess = (news, message) => ({
   type: IMG_NEWS_UPLOAD_SUCCESS,
   ...news,
   message,
-})
+});
+export const selectNews = (id, title, subtitle, content, tag) => ({
+  type: SELECT_NEWS,
+  id,
+  title,
+  subtitle,
+  content,
+  tag,
+});
 
 // Lineup actions
 export const getSectionsSuccess = (data) => ({

@@ -1,4 +1,4 @@
-.admindashboardsections{
+.admindashboardnews{
   height: 100vh;
   .container{
     height: 100%;
@@ -40,7 +40,6 @@
         &__image{
           height: 70px;
           width: 70px;
-          border-radius: 50%;
           img{
             height: 70px;
             width: 70px;
@@ -59,7 +58,7 @@
       }
     }
     &__modal{
-      // height: 90%;
+      height: 90%;
       width: 100%;
       position: absolute;
       z-index: 2;

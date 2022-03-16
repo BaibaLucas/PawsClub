@@ -25,6 +25,7 @@ import AdminDashboard from '../../containers/AdminDashboard';
 import AdminDashboardUsers from '../../containers/AdminDashboardUsers';
 import AdminDashboardTags from '../../containers/AdminDashboardTags';
 import AdminDashboardSections from '../../containers/AdminDashboardSections';
+import AdminDashboardNews from '../../containers/AdminDashboardNews';
 
 const App = ({ loadNewsData, loadSectionsData, loadStreamersData }) => {
 
@@ -60,6 +61,7 @@ const App = ({ loadNewsData, loadSectionsData, loadStreamersData }) => {
         <Route path='/admin/dashboard/users' element={<AdminDashboardUsers />} />
         <Route path='/admin/dashboard/tags' element={<AdminDashboardTags />} />
         <Route path='/admin/dashboard/linesup' element={<AdminDashboardSections />} />
+        <Route path='/admin/dashboard/news' element={<AdminDashboardNews />} />
       </Routes>
 
       <Footer />

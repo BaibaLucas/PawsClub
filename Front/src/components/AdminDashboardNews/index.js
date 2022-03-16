@@ -4,16 +4,25 @@ import React, {useState, useEffect} from 'react';
 
 /* Local imports */
 import defaultPic from '../../assets/images/defaultPic.jpeg';
+import addon from '../../assets/images/addon.png';
 
 // Components
 
-const AdminDashboardSections = ({ loadSections, sections, handleChange, submitCreate, submitUpdate, selectedSection, section_id, section_name, section_title, section_desc, section_content, submitDelete }) => {
+const AdminDashboardNews = ({ loadNews, news, handleChange, submitCreate, submitUpdate, selectedNews, title, subtitle, content, tag, id, submitDelete }) => {
 
   // Loading Users
   useEffect(() => {
-    loadSections();
+    loadNews();
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  const newsImg = (newsurl) => {
+    if (newsurl.length === 0 || newsurl === 'blabla' || newsurl === 'http://myphotourlnews.fr') {
+      return addon
+    } else {
+      return newsurl;
+    }
+  };
 
   const onChange = (event) => {
     handleChange(event.target.value, event.target.name);
@@ -26,9 +35,9 @@ const AdminDashboardSections = ({ loadSections, sections, handleChange, submitCr
   };
 
 
-  const selectSection = (id, name, title, desc, content) => {
-    console.log(id, name, title, desc, content)
-    selectedSection(id, name, title, desc, content);
+  const selectNews = (id, title, subtitle, content) => {
+    console.log(id, title, subtitle, content)
+    selectedNews(id, title, subtitle, content);
   };
 
 
@@ -67,16 +76,16 @@ const AdminDashboardSections = ({ loadSections, sections, handleChange, submitCr
 
 
   return(
-    <div className='admindashboardsections'>
+    <div className='admindashboardnews'>
       <div className='container'>
         <div className='container__title'>
-          <h1> SECTIONS DASHBOARD </h1>
+          <h1> NEWS DASHBOARD </h1>
         </div>
           <div className='container__choice'>
           <div className='container__choice__item' onClick={openModalCreate}>
             CREATE
           </div>
-          {section_id.length !== 0 && (
+          {id.length !== 0 && (
             <>
             <div className='container__choice__item' onClick={openModalUpdate}>
             UPDATE
@@ -88,14 +97,16 @@ const AdminDashboardSections = ({ loadSections, sections, handleChange, submitCr
           )}
         </div>
         <div className='container__box'>
-        {sections.map((section => {
+        {news.map((news => {
               return (
-                <div key={section.id}
-                className='container__box__card'
-                onClick={() => selectSection(section.id, section.name, section.title, section.description, section.content)}  
-                >
-                  <div className='container__box__card__username'>
-                    {section.name}
+                <div key={news.id} className='container__box__card'
+                onClick={() => selectNews(news.id, news.title, news.subtitle, news.content)}>
+                  <img className='container__box__card__image' src={newsImg(news.newsurl)} alt='news illustration' />
+                  <div className='containers__box__card__title'>
+                    {news.title}
+                  </div>
+                  <div className='container__box__card__date'>
+                    {news.date}
                   </div>
                 </div>
               )
@@ -108,29 +119,29 @@ const AdminDashboardSections = ({ loadSections, sections, handleChange, submitCr
                 MODAL Create
               </div>
               <form className='container__modal__create__form'>
-                <label>Name</label>
-                <input
-                name='section_name'
-                onChange={onChange}
-                placeholder='name' 
-                />
                 <label>Title</label>
                 <input
-                name='section_title'
+                name='title'
                 onChange={onChange}
                 placeholder='title' 
                 />
-                <label>Description</label>
+                <label>SubTitle</label>
                 <input
-                name='section_desc'
+                name='subtitle'
                 onChange={onChange}
-                placeholder='desc' 
+                placeholder='subtitle' 
                 />
                 <label>Content</label>
                 <input
-                name='section_content'
+                name='content'
                 onChange={onChange}
                 placeholder='content' 
+                />
+                <label>tag</label>
+                <input
+                name='tag'
+                onChange={onChange}
+                placeholder='tag' 
                 />
                 <div className='container__modal__create__button'>
                   <button onClick={handleCreate}>
@@ -151,36 +162,36 @@ const AdminDashboardSections = ({ loadSections, sections, handleChange, submitCr
                 MODAL UPDATE
               </div>
               <div className='container__modal__update__user'>
-                {section_name}
+                {title}
               </div>
               <form className='container__modal__update__form'>
-              <label>Name</label>
+              <label>title</label>
                 <input
-                value={section_name}
-                name='section_name'
-                onChange={onChange}
-                placeholder='name' 
-                />
-                <label>Title</label>
-                <input
-                value={section_title}
-                name='section_title'
+                value={title}
+                name='title'
                 onChange={onChange}
                 placeholder='title' 
                 />
-                <label>Description</label>
-                <textarea
-                value={section_desc}
-                name='section_desc'
+                <label>subTitle</label>
+                <input
+                value={subtitle}
+                name='subtitle'
                 onChange={onChange}
-                placeholder='desc' 
+                placeholder='subtitle' 
                 />
-                <label>Content</label>
+                <label>content</label>
                 <textarea
-                value={section_content}
-                name='section_content'
+                value={content}
+                name='content'
                 onChange={onChange}
                 placeholder='content' 
+                />
+                <label>Content</label>
+                <input
+                value={tag}
+                name='tag'
+                onChange={onChange}
+                placeholder='tag' 
                 />
                 <div className='container__modal__update__button'>
                   <button onClick={handleUpdate}>
@@ -201,7 +212,7 @@ const AdminDashboardSections = ({ loadSections, sections, handleChange, submitCr
                 MODAL DELETE
               </div>
               <div className='container__modal__delete__user'>
-                {section_name}
+                {title}
               </div>
                 <div className='container__modal__update__button'>
                   <button onClick={handleDelete}>
@@ -219,4 +230,4 @@ const AdminDashboardSections = ({ loadSections, sections, handleChange, submitCr
   )
 };
 
-export default AdminDashboardSections;
+export default AdminDashboardNews;
