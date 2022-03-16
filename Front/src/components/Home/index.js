@@ -17,7 +17,9 @@ import down from '../../assets/images/down.jpg';
 
 // Components
 
+
 const Home = ({ news, sections }) => {
+  
 
   return (
     <div className='home'>
@@ -27,6 +29,7 @@ const Home = ({ news, sections }) => {
         <div className='container__presentation__content'>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean interdum nisi tortor, porta ornare turpis placerat sit amet.
         </div>
+        
         </div>
         <div className='container__news'>
           <div className='container__news__title'>

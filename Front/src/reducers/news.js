@@ -3,7 +3,8 @@ import {
   GET_NEWS_SUCCESS,
   CHANGE_NEWS_FIELD,
   NEWS_CONTENT_SUCCESS,
-  IMG_NEWS_UPLOAD_SUCCESS
+  IMG_NEWS_UPLOAD_SUCCESS,
+  SELECT_NEWS,
 } from '../store/action';
 
 /* Initial State user infos */
@@ -67,6 +68,17 @@ const Reducer = (oldState = initialState, action = {}) => {
         next: false,
       }
     }
+
+    case SELECT_NEWS:
+      return {
+        ...oldState,
+        id: action.id,
+        title: action.title,
+        subtitle: action.subtitle,
+        content: action.content,
+        tag: action.tag,
+      };
+      
     default:
       return {...oldState}
   }

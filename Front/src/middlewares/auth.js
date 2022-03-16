@@ -11,6 +11,8 @@ import {
   loginSuccess,
   editUserSuccess,
   imgUploadSuccess,
+  AdminAuthFailed,
+  AdminLoginSuccess
  } from '../store/action';
 
 

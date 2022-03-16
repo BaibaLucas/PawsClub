@@ -27,7 +27,7 @@ module.exports = {
 
   /* Create Section */
   async createSection(section) {
-    const result = await client.query('INSERT INTO "section"(name, title, description, content) VALUES ($1, $2, $3, $4) RETURNING *', [section.name, section.title, section.description, section.content]);
+    const result = await client.query('INSERT INTO "section"(name, title, description, content) VALUES ($1, $2, $3, $4) RETURNING *', [section.section_name, section.section_title, section.section_desc, section.section_content]);
     if (result.rowCount == 0) {
       return null
     }
@@ -36,7 +36,7 @@ module.exports = {
 
   /* Update Section */
   async updateSection(section, sectionId) {
-    const result = await client.query('UPDATE "section" SET name=$1, title=$2, description=$3, content=$4 WHERE id=$5 RETURNING *', [section.name, section.title, section.description, section.content, sectionId]);
+    const result = await client.query('UPDATE "section" SET name=$1, title=$2, description=$3, content=$4 WHERE id=$5 RETURNING *', [section.section_name, section.section_title, section.section_desc, section.section_content, sectionId]);
     if (result.rowCount == 0) {
         return null;
     }

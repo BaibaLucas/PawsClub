@@ -90,6 +90,64 @@ const News = (store) => (next) => (action) => {
       break;
     };
 
+    case 'UPDATE_NEWS': {
+      const { news: { id, title, subtitle, content },
+      auth : { token }
+    } = store.getState();
+
+      const config = {
+        method: 'patch',
+        url: `${apiUrl}/news/${id}`,
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Baerer ${token}`
+        },
+        data: {
+          title,
+          subtitle,
+          content,
+        },
+      };
+      axios(config)
+        .then((response) => {
+          console.log('ICI');
+          if (response.status !== 200) {
+            throw response.error;
+          } else {
+            console.log(response.data);
+          }
+        }).catch((error) => {
+          console.log('Oups !', error);
+        });
+        break;
+    }
+
+    case 'DELETE_NEWS': {
+      const { news: { id },
+      auth : { token }
+     } = store.getState();
+      const config = {
+        method: 'delete',
+        url: `${apiUrl}/news/${id}`,
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Baerer ${token}`,
+        },
+      };
+      axios(config)
+        .then((response) => {
+          if (response.status !==200) {
+            throw response.error;
+          } else {
+            // store.dispatch(deleteUserSuccess(response.data));
+            console.log(response.data);
+          }
+        }).catch((error) => {
+          console.log('Oups !', error);
+        });
+        break;
+    }
+
     default: 
       next(action);
   }

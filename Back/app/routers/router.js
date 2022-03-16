@@ -7,6 +7,7 @@ const loginController = require('../controllers/loginController');
 const newsController = require('../controllers/newsController');
 const sectionController = require('../controllers/sectionController');
 const imageController = require('../controllers/imageController');
+const tagController = require('../controllers/tagController');
 const authMW = require('../middleware/auth');
 const modMW = require('../middleware/mod');
 const adminMW = require('../middleware/admin');
@@ -26,6 +27,7 @@ router.post('/searchNews', newsController.searchNews); // GET NEWS BY LINE-UP
 router.post('/searchUser', userController.searchUsers); // GET USERS BY SEARCHBAR
 router.get('/lineup', sectionController.getAllSections); // GET ALL LINES-UP
 router.get('/lineup/:id(\\d+)', sectionController.getOneSection); // GET LINEUP BY ID
+router.get('/tag', tagController.getAllTags); // GET ALL TAGS
 
 // Accessible while connected
 
@@ -44,9 +46,11 @@ router.delete('/news/:id(\\d+)', modMW, newsController.deleteNews); // DELETE NE
 
 // Accessible only for admin
 router.post('/admin', loginController.adminLogin); // ADMIN LOGIN
-router.post('/lineup', adminMW, sectionController.createSection); // CREATE LINES-UP
-router.patch('/lineup/:id(\\d+)', adminMW, sectionController.updateSection); // MODIFY LINEUP BY ID
-router.delete('/lineup/:id(\\d+)', adminMW, sectionController.deleteSection); // DELETE LINEUP BY ID
+router.post('/lineup', sectionController.createSection); // CREATE LINES-UP
+router.patch('/lineup/:id(\\d+)', sectionController.updateSection); // MODIFY LINEUP BY ID
+router.delete('/lineup/:id(\\d+)', sectionController.deleteSection); // DELETE LINEUP BY ID
+router.post('/tag', tagController.createTag); // CREATE TAG
+router.delete('/tag/:id(\\d+)', tagController.deleteTag); // DELETE TAG
 
 // TEST
 router.post('/test', modMW);

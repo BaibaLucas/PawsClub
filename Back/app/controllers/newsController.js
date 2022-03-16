@@ -84,13 +84,30 @@ module.exports = {
   /* Update News */
   async updateNews(req, res, next) {
     try {
-        const news = req.body;
-        const newsId = req.params.id;
-        console.log(news);
-        const newsUpdated = await newsDataMapper.updateNews(news, newsId);
+      const news = req.body;
+      const newsId = req.params.id;
+      console.log('news', news);
+      // Create current date
+      const today = new Date();
+      const day = String(today.getDate()).padStart(2, '0');
+      const month = String(today.getMonth() + 1).padStart(2, '0');
+      const year = today.getFullYear();
+      const date = year + '/' + month + '/' + day;
+      // Create current time
+      const time = new Date();
+      const hours = time.getHours();
+      const mins = time.getMinutes();
+      const timeatm = hours + ':' + mins;
+      console.log('today', date);
+      console.log('time', timeatm);
+      // FUTUR TAG REWORK
+      const tag = 2;
+      console.log('news', news);
+      url = 'blabla';
+      const updatedNews = await newsDataMapper.updateNews(url, news, date, timeatm, tag, newsId);
         res.json({
             message: 'News updated',
-            data: newsUpdated
+            data: updatedNews
         });
     } catch(error) {
         next(error);

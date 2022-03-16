@@ -20,6 +20,12 @@ import Account from '../../containers/Account';
 import Roster from '../../containers/Roster';
 import ImgProfil from '../../containers/ImgProfil';
 import CreateNews from '../../containers/CreateNews';
+import Admin from '../../containers/Admin';
+import AdminDashboard from '../../containers/AdminDashboard';
+import AdminDashboardUsers from '../../containers/AdminDashboardUsers';
+import AdminDashboardTags from '../../containers/AdminDashboardTags';
+import AdminDashboardSections from '../../containers/AdminDashboardSections';
+import AdminDashboardNews from '../../containers/AdminDashboardNews';
 
 const App = ({ loadNewsData, loadSectionsData, loadStreamersData }) => {
 
@@ -50,6 +56,12 @@ const App = ({ loadNewsData, loadSectionsData, loadStreamersData }) => {
         <Route path='/account/update' element={<ImgProfil />} />
         <Route path='/roster' element={<Roster />} />
         <Route path='/createnews' element={<CreateNews />} />
+        <Route path='/admin' element={<Admin />} />
+        <Route path='/admin/dashboard' element={<AdminDashboard />} />
+        <Route path='/admin/dashboard/users' element={<AdminDashboardUsers />} />
+        <Route path='/admin/dashboard/tags' element={<AdminDashboardTags />} />
+        <Route path='/admin/dashboard/linesup' element={<AdminDashboardSections />} />
+        <Route path='/admin/dashboard/news' element={<AdminDashboardNews />} />
       </Routes>
 
       <Footer />

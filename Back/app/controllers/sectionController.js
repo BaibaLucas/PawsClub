@@ -69,17 +69,18 @@ module.exports = {
   /* Delete Section */
   async deleteSection(req, res, next) {
     try {
-      const token = req.headers.authorization.split(' ');
-      const tokenDecoded = jwt.verify(token[1], process.env.JWTSECRET);
-      const tokenRoleId = tokenDecoded.roleId;
-      // 1° Step Verif if user is admin
-      if (tokenRoleId === 3) {
-        sectionId = req.params.id;
-      } else {
-          res.status('403').json({message : 'Accès interdit : impossible de supprimer une section'});
-          next(error);
-      };
-      const deleteSectionId = sectionId;
+      // const token = req.headers.authorization.split(' ');
+      // const tokenDecoded = jwt.verify(token[1], process.env.JWTSECRET);
+      // const tokenRoleId = tokenDecoded.roleId;
+      // // 1° Step Verif if user is admin
+      // if (tokenRoleId === 3) {
+      //   sectionId = req.params.id;
+      // } else {
+      //     res.status('403').json({message : 'Accès interdit : impossible de supprimer une section'});
+      //     next(error);
+      // };
+      // const deleteSectionId = sectionId;
+      const deleteSectionId = req.params.id;
       const sectionDeleted = await sectionDataMapper.deleteSection(deleteSectionId);
             res.json({
                 message: 'deleted section',
