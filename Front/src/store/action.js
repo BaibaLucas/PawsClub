@@ -14,8 +14,10 @@ export const NEWS_CONTENT_SUCCESS = 'NEWS_CONTENT_SUCCESS';
 export const IMG_NEWS_UPLOAD_SUCCESS = 'IMG_NEWS_UPLOAD_SUCCESS';
 // Lineup types
 export const GET_SECTIONS_SUCCESS = 'GET_SECTIONS_SUCCESS';
-// Sections types
 export const GET_ROSTER_SUCCESS = 'GET_ROSTER_SUCCESS';
+export const SELECT_SECTION = 'SELECT_SECTION';
+export const CHANGE_SECTIONS_FIELD = 'CHANGE_SECTIONS_FIELD';
+export const CREATE_SECTION_SUCCESS = 'CREATE_SECTION_SUCCESS';
 // Users types
 export const GET_USERS_SUCCESS = 'GET_USERS_SUCCESS';
 export const CHANGE_USERS_FIELD = 'CHANGE_USERS_FIELD';
@@ -81,10 +83,25 @@ export const getSectionsSuccess = (data) => ({
   type: GET_SECTIONS_SUCCESS,
   data,
 });
-
-// Sections actions
 export const getRosterSuccess = (data) => ({
   type: GET_ROSTER_SUCCESS,
+  data,
+});
+export const selectSection = (id, name, title, desc, content) => ({
+  type: SELECT_SECTION,
+  id,
+  name,
+  title,
+  desc,
+  content,
+});
+export const changeSectionsField = (value, name) => ({
+  type: CHANGE_SECTIONS_FIELD,
+  value,
+  name,
+});
+export const createSectionSuccess = (data) => ({
+  type: CREATE_SECTION_SUCCESS,
   data,
 });
 
