@@ -20,6 +20,8 @@
         width: 100%;
         height: 100%;
       };
+      @include media('>large'){
+      };
       img{
         display: block;
         height: 300px;
@@ -64,11 +66,19 @@
         flex-direction: column;
         justify-content: space-evenly;
         padding: 0.3rem;
+        @include media('>large'){
+          flex-direction: row;
+          flex-wrap: wrap;
+        };
         &__card{
           border-radius: 20px;
           border: solid 1px $yellow;
           margin: 0 0 1rem 0;
           background-color: #212121;
+          @include media('>large'){
+            width: 45%;
+            margin: 0.5rem 0.2rem;
+          };
           img{
             border-radius: 20px 20px 0 0;
             height: 250px;
@@ -93,6 +103,9 @@
         }
       }
       &__more{
+        @include media('>large'){
+          margin: 1rem;
+        };
         &__link{
           color: $dark-grey;
           text-decoration: none;
@@ -105,6 +118,10 @@
           float: right;
           padding: 0.4rem;
           border-radius: 0 20px 0 0;
+          margin-bottom: 0.3rem;
+          margin-right: 0.3rem;
+          @include media('>large'){
+          };
         }
       }
     }
@@ -129,12 +146,16 @@
         width: 100%;
         padding: 0.3rem;
         overflow: scroll;
+        @include media('>large'){
+        };
         &::-webkit-scrollbar{
           display:none;
         }
         &__card{
-          width: 325px;
+          // width: 325px;
           height: 250px;
+          width: 50%;
+          
           margin: 0.2rem;
           border: solid 1px $yellow;
           border-radius: 20px;
@@ -144,8 +165,9 @@
           }
           img{
             height: 100%;
-            width: 315px;
+            width: 100%;
             border-radius: 20px;
+            object-fit: cover;
             @include media('>mid'){
               object-fit: cover;
             };
@@ -167,6 +189,9 @@
           border-radius: 0 20px 0 0;
           margin-bottom: 0.3rem;
           margin-right: 0.3rem;
+          @include media('>large'){
+            margin: 1rem;
+          };
         }
       }
     }
@@ -191,6 +216,10 @@
         flex-direction: column;
         justify-content: space-evenly;
         padding: 0.3rem;
+        @include media('>large'){
+          flex-direction: row;
+          flex-wrap: wrap;
+        };
         &__card{
           border-radius: 20px;
           border: solid 1px $yellow;

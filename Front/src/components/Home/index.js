@@ -49,13 +49,12 @@ const Home = ({ news, sections }) => {
                 </div>
               )
             }))}
-            <div className='container__news__more'>
+          </div>
+          <div className='container__news__more'>
               <NavLink className='container__news__more__link' to='/news'>
                 More news
               </NavLink>
             </div>
-          </div>
-
         </div>
         <div className='container__linesup'>
           <div className='container__linesup__title'>
