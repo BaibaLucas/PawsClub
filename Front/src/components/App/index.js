@@ -27,8 +27,9 @@ import AdminDashboardUsers from '../../containers/AdminDashboardUsers';
 import AdminDashboardTags from '../../containers/AdminDashboardTags';
 import AdminDashboardSections from '../../containers/AdminDashboardSections';
 import AdminDashboardNews from '../../containers/AdminDashboardNews';
+import { GuardedRoute, AdminRoute } from '../GuardedRoute';
 
-const App = ({ loadNewsData, loadSectionsData, loadStreamersData }) => {
+const App = ({ loadNewsData, loadSectionsData, loadStreamersData, logged, role_id }) => {
 
   // Loading News - Sections - Streamers
   useEffect(() => {
@@ -48,25 +49,29 @@ const App = ({ loadNewsData, loadSectionsData, loadStreamersData }) => {
         <Route path='/' element={<Home />} />
         <Route path='/login' element={<Login />} />
         <Route path='/signup' element={<Signup />} />
-        <Route path='/linesup' element={<LinesUp />} />
         <Route path='/joinus' element={<JoinUs />} />
         <Route path='/about' element={<About />} />
-        <Route path='/section' element={<Section />} />
+        <Route path='/streams' element={<Streams />}/>
+        <Route path='/linesup' element={<LinesUp />} />
         <Route path='/news' element={<News />} />
         <Route path='/newsdetails' element={<Newsdetails />} />
-        <Route path='/streams' element={<Streams />} />
-        <Route path='/account' element={<Account />} />
-        <Route path='/account/update' element={<ImgProfil />} />
         <Route path='/roster' element={<Roster />} />
-        <Route path='/createnews' element={<CreateNews />} />
+        {/* User route */}
+        <Route element={<GuardedRoute logged={logged} />}>
+          <Route path='/account' element={<Account />} />
+          <Route path='/account/update' element={<ImgProfil />} />
+        </Route>
+        {/* Admin route */}
         <Route path='/admin' element={<Admin />} />
-        <Route path='/admin/dashboard' element={<AdminDashboard />} />
-        <Route path='/admin/dashboard/users' element={<AdminDashboardUsers />} />
-        <Route path='/admin/dashboard/tags' element={<AdminDashboardTags />} />
-        <Route path='/admin/dashboard/linesup' element={<AdminDashboardSections />} />
-        <Route path='/admin/dashboard/news' element={<AdminDashboardNews />} />
+        <Route element={<AdminRoute admin={role_id} />}>
+          <Route path='/createnews' element={<CreateNews />} />
+          <Route path='/admin/dashboard' element={<AdminDashboard />} />
+          <Route path='/admin/dashboard/users' element={<AdminDashboardUsers />} />
+          <Route path='/admin/dashboard/tags' element={<AdminDashboardTags />} />
+          <Route path='/admin/dashboard/linesup' element={<AdminDashboardSections />} />
+          <Route path='/admin/dashboard/news' element={<AdminDashboardNews />} />
+        </Route>
       </Routes>
-
       <Footer />
 
     </div>

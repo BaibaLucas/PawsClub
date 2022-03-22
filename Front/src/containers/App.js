@@ -10,7 +10,8 @@ import App from '../components/App';
 
 // Component States (App)
 const mapStateToProps = (state) => ({
-  
+  logged: state.auth.logged,
+  role_id: state.auth.role_id,
 });
 
 // Component Func (App)
