@@ -16,10 +16,17 @@
       position: relative;
       -webkit-box-shadow: 5px 5px 15px 5px #212121; 
       box-shadow: 5px 5px 15px 5px #212121;
+      @include media('>mid'){
+        width: 100%;
+        height: 100%;
+      };
       img{
         display: block;
         height: 300px;
         width: 100%;
+        @include media('>mid'){
+          object-fit: cover;
+        };
       }
       &__content{
         position: absolute;
@@ -31,6 +38,9 @@
         font-weight: bold;
         color: white;
         padding: 0.5rem;
+        @include media('>mid'){
+          font-size: 1.5rem;
+        };
       }
     }
     &__news{
@@ -38,6 +48,9 @@
       -webkit-box-shadow: 5px 5px 15px 5px #212121; 
       box-shadow: 5px 5px 15px 5px #212121;
       border-radius: 0 20px 0 0;
+      @include media('>mid'){
+        width: 100%;
+      };
       &__title{
         font-weight: bold;
         font-size: 1.3rem;
@@ -60,6 +73,9 @@
             border-radius: 20px 20px 0 0;
             height: 250px;
             width: 100%;
+            @include media('>mid'){
+              object-fit: cover;
+            };
           }
           &__title{
             font-size: 1.5rem;
@@ -130,6 +146,9 @@
             height: 100%;
             width: 315px;
             border-radius: 20px;
+            @include media('>mid'){
+              object-fit: cover;
+            };
           }
         }
       }
@@ -156,6 +175,9 @@
       -webkit-box-shadow: 5px 5px 15px 5px #212121; 
       box-shadow: 5px 5px 15px 5px #212121;
       border-radius: 0 20px 0 0;
+      @include media('>mid'){
+        width: 100%;
+      };
       &__title{
         font-weight: bold;
         font-size: 1.3rem;
@@ -179,6 +201,9 @@
             border-radius: 20px 20px 0 0;
             height: 250px;
             width: 100%;
+            @include media('>mid'){
+              object-fit: cover;
+            };
           }
           &__title{
             font-size: 1.5rem;

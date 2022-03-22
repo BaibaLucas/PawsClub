@@ -50,7 +50,7 @@ const Home = ({ news, sections }) => {
               )
             }))}
             <div className='container__news__more'>
-              <NavLink className='container__news__more__link' to='#'>
+              <NavLink className='container__news__more__link' to='/news'>
                 More news
               </NavLink>
             </div>
@@ -66,24 +66,12 @@ const Home = ({ news, sections }) => {
               return (
                 <NavLink key={section.id} className='container__linesup__box__card' to='/section'>
                   <img className='container__linesup__box__card__image' src={diablo3} alt='linesup illustration' />
-                  <div className='container__linesup__box__card__title'>
-                    {section.name}
-                  </div>
                 </NavLink>
               )
             }))}
-            {/* <NavLink className='container__linesup__box__card' to='/section'>
-              <img className='container__linesup__box__card__image' src={diablo3} alt='linesup illustration' />
-            </NavLink>
-            <NavLink className='container__linesup__box__card' to='/section'>
-              <img className='container__linesup__box__card__image' src={lol} alt='linesup illustration' />
-            </NavLink>
-            <NavLink className='container__linesup__box__card' to='/section'>
-              <img className='container__linesup__box__card__image' src={wow} alt='linesup illustration' />
-            </NavLink> */}
           </div>
           <div className='container__linesup__more'>
-              <NavLink className='container__linesup__more__link' to='#'>
+              <NavLink className='container__linesup__more__link' to='/linesup'>
                 More lines-up
               </NavLink>
           </div>
