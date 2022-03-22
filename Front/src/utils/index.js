@@ -1,5 +1,8 @@
 /** ALL EXT FUNCTIONS USED FROM HANDLE IMAGE/FILE/CANVAS */
 
+import { useEffect } from "react";
+import { useLocation } from "react-router-dom";
+
 // Create Image
 const createImage = (url) =>
   new Promise((resolve, reject) => {
@@ -32,4 +35,12 @@ export const dataURLtoFile = (dataurl, filename) => {
 	const u8arr = new Uint8Array(n);
 	while (n--) u8arr[n] = bstr.charCodeAt(n);
 	return new File([u8arr], filename, { type: mime });
+};
+
+// scroll to top page when user click to link
+export const useScrollToTop = () => {
+  const { pathname } = useLocation();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
 };

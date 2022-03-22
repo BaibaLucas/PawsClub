@@ -3,6 +3,7 @@ import React, { useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
 
 /* Local imports */
+import { useScrollToTop } from '../../utils';
 // Components
 import Home from '../../containers/Home';
 import Header from '../../containers/Header';
@@ -35,6 +36,8 @@ const App = ({ loadNewsData, loadSectionsData, loadStreamersData }) => {
     loadSectionsData();
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  useScrollToTop();
 
   return (
     <div className='app'>
