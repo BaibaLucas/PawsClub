@@ -35,6 +35,7 @@ const App = ({ loadNewsData, loadSectionsData, loadStreamersData, logged, role_i
   useEffect(() => {
     loadNewsData();
     loadSectionsData();
+    loadStreamersData();
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

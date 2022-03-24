@@ -12,11 +12,15 @@ import Home from '../components/Home';
 const mapStateToProps = (state) => ({
   news: state.news.news,
   sections: state.sections.sections,
+  streams: state.users.streams,
 });
 
 // Component Func (Home)
 const mapDispatchToProps = (dispatch) => ({
 
+loadStreamersData: () => {
+  dispatch({type: 'GET_STREAMERS'});
+},
 
 });
 

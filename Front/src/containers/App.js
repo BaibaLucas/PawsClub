@@ -25,6 +25,10 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch({type: 'GET_SECTIONS'});
   },
 
+  loadStreamersData: () => {
+    dispatch({type: 'GET_STREAMERS'});
+  },
+
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

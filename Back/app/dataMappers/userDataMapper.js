@@ -138,4 +138,11 @@ module.exports = {
     return result.rows;
   },
 
+  /* Get All Streamers */
+  async getAllStreamers() {
+    console.log('STREAMERS HERE');
+    const result = await client.query(`SELECT u.id, u.username, u.stream FROM "user" AS u WHERE "stream" IS NOT NULL and "stream" != '' `);
+    return result.rows;
+  },
+
 };
