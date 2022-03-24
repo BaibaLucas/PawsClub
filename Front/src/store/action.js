@@ -23,6 +23,7 @@ export const CREATE_SECTION_SUCCESS = 'CREATE_SECTION_SUCCESS';
 export const GET_USERS_SUCCESS = 'GET_USERS_SUCCESS';
 export const CHANGE_USERS_FIELD = 'CHANGE_USERS_FIELD';
 export const SELECT_USER = 'SELECT_USER';
+export const GET_STREAMERS_SUCCESS = 'GET_STREAMERS_SUCCESS';
 // Image Types
 export const IMG_UPLOAD_SUCCESS = 'IMG_UPLOAD_SUCCESS';
 // Admin Types
@@ -128,6 +129,10 @@ export const selectUser = (id, username) => ({
   type: SELECT_USER,
   id,
   username,
+});
+export const getStreamersSuccess = (data) => ({
+  type: GET_STREAMERS_SUCCESS,
+  data,
 });
 
 // Image actions

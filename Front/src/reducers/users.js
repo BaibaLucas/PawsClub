@@ -3,6 +3,7 @@ import {
   GET_USERS_SUCCESS,
   CHANGE_USERS_FIELD,
   SELECT_USER,
+  GET_STREAMERS_SUCCESS
 } from '../store/action';
 
 /* Initial State user infos */
@@ -11,6 +12,7 @@ const initialState = {
   role_id: '',
   user_id: '',
   user_username: '',
+  streams: [],
 };
 
 /* Api Paws Sections reducer */
@@ -36,6 +38,12 @@ const Reducer = (oldState = initialState, action = {}) => {
         user_id: action.id,
         user_username: action.username
       };
+
+    case GET_STREAMERS_SUCCESS:
+      return {
+        ...oldState,
+        streams: action.data
+      }
 
     default:
       return {...oldState}

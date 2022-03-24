@@ -16,7 +16,6 @@
         text-transform: uppercase;
       }
       &__nav{
-
         display: flex;
         justify-content: space-around;
         padding: 0.5rem;
@@ -44,6 +43,9 @@
             border-radius: 20px 20px 0 0;
             height: 250px;
             width: 100%;
+            @include media('>mid'){
+              object-fit: cover;
+            };
           }
           &__title{
             font-size: 1.5rem;

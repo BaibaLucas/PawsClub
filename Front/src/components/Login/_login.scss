@@ -6,6 +6,9 @@
     flex-direction: column;
     height: 100%;
     padding: 5rem 1rem 0rem 1rem;
+    @include media('>large'){
+      align-items: center;
+    };
     &__title{
       color: $yellow;
       font-weight: bold;
@@ -22,6 +25,10 @@
      background-color: $grey;
      border-radius: 20px;
      padding: 1rem;
+     @include media('>large'){
+      width: 30%;
+      text-align: center;
+    };
      &__label{
        color: $yellow;
        font-size: 1.5rem;

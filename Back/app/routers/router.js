@@ -28,6 +28,7 @@ router.post('/searchUser', userController.searchUsers); // GET USERS BY SEARCHBA
 router.get('/lineup', sectionController.getAllSections); // GET ALL LINES-UP
 router.get('/lineup/:id(\\d+)', sectionController.getOneSection); // GET LINEUP BY ID
 router.get('/tag', tagController.getAllTags); // GET ALL TAGS
+router.get('/streams', userController.getStreamers); // GET ALL STREAMERS
 
 // Accessible while connected
 

@@ -7,6 +7,7 @@ import { apiUrl } from './url';
 // Action
 import {
   getUsersSuccess,
+  getStreamersSuccess,
  } from '../store/action';
 
 
@@ -82,6 +83,21 @@ const Admin = (store) => (next) => (action) => {
           }
         }).catch((error) => {
           console.log('Oups !', error);
+        });
+        break;
+    }
+
+    case 'GET_STREAMERS': {
+      axios.get(`${apiUrl}/streams`)
+        .then((response) => {
+          if (response.status !== 200) {
+            throw response.error;
+          } else {
+            console.log(response.data);
+            store.dispatch(getStreamersSuccess(response.data.data));
+          }
+        }).catch((error) => {
+          console.log('Savage error Appeared', error);
         });
         break;
     }

@@ -16,10 +16,19 @@
       position: relative;
       -webkit-box-shadow: 5px 5px 15px 5px #212121; 
       box-shadow: 5px 5px 15px 5px #212121;
+      @include media('>mid'){
+        width: 100%;
+        height: 100%;
+      };
+      @include media('>large'){
+      };
       img{
         display: block;
         height: 300px;
         width: 100%;
+        @include media('>mid'){
+          object-fit: cover;
+        };
       }
       &__content{
         position: absolute;
@@ -31,6 +40,9 @@
         font-weight: bold;
         color: white;
         padding: 0.5rem;
+        @include media('>mid'){
+          font-size: 1.5rem;
+        };
       }
     }
     &__news{
@@ -38,6 +50,10 @@
       -webkit-box-shadow: 5px 5px 15px 5px #212121; 
       box-shadow: 5px 5px 15px 5px #212121;
       border-radius: 0 20px 0 0;
+      width: 100%;
+      @include media('>mid'){
+        width: 100%;
+      };
       &__title{
         font-weight: bold;
         font-size: 1.3rem;
@@ -51,15 +67,26 @@
         flex-direction: column;
         justify-content: space-evenly;
         padding: 0.3rem;
+        @include media('>large'){
+          flex-direction: row;
+          flex-wrap: wrap;
+        };
         &__card{
           border-radius: 20px;
           border: solid 1px $yellow;
           margin: 0 0 1rem 0;
           background-color: #212121;
+          @include media('>large'){
+            width: 45%;
+            margin: 0.5rem 0.2rem;
+          };
           img{
             border-radius: 20px 20px 0 0;
             height: 250px;
             width: 100%;
+            @include media('>mid'){
+              object-fit: cover;
+            };
           }
           &__title{
             font-size: 1.5rem;
@@ -77,6 +104,9 @@
         }
       }
       &__more{
+        @include media('>large'){
+          margin: 1rem;
+        };
         &__link{
           color: $dark-grey;
           text-decoration: none;
@@ -89,6 +119,10 @@
           float: right;
           padding: 0.4rem;
           border-radius: 0 20px 0 0;
+          margin-bottom: 0.3rem;
+          margin-right: 0.3rem;
+          @include media('>large'){
+          };
         }
       }
     }
@@ -113,12 +147,15 @@
         width: 100%;
         padding: 0.3rem;
         overflow: scroll;
+        @include media('>large'){
+        };
         &::-webkit-scrollbar{
           display:none;
         }
         &__card{
-          width: 325px;
           height: 250px;
+          width: 50%;
+          
           margin: 0.2rem;
           border: solid 1px $yellow;
           border-radius: 20px;
@@ -128,8 +165,11 @@
           }
           img{
             height: 100%;
-            width: 315px;
+            width: 100%;
             border-radius: 20px;
+            @include media('>mid'){
+              object-fit: cover;
+            };
           }
         }
       }
@@ -148,6 +188,9 @@
           border-radius: 0 20px 0 0;
           margin-bottom: 0.3rem;
           margin-right: 0.3rem;
+          @include media('>large'){
+            margin: 1rem;
+          };
         }
       }
     }
@@ -156,6 +199,11 @@
       -webkit-box-shadow: 5px 5px 15px 5px #212121; 
       box-shadow: 5px 5px 15px 5px #212121;
       border-radius: 0 20px 0 0;
+      width: 100%;
+      height: 100%;
+      @include media('>mid'){
+        width: 100%;
+      };
       &__title{
         font-weight: bold;
         font-size: 1.3rem;
@@ -165,28 +213,27 @@
         border-radius: 0 20px 0 0;
       }
       &__box{
+        width: 100%;
+        height: 100%;
+        border: solid 2px red;
         display: flex;
         flex-direction: column;
-        justify-content: space-evenly;
-        padding: 0.3rem;
+        align-items: center;
+        padding: 1rem 0rem;
+        @include media('>large'){
+          flex-direction: row;
+          flex-wrap: wrap;
+          justify-content: space-between;
+          border: solid 2px red;
+        };
+        #tryit{
+          border: solid 2px blue;
+          margin: 1rem;
+        }
         &__card{
-          border-radius: 20px;
-          border: solid 1px $yellow;
-          margin: 0 0 1rem 0;
-          background-color: #212121;
-          text-decoration: none;
-          img{
-            border-radius: 20px 20px 0 0;
-            height: 250px;
-            width: 100%;
-          }
-          &__title{
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: white;
-            text-align: center;
-            padding: 1rem;
-          }
+          height: 100%;
+          width: 100%;
+          margin: 5rem;
         }
       }
       &__more{

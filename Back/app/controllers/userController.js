@@ -310,4 +310,17 @@ module.exports = {
     }
   },
 
+  /* Get all streamers */
+  async getStreamers(req, res, next) {
+    try {
+        console.log('je suis bien dans le controller');
+        const allStreamers = await userDataMapper.getAllStreamers();
+        res.status('200').json({
+            data: allStreamers
+        });
+    } catch(error) {
+        next(error);
+    }
+  },
+
 };
