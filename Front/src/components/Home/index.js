@@ -1,7 +1,7 @@
 /* Package imports */
 import React, { useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
-import ReactTwitchEmbedVideo from "react-twitch-embed-video"
+import ReactPlayer from 'react-player';
 
 /* Local imports */
 import illust from '../../assets/images/pawspaper.jpg';
@@ -99,10 +99,22 @@ const Home = ({ loadStreamersData, news, sections, streams }) => {
               NULL
               </>
             )}
-            
+            {streams && (
+              streams.map((stream => {
+                return (
+                  <div className='container__stream__box__card'>
+                    <ReactPlayer 
+                      url={stream.stream}
+                      height='100%'
+                      width='100%'
+                    />
+                  </div>
+                )
+              }))
+            )}
           </div>
           <div className='container__stream__more'>
-              <NavLink className='container__stream__more__link' to='/linesup'>
+              <NavLink className='container__stream__more__link' to='/streams'>
                 More Streams
               </NavLink>
           </div>

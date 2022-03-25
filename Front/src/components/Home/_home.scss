@@ -215,7 +215,6 @@
       &__box{
         width: 100%;
         height: 100%;
-        border: solid 2px red;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -224,16 +223,11 @@
           flex-direction: row;
           flex-wrap: wrap;
           justify-content: space-between;
-          border: solid 2px red;
         };
-        #tryit{
-          border: solid 2px blue;
-          margin: 1rem;
-        }
         &__card{
           height: 100%;
           width: 100%;
-          margin: 5rem;
+          margin: 0.5rem;
         }
       }
       &__more{
