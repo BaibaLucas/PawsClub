@@ -5,8 +5,6 @@ import ReactPlayer from 'react-player';
 
 /* Local imports */
 import illust from '../../assets/images/pawspaper.jpg';
-import diablo3 from '../../assets/images/diablo3.png';
-import addon from '../../assets/images/addon.png';
 
 
 
@@ -45,7 +43,7 @@ const Home = ({ loadStreamersData, news, sections, streams }) => {
               news.map((news => {
                 return (
                   <div key={news.id} className='container__news__box__card'>
-                    <img className='container__news__box__card__image' src={addon} alt='news illustration' />
+                    <img className='container__news__box__card__image' src={news.newsurl} alt='news illustration' />
                     <div className='container__news__box__card__title'>
                       {news.title}
                     </div>
@@ -77,7 +75,7 @@ const Home = ({ loadStreamersData, news, sections, streams }) => {
               sections.map((section => {
                 return (
                   <NavLink key={section.id} className='container__linesup__box__card' to='/section'>
-                    <img className='container__linesup__box__card__image' src={diablo3} alt='linesup illustration' />
+                    <img className='container__linesup__box__card__image' src={section.sectionurl} alt='linesup illustration' />
                   </NavLink>
                 )
               }))

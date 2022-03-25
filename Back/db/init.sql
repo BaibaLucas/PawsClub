@@ -83,8 +83,8 @@ INSERT INTO "role"("name") VALUES
 
 INSERT INTO "user"("username", "email", "password", "profilurl", "stream", "role_id") VALUES
 ('reape', 'reape@gmail.com', 'Reape2022*', '', '', '3'),
-('heda', 'heda@gmail.com', 'Reape2022*', '', 'hedarim', '1'),
-('liwest', 'li@gmail.com', 'Reape2022*', '', 'liwest', '1');
+('heda', 'heda@gmail.com', 'Reape2022*', '', 'https://www.twitch.tv/hedarim', '1'),
+('liwest', 'li@gmail.com', 'Reape2022*', '', 'https://www.twitch.tv/liwesttv', '1');
 
 -- INSERT INTO "section"("name", "title", "description", "content") VALUES
 -- ('World of Warcraft', 'World of Warcraft', 'Bienvenue sur la section World Of Warcraft de la communauté PAWS. Créer courant de l''été 2021, sur le serveur EU-Archimonde Alliance n''a cessé d''agrandir ses rangs. Suite à un choix nous avons décider debut 2022 de migrer la guilde côté Horde sur le serveur EU-Hyjal', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In efficitur ut massa in fermentum. Curabitur varius laoreet mauris, et scelerisque ante tempor ac. Nunc eu fringilla dolor. Duis semper eget dui sit amet tincidunt. Mauris molestie ex semper dolor finibus blandit. In eget sem turpis. Morbi sollicitudin est sit amet massa tincidunt sagittis. Nam blandit tempor semper. Nam convallis venenatis purus, eu molestie sapien vulputate consequat. Suspendisse fermentum volutpat ornare. Cras ut nisl felis. Maecenas sit amet metus egestas lacus euismod lacinia ac quis urna. Aliquam erat volutpat. Nulla elementum enim a urna feugiat pharetra.'),

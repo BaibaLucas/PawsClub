@@ -1,15 +1,13 @@
 /* Package imports */
 import React from 'react';
+import ReactPlayer from 'react-player';
 
 
 /* Local imports */
-import sylvanas from '../../assets/images/sylvanas.jpg';
-import clawlogo from '../../assets/images/clawlogo.jpg';
-import talent from '../../assets/images/talent.png';
 
 // Components
 
-const Streams = () => {
+const Streams = ({ streams }) => {
   return (
     <div className='streams'>
       <div className='container'>
@@ -22,24 +20,24 @@ const Streams = () => {
           </div>
         </div>
         <div className='container__streambox'>
-          <div className='container__streambox__card'>
-            <img className='container__streambox__card__image' alt='stream illust' src={sylvanas}/>
-            <div className='container__streambox__card__title'>
-              Lorem ipsum dolor sit amet !
-            </div>
-          </div>
-          <div className='container__streambox__card'>
-            <img className='container__streambox__card__image' alt='stream illust' src={clawlogo}/>
-            <div className='container__streambox__card__title'>
-              Lorem ipsum dolor sit amet !
-            </div>
-          </div>
-          <div className='container__streambox__card'>
-            <img className='container__streambox__card__image' alt='stream illust' src={talent}/>
-            <div className='container__streambox__card__title'>
-              Lorem ipsum dolor sit amet !
-            </div>
-          </div>
+            {!streams && (
+              <>
+              NULL
+              </>
+            )}
+            {streams && (
+              streams.map((stream => {
+                return (
+                  <div className='container__streambox__card'>
+                    <ReactPlayer 
+                      url={stream.stream}
+                      height='100%'
+                      width='100%'
+                    />
+                  </div>
+                )
+              }))
+            )}
         </div>
       </div>
     </div>
