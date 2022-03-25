@@ -15,6 +15,7 @@ const mapStateToProps = (state) => ({
   sections: state.sections.sections,
 });
 
+
 // Component Func (News)
 const mapDispatchToProps = (dispatch) => ({
 

@@ -82,7 +82,6 @@ INSERT INTO "role"("name") VALUES
 ('administrator');
 
 INSERT INTO "user"("username", "email", "password", "profilurl", "stream", "role_id") VALUES
-('reape', 'reape@gmail.com', 'Reape2022*', '', '', '3'),
 ('heda', 'heda@gmail.com', 'Reape2022*', '', 'https://www.twitch.tv/hedarim', '1'),
 ('liwest', 'li@gmail.com', 'Reape2022*', '', 'https://www.twitch.tv/liwesttv', '1');
 
