@@ -23,6 +23,7 @@ const Sections = (store) => (next) => (action) => {
           if (response.status !== 200) {
             throw response.error;
           } else {
+            console.log('req ans',response.data.data)
             store.dispatch(getSectionsSuccess(response.data.data));
           }
         }).catch((error) => {
@@ -48,13 +49,17 @@ const Sections = (store) => (next) => (action) => {
 
     case 'CREATE_SECTION': {
       const { 
+        auth : { token }, 
         sections: { section_name, section_title, section_desc, section_content },
       } = store.getState();
+      const formData = new FormData();
+      formData.append('myImage', action.formData);
       const config = {
         method: 'post',
         url: `${apiUrl}/lineup`,
         headers: {
           'Content-Type': 'application/json',
+          'Authorization': `Baerer ${token}`,
         },
         data: {
           section_name,
@@ -68,8 +73,19 @@ const Sections = (store) => (next) => (action) => {
           if (response.status !== 200) {
             throw response.error;
           } else {
-            console.log('response.data', response.data);
-            store.dispatch(createSectionSuccess(response.data));
+            const config2 = {
+              headers: {
+                'Content-Type': 'multipart/form-data',
+                'Authorization': `Baerer ${token}`,
+              } 
+            };
+            axios.post(`${apiUrl}/lineup/image/${response.data.data.id}`, formData, config2)
+            .then((response) => {
+              console.log('response after create', response.data);
+              store.dispatch(createSectionSuccess(response.data, response.data.message));
+            }).catch((error) => {
+              console.log('Oups', error);
+            });
           }
         }).catch((error) => {
           console.log(error, 'ERROR');

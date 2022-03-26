@@ -4,10 +4,12 @@ import React, {useState, useEffect} from 'react';
 
 /* Local imports */
 import defaultPic from '../../assets/images/defaultPic.jpeg';
+import getCanvasImage from '../../utils';
+import { dataURLtoFile } from '../../utils';
 
 // Components
 
-const AdminDashboardSections = ({ loadSections, sections, handleChange, submitCreate, submitUpdate, selectedSection, section_id, section_name, section_title, section_desc, section_content, submitDelete }) => {
+const AdminDashboardSections = ({ loadSections, sections, handleChange, submitCreate, submitUpdate, selectedSection, section_id, section_name, section_title, section_desc, section_content, submitDelete, msg, success }) => {
 
   // Loading Users
   useEffect(() => {
@@ -19,10 +21,17 @@ const AdminDashboardSections = ({ loadSections, sections, handleChange, submitCr
     handleChange(event.target.value, event.target.name);
   };
 
-  const handleCreate = (event) => {
+  const handleCreate = async (event) => {
     event.preventDefault();
+    const canvas = await getCanvasImage(image);
+    const canvasDataUrl = canvas.toDataURL('image/jpeg');
+    const convertedUrlToFile = dataURLtoFile(canvasDataUrl, 'section-picture.jpeg');
+    submitCreate(convertedUrlToFile);
+  };
+
+  const backToSection = () => {
+    loadSections();
     setOpenCreate(!openCreate);
-    submitCreate();
   };
 
 
@@ -65,6 +74,18 @@ const AdminDashboardSections = ({ loadSections, sections, handleChange, submitCr
   };
 
 
+const [image, setImage] = useState(null);
+
+// Handle Value file image
+const onSelectFile = async (event) => {
+  if (event.target.files && event.target.files.length > 0) {
+    const reader = new FileReader();
+    reader.readAsDataURL(event.target.files[0]);
+    reader.addEventListener("load", () => {
+      setImage(reader.result);
+    });
+  };
+};
 
   return(
     <div className='admindashboardsections'>
@@ -88,18 +109,25 @@ const AdminDashboardSections = ({ loadSections, sections, handleChange, submitCr
           )}
         </div>
         <div className='container__box'>
-        {sections.map((section => {
+          {!sections && (
+            <h1>Aucune section actuellement disponible</h1>
+          )}
+        {sections && (
+          sections.map((section => {
               return (
                 <div key={section.id}
                 className='container__box__card'
-                onClick={() => selectSection(section.id, section.name, section.title, section.description, section.content)}  
+                onClick={() => selectSection(section.id, section.name, section.title, section.sectionurl, section.description, section.content)}  
                 >
+                  <img className='container__box__card__img'
+                  src={section.sectionurl}
+                  alt='section picture'/>
                   <div className='container__box__card__username'>
                     {section.name}
                   </div>
                 </div>
               )
-            }))}
+            })))}
         </div>
         {openCreate && (
           <div className='container__modal'>
@@ -107,32 +135,52 @@ const AdminDashboardSections = ({ loadSections, sections, handleChange, submitCr
               <div className='container__modal__create__title'>
                 MODAL Create
               </div>
-              <form className='container__modal__create__form'>
+              <form className='container__modal__create__form' encType='multipart/form-data' >
+               {image && (
+                <div className='container__modal__create__form__image'>
+                <img src={image} alt='section img' />
+              </div>
+               )} 
+               {!success && (
+                 <>
+                 <label className='container__modal__create__form__label' htmlFor='upload__photo'>Select File</label>
+                <input
+                id='upload__photo'
+                onChange={onSelectFile}
+                className='container__modal__create__form__input'
+                type='file'
+                name='imgsection'
+                accept="image/*"
+                />
                 <label>Name</label>
                 <input
+                className='container__modal__create__form__input'
                 name='section_name'
                 onChange={onChange}
                 placeholder='name' 
                 />
                 <label>Title</label>
                 <input
+                className='container__modal__create__form__input'
                 name='section_title'
                 onChange={onChange}
                 placeholder='title' 
                 />
                 <label>Description</label>
-                <input
+                <textarea
+                className='container__modal__create__form__textarea'
                 name='section_desc'
                 onChange={onChange}
                 placeholder='desc' 
                 />
                 <label>Content</label>
-                <input
+                <textarea
+                className='container__modal__create__form__textarea'
                 name='section_content'
                 onChange={onChange}
                 placeholder='content' 
                 />
-                <div className='container__modal__create__button'>
+                  <div className='container__modal__create__button'>
                   <button onClick={handleCreate}>
                     Valider
                   </button>
@@ -140,6 +188,20 @@ const AdminDashboardSections = ({ loadSections, sections, handleChange, submitCr
                     Annuler
                   </button>
                 </div>
+                 </>
+               )}
+                {success && (
+                  <>
+                  <div className='container__modal__create_msg'>
+                    {msg}
+                  </div>
+                  <div className='container__modal__create__button'>
+                  <button onClick={backToSection}>
+                    Back to Sections
+                  </button>
+                  </div>
+                  </>
+                )}
               </form>
             </div>
           </div>

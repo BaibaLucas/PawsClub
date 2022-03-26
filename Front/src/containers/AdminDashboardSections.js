@@ -20,6 +20,8 @@ const mapStateToProps = (state) => ({
   section_title: state.sections.section_title,
   section_desc: state.sections.section_desc,
   section_content: state.sections.section_content,
+  success: state.sections.success,
+  msg: state.sections.msg,
 });
 
 // Component Func (Admin)
@@ -33,8 +35,8 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(changeSectionsField(value, name));
   },
 
-  submitCreate: () => {
-    dispatch({type: 'CREATE_SECTION'});
+  submitCreate: (formData) => {
+    dispatch({type: 'CREATE_SECTION', formData});
   },
 
   submitUpdate: () => {

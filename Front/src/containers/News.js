@@ -15,11 +15,16 @@ const mapStateToProps = (state) => ({
   sections: state.sections.sections,
 });
 
+
 // Component Func (News)
 const mapDispatchToProps = (dispatch) => ({
 
   loadNewsData: () => {
     dispatch({type: 'GET_NEWS'});
+  },
+
+  loadSectionsData: () => {
+    dispatch({type: 'GET_SECTIONS'});
   },
 
 });

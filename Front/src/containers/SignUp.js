@@ -2,7 +2,7 @@
 import { connect } from 'react-redux';
 
 /* Local imports */
-import Signup from '../components/SignUp';
+import Signup from '../components/Signup';
 // Action
 import { changeAuthField } from '../store/action';
 

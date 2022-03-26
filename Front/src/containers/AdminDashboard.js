@@ -11,7 +11,7 @@ import AdminDashboard from '../components/AdminDashboard';
 // Component States (Admin)
 const mapStateToProps = (state) => ({
   username: state.auth.username,
-  imgprofil: state.auth.imgprofil,
+  imgprofil: state.auth.profilurl,
 });
 
 // Component Func (Admin)

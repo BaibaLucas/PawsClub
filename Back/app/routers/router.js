@@ -49,6 +49,7 @@ router.delete('/news/:id(\\d+)', modMW, newsController.deleteNews); // DELETE NE
 router.post('/admin', loginController.adminLogin); // ADMIN LOGIN
 router.post('/lineup', sectionController.createSection); // CREATE LINES-UP
 router.patch('/lineup/:id(\\d+)', sectionController.updateSection); // MODIFY LINEUP BY ID
+router.post('/lineup/image/:id(\\d+)', adminMW, imageController.uploadSectionImg); // UPLOAD SECTION PICTURE
 router.delete('/lineup/:id(\\d+)', sectionController.deleteSection); // DELETE LINEUP BY ID
 router.post('/tag', tagController.createTag); // CREATE TAG
 router.delete('/tag/:id(\\d+)', tagController.deleteTag); // DELETE TAG

@@ -16,7 +16,7 @@ import LinesUp from '../../containers/LinesUp';
 import Section from '../Section';
 import News from '../../containers/News';
 import Newsdetails from '../Newsdetails';
-import Streams from '../Streams';
+import Streams from '../../containers/Streams';
 import Account from '../../containers/Account';
 import Roster from '../../containers/Roster';
 import ImgProfil from '../../containers/ImgProfil';

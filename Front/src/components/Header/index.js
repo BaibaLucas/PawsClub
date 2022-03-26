@@ -11,7 +11,7 @@ import Menu from './menu/index';
 
 // Components
 
-const Header = ({ logged }) => {
+const Header = ({ logged, role }) => {
 
   // Burger State
   const [open, setOpen] = useState(false);
@@ -27,7 +27,7 @@ const Header = ({ logged }) => {
         </div>
         <div className='container__nav'>
             <Burger open={open} setOpen={setOpen} />
-            <Menu open={open} setOpen={setOpen} logged={logged} />
+            <Menu open={open} setOpen={setOpen} logged={logged} role={role} />
         </div>
       </div>
     </div>

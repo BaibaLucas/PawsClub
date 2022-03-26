@@ -5,8 +5,9 @@ import React, { useEffect } from 'react';
 import addon from '../../assets/images/addon.png';
 import { NavLink } from 'react-router-dom';
 // Components
+import NewsDetails from '../Newsdetails';
 
-const News = ({ news, loadNewsData, sections }) => {
+const News = ({ news, loadNewsData, loadSectionsData, sections }) => {
 
   /**  NewsImg
   - If user select picture return this
@@ -16,8 +17,11 @@ const News = ({ news, loadNewsData, sections }) => {
   // Loading News - Sections - Streamers
   useEffect(() => {
     loadNewsData();
+    loadSectionsData();
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+
   const newsImg = (newsurl) => {
     if (newsurl.length === 0 || newsurl === 'blabla' || newsurl === 'http://myphotourlnews.fr') {
       return addon
@@ -26,8 +30,8 @@ const News = ({ news, loadNewsData, sections }) => {
     }
   };
 
-  console.log(news);
-  console.log(sections);
+  console.log('news', news);
+  console.log('sections', sections);
   return(
     <div className='news'>
       <div className='container'>
@@ -36,29 +40,36 @@ const News = ({ news, loadNewsData, sections }) => {
             <h1>news</h1>
           </div>
           <div className='container__presentation__nav'>
-            {sections.map((section => {
-              return (
-                <div key={section.id} className='container__presentation__nav__item'>
-                  {section.name}
-                </div>
-              )
-            }))}
+            {!sections && (
+              <div className='container__presentation__nav__item'>
+                NULL
+              </div>
+            )}
+           {sections && (
+              sections.map((section => {
+                return (
+                  <div key={section.id} className='container__presentation__nav__item'>
+                    {section.name}
+                  </div>
+                )
+              }))
+           )}
           </div>
           <div className='container__news'>
             <div className='container__news__box'>
-            {news.map((news => {
-              return (
-                <div key={news.id} className='container__news__box__card'>
-                  <img className='container__news__box__card__image' src={newsImg(news.newsurl)} alt='news illustration' />
-                  <div className='container__news__box__card__title'>
-                    {news.title}
-                  </div>
-                  <div className='container__news__box__card__date'>
-                    {news.date}
-                  </div>
-                </div>
-              )
-            }))}
+            {!news && (
+              <div className='container__news__box__card'>
+                NULL
+              </div>
+            )}
+            {news && (
+              news.map((news) => {
+                return (
+                  <NavLink key={news.id} to='#'>
+                    <NewsDetails news={news} />
+                  </NavLink>
+                )
+              }))}
             </div>
           </div>
         </div>

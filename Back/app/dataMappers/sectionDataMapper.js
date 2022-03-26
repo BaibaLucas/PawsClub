@@ -9,7 +9,7 @@ module.exports = {
 
   /* All Sections */
   async getAllSections() {
-    const result = await client.query('SELECT s.id, s.name, s.title, s.description, s.content FROM "section" AS s');
+    const result = await client.query('SELECT s.id, s.name, s.title, s.sectionurl, s.description, s.content FROM "section" AS s');
     if (result.rowCount == 0) {
         return null
     }
