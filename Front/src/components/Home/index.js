@@ -18,6 +18,8 @@ const Home = ({ loadStreamersData, news, sections, streams }) => {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   console.log(streams);
+  console.log('news', news);
+  console.log('sections', sections);
 
   return (
     <div className='home'>
@@ -25,9 +27,8 @@ const Home = ({ loadStreamersData, news, sections, streams }) => {
         <div className='container__presentation'>
           <img className='container__presentation__image' src={illust} alt='illust'/>
         <div className='container__presentation__content'>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean interdum nisi tortor, porta ornare turpis placerat sit amet.
+          PAWS CLUB PLATFORME
         </div>
-        
         </div>
         <div className='container__news'>
           <div className='container__news__title'>
@@ -36,7 +37,7 @@ const Home = ({ loadStreamersData, news, sections, streams }) => {
           <div className='container__news__box'>
             {!news && (
               <>
-              NULL
+              Aucune news actuellement disponible
               </>
             )}
             {news && (
@@ -68,7 +69,7 @@ const Home = ({ loadStreamersData, news, sections, streams }) => {
           <div className='container__linesup__box'>
             {!sections && (
               <>
-              NULL
+              Aucune sections actuellement disponible
               </>
             )}
             {sections && (
@@ -94,13 +95,13 @@ const Home = ({ loadStreamersData, news, sections, streams }) => {
           <div className='container__stream__box'>
             {!streams && (
               <>
-              NULL
+              Aucun stream actuellement disponible
               </>
             )}
             {streams && (
               streams.map((stream => {
                 return (
-                  <div className='container__stream__box__card'>
+                  <div key={stream.id}className='container__stream__box__card'>
                     <ReactPlayer 
                       url={stream.stream}
                       height='100%'

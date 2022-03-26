@@ -12,6 +12,7 @@ import Header from '../components/Header';
 // Component States (Header)
 const mapStateToProps = (state) => ({
   logged: state.auth.logged,
+  role: state.auth.role_id,
 });
 
 // Component Func (Header)

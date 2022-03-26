@@ -6,7 +6,7 @@ import { BiArrowBack } from 'react-icons/bi';
 import sylvanas from '../../assets/images/sylvanas.jpg';
 // Components
 
-const Newsdetails = () => {
+const Newsdetails = ({ news }) => {
   return(
     <div className='newsdetails'>
       <div className='container'>
@@ -15,16 +15,16 @@ const Newsdetails = () => {
             <div className='container__details__back__logo'><BiArrowBack size={30} /></div>
             <div className='container__details__back__content'>Back</div>
           </div>
-          <img className='container__details__image' alt='news illust' src={sylvanas} />
-          <div className='container__details__date'> Mer. 2 févr.</div>
+          <img className='container__details__image' alt='news illust' src={news.newsurl} />
+          <div className='container__details__date'> {news.date}</div>
           <div className='container__details__title'>
-            <h1>Lorem ipsum dolor sit amet</h1>
+            <h1>{news.title}</h1>
           </div>
           <div className='container__details__content'>
-            Nam sit amet eros sit amet arcu cursus dapibus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. In mattis turpis ac felis pellentesque, vitae ullamcorper purus gravida. Quisque sed fermentum justo, et varius odio. Nunc sed vehicula neque. Nam imperdiet nibh ipsum, in tempor lacus tristique id. Sed dui velit, tincidunt at sollicitudin in, placerat id dolor. Nam nec odio vestibulum, congue orci non, dignissim turpis. Donec ante quam, convallis quis tempus at, volutpat at ligula. Curabitur gravida odio lorem, ut consequat urna iaculis a. Ut mattis odio ut mi volutpat luctus.
+            {news.content}
           </div>
           <div className='container__details__author'>
-            Reape
+            {news.user_id}
           </div>
         </div>
       </div>

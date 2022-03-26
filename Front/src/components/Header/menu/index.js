@@ -34,16 +34,26 @@ const Menu = ({ open, setOpen, logged, role }) => {
             </li>
           </NavLink>
           {/* Case : user logged */}
-          {logged && 
+          {logged && (
             <NavLink className='menu__nav__list__item'  onClick={close} to='/account'>
             <MdManageAccounts size={50} />
             <li className='menu__nav__list__item__name'>
               Account
             </li>
           </NavLink>
-          }
+          )}
+          {/* Case : moderator logged */}
+          {logged && role === 2 && (
+            <NavLink className='menu__nav__list__item'  onClick={close} to='/createnews'>
+              <MdCreateNewFolder size={50} />
+              <li className='menu__nav__list__item__name'>
+                Create News
+              </li>
+            </NavLink>
+          )}
           {/* Case : user is not logged */}
-          {!logged && <>
+          {!logged && (
+          <>
             <NavLink className='menu__nav__list__item'  onClick={close} to='/login'>
             <BiUserCircle size={50} />
             <li className='menu__nav__list__item__name'>
@@ -57,13 +67,7 @@ const Menu = ({ open, setOpen, logged, role }) => {
               </li>
             </NavLink>
           </> 
-          }
-          <NavLink className='menu__nav__list__item'  onClick={close} to='/createnews'>
-            <MdCreateNewFolder size={50} />
-            <li className='menu__nav__list__item__name'>
-              Create News
-            </li>
-          </NavLink>
+          )}
           <NavLink className='menu__nav__list__item'  onClick={close} to='/news'>
             <BsNewspaper size={50} />
             <li className='menu__nav__list__item__name'>

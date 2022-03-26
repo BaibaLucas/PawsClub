@@ -23,6 +23,10 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch({type: 'GET_NEWS'});
   },
 
+  loadSectionsData: () => {
+    dispatch({type: 'GET_SECTIONS'});
+  },
+
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(News);

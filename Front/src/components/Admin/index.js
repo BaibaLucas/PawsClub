@@ -21,7 +21,7 @@ const Admin = ({ email, password, logged, error, msg, handleChange, handleSubmit
 
   return(
     <div className='admin'>
-      {logged & role_id === 3 && (
+      {logged && role_id === 3 && (
       <Navigate to='/admin/dashboard' />
     )}
       <div className='container'>

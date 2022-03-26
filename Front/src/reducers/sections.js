@@ -16,6 +16,8 @@ const initialState = {
   section_title: '',
   section_desc: '',
   section_content: '',
+  msg: '',
+  success: false,
 };
 
 /* Api Paws Sections reducer */
@@ -59,6 +61,8 @@ const Reducer = (oldState = initialState, action = {}) => {
         section_title: action.data.data.title,
         section_desc: action.data.data.desc,
         section_content: action.data.data.content,
+        msg: action.data.message,
+        success: action.data.success,
       }
 
     default:

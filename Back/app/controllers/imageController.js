@@ -54,4 +54,28 @@ module.exports = {
     }
   },
 
+  /* Upload linesup picture */
+  async uploadSectionImg(req, res, next) {
+    try {
+      console.log('IMAGE CONTROLLER');
+      const uploadSingle = upload('paws-image', 'section').single('myImage');
+      const id = req.params.id;
+      console.log('id', id);
+      uploadSingle(req, res, async(err) => {
+        if(err)
+        return res.status(400).json({success: false, message: err.message});
+        const uploadImg = await imageDataMapper.uploadSectionImg(req.file.location, id);
+        res.status(200).json({
+          success: true,
+          data: uploadImg,
+          message: 'Section créer avec succès.'
+        });
+        console.log('IMG UPDATE SUCCESSFULLY');
+      })
+    } catch(error) {
+      console.log('IMGCONTROLLER upload ---> ERROR ');
+      next(error);
+    }
+  },
+
 };

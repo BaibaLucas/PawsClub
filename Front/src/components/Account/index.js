@@ -4,11 +4,11 @@ import { Link, useNavigate, NavLink } from 'react-router-dom';
 import { MdAddPhotoAlternate, MdNavigateBefore } from 'react-icons/md';
 
 /* Local imports */
-import defaultImg from '../../assets/images/defaultPic.jpeg';
+import defaultPic from '../../assets/images/defaultPic.jpeg';
 
 // Components
 
-const Account = ({ username, email, password, imgprofil, logged, handleChange, handleSubmit }) => {
+const Account = ({ username, email, password, profilurl, logged, handleChange, handleSubmit }) => {
 
   /** Redirect to /login if user is not logged */
   const navigate = useNavigate();
@@ -64,10 +64,10 @@ const Account = ({ username, email, password, imgprofil, logged, handleChange, h
 
   // If user haven't profile picture return default pic
   const usrImg = () => {
-    if (imgprofil == null) {
-      return defaultImg
+    if (profilurl == null) {
+      return defaultPic
     } else {
-      return imgprofil;
+      return profilurl;
     }
   }
   
