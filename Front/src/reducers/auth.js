@@ -82,6 +82,8 @@ const Reducer = (oldState = initialState, action = {}) => {
         role_id: action.role_id,
         password: '',
         logged: true,
+        success: action.success,
+        msg: action.msg,
       };
 
       case IMG_UPLOAD_SUCCESS:

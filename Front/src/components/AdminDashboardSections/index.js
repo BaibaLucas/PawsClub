@@ -1,5 +1,6 @@
 /* Package imports */
 import React, {useState, useEffect} from 'react';
+import { NavLink } from 'react-router-dom';
 
 
 /* Local imports */
@@ -9,7 +10,7 @@ import { dataURLtoFile } from '../../utils';
 
 // Components
 
-const AdminDashboardSections = ({ loadSections, sections, handleChange, submitCreate, submitUpdate, selectedSection, section_id, section_name, section_title, section_desc, section_content, submitDelete, msg, success }) => {
+const AdminDashboardSections = ({ loadSections, sections, handleChange, submitCreate, submitUpdate, selectedSection, section_id, section_name, section_title, section_desc, section_content, submitDelete, msg, success, refreshStatus, section_sectionurl }) => {
 
   // Loading Users
   useEffect(() => {
@@ -31,31 +32,28 @@ const AdminDashboardSections = ({ loadSections, sections, handleChange, submitCr
 
   const backToSection = () => {
     loadSections();
-    setOpenCreate(!openCreate);
+    refreshStatus();
+    setImage('');
+    setOpenCreate(false);
+    setOpenUpdate(false);
+    setOpenDelete(false);
   };
 
-
-  const selectSection = (id, name, title, desc, content) => {
-    console.log(id, name, title, desc, content)
-    selectedSection(id, name, title, desc, content);
+  const selectSection = (id, name, title, sectionurl, desc, content) => {
+    console.log(id, name, title, sectionurl, desc, content)
+    selectedSection(id, name, title, sectionurl, desc, content);
   };
-
 
   const handleUpdate = (event) => {
     event.preventDefault();
-    setOpenUpdate(!openUpdate);
     submitUpdate();
   };
 
   const handleDelete = (event) => {
     event.preventDefault();
-    setOpenDelete(!openDelete);
     submitDelete();
   }
 
-  
-
-  
   const [openCreate, setOpenCreate] = useState(false);
   const [openUpdate, setOpenUpdate] = useState(false);
   const [openDelete, setOpenDelete] = useState(false);
@@ -93,6 +91,11 @@ const onSelectFile = async (event) => {
         <div className='container__title'>
           <h1> SECTIONS DASHBOARD </h1>
         </div>
+        <div className='container__back'>
+        <NavLink to='/admin/dashboard'>
+          Back to Dashboard
+        </NavLink>
+        </div>
           <div className='container__choice'>
           <div className='container__choice__item' onClick={openModalCreate}>
             CREATE
@@ -119,9 +122,9 @@ const onSelectFile = async (event) => {
                 className='container__box__card'
                 onClick={() => selectSection(section.id, section.name, section.title, section.sectionurl, section.description, section.content)}  
                 >
-                  <img className='container__box__card__img'
+                  <img className='container__box__card__image'
                   src={section.sectionurl}
-                  alt='section picture'/>
+                  alt='section_illus'/>
                   <div className='container__box__card__username'>
                     {section.name}
                   </div>
@@ -212,38 +215,44 @@ const onSelectFile = async (event) => {
               <div className='container__modal__update__title'>
                 MODAL UPDATE
               </div>
-              <div className='container__modal__update__user'>
+                <div className='container__modal__update__section'>
                 {section_name}
-              </div>
-              <form className='container__modal__update__form'>
-              <label>Name</label>
-                <input
-                value={section_name}
-                name='section_name'
-                onChange={onChange}
-                placeholder='name' 
-                />
-                <label>Title</label>
-                <input
-                value={section_title}
-                name='section_title'
-                onChange={onChange}
-                placeholder='title' 
-                />
-                <label>Description</label>
-                <textarea
-                value={section_desc}
-                name='section_desc'
-                onChange={onChange}
-                placeholder='desc' 
-                />
-                <label>Content</label>
-                <textarea
-                value={section_content}
-                name='section_content'
-                onChange={onChange}
-                placeholder='content' 
-                />
+                </div>
+                <form className='container__modal__update__form'>
+                  {!success && (
+                    <>
+                    <div className='container__modal__create__form__image'>
+                    <img src={section_sectionurl} alt='section img' />
+                    </div>
+                    <label>Name</label>
+                    <input
+                    value={section_name}
+                    name='section_name'
+                    onChange={onChange}
+                    placeholder='name' 
+                    />
+                    <label>Title</label>
+                    <input
+                    value={section_title}
+                    name='section_title'
+                    onChange={onChange}
+                    placeholder='title' 
+                    />
+                    <label>Description</label>
+                    <textarea
+                    value={section_desc}
+                    name='section_desc'
+                    onChange={onChange}
+                    placeholder='desc' 
+                    />
+                    <label>Content</label>
+                    <textarea
+                    value={section_content}
+                    name='section_content'
+                    onChange={onChange}
+                    placeholder='content' 
+                    />
+                    
                 <div className='container__modal__update__button'>
                   <button onClick={handleUpdate}>
                     Valider
@@ -252,6 +261,20 @@ const onSelectFile = async (event) => {
                     Annuler
                   </button>
                 </div>
+                </>
+                )}
+                {success && (
+                  <>
+                  <div className='container__modal__update__msg'>
+                    {msg}
+                  </div>
+                  <div className='container__modal__update__button'>
+                  <button onClick={backToSection}>
+                    Back to Sections
+                  </button>
+                  </div>
+                  </>
+                )}
               </form>
             </div>
           </div>
@@ -262,17 +285,33 @@ const onSelectFile = async (event) => {
               <div className='container__modal__delete__title'>
                 MODAL DELETE
               </div>
-              <div className='container__modal__delete__user'>
-                {section_name}
-              </div>
-                <div className='container__modal__update__button'>
-                  <button onClick={handleDelete}>
-                    Valider
-                  </button>
-                  <button onClick={openModalDelete}>
-                    Annuler
-                  </button>
+              {!success &&(
+                <>
+                <div className='container__modal__delete__section'>
+                Êtes vous sur de vouloir supprimer cette section : {section_name} ?
                 </div>
+                <div className='container__modal__delete__button'>
+                <button onClick={handleDelete}>
+                  Oui
+                </button>
+                <button onClick={openModalDelete}>
+                  Annuler
+                </button>
+                </div>
+                </>
+              )}
+              {success && (
+                  <>
+                  <div className='container__modal__delete__msg'>
+                    {msg}
+                  </div>
+                  <div className='container__modal__delete__button'>
+                  <button onClick={backToSection}>
+                    Back to Sections
+                  </button>
+                  </div>
+                  </>
+                )}
             </div>
           </div>
           )}

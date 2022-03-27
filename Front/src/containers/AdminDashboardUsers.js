@@ -17,7 +17,9 @@ const mapStateToProps = (state) => ({
   users: state.users.users,
   role_id: state.users.role_id,
   user_id: state.users.user_id,
-  username: state.users.user_username
+  username: state.users.user_username,
+  success: state.users.success,
+  msg: state.users.msg,
 });
 
 // Component Func (Admin)
@@ -41,6 +43,10 @@ const mapDispatchToProps = (dispatch) => ({
 
   selectedUser: (id, username) => {
     dispatch(selectUser(id, username));
+  },
+
+  refreshUserStatus: () => {
+    dispatch({type: 'REFRESH_USER_STATUS'});
   },
 
 });

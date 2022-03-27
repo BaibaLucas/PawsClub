@@ -58,8 +58,9 @@ module.exports = {
         console.log(section);
         const sectionUpdated = await sectionDataMapper.updateSection(section, sectionId);
         res.json({
-            message: 'Section updated',
-            data: sectionUpdated
+            message: 'Section modifié avec succès',
+            success: true,
+            data: sectionUpdated,
         });
     } catch(error) {
         next(error);
@@ -69,22 +70,22 @@ module.exports = {
   /* Delete Section */
   async deleteSection(req, res, next) {
     try {
-      // const token = req.headers.authorization.split(' ');
-      // const tokenDecoded = jwt.verify(token[1], process.env.JWTSECRET);
-      // const tokenRoleId = tokenDecoded.roleId;
-      // // 1° Step Verif if user is admin
-      // if (tokenRoleId === 3) {
-      //   sectionId = req.params.id;
-      // } else {
-      //     res.status('403').json({message : 'Accès interdit : impossible de supprimer une section'});
-      //     next(error);
-      // };
-      // const deleteSectionId = sectionId;
-      const deleteSectionId = req.params.id;
+      const token = req.headers.authorization.split(' ');
+      const tokenDecoded = jwt.verify(token[1], process.env.JWTSECRET);
+      const tokenRoleId = tokenDecoded.roleId;
+      // 1° Step Verif if user is admin
+      if (tokenRoleId === 3) {
+        sectionId = req.params.id;
+      } else {
+          res.status('403').json({message : 'Accès interdit : impossible de supprimer une section'});
+          next(error);
+      };
+      const deleteSectionId = sectionId;
       const sectionDeleted = await sectionDataMapper.deleteSection(deleteSectionId);
             res.json({
-                message: 'deleted section',
-                data: sectionDeleted
+                message: 'Section supprimé avec succès',
+                data: sectionDeleted,
+                success: true,
             });
     } catch(error){
       next(error);

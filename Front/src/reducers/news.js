@@ -5,6 +5,8 @@ import {
   NEWS_CONTENT_SUCCESS,
   IMG_NEWS_UPLOAD_SUCCESS,
   SELECT_NEWS,
+  DELETE_NEWS_SUCCESS,
+  UPDATE_NEWS_SUCCESS
 } from '../store/action';
 
 /* Initial State user infos */
@@ -14,6 +16,7 @@ const initialState = {
   title: '',
   subtitle: '',
   content: '',
+  newsurl: '',
   tag: '',
   next: false,
   msg: '',
@@ -41,11 +44,8 @@ const Reducer = (oldState = initialState, action = {}) => {
     case NEWS_CONTENT_SUCCESS:
       return {
         ...oldState,
-        id: action.data.data.id,
-        title: action.data.data.title,
-        subtitle: action.data.data.subtitle,
-        content: action.data.data.content,
-        next: true,
+        msg: action.data.message,
+        success: action.data.success,
       }
 
     case IMG_NEWS_UPLOAD_SUCCESS:
@@ -75,9 +75,33 @@ const Reducer = (oldState = initialState, action = {}) => {
         id: action.id,
         title: action.title,
         subtitle: action.subtitle,
+        newsurl: action.newsurl,
         content: action.content,
         tag: action.tag,
       };
+
+    case DELETE_NEWS_SUCCESS:
+      return {
+        ...oldState,
+        msg: action.data.message,
+        success: action.data.success,
+      };
+
+    case 'REFRESH_NEWS_STATUS': {
+      return {
+        ...oldState,
+        msg: '',
+        success: false,
+      }
+    }
+
+    case UPDATE_NEWS_SUCCESS:
+      return {
+        ...oldState,
+        msg: action.data.message,
+        success: action.data.success,
+      };
+
       
     default:
       return {...oldState}

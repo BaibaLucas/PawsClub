@@ -9,6 +9,8 @@ import {
   getSectionsSuccess,
   getRosterSuccess,
   createSectionSuccess,
+  deleteSectionSuccess,
+  updateSectionSuccess,
 } from '../store/action';
 
 
@@ -112,11 +114,10 @@ const Sections = (store) => (next) => (action) => {
       };
       axios(config)
         .then((response) => {
-          console.log('ICI');
           if (response.status !== 200) {
             throw response.error;
           } else {
-            console.log(response.data);
+            store.dispatch(updateSectionSuccess(response.data));
           }
         }).catch((error) => {
           console.log('Oups !', error);
@@ -125,12 +126,15 @@ const Sections = (store) => (next) => (action) => {
     }
 
     case 'DELETE_SECTION': {
-      const { sections: { section_id } } = store.getState();
+      const { 
+        sections: { section_id },
+        auth : { token },  } = store.getState();
       const config = {
         method: 'delete',
         url: `${apiUrl}/lineup/${section_id}`,
         headers: {
           'Content-Type': 'application/json',
+          'Authorization': `Baerer ${token}`
         },
       };
       axios(config)
@@ -138,8 +142,8 @@ const Sections = (store) => (next) => (action) => {
           if (response.status !==200) {
             throw response.error;
           } else {
-            // store.dispatch(deleteUserSuccess(response.data));
-            console.log(response.data);
+            store.dispatch(deleteSectionSuccess(response.data));
+            console.log('response.data', response.data);
           }
         }).catch((error) => {
           console.log('Oups !', error);

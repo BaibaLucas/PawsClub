@@ -26,8 +26,9 @@ async createTag(req, res, next) {
       console.log(tag);
       const tagCreated = await tagDataMapper.createTag(tag);
       res.json({
-          message: 'Tag created',
-          data: tagCreated
+          message: 'Tag créer avec succès',
+          data: tagCreated,
+          success: true,
       });
   } catch(error) {
       next(error);
@@ -41,8 +42,9 @@ async deleteTag(req, res, next) {
     const deleteTagId = userId;
     const tagDeleted = await tagDataMapper.deleteTag(deleteTagId);
           res.json({
-              message: 'deleted tag',
-              data: tagDeleted
+              message: 'Tag supprimé avec succès',
+              data: tagDeleted,
+              success: true,
           });
           console.log('Tag deleted');
   } catch(error){
