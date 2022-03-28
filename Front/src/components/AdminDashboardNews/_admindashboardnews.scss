@@ -132,6 +132,16 @@
           height: 100%;
           display: flex;
           flex-direction: column;
+          &__image{
+            height: 250px;
+            width: 100%;
+            object-fit: cover;
+            img{
+              height: 250px;
+              width: 100%;
+              object-fit: contain;
+            }
+          }
         }
         &__button{
           margin: 0.5rem;

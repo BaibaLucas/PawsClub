@@ -1,6 +1,7 @@
 /* Package imports */
 import React, {useState, useEffect} from 'react';
 import { NavLink } from 'react-router-dom';
+import moment from 'moment';
 
 
 /* Local imports */
@@ -118,6 +119,7 @@ const AdminDashboardNews = ({ loadNews, news, handleChange, submitCreate, submit
           )}
         {news && (
           news.map((news => {
+            console.log(news);
             return (
               <div key={news.id} className='container__box__card'
               onClick={() => selectNews(news.id, news.title, news.subtitle, news.content, news.newsurl)}>
@@ -126,7 +128,10 @@ const AdminDashboardNews = ({ loadNews, news, handleChange, submitCreate, submit
                   {news.title}
                 </div>
                 <div className='container__box__card__date'>
-                  {news.date}
+                  {moment.utc(news.date).format("MM/DD/YY")}
+                </div>
+                <div className='container__box__card__username'>
+                  {news.username}
                 </div>
               </div>
             )
