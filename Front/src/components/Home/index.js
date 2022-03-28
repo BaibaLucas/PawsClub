@@ -17,9 +17,6 @@ const Home = ({ loadStreamersData, news, sections, streams }) => {
     loadStreamersData();
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-  console.log(streams);
-  console.log('news', news);
-  console.log('sections', sections);
 
   return (
     <div className='home'>

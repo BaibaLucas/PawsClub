@@ -60,8 +60,8 @@ module.exports = {
   },
 
   /* Create News */
-  async createNews(url, news, today, time, tag) {
-      const result = await client.query('INSERT INTO "news"(title, subtitle, content, newsurl, date, time, user_id, tag_id) VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING *', [news.title, news.subtitle, news.content, url, today, time, news.user_id, tag]);
+  async createNews(news, today, time, tag) {
+      const result = await client.query('INSERT INTO "news"(title, subtitle, content, date, time, user_id, tag_id) VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING *', [news.title, news.subtitle, news.content, today, time, news.user_id, tag]);
       if (result.rowCount == 0) {
         return null
       }
@@ -69,8 +69,8 @@ module.exports = {
   },
 
   /* Update News */
-  async updateNews(url, news, today, time, tag, newsId) {
-    const result = await client.query('UPDATE "news" SET title=$1, subtitle=$2, content=$3, newsurl=$4, date=$5, time=$6, tag_id=$7 WHERE id=$8 RETURNING *', [news.title, news.subtitle, news.content, url, today, time, tag, newsId]);
+  async updateNews(news, today, time, tag, newsId) {
+    const result = await client.query('UPDATE "news" SET title=$1, subtitle=$2, content=$3, date=$4, time=$5, tag_id=$6 WHERE id=$7 RETURNING *', [news.title, news.subtitle, news.content, today, time, tag, newsId]);
     if (result.rowCount == 0) {
         return null;
     }

@@ -44,9 +44,9 @@ module.exports = {
         res.status(200).json({
           success: true,
           data: uploadImg,
-          message: 'Votre image à été uploadée avec succès.'
+          message: 'Votre news a été créer avec succès.'
         });
-        console.log('IMG UPDATE SUCCESSFULLY');
+        console.log('IMG UPDATE SUCCESSFULLY NEWS');
       })
     } catch(error) {
       console.log('IMGCONTROLLER upload ---> ERROR ');

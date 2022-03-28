@@ -8,6 +8,7 @@ import { apiUrl } from './url';
 import {
   getUsersSuccess,
   getStreamersSuccess,
+  editRoleSuccess,
  } from '../store/action';
 
 
@@ -52,8 +53,10 @@ const Admin = (store) => (next) => (action) => {
           if (response.status !== 200) {
             throw response.error;
           } else {
-            // store.dispatch(editUserSuccess(response.data));
-            console.log(response.data);
+            store.dispatch(editRoleSuccess(response.data));
+            console.log('res', response.data);
+            console.log('msg', response.data.msg);
+            console.log('succes',response.data.success);
           }
         }).catch((error) => {
           console.log('Oups !', error);

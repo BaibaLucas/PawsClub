@@ -9,6 +9,8 @@ import {
   getNewsSuccess,
   newsContentSuccess,
   imgNewsUploadSuccess,
+  deleteNewsSuccess,
+  updateNewsSuccess,
 } from '../store/action';
 
 
@@ -35,6 +37,8 @@ const News = (store) => (next) => (action) => {
         news: { title, subtitle, content, tag },
         auth: { id, token }
       } = store.getState();
+      const formData = new FormData();
+      formData.append('myImage', action.formData);
       const config = {
         method: 'post',
         url: `${apiUrl}/news`,
@@ -55,8 +59,20 @@ const News = (store) => (next) => (action) => {
           if (response.status !== 200) {
             throw response.error;
           } else {
-            console.log('response.data', response.data);
-            store.dispatch(newsContentSuccess(response.data));
+            console.log('OK ICI');
+            const config2 = {
+              headers: {
+                'Content-Type': 'multipart/form-data',
+                'Authorization': `Baerer ${token}`,
+              } 
+            };
+            axios.post(`${apiUrl}/news/image/${response.data.data.id}`, formData, config2)
+            .then((response) => {
+              console.log('response after create', response.data);
+              store.dispatch(newsContentSuccess(response.data, response.data.message));
+            }).catch((error) => {
+              console.log('Oups', error);
+            });
           }
         }).catch((error) => {
           console.log(error, 'ERROR');
@@ -114,6 +130,7 @@ const News = (store) => (next) => (action) => {
           if (response.status !== 200) {
             throw response.error;
           } else {
+            store.dispatch(updateNewsSuccess(response.data));
             console.log(response.data);
           }
         }).catch((error) => {
@@ -139,7 +156,7 @@ const News = (store) => (next) => (action) => {
           if (response.status !==200) {
             throw response.error;
           } else {
-            // store.dispatch(deleteUserSuccess(response.data));
+            store.dispatch(deleteNewsSuccess(response.data));
             console.log(response.data);
           }
         }).catch((error) => {

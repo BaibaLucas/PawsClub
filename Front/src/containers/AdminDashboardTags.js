@@ -17,6 +17,8 @@ const mapStateToProps = (state) => ({
   tags: state.tags.tags,
   tagname: state.tags.tag_name,
   tag_id: state.tags.tag_id,
+  msg: state.tags.msg,
+  success: state.tags.success,
 });
 
 // Component Func (AdminDashboardTags)
@@ -41,6 +43,10 @@ const mapDispatchToProps = (dispatch) => ({
   selectedTag: (id, name) => {
     dispatch(selectTag(id, name));
   },
+
+  refreshTagStatus: () => {
+    dispatch({type: 'REFRESH_TAG_STATUS'});
+  }
 
 
 });

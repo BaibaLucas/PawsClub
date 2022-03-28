@@ -68,8 +68,7 @@ module.exports = {
         // FUTUR TAG REWORK
         const tag = 2;
         console.log('news', news);
-        url = 'blabla';
-        const createdNews = await newsDataMapper.createNews(url, news, date, timeatm, tag);
+        const createdNews = await newsDataMapper.createNews(news, date, timeatm, tag);
         res.status(200).json({
             data: createdNews,
             message: 'Votre news à été créer avec succès'
@@ -103,11 +102,11 @@ module.exports = {
       // FUTUR TAG REWORK
       const tag = 2;
       console.log('news', news);
-      url = 'blabla';
-      const updatedNews = await newsDataMapper.updateNews(url, news, date, timeatm, tag, newsId);
+      const updatedNews = await newsDataMapper.updateNews(news, date, timeatm, tag, newsId);
         res.json({
-            message: 'News updated',
-            data: updatedNews
+            message: 'News modifié avec succès',
+            data: updatedNews,
+            success: true,
         });
     } catch(error) {
         next(error);
@@ -130,8 +129,9 @@ module.exports = {
       const deleteNewsId = newsId;
       const newsDeleted = await newsDataMapper.deleteNews(deleteNewsId);
             res.json({
-                message: 'deleted news',
-                data: newsDeleted
+                message: 'News supprimé avec succès',
+                data: newsDeleted,
+                success: true,
             });
     } catch(error){
       next(error);

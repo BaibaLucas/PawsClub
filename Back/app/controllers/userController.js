@@ -110,10 +110,10 @@ module.exports = {
             role_id: userToUpdate.role_id,
             });
             res.json({
-              message: 'user updated',
-              data: userUpdated
+              message: 'Utilisateur modifié avec succès',
+              success: true,
+              data: userUpdated,
             });
-            console.log('userUpdated', userUpdated);
         } catch (error) {
           next();
         }
@@ -125,7 +125,8 @@ module.exports = {
             username: userToUpdate.username,
             });
             res.json({
-              message: 'user updated',
+              message: 'Utilisateur modifié avec succès',
+              success: true,
               data: userUpdated
             });
             console.log('userUpdated', userUpdated);
@@ -147,7 +148,8 @@ module.exports = {
               password: hashedPassword,
               });
               res.json({
-                message: 'user updated',
+                message: 'Utilisateur modifié avec succès',
+                success: true,
                 data: userUpdated
               });
               console.log('userUpdated', userUpdated);
@@ -168,7 +170,8 @@ module.exports = {
             email: userToUpdate.email,
             });
             res.json({
-              message: 'user updated',
+              message: 'Utilisateur modifié avec succès',
+              success: true,
               data: userUpdated
             });
             console.log('userUpdated', userUpdated);
@@ -191,7 +194,8 @@ module.exports = {
               password: hashedPassword,
               });
               res.status('200').json({
-                message: 'user updated',
+                message: 'Utilisateur modifié avec succès',
+                success: true,
                 data: userUpdated
               });
               console.log('userUpdated', userUpdated);
@@ -213,7 +217,8 @@ module.exports = {
             email: userToUpdate.email,
             });
             res.status(200).json({
-              message: 'user updated',
+              message: 'Utilisateur modifié avec succès',
+              success: true,
               data: userUpdated
             });
         } catch {
@@ -235,7 +240,8 @@ module.exports = {
               email: userToUpdate.email,
               });
               res.json({
-                message: 'user updated',
+                message: 'Utilisateur modifié avec succès',
+                success: true,
                 data: userUpdated
               });
               console.log('userUpdated', userUpdated);
@@ -265,7 +271,8 @@ module.exports = {
               password: hashedPassword,
               });
               res.json({
-                message: 'user updated',
+                message: 'Utilisateur modifié avec succès',
+                success: true,
                 data: userUpdated
               });
               console.log('userUpdated', userUpdated);

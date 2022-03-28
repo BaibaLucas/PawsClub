@@ -30,8 +30,6 @@ const News = ({ news, loadNewsData, loadSectionsData, sections }) => {
     }
   };
 
-  console.log('news', news);
-  console.log('sections', sections);
   return(
     <div className='news'>
       <div className='container'>

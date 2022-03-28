@@ -1,14 +1,16 @@
 /* Package imports */
 import React, {useState, useEffect} from 'react';
+import { NavLink } from 'react-router-dom';
+import moment from 'moment';
 
 
 /* Local imports */
-import defaultPic from '../../assets/images/defaultPic.jpeg';
-import addon from '../../assets/images/addon.png';
+import getCanvasImage from '../../utils';
+import { dataURLtoFile } from '../../utils';
 
 // Components
 
-const AdminDashboardNews = ({ loadNews, news, handleChange, submitCreate, submitUpdate, selectedNews, title, subtitle, content, tag, id, submitDelete }) => {
+const AdminDashboardNews = ({ loadNews, news, handleChange, submitCreate, submitUpdate, selectedNews, title, subtitle, content, tag, id, submitDelete, success, msg, refreshNewsStatus, newsurl }) => {
 
   // Loading Users
   useEffect(() => {
@@ -16,46 +18,47 @@ const AdminDashboardNews = ({ loadNews, news, handleChange, submitCreate, submit
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const newsImg = (newsurl) => {
-    if (newsurl.length === 0 || newsurl === 'blabla' || newsurl === 'http://myphotourlnews.fr') {
-      return addon
-    } else {
-      return newsurl;
-    }
-  };
+  const [image, setImage] = useState(null);
 
   const onChange = (event) => {
     handleChange(event.target.value, event.target.name);
   };
 
-  const handleCreate = (event) => {
+  const handleCreate = async (event) => {
     event.preventDefault();
-    setOpenCreate(!openCreate);
-    submitCreate();
+    const canvas = await getCanvasImage(image);
+    const canvasDataUrl = canvas.toDataURL('image/jpeg');
+    const convertedUrlToFile = dataURLtoFile(canvasDataUrl, 'section-picture.jpeg');
+    submitCreate(convertedUrlToFile);
+  };
+
+  const onSelectFile = async (event) => {
+    if (event.target.files && event.target.files.length > 0) {
+      const reader = new FileReader();
+      reader.readAsDataURL(event.target.files[0]);
+      reader.addEventListener("load", () => {
+        setImage(reader.result);
+      });
+    };
   };
 
 
-  const selectNews = (id, title, subtitle, content) => {
-    console.log(id, title, subtitle, content)
-    selectedNews(id, title, subtitle, content);
+  const selectNews = (id, title, subtitle, content, newsurl) => {
+    console.log(id, title, subtitle, content, 'newsurl', newsurl)
+    selectedNews(id, title, subtitle, content, newsurl);
   };
 
 
   const handleUpdate = (event) => {
     event.preventDefault();
-    setOpenUpdate(!openUpdate);
     submitUpdate();
   };
 
   const handleDelete = (event) => {
     event.preventDefault();
-    setOpenDelete(!openDelete);
     submitDelete();
-  }
+  };
 
-  
-
-  
   const [openCreate, setOpenCreate] = useState(false);
   const [openUpdate, setOpenUpdate] = useState(false);
   const [openDelete, setOpenDelete] = useState(false);
@@ -73,6 +76,15 @@ const AdminDashboardNews = ({ loadNews, news, handleChange, submitCreate, submit
     console.log('click')
   };
 
+  const backToNews = () => {
+    loadNews();
+    refreshNewsStatus();
+    setImage('');
+    setOpenCreate(false);
+    setOpenUpdate(false);
+    setOpenDelete(false);
+  };
+
 
 
   return(
@@ -80,6 +92,11 @@ const AdminDashboardNews = ({ loadNews, news, handleChange, submitCreate, submit
       <div className='container'>
         <div className='container__title'>
           <h1> NEWS DASHBOARD </h1>
+        </div>
+        <div className='container__back'>
+            <NavLink to='/admin/dashboard'>
+              Back to Dashboard
+            </NavLink>
         </div>
           <div className='container__choice'>
           <div className='container__choice__item' onClick={openModalCreate}>
@@ -97,20 +114,28 @@ const AdminDashboardNews = ({ loadNews, news, handleChange, submitCreate, submit
           )}
         </div>
         <div className='container__box'>
-        {news.map((news => {
-              return (
-                <div key={news.id} className='container__box__card'
-                onClick={() => selectNews(news.id, news.title, news.subtitle, news.content)}>
-                  <img className='container__box__card__image' src={newsImg(news.newsurl)} alt='news illustration' />
-                  <div className='containers__box__card__title'>
-                    {news.title}
-                  </div>
-                  <div className='container__box__card__date'>
-                    {news.date}
-                  </div>
+        {!news && (
+            <h1>Aucune news actuellement disponible</h1>
+          )}
+        {news && (
+          news.map((news => {
+            console.log(news);
+            return (
+              <div key={news.id} className='container__box__card'
+              onClick={() => selectNews(news.id, news.title, news.subtitle, news.content, news.newsurl)}>
+                <img className='container__box__card__image' src={news.newsurl} alt='news illustration' />
+                <div className='containers__box__card__title'>
+                  {news.title}
                 </div>
-              )
-            }))}
+                <div className='container__box__card__date'>
+                  {moment.utc(news.date).format("MM/DD/YY")}
+                </div>
+                <div className='container__box__card__username'>
+                  {news.username}
+                </div>
+              </div>
+            )
+          })))}
         </div>
         {openCreate && (
           <div className='container__modal'>
@@ -118,7 +143,23 @@ const AdminDashboardNews = ({ loadNews, news, handleChange, submitCreate, submit
               <div className='container__modal__create__title'>
                 MODAL Create
               </div>
-              <form className='container__modal__create__form'>
+              <form className='container__modal__create__form' encType='multipart/form-data'>
+              {image && (
+                <div className='container__modal__create__form__image'>
+                <img src={image} alt='section img' />
+              </div>
+               )}
+               {!success && (
+                 <>
+                 <label className='container__modal__create__form__label' htmlFor='upload__photo'>Select File</label>
+                <input
+                id='upload__photo'
+                onChange={onSelectFile}
+                className='container__modal__create__form__input'
+                type='file'
+                name='imgsection'
+                accept="image/*"
+                />
                 <label>Title</label>
                 <input
                 name='title'
@@ -132,7 +173,7 @@ const AdminDashboardNews = ({ loadNews, news, handleChange, submitCreate, submit
                 placeholder='subtitle' 
                 />
                 <label>Content</label>
-                <input
+                <textarea
                 name='content'
                 onChange={onChange}
                 placeholder='content' 
@@ -151,6 +192,20 @@ const AdminDashboardNews = ({ loadNews, news, handleChange, submitCreate, submit
                     Annuler
                   </button>
                 </div>
+                 </>
+               )}
+               {success && (
+                  <>
+                  <div className='container__modal__create_msg'>
+                    {msg}
+                  </div>
+                  <div className='container__modal__create__button'>
+                  <button onClick={backToNews}>
+                    Back to News
+                  </button>
+                  </div>
+                  </>
+                )}
               </form>
             </div>
           </div>
@@ -165,7 +220,12 @@ const AdminDashboardNews = ({ loadNews, news, handleChange, submitCreate, submit
                 {title}
               </div>
               <form className='container__modal__update__form'>
-              <label>title</label>
+                {!success && (
+                  <>
+                <div className='container__modal__update__form__image'>
+                  <img src={newsurl} alt='section img' />
+                </div>
+                <label>title</label>
                 <input
                 value={title}
                 name='title'
@@ -201,6 +261,20 @@ const AdminDashboardNews = ({ loadNews, news, handleChange, submitCreate, submit
                     Annuler
                   </button>
                 </div>
+                  </>
+                )}
+                {success && (
+                  <>
+                  <div className='container__modal__update__msg'>
+                    {msg}
+                  </div>
+                  <div className='container__modal__update__button'>
+                  <button onClick={backToNews}>
+                    Back to News
+                  </button>
+                  </div>
+                  </>
+                )}
               </form>
             </div>
           </div>
@@ -211,10 +285,12 @@ const AdminDashboardNews = ({ loadNews, news, handleChange, submitCreate, submit
               <div className='container__modal__delete__title'>
                 MODAL DELETE
               </div>
-              <div className='container__modal__delete__user'>
-                {title}
-              </div>
-                <div className='container__modal__update__button'>
+              {!success && (
+                <>
+                <div className='container__modal__delete__news'>
+                Êtes vous sur de vouloir supprimer cette news : {title} ?
+                </div>
+                <div className='container__modal__delete__button'>
                   <button onClick={handleDelete}>
                     Valider
                   </button>
@@ -222,6 +298,20 @@ const AdminDashboardNews = ({ loadNews, news, handleChange, submitCreate, submit
                     Annuler
                   </button>
                 </div>
+                </>
+              )}
+              {success && (
+                  <>
+                  <div className='container__modal__delete__msg'>
+                    {msg}
+                  </div>
+                  <div className='container__modal__delete__button'>
+                  <button onClick={backToNews}>
+                    Back to News
+                  </button>
+                  </div>
+                  </>
+                )}
             </div>
           </div>
           )}

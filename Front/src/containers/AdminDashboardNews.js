@@ -18,9 +18,11 @@ const mapStateToProps = (state) => ({
   news: state.news.news,
   title: state.news.title,
   subtitle: state.news.subtitle,
+  newsurl: state.news.newsurl,
   content: state.news.content,
   tag: state.news.tag,
-  
+  msg: state.news.msg,
+  success: state.news.success,
 });
 
 // Component Func (Admin)
@@ -34,8 +36,8 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch(changeNewsField(value, name));
   },
 
-  submitCreate: () => {
-    dispatch({type: 'CREATE_NEWS'});
+  submitCreate: (formData) => {
+    dispatch({type: 'CREATE_NEWS', formData});
   },
 
   submitUpdate: () => {
@@ -46,8 +48,12 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch({type: 'DELETE_NEWS'});
   },
 
-  selectedNews: (id, title, subtitle, content, tag) => {
-    dispatch(selectNews(id, title, subtitle, content, tag));
+  selectedNews: (id, title, subtitle, content, newsurl) => {
+    dispatch(selectNews(id, title, subtitle, content, newsurl));
+  },
+
+  refreshNewsStatus: () => {
+    dispatch({type: 'REFRESH_NEWS_STATUS'});
   },
 
 });

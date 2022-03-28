@@ -1,12 +1,13 @@
 /* Package imports */
 import React, { useEffect, useState } from 'react';
+import { NavLink } from 'react-router-dom';
 
 /* Local imports */
 
 
 // Components
 
-const AdminDashboardTags = ({ loadTags, tags, handleChange, submitTag, submitDelete, selectedTag, tagname, tag_id }) => {
+const AdminDashboardTags = ({ loadTags, tags, handleChange, submitTag, submitDelete, selectedTag, tagname, tag_id, msg, success, refreshTagStatus }) => {
 
   // Loading Users
   useEffect(() => {
@@ -14,11 +15,11 @@ const AdminDashboardTags = ({ loadTags, tags, handleChange, submitTag, submitDel
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const [openCreate, setOpenUpdate] = useState(false);
+  const [openCreate, setOpenCreate] = useState(false);
   const [openDelete, setOpenDelete] = useState(false);
 
   const openModalCreate = () => {
-    setOpenUpdate(!openCreate);
+    setOpenCreate(!openCreate);
     console.log(openCreate);
   };
   const openModalDelete = () => {
@@ -32,13 +33,11 @@ const AdminDashboardTags = ({ loadTags, tags, handleChange, submitTag, submitDel
 
   const handleSubmitTag = (event) => {
     event.preventDefault();
-    setOpenUpdate(!openCreate);
     submitTag();
   };
 
   const handleSubmitDelete = (event) => {
     event.preventDefault();
-    setOpenDelete(!openDelete);
     submitDelete();
   };
 
@@ -47,35 +46,51 @@ const AdminDashboardTags = ({ loadTags, tags, handleChange, submitTag, submitDel
     selectedTag(id, name);
   };
 
+  const backToTags = () => {
+    loadTags();
+    refreshTagStatus();
+    setOpenCreate(false);
+    setOpenDelete(false);
+  };
+
   return(
     <div className='admindashboardtags'>
       <div className='container'>
         <div className='container__title'>
           <h1>TAGS DASHBOARD</h1>
         </div>
-        {tag_id.length !== 0 && (
+        <div className='container__back'>
+        <NavLink to='/admin/dashboard'>
+          Back to Dashboard
+        </NavLink>
+        </div>
           <div className='container__choice'>
           <div className='container__choice__item' onClick={openModalCreate}>
             CREATE
           </div>
+          {tag_id.length !== 0 && (
           <div className='container__choice__item' onClick={openModalDelete}>
             DELETE
           </div>
+          )}
         </div>
-        )}
         <div className='container__box'>
-        {tags.map((tag => {
-              return (
-                <div key={tag.id}
-                className='container__box__card'
-                onClick={() => selectTag(tag.id, tag.name)} 
-                >
-                  <div className='container__box__card__name'>
-                    {tag.name}
-                  </div>
+        {!tags && (
+            <h1>Aucune tag actuellement disponible</h1>
+          )}
+        {tags && (
+          tags.map((tag => {
+            return (
+              <div key={tag.id}
+              className='container__box__card'
+              onClick={() => selectTag(tag.id, tag.name)} 
+              >
+                <div className='container__box__card__name'>
+                  {tag.name}
                 </div>
-              )
-            }))}
+              </div>
+            )
+          })))}
         </div>
         {openCreate && (
           <div className='container__modal'>
@@ -84,7 +99,9 @@ const AdminDashboardTags = ({ loadTags, tags, handleChange, submitTag, submitDel
                 MODAL Create
               </div>
               <form className='container__modal__update__form'>
-                <label> NAME </label>
+                {!success && (
+                  <>
+                  <label> NAME </label>
                 <input
                 className='container__modal__update__form__input'
                 onChange={onChange}
@@ -98,6 +115,20 @@ const AdminDashboardTags = ({ loadTags, tags, handleChange, submitTag, submitDel
                     Annuler
                   </button>
                 </div>
+                  </>
+                )}
+                {success && (
+                  <>
+                  <div className='container__modal__create_msg'>
+                    {msg}
+                  </div>
+                  <div className='container__modal__create__button'>
+                  <button onClick={backToTags}>
+                    Back to Sections
+                  </button>
+                  </div>
+                  </>
+                )}
               </form>
             </div>
           </div>
@@ -108,9 +139,11 @@ const AdminDashboardTags = ({ loadTags, tags, handleChange, submitTag, submitDel
               <div className='container__modal__delete__title'>
                 MODAL DELETE
               </div>
-              <div className='container__modal__delete__tag'>
-                {tagname}
-              </div>
+              {!success && (
+                <>
+                <div className='container__modal__delete__tag'>
+                Êtes vous sur de vouloir supprimer ce Tag : {tagname}
+                </div>
                 <div className='container__modal__update__button'>
                   <button onClick={handleSubmitDelete}>
                     Valider
@@ -119,6 +152,20 @@ const AdminDashboardTags = ({ loadTags, tags, handleChange, submitTag, submitDel
                     Annuler
                   </button>
                 </div>
+                </>
+              )}
+              {success && (
+                  <>
+                  <div className='container__modal__delete__msg'>
+                    {msg}
+                  </div>
+                  <div className='container__modal__delete__button'>
+                  <button onClick={backToTags}>
+                    Back to Tags
+                  </button>
+                  </div>
+                  </>
+                )}
             </div>
           </div>
           )}

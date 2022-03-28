@@ -7,6 +7,8 @@ import { apiUrl } from './url';
 // Action
 import { 
   getTagsSuccess,
+  createTagSuccess,
+  deleteTagSuccess,
 } from '../store/action';
 
 
@@ -46,7 +48,7 @@ const Tags = (store) => (next) => (action) => {
           if (response.status !== 200) {
             throw response.error;
           } else {
-            // store.dispatch(editUserSuccess(response.data));
+            store.dispatch(createTagSuccess(response.data));
             console.log(response.data);
           }
         }).catch((error) => {
@@ -69,8 +71,7 @@ const Tags = (store) => (next) => (action) => {
           if (response.status !==200) {
             throw response.error;
           } else {
-            // store.dispatch(deleteUserSuccess(response.data));
-            console.log(response.data);
+            store.dispatch(deleteTagSuccess(response.data));
           }
         }).catch((error) => {
           console.log('Oups !', error);

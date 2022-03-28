@@ -57,6 +57,7 @@ const App = ({ loadNewsData, loadSectionsData, loadStreamersData, logged, role_i
         <Route path='/news' element={<News />} />
         <Route path='/newsdetails' element={<Newsdetails />} />
         <Route path='/roster' element={<Roster />} />
+        <Route path='/section' element={<Section />} />
         {/* User route */}
         <Route element={<GuardedRoute logged={logged} />}>
           <Route path='/account' element={<Account />} />

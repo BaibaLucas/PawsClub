@@ -13,17 +13,23 @@ export const CHANGE_NEWS_FIELD = 'CHANGE_NEWS_FIELD';
 export const NEWS_CONTENT_SUCCESS = 'NEWS_CONTENT_SUCCESS';
 export const IMG_NEWS_UPLOAD_SUCCESS = 'IMG_NEWS_UPLOAD_SUCCESS';
 export const SELECT_NEWS = 'SELECT_NEWS';
+export const DELETE_NEWS_SUCCESS = 'DELETE_NEWS_SUCCESS';
+export const UPDATE_NEWS_SUCCESS = 'UPDATE_NEWS_SUCCESS';
 // Lineup types
 export const GET_SECTIONS_SUCCESS = 'GET_SECTIONS_SUCCESS';
 export const GET_ROSTER_SUCCESS = 'GET_ROSTER_SUCCESS';
 export const SELECT_SECTION = 'SELECT_SECTION';
 export const CHANGE_SECTIONS_FIELD = 'CHANGE_SECTIONS_FIELD';
 export const CREATE_SECTION_SUCCESS = 'CREATE_SECTION_SUCCESS';
+export const DELETE_SECTION_SUCCESS = 'DELETE_SECTION_SUCCESS';
+export const UPDATE_SECTION_SUCCESS = 'UPDATE_SECTION_SUCCESS';
 // Users types
 export const GET_USERS_SUCCESS = 'GET_USERS_SUCCESS';
 export const CHANGE_USERS_FIELD = 'CHANGE_USERS_FIELD';
 export const SELECT_USER = 'SELECT_USER';
 export const GET_STREAMERS_SUCCESS = 'GET_STREAMERS_SUCCESS';
+export const EDIT_ROLE_SUCCESS = 'EDIT_ROLE_SUCCESS';
+
 // Image Types
 export const IMG_UPLOAD_SUCCESS = 'IMG_UPLOAD_SUCCESS';
 // Admin Types
@@ -33,6 +39,8 @@ export const ADMIN_LOGIN_SUCCESS = 'ADMIN_LOGIN_SUCCESS';
 export const GET_TAGS_SUCCESS = 'GET_TAGS_SUCCESS';
 export const CHANGE_TAGS_FIELD = 'CHANGE_TAGS_FIELD';
 export const SELECT_TAG = 'SELECT_TAG';
+export const CREATE_TAG_SUCCESS = 'CREATE_TAG_SUCCESS';
+export const DELETE_TAG_SUCCESS = 'DELETE_TAG_SUCCESS';
 
 /* Actions */
 
@@ -79,13 +87,21 @@ export const imgNewsUploadSuccess = (news, message) => ({
   ...news,
   message,
 });
-export const selectNews = (id, title, subtitle, content, tag) => ({
+export const selectNews = (id, title, subtitle, content, newsurl) => ({
   type: SELECT_NEWS,
   id,
   title,
   subtitle,
   content,
-  tag,
+  newsurl,
+});
+export const deleteNewsSuccess = (data) => ({
+  type: DELETE_NEWS_SUCCESS,
+  data,
+});
+export const updateNewsSuccess = (data) => ({
+  type: UPDATE_NEWS_SUCCESS,
+  data,
 });
 
 // Lineup actions
@@ -97,11 +113,12 @@ export const getRosterSuccess = (data) => ({
   type: GET_ROSTER_SUCCESS,
   data,
 });
-export const selectSection = (id, name, title, desc, content) => ({
+export const selectSection = (id, name, title, sectionurl, desc, content) => ({
   type: SELECT_SECTION,
   id,
   name,
   title,
+  sectionurl,
   desc,
   content,
 });
@@ -114,6 +131,14 @@ export const createSectionSuccess = (data) => ({
   type: CREATE_SECTION_SUCCESS,
   data,
 });
+export const deleteSectionSuccess = (data) => ({
+  type: DELETE_SECTION_SUCCESS,
+  data,
+});
+export const updateSectionSuccess = (data) => ({
+  type: UPDATE_SECTION_SUCCESS,
+  data,
+})
 
 // Users actions
 export const getUsersSuccess = (data) => ({
@@ -132,6 +157,10 @@ export const selectUser = (id, username) => ({
 });
 export const getStreamersSuccess = (data) => ({
   type: GET_STREAMERS_SUCCESS,
+  data,
+});
+export const editRoleSuccess = (data) => ({
+  type: EDIT_ROLE_SUCCESS,
   data,
 });
 
@@ -157,6 +186,14 @@ export const selectTag = (id, name) => ({
   id,
   name,
 });
+export const createTagSuccess = (data) => ({
+  type: CREATE_TAG_SUCCESS,
+  data,
+});
+export const deleteTagSuccess = (data) => ({
+  type: DELETE_TAG_SUCCESS,
+  data,
+})
 
 // Admin actions
 export const AdminAuthFailed = (data) => ({
