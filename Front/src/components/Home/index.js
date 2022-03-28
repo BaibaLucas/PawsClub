@@ -5,6 +5,7 @@ import ReactPlayer from 'react-player';
 
 /* Local imports */
 import illust from '../../assets/images/pawspaper.jpg';
+import { buildSectionUrl } from '../../utils';
 
 
 
@@ -72,7 +73,7 @@ const Home = ({ loadStreamersData, news, sections, streams }) => {
             {sections && (
               sections.map((section => {
                 return (
-                  <NavLink key={section.id} className='container__linesup__box__card' to='/section'>
+                  <NavLink key={section.id} className='container__linesup__box__card' to={buildSectionUrl(section.name)}>
                     <img className='container__linesup__box__card__image' src={section.sectionurl} alt='linesup illustration' />
                   </NavLink>
                 )

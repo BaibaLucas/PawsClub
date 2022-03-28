@@ -1,8 +1,9 @@
+/* Package imports */
+import { Component, useEffect } from "react";
+import { useLocation, useNavigate, useParams } from "react-router-dom";
+import slugify from 'slugify';
+
 /** ALL EXT FUNCTIONS USED FROM HANDLE IMAGE/FILE/CANVAS */
-
-import { useEffect } from "react";
-import { useLocation } from "react-router-dom";
-
 // Create Image
 const createImage = (url) =>
   new Promise((resolve, reject) => {
@@ -43,4 +44,34 @@ export const useScrollToTop = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [pathname]);
+};
+
+/** SLUGIFY */
+// Create function to replace URL:id for URL:section.name
+// Transform scetion name into slug
+export const slugifyTitle = (title) => slugify(title, { lower: true});
+
+// Adding /route(section) before slugifyTitle
+export const buildSectionUrl = (title) => `/section/${slugifyTitle(title)}`;
+
+/** 
+ * --FIND SECTION BY SLUG--
+ * 
+ * section.title === (SLUG)section-title
+ */
+export const getSectionBySlug = (sections, slug) => (
+  sections.find((section) => slugifyTitle(section.title) === slug)
+);
+
+/** React-router-dom v5 withRouter to v6 with own Hooks
+https://reactrouter.com/docs/en/v6/faq#what-happened-to-withrouter-i-need-it 
+
+https://github.com/remix-run/react-router/issues/7361#issuecomment-631311100
+
+*/
+export const withRouter = Component => props => {
+  const location = useLocation();
+  const match = { params: useParams() };
+  const navigate = useNavigate();
+  return <Component location={location} match={match} navigate={navigate} {...props} />;
 };
