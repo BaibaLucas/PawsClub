@@ -7,12 +7,14 @@ import {
   CREATE_SECTION_SUCCESS,
   DELETE_SECTION_SUCCESS,
   UPDATE_SECTION_SUCCESS,
+  SECTION_DETAILS_SUCCESS,
 } from '../store/action';
 
 /* Initial State user infos */
 const initialState = {
   sections: [],
   roster: [],
+  newsSection: [],
   section_id: '',
   section_name: '',
   section_title: '',
@@ -94,6 +96,13 @@ const Reducer = (oldState = initialState, action = {}) => {
         ...oldState,
         msg: action.data.message,
         success: action.data.success,
+      }
+
+    case SECTION_DETAILS_SUCCESS:
+      return {
+        ...oldState,
+        newsSection: action.data.data.sectionNews,
+        roster: action.data.data.sectionUsers,
       }
     default:
       return {...oldState}

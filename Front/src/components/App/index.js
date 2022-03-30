@@ -15,7 +15,7 @@ import About from '../About';
 import LinesUp from '../../containers/LinesUp';
 import Section from '../../containers/Section';
 import News from '../../containers/News';
-import Newsdetails from '../Newsdetails';
+import NewsDetails from '../../containers/NewsDetails';
 import Streams from '../../containers/Streams';
 import Account from '../../containers/Account';
 import Roster from '../../containers/Roster';
@@ -55,7 +55,7 @@ const App = ({ loadNewsData, loadSectionsData, loadStreamersData, logged, role_i
         <Route path='/streams' element={<Streams />}/>
         <Route path='/linesup' element={<LinesUp />} />
         <Route path='/news' element={<News />} />
-        <Route path='/newsdetails' element={<Newsdetails />} />
+        <Route path='/news/:slug' element={<NewsDetails />} />
         <Route path='/roster' element={<Roster />} />
         <Route path='/section/:slug' element={<Section />} />
         {/* User route */}

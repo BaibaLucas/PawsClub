@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import Home from '../components/Home';
 
 // Action
+import { selectSection, selectNews } from './../store/action';
 
 /* Container */
 
@@ -20,6 +21,18 @@ const mapDispatchToProps = (dispatch) => ({
 
 loadStreamersData: () => {
   dispatch({type: 'GET_STREAMERS'});
+},
+
+getSectionDetails: (sectionId) => {
+  dispatch({type: 'GET_SECTION_DETAILS', sectionId})
+},
+
+selectedSection: (id, name, title, sectionurl, desc, content) => {
+  dispatch(selectSection(id, name, title, sectionurl, desc, content));
+},
+
+selectedNews: (id, title, subtitle, content, newsurl) => {
+  dispatch(selectNews(id, title, subtitle, content, newsurl));
 },
 
 });

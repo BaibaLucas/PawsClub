@@ -15,6 +15,7 @@ export const IMG_NEWS_UPLOAD_SUCCESS = 'IMG_NEWS_UPLOAD_SUCCESS';
 export const SELECT_NEWS = 'SELECT_NEWS';
 export const DELETE_NEWS_SUCCESS = 'DELETE_NEWS_SUCCESS';
 export const UPDATE_NEWS_SUCCESS = 'UPDATE_NEWS_SUCCESS';
+export const NEWS_DETAILS_SUCCESS = 'NEWS_DETAILS_SUCCESS';
 // Lineup types
 export const GET_SECTIONS_SUCCESS = 'GET_SECTIONS_SUCCESS';
 export const GET_ROSTER_SUCCESS = 'GET_ROSTER_SUCCESS';
@@ -23,6 +24,7 @@ export const CHANGE_SECTIONS_FIELD = 'CHANGE_SECTIONS_FIELD';
 export const CREATE_SECTION_SUCCESS = 'CREATE_SECTION_SUCCESS';
 export const DELETE_SECTION_SUCCESS = 'DELETE_SECTION_SUCCESS';
 export const UPDATE_SECTION_SUCCESS = 'UPDATE_SECTION_SUCCESS';
+export const SECTION_DETAILS_SUCCESS = 'SECTION_DETAILS_SUCCESS';
 // Users types
 export const GET_USERS_SUCCESS = 'GET_USERS_SUCCESS';
 export const CHANGE_USERS_FIELD = 'CHANGE_USERS_FIELD';
@@ -103,6 +105,10 @@ export const updateNewsSuccess = (data) => ({
   type: UPDATE_NEWS_SUCCESS,
   data,
 });
+export const newsDetailsSuccess = (data) => ({
+  type: NEWS_DETAILS_SUCCESS,
+  data,
+});
 
 // Lineup actions
 export const getSectionsSuccess = (data) => ({
@@ -137,6 +143,10 @@ export const deleteSectionSuccess = (data) => ({
 });
 export const updateSectionSuccess = (data) => ({
   type: UPDATE_SECTION_SUCCESS,
+  data,
+});
+export const sectionDetailsSuccess = (data) => ({
+  type: SECTION_DETAILS_SUCCESS,
   data,
 })
 

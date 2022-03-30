@@ -26,7 +26,8 @@ CREATE TABLE "user" (
   "password" TEXT NOT NULL,
   "profilurl" TEXT,
   "stream" TEXT,
-  "role_id" INT REFERENCES "role"(id) DEFAULT 1
+  "role_id" INT REFERENCES "role"(id) DEFAULT 1,
+  "section_id" INT REFERENCES "section"(id),
 );
 -------------------------------------
 -- Create tag table
@@ -59,6 +60,7 @@ CREATE TABLE "news" (
   "date" DATE NOT NULL,
   "time" TIME WITH TIME ZONE NOT NULL,
   "user_id" INT REFERENCES "user"(id),
+  "section_id" INT REFERENCES "section"(id),
   "tag_id" INT REFERENCES "tag"(id)
 );
 -------------------------------------

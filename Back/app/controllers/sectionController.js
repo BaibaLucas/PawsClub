@@ -25,10 +25,14 @@ module.exports = {
   async getOneSection(req, res, next) {
     try {
         const sectionId = req.params.id;
-        const section = await sectionDataMapper.oneSection(sectionId);
+        const sectionNews = await sectionDataMapper.sectionNews(sectionId);
+        const sectionUsers = await sectionDataMapper.sectionUsers(sectionId);
+        console.log('sectionNews', sectionNews);
+        console.log('sectionUsers', sectionUsers)
         res.status('200').json({
-            message: 'Lines-up content',
-            data: section
+            message: 'News & Users section',
+            data: {sectionNews, sectionUsers},
+            success: true,
         });
     } catch(error) {
         next(error);

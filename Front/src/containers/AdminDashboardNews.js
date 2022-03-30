@@ -20,9 +20,12 @@ const mapStateToProps = (state) => ({
   subtitle: state.news.subtitle,
   newsurl: state.news.newsurl,
   content: state.news.content,
+  news_sectionId: state.news.news_sectionId,
+  news_section: state.news.news_section,
   tag: state.news.tag,
   msg: state.news.msg,
   success: state.news.success,
+  sections: state.sections.sections,
 });
 
 // Component Func (Admin)

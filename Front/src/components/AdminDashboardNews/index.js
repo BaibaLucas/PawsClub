@@ -7,10 +7,11 @@ import moment from 'moment';
 /* Local imports */
 import getCanvasImage from '../../utils';
 import { dataURLtoFile } from '../../utils';
+import { getSectionsSuccess } from '../../store/action';
 
 // Components
 
-const AdminDashboardNews = ({ loadNews, news, handleChange, submitCreate, submitUpdate, selectedNews, title, subtitle, content, tag, id, submitDelete, success, msg, refreshNewsStatus, newsurl }) => {
+const AdminDashboardNews = ({ loadNews, news, handleChange, submitCreate, submitUpdate, selectedNews, title, subtitle, content, tag, id, submitDelete, success, msg, refreshNewsStatus, newsurl, news_sectionId, news_section, sections }) => {
 
   // Loading Users
   useEffect(() => {
@@ -44,7 +45,7 @@ const AdminDashboardNews = ({ loadNews, news, handleChange, submitCreate, submit
 
 
   const selectNews = (id, title, subtitle, content, newsurl) => {
-    console.log(id, title, subtitle, content, 'newsurl', newsurl)
+    console.log(id, title, subtitle, content, newsurl)
     selectedNews(id, title, subtitle, content, newsurl);
   };
 
@@ -178,12 +179,17 @@ const AdminDashboardNews = ({ loadNews, news, handleChange, submitCreate, submit
                 onChange={onChange}
                 placeholder='content' 
                 />
-                <label>tag</label>
-                <input
-                name='tag'
-                onChange={onChange}
-                placeholder='tag' 
-                />
+                <label>Section</label>
+                <select 
+                  name='news_sectionId'
+                  className='container__modal__create__form__select'
+                  onChange={onChange}
+                  >
+                  <option value=''>Section</option>
+                  {sections.map(s => {
+                    return <option key={s.id} value={s.id}>{s.name}</option>
+                  })}
+                  </select>
                 <div className='container__modal__create__button'>
                   <button onClick={handleCreate}>
                     Valider
@@ -246,13 +252,13 @@ const AdminDashboardNews = ({ loadNews, news, handleChange, submitCreate, submit
                 onChange={onChange}
                 placeholder='content' 
                 />
-                <label>Content</label>
+                {/* <label>Section</label>
                 <input
-                value={tag}
+                value={section}
                 name='tag'
                 onChange={onChange}
                 placeholder='tag' 
-                />
+                /> */}
                 <div className='container__modal__update__button'>
                   <button onClick={handleUpdate}>
                     Valider

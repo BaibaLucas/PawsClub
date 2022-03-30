@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 /* Local imports */
 import Section from '../components/Section';
 import { getSectionBySlug, withRouter } from '../utils';
+import { selectNews } from '../store/action';
 
 // Action
 
@@ -12,18 +13,23 @@ import { getSectionBySlug, withRouter } from '../utils';
 
 // Component States (Section)
 const mapStateToProps = (state, ownProps) => ({
-  /**
-   * Get section by slug 
-   * state.sections.sections = all sections
-   * => ownProps.match = prop create by withRouter
-   * in ownProps, we have acces to all props including those of withRouter
-   */
   sections: state.sections.sections,
   section: getSectionBySlug(state.sections.sections, ownProps.match.params.slug),
+  section_id: state.sections.section_id,
+  newsSection : state.sections.newsSection,
+  roster: state.sections.roster,
 });
 
 // Component Func (Section)
 const mapDispatchToProps = (dispatch) => ({
+
+  getSectionDetails: (id) => {
+    dispatch({type: 'GET_SECTION_DETAILS', id});
+  },
+
+  selectedNews: (id, title, subtitle, content, newsurl) => {
+    dispatch(selectNews(id, title, subtitle, content, newsurl));
+  },
 
 });
 

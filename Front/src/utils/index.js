@@ -53,6 +53,8 @@ export const slugifyTitle = (title) => slugify(title, { lower: true});
 
 // Adding /route(section) before slugifyTitle
 export const buildSectionUrl = (title) => `/section/${slugifyTitle(title)}`;
+// Adding /route(news) before slugifyTitle
+export const buildNewsUrl = (title) => `/news/${slugifyTitle(title)}`;
 
 /** 
  * --FIND SECTION BY SLUG--

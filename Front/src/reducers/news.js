@@ -6,18 +6,21 @@ import {
   IMG_NEWS_UPLOAD_SUCCESS,
   SELECT_NEWS,
   DELETE_NEWS_SUCCESS,
-  UPDATE_NEWS_SUCCESS
+  UPDATE_NEWS_SUCCESS,
+  NEWS_DETAILS_SUCCESS
 } from '../store/action';
 
 /* Initial State user infos */
 const initialState = {
   news: [],
+  currentNews: [],
   id: '',
   title: '',
   subtitle: '',
   content: '',
   newsurl: '',
   tag: '',
+  news_sectionId:'',
   next: false,
   msg: '',
   success: false,
@@ -101,6 +104,12 @@ const Reducer = (oldState = initialState, action = {}) => {
         msg: action.data.message,
         success: action.data.success,
       };
+
+    case NEWS_DETAILS_SUCCESS:
+      return {
+        ...oldState,
+        currentNews: action.data.data
+      }
 
       
     default:
