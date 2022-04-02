@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import LinesUp from '../components/LinesUp';
 
 // Action
-
+import { selectSection } from './../store/action';
 /* Container */
 
 // Component States (LinesUp)
@@ -16,7 +16,9 @@ const mapStateToProps = (state) => ({
 // Component Func (LinesUp)
 const mapDispatchToProps = (dispatch) => ({
 
-
+  selectedSection: (id, name, title, sectionurl, desc, content) => {
+    dispatch(selectSection(id, name, title, sectionurl, desc, content));
+  },
   
 });
 
