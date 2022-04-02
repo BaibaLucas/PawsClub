@@ -3,15 +3,14 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 
 /* Local imports */
-import diablo3 from '../../assets/images/diablo3.png';
-import lol from '../../assets/images/leagueOf.jpeg';
-import wow from '../../assets/images/shadowlandsWoW.png';
+import { buildSectionUrl } from '../../utils';
 
 // Components
 
-const LinesUp = ({ sections }) => {
+const LinesUp = ({ sections, selectedSection }) => {
 
-  console.log(sections);
+
+
   return(
     <div className='linesup'>
       <div className='container'>
@@ -26,14 +25,15 @@ const LinesUp = ({ sections }) => {
         <div className='container__box'>
           {sections.map((section => {
             return(
-            <NavLink key={section.id} to='/section'>
+            <NavLink
+              key={section.id} 
+              className='container__linesup__box__card'
+              onClick={() => {selectedSection(section.id, section.name, section.title, section.sectionurl, section.desc, section.content)}}
+              to={buildSectionUrl(section.name)}>
             <div  className='container__box__card'>
-              <img className='container__box__card__image' src={wow} alt='wow illustration' />
+              <img className='container__box__card__image' src={section.sectionurl} alt='wow illustration' />
               <div className='container__box__card__title'>
                 {section.name}
-              </div>
-              <div className='container__box__card__status'>
-                Open
               </div>
             </div>
           </NavLink>
