@@ -22,6 +22,7 @@ module.exports = {
   },
   /* Get One News */
   async getOneNews(req, res, next) {
+    console.log('ici');
     try {
         const newsId = req.params.id;
         const oneNews = await newsDataMapper.getOneNews(newsId);
@@ -65,10 +66,8 @@ module.exports = {
         const timeatm = hours + ':' + mins;
         console.log('today', date);
         console.log('time', timeatm);
-        // FUTUR TAG REWORK
-        const tag = 2;
         console.log('news', news);
-        const createdNews = await newsDataMapper.createNews(news, date, timeatm, tag);
+        const createdNews = await newsDataMapper.createNews(news, date, timeatm);
         res.status(200).json({
             data: createdNews,
             message: 'Votre news à été créer avec succès'

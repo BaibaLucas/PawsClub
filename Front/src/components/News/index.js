@@ -2,17 +2,12 @@
 import React, { useEffect } from 'react';
 
 /* Local imports */
-import addon from '../../assets/images/addon.png';
 import { NavLink } from 'react-router-dom';
 // Components
 import NewsDetails from '../Newsdetails';
 
 const News = ({ news, loadNewsData, loadSectionsData, sections }) => {
 
-  /**  NewsImg
-  - If user select picture return this
-  - else user havn't select picture and havn't imgnews upload return default pic.
-  */
 
   // Loading News - Sections - Streamers
   useEffect(() => {
@@ -21,14 +16,6 @@ const News = ({ news, loadNewsData, loadSectionsData, sections }) => {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-
-  const newsImg = (newsurl) => {
-    if (newsurl.length === 0 || newsurl === 'blabla' || newsurl === 'http://myphotourlnews.fr') {
-      return addon
-    } else {
-      return newsurl;
-    }
-  };
 
   return(
     <div className='news'>

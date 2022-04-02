@@ -17,12 +17,44 @@ module.exports = {
   },
 
   /* Get One Section */
-  async oneSection(sectionId) {
-    const result = await client.query('SELECT * FROM "section" WHERE "section".id = $1', [sectionId]);
+
+  async sectionNews(sectionId) {
+    const result = await client.query('SELECT * FROM "news" WHERE "section_id" = $1', [sectionId]);
+    if (result.rowCount == 0) {
+      return null;
+    }
+    return result.rows;
+  },
+
+  async sectionUsers(sectionId) {
+    const result = await client.query('SELECT * FROM "user" WHERE "section_id" = $1', [sectionId]);
+    if (result.rowCount == 0) {
+      return null;
+    }
+    return result.rows;
+  },
+
+  async oneSection1(sectionId) {
+    const result = await client.query('SELECT * FROM "section" WHERE id = $1', [sectionId]);
     if (result.rowCount == 0) {
         return null;
     }
-    return result.rows[0];
+    return result.rows;
+  },
+  async oneSection2(sectionId) {
+    const result = await client.query(`SELECT JSON_AGG(JSON_build_object('id', news.id, 'title', news.title, 'subtitle', news.subtitle, 'content', news.content, 'newsurl', news.newsurl, 'date', news.date, 'time', news.time, 'user_id', news.user_id, 'section_id', news.section_id)) AS "newsSection" FROM "news" WHERE news.section_id=$1`, [sectionId]);
+    if (result.rowCount == 0) {
+      console.log("pb")
+        return null;
+    }
+    return result.rows;
+  },
+  async oneSection3(sectionId) {
+    const result = await client.query('SELECT * FROM "user" WHERE "user".section_id = $1', [sectionId]);
+    if (result.rowCount == 0) {
+        return null;
+    }
+    return result.rows;
   },
 
   /* Create Section */

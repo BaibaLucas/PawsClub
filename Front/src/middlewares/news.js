@@ -11,6 +11,7 @@ import {
   imgNewsUploadSuccess,
   deleteNewsSuccess,
   updateNewsSuccess,
+  newsDetailsSuccess
 } from '../store/action';
 
 
@@ -25,6 +26,7 @@ const News = (store) => (next) => (action) => {
           if (response.status !== 200) {
             throw response.error;
           } else {
+            console.log('allnews MW', response.data);
             store.dispatch(getNewsSuccess(response.data.data));
           }
         }).catch((error) => {
@@ -34,7 +36,7 @@ const News = (store) => (next) => (action) => {
       }
     case 'CREATE_NEWS': {
       const { 
-        news: { title, subtitle, content, tag },
+        news: { title, subtitle, content, news_sectionId },
         auth: { id, token }
       } = store.getState();
       const formData = new FormData();
@@ -50,7 +52,7 @@ const News = (store) => (next) => (action) => {
           title,
           subtitle,
           content,
-          tag,
+          news_sectionId,
           user_id: id,
         }
       };
@@ -164,6 +166,21 @@ const News = (store) => (next) => (action) => {
         });
         break;
     }
+
+    case 'GET_NEWS_DETAILS': {
+      axios.get(`${apiUrl}/news/${action.id}`)
+        .then((response) => {
+          if (response.status !== 200) {
+            throw response.error;
+          } else {
+            console.log('GET NEWS DETAILS', response.data);
+            store.dispatch(newsDetailsSuccess(response.data));
+          }
+        }).catch((error) => {
+          console.log('Savage error Appeared', error);
+        });
+        break;
+      }
 
     default: 
       next(action);

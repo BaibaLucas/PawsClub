@@ -66,42 +66,54 @@
       &__box{
         display: flex;
         flex-direction: column;
-        padding: 0.3rem;
-        @include media('>large'){
-          flex-direction: row;
-          flex-wrap: wrap;
-          
-        };
+        margin: 1rem 0rem;
+        &::-webkit-scrollbar{
+          display: none;
+        }
         &__card{
+          min-height: 100%;
+          min-width: 100%;
+          margin: 0.2rem;
+          border: solid 3px $yellow;
           border-radius: 20px;
-          border: solid 1px $yellow;
-          margin: 0 0 1rem 0;
-          background-color: #212121;
-          @include media('>large'){
-            width: 45%;
-            margin: 0.5rem 0.2rem;
-          };
-          img{
-            border-radius: 20px 20px 0 0;
-            height: 250px;
-            width: 100%;
-            @include media('>mid'){
-              object-fit: cover;
-            };
+          position: relative;
+          &:first-child{
+            margin-left: 0rem;
           }
-          &__title{
-            font-size: 1.5rem;
+          &__image{
+            height: 100%;
+            width: 100%;
+            border-radius: 20px;
+          }
+          img{
+            height: 100%;
+            width: 100%;
+            object-fit: cover;
+            border-radius: 20px;
+          }
+          &__text{
+            position: absolute;
+            bottom: 0;
+            background-color: #494949c9;
+            width: 100%;
+            height: 20%;
+            font-size: 1.1rem;
             font-weight: bold;
             color: white;
-            text-align: center;
-            padding: 1rem;
-          }
-          &__date{
-            color: white;
-            text-align: center;
-            font-style: italic;
-            padding: 0rem 0.5rem 1rem 0.5rem;
-          }
+            padding: 0.5rem;
+            border-radius: 0 0 20px 20px;
+            &__title{
+              text-align: center;
+              font-size: 1.2rem;
+              font-weight: bold;
+              text-transform: uppercase;
+            }
+            &__section{
+              font-style: italic;
+              text-align: center;
+              margin: 0.3rem;
+            }
+          } 
         }
       }
       &__more{
@@ -143,27 +155,30 @@
       }
       &__box{
         display: flex;
-        scroll-behavior: smooth;
-        width: 100%;
-        padding: 0.3rem;
-        flex-direction: row;
-        flex-wrap: nowrap;
-        overflow: scroll;
+        margin: 1rem 0rem;
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
         &::-webkit-scrollbar{
-          display:none;
+          display: none;
         }
         &__card{
-          height: 100%;
-          width: 100%;
+          min-height: 100%;
+          min-width: 100%;
           margin: 0.2rem;
-          border: solid 1px $yellow;
+          border: solid 3px $yellow;
           border-radius: 20px;
+          scroll-snap-align: start;
           &:first-child{
             margin-left: 0rem;
+          }
+          &__image{
+            height: 100%;
+            width: 100%; 
           }
           img{
             height: 100%;
             width: 100%;
+            object-fit: cover;
             border-radius: 20px;
           }
         }

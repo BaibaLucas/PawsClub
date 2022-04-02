@@ -9,7 +9,7 @@ module.exports = {
 
   /* Get All News */
   async getAllNews() {
-    const result = await client.query('SELECT n.id, n.title, n.subtitle, n.content, n.newsurl, n.date, n.time, u.id AS user_id, u.username FROM "news" AS n JOIN "user" AS u ON n.user_id = u.id');
+    const result = await client.query('SELECT n.id, n.title, n.subtitle, n.content, n.newsurl, n.date, n.time, n.section_id, n.tag_id, u.id AS user_id, u.username, s.name AS section_name FROM "news" AS n JOIN "user" AS u ON n.user_id = u.id JOIN "section" AS s ON n.section_id = s.id;');
     if (result.rowCount == 0) {
         return null
     }
@@ -22,7 +22,7 @@ module.exports = {
     if (result.rowCount == 0) {
         return null
     }
-    return result.rows;
+    return result.rows[0];
   },
 
   /* Search News */
@@ -60,8 +60,8 @@ module.exports = {
   },
 
   /* Create News */
-  async createNews(news, today, time, tag) {
-      const result = await client.query('INSERT INTO "news"(title, subtitle, content, date, time, user_id, tag_id) VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING *', [news.title, news.subtitle, news.content, today, time, news.user_id, tag]);
+  async createNews(news, today, time) {
+      const result = await client.query('INSERT INTO "news"(title, subtitle, content, date, time, user_id, section_id) VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING *', [news.title, news.subtitle, news.content, today, time, news.user_id, news.news_sectionId ]);
       if (result.rowCount == 0) {
         return null
       }

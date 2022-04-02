@@ -1,18 +1,65 @@
 /* Package imports */
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import moment from 'moment';
 
 /* Local imports */
-import addon from '../../assets/images/addon.png';
-import dogs from '../../assets/images/dogs1.png';
-import down from '../../assets/images/down.jpg';
-import avatar from '../../assets/images/avatar.jpg';
 import { NavLink } from 'react-router-dom';
+import defaultPic from '../../assets/images/defaultPic.jpeg';
+import { buildNewsUrl } from '../../utils';
 
 // Components
 
-const Section = ({ sections }) => {
 
-  console.log(sections);
+
+const Section = ({ sections, section, getSectionDetails, section_id, newsSection, roster, selectedNews }) => {
+
+
+  useEffect(() => {
+    getSectionDetails(section.id);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  console.log('section_id', section_id);
+  console.log('sections',sections);
+  console.log('section', section);
+  console.log('newsSection', newsSection)
+  console.log('Roster', roster);
+
+  const [openNews, setOpenNews] = useState(true);
+  const [openRoster, setOpenRoster] = useState(false);
+
+  const handleNews = () => {
+    setOpenRoster(false);
+    setOpenNews(true);
+  };
+  const handleRoster = () => {
+    setOpenNews(false);
+    setOpenRoster(!openRoster);
+  };
+
+  const selectNews = (id, title, subtitle, content, newsurl) => {
+    console.log(id, title, subtitle, content, newsurl);
+    selectedNews(id, title, subtitle, content, newsurl);
+  };
+
+  const userImg = (url) => {
+    if (url === null || url.length === 0) {
+      return defaultPic;
+    } else {
+      return url;
+    }
+  };
+
+  const memberRole = (role) => {
+    if (role === 1) {
+      return 'membre';
+    } else if (role === 2){
+      return 'moderator'
+    } else {
+      return 'admin';
+    }
+  }
+
 
   
   return(
@@ -20,111 +67,85 @@ const Section = ({ sections }) => {
       <div className='container'>
         <div className='container__presentation'>
           <div className='container__presentation__title'>
-            <h1>Section</h1>
+            <h1>{section.name}</h1>
           </div>
           <div className='container__presentation__desc'>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec congue ipsum finibus, tempor neque a, imperdiet lorem. Donec interdum est consectetur magna fermentum tristique. Aliquam et dignissim leo. Donec mollis commodo sollicitudin.
+            {section.description}
+          </div>
+          <div className='container__presentation__desc'>
+            {section.content}
           </div>
         </div>
         <div className='container__content'>
           <div className='container__content__nav'>
-            <div className='container__content__nav__item'>
+            <div className='container__content__nav__item' onClick={handleNews}>
               news
             </div>
-            <div className='container__content__nav__item'>
+            <div className='container__content__nav__item' onClick={handleRoster}>
               roster
-            </div>
-            <div className='container__content__nav__item'>
-              event
             </div>
           </div>
           <div className='container__content__box'>
-            <div className='container__content__box__title'>
-              <h1>News</h1>
-            </div>
-            <NavLink to='/newsdetails'>
-              <div className='container__content__box__card'>
-                <img className='container__content__box__card__image' alt='news illustration' src={down} />
-                <div className='container__content__box__card__title'>
-                  Lorem ipsum dolor sit amet !
+            {openNews && (
+              <div className='container__content__box__news'>
+                {!newsSection && (
+              <>
+              Aucune news actuellement disponible
+              </>
+            )}
+            {newsSection && (
+              newsSection.map((news => {
+                return (
+                  <NavLink key={news.id} to={buildNewsUrl(news.title)} >
+                    <div className='container__content__box__news__card'
+                    onClick={() => selectNews(news.id, news.title, news.subtitle, news.content, news.newsurl)}
+                    >
+                    <img className='container__content__box__news__card__image' src={news.newsurl} alt='news illustration' />
+                    <div className='container__content__box__news__card__text'>
+                    <div className='container__content__box__news__card__text__title'>
+                      {news.title}
+                    </div>
+                    <div className='container__content__box__news__card__text__section'>
+                    {moment.utc(news.date).format("MM/DD/YY")}
+                    </div>
+                    </div>
+                  </div>
+                  </NavLink>
+                  
+                )
+              }))
+            )}
+              </div>
+            )}
+            {openRoster && (
+              <div className='container__content__box__roster'>
+              {!roster && (
+            <>
+            Aucun roster actuellement disponible
+            </>
+          )}
+          {roster && (
+            roster.map((member => {
+              return (
+                <div key={member.id} className='container__content__box__roster__card'>
+                  <img 
+                  className='container__content__box__roster__card__image'
+                  src={userImg(member.profilurl)}
+                  alt='userprofil illustration'
+                  />
+                <div className='container__content__box__roster__card__username'>
+                  {member.username}
                 </div>
-                <div className='container__content__box__card__date'>
-                  21 january 2022
+                <div className='container__content__box__roster__card__role'>
+                  {memberRole(member.role_id)}
                 </div>
-              </div>
-            </NavLink>
-            <NavLink to='/newsdetails'>
-              <div className='container__content__box__card'>
-                <img className='container__content__box__card__image' alt='news illustration' src={addon}/>
-                <div className='container__content__box__card__title'>
-                  Lorem ipsum dolor sit amet !
                 </div>
-                <div className='container__content__box__card__date'>
-                  21 january 2022
-                </div>
-              </div>
-            </NavLink>
-            <NavLink to='/newsdetails'>
-              <div className='container__content__box__card'>
-                <img className='container__content__box__card__image' alt='news illustration' src={dogs}/>
-                <div className='container__content__box__card__title'>
-                  Lorem ipsum dolor sit amet !
-                </div>
-                <div className='container__content__box__card__date'>
-                  21 january 2022
-                </div>
-              </div>
-            </NavLink>
-          </div>
-          <div className='container__content__roster'>
-            <div className='container__content__roster__title'>
-              <h1>Roster</h1>
+              )
+            }))
+          )}
             </div>
-            <div className='container__content__roster__card'>
-              <img className='container__content__roster__card__image' alt='user profil' src={avatar}/>
-              <div className='container__content__roster__card__name'>
-                Name
-              </div>
-            </div>
-            <div className='container__content__roster__card'>
-              <img className='container__content__roster__card__image' alt='user profil' src={avatar}/>
-              <div className='container__content__roster__card__name'>
-                Name
-              </div>
-            </div>
-            <div className='container__content__roster__card'>
-              <img className='container__content__roster__card__image' alt='user profil' src={avatar}/>
-              <div className='container__content__roster__card__name'>
-                Name
-              </div>
-            </div>
-            <div className='container__content__roster__card'>
-              <img className='container__content__roster__card__image' alt='user profil' src={avatar}/>
-              <div className='container__content__roster__card__name'>
-                Name
-              </div>
-            </div>
-            <div className='container__content__roster__card'>
-              <img className='container__content__roster__card__image' alt='user profil' src={avatar}/>
-              <div className='container__content__roster__card__name'>
-                Name
-              </div>
-            </div>
-            <div className='container__content__roster__card'>
-              <img className='container__content__roster__card__image' alt='user profil' src={avatar}/>
-              <div className='container__content__roster__card__name'>
-                Name
-              </div>
-            </div>
-          </div>
-          <div className='container__content__info'>
-            <div className='container__content__info__title'>
-              <h1>INFORMATIONS</h1>
-            </div>
-            <div className='container__content__info__desc'>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus ut tincidunt dui. Ut dolor arcu, molestie ac iaculis nec, sodales lobortis nibh. Fusce finibus vestibulum ante, et hendrerit ligula dictum et. Curabitur lacus justo, ultrices quis est a, varius molestie ligula. Duis consectetur justo id orci consectetur congue vel sed eros.
-            </div>
-          </div>
+            )}
+        </div>
         </div>
       </div>
     </div>

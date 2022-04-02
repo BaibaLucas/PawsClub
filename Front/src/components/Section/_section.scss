@@ -46,66 +46,84 @@
         flex-direction: column;
         justify-content: space-evenly;
         padding: 0.3rem;
-        &__title{
-          padding: 1rem;
-        }
-        &__card{
-          border-radius: 20px;
-          border: solid 1px $yellow;
-          margin: 0 0 1rem 0;
-          background-color: #212121;
-          box-shadow: 5px 5px 15px 5px #212121;
-          img{
-            border-radius: 20px 20px 0 0;
-            height: 250px;
-            width: 100%;
+        &__news{
+          &__card{
+            min-height: 100%;
+            min-width: 100%;
+            margin: 0.2rem;
+            border: solid 3px $yellow;
+            border-radius: 20px;
+            position: relative;
+            &:first-child{
+              margin-left: 0rem;
+            }
+            &__image{
+              height: 100%;
+              width: 100%;
+              border-radius: 20px;
+            }
+            img{
+              height: 100%;
+              width: 100%;
+              object-fit: cover;
+              border-radius: 20px;
+            }
+            &__text{
+              position: absolute;
+              bottom: 0;
+              background-color: #494949c9;
+              width: 100%;
+              height: 20%;
+              font-size: 1.1rem;
+              font-weight: bold;
+              color: white;
+              padding: 0.5rem;
+              border-radius: 0 0 20px 20px;
+              &__title{
+                text-align: center;
+                font-size: 1.2rem;
+                font-weight: bold;
+                text-transform: uppercase;
+              }
+              &__section{
+                font-style: italic;
+                text-align: center;
+                margin: 0.3rem;
+              }
+            } 
           }
-          &__title{
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: white;
-            text-align: center;
-            padding: 1rem;
-          }
-          &__date{
-            color: white;
-            text-align: center;
-            font-style: italic;
-            padding: 0rem 0.5rem 1rem 0.5rem;
-          }
         }
-      }
-      &__roster{
-        display: flex;
-        flex-direction: column;
-        &__title{
-          margin: 1rem;
-        }
-        &__card{
-          margin: 1rem;
+        &__roster{
           display: flex;
-          padding: 1rem 1rem;
-          align-items: center;
-          background-color: #212121;
-          box-shadow: 5px 5px 15px 5px #212121;
-          img{
-            border-radius: 50%;
+          flex-direction: column;
+          width: 100%;
+          &__card{
+            display: flex;
+            margin: 0.2rem 0rem;
+            border: 2px solid $yellow;
+            border-radius: 20px;
+            align-items: center;
+            background-color: $dark-grey;
+            box-shadow: 5px 5px 15px 5px #212121;
+            &__image{
+              border-radius: 20px;
+              height: 100%;
+              width: 60px;
+            }
+            img{
+              border-radius: 20px;
+              height: 100%;
+              width: 20%;
+            }
+            &__username{
+              margin-left: 2rem;
+              font-size: 2rem;
+              font-weight: bold;
+            }
+            &__role{
+              margin-left: 3rem;
+            }
           }
-          &__name{
-            margin-left: 2rem;
-            font-size: 2rem;
-            font-weight: bold;
-          }
-        }
-      }
-      &__info{
-        text-align: center;
-        margin-top: 1rem;
-        &__title{
-          margin: 1rem;
-        }
-        &__desc{
-          margin: 1rem;
         }
       }
     }
