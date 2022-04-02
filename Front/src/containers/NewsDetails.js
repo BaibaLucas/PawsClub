@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 /* Local imports */
 import NewsDetails from '../components/Newsdetails';
 import { getSectionBySlug, withRouter } from '../utils';
-import { selectNews } from '../store/action';
+
 
 // Action
 

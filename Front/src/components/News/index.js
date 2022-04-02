@@ -1,12 +1,14 @@
 /* Package imports */
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
+import moment from 'moment';
 
 /* Local imports */
 import { NavLink } from 'react-router-dom';
+import { buildNewsUrl } from '../../utils';
 // Components
-import NewsDetails from '../Newsdetails';
 
-const News = ({ news, loadNewsData, loadSectionsData, sections }) => {
+
+const News = ({ news, loadNewsData, loadSectionsData, sections, selectedNews, getNewsBySection, newsSection}) => {
 
 
   // Loading News - Sections - Streamers
@@ -15,6 +17,29 @@ const News = ({ news, loadNewsData, loadSectionsData, sections }) => {
     loadSectionsData();
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  const [openAllNews, setOpenAllNews] = useState(true);
+  const [openNewsBySection, setOpenNewsBySection] = useState(false);
+
+  
+  const handleAllNews = () => {
+    setOpenNewsBySection(false);
+    setOpenAllNews(!openAllNews);
+  };
+
+  const handleNewsBySection = () => {
+    setOpenAllNews(false);
+    setOpenNewsBySection(true);
+  }
+
+  const selectNews = (id, title, subtitle, content, newsurl) => {
+    console.log(id, title, subtitle, content, newsurl);
+    selectedNews(id, title, subtitle, content, newsurl);
+  };
+
+  const getNewsSection = (id) => {
+    getNewsBySection(id);
+  };
 
 
   return(
@@ -30,10 +55,15 @@ const News = ({ news, loadNewsData, loadSectionsData, sections }) => {
                 NULL
               </div>
             )}
+            <div className='container__presentation__nav__item'
+            onClick={() => handleAllNews()}>
+                All News
+            </div>
            {sections && (
               sections.map((section => {
                 return (
-                  <div key={section.id} className='container__presentation__nav__item'>
+                  <div key={section.id} className='container__presentation__nav__item'
+                  onClick={() => [getNewsSection(section.id), handleNewsBySection()]}>
                     {section.name}
                   </div>
                 )
@@ -42,19 +72,66 @@ const News = ({ news, loadNewsData, loadSectionsData, sections }) => {
           </div>
           <div className='container__news'>
             <div className='container__news__box'>
-            {!news && (
+            {openAllNews && (
+              <>
+              {!news && (
               <div className='container__news__box__card'>
                 NULL
               </div>
             )}
             {news && (
-              news.map((news) => {
+              news.map((news => {
                 return (
-                  <NavLink key={news.id} to='#'>
-                    <NewsDetails news={news} />
+                  <NavLink key={news.id} to={buildNewsUrl(news.title)} >
+                    <div 
+                    className='container__news__box__card'
+                    onClick={() => selectNews(news.id, news.title, news.subtitle, news.content, news.newsurl)}>
+                    <img className='container__news__box__card__image' src={news.newsurl} alt='news illustration' />
+                    <div className='container__news__box__card__text'>
+                    <div className='container__news__box__card__text__title'>
+                      {news.title}
+                    </div>
+                    <div className='container__news__box__card__text__section'>
+                      {news.section_name} : {moment.utc(news.date).format("MM/DD/YY")}
+                    </div>
+                    </div>
+                    </div>
                   </NavLink>
                 )
-              }))}
+              }))
+            )}
+              </>
+            )}
+            {openNewsBySection && (
+              <>
+              {!newsSection && (
+              <div className='container__news__box__card'>
+                NULL
+              </div>
+            )}
+            {newsSection && (
+              newsSection.map((news => {
+                return (
+                  <NavLink key={news.id} to={buildNewsUrl(news.title)} >
+                    <div 
+                    className='container__news__box__card'
+                    onClick={() => selectNews(news.id, news.title, news.subtitle, news.content, news.newsurl)}>
+                    <img className='container__news__box__card__image' src={news.newsurl} alt='news illustration' />
+                    <div className='container__news__box__card__text'>
+                    <div className='container__news__box__card__text__title'>
+                      {news.title}
+                    </div>
+                    <div className='container__news__box__card__text__section'>
+                      {news.section_name} : {moment.utc(news.date).format("MM/DD/YY")}
+                    </div>
+                    </div>
+                    </div>
+                  </NavLink>
+                )
+              }))
+            )}
+              </>
+            )}
             </div>
           </div>
         </div>
