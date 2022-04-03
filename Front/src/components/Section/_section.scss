@@ -31,6 +31,10 @@
         background-color: $dark-grey;
         padding: 1rem;
         border-radius: 20px;
+        @include media('>mid'){
+          border: solid 2px yellow;
+          height: 100%;
+        };
         &__item{
           text-transform: uppercase;
           font-weight: bold;
@@ -38,6 +42,9 @@
           color: $dark-grey;
           padding: 0.5rem;
           border-radius: 10px;
+          @include media('>mid'){
+            font-size: 1.5rem;
+          };
         }
       }
       &__box{
@@ -79,16 +86,26 @@
               color: white;
               padding: 0.5rem;
               border-radius: 0 0 20px 20px;
+              @include media('>mid'){
+                height: 20%;
+                align-content: center;
+              };
               &__title{
                 text-align: center;
                 font-size: 1.2rem;
                 font-weight: bold;
                 text-transform: uppercase;
+                @include media('>mid'){
+                  font-size: 2rem;
+                };
               }
-              &__section{
+              &__date{
                 font-style: italic;
                 text-align: center;
                 margin: 0.3rem;
+                @include media('>mid'){
+                  font-size: 2rem;
+                };
               }
             } 
           }
@@ -114,14 +131,24 @@
               border-radius: 20px;
               height: 100%;
               width: 20%;
+              @include media('>mid'){
+                height: 100px;
+                width: 100px;
+              };
             }
             &__username{
               margin-left: 2rem;
               font-size: 2rem;
               font-weight: bold;
+              @include media('>mid'){
+                font-size: 2.5rem;
+              };
             }
             &__role{
               margin-left: 3rem;
+              @include media('>mid'){
+                font-size: 2rem;
+              };
             }
           }
         }

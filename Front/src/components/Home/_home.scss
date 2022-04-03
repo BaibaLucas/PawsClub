@@ -63,6 +63,9 @@
         padding: 0.5rem;
         background-color: #212121;
         border-radius: 0 20px 0 0;
+        @include media('>mid'){
+          font-size: 2rem;
+        };
       }
       &__box{
         display: flex;
@@ -89,7 +92,6 @@
             width: 100%;
             border-radius: 20px;
             @include media('>mid'){
-              
             };
           }
           img{
@@ -120,7 +122,7 @@
               font-weight: bold;
               text-transform: uppercase;
               @include media('>mid'){
-                font-size: 3rem;
+                font-size: 2rem;
               };
             }
             &__section{
@@ -128,7 +130,7 @@
               text-align: center;
               margin: 0.3rem;
               @include media('>mid'){
-                font-size: 2rem;
+                font-size: 1.5rem;
               };
             }
           } 
@@ -171,6 +173,9 @@
         padding: 0.5rem;
         background-color: #212121;
         border-radius: 0 20px 0 0;
+        @include media('>mid'){
+          font-size: 2rem;
+        };
       }
       &__box{
         display: flex;
@@ -240,6 +245,9 @@
         padding: 0.5rem;
         background-color: #212121;
         border-radius: 0 20px 0 0;
+        @include media('>mid'){
+          font-size: 2rem;
+        };
       }
       &__box{
         width: 100%;
