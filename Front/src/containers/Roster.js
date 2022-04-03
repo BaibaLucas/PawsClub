@@ -11,13 +11,24 @@ import Roster from '../components/Roster';
 // Component States (Roster)
 const mapStateToProps = (state) => ({
   roster: state.sections.roster,
+  users: state.users.users,
+  sections: state.sections.sections,
 });
 
 // Component Func (Roster)
 const mapDispatchToProps = (dispatch) => ({
 
-  loadRoster: () => {
-    dispatch({type: 'GET_ROSTER'});
+
+  loadUsers: () => {
+    dispatch({type: 'GET_USERS'});
+  },
+
+  loadSectionsData: () => {
+    dispatch({type: 'GET_SECTIONS'});
+  },
+
+  getSectionDetails: (id) => {
+    dispatch({type: 'GET_SECTION_DETAILS', id});
   },
 
   
