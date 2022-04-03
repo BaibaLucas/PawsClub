@@ -7,6 +7,9 @@
     flex-direction: column;
     background-color: $grey;
     margin: 0rem 0.5rem;
+    @include media('>mid'){
+      min-height: 100vh;
+    };
     &__presentation{
       margin-top: 2rem;
       padding: 1rem;
@@ -32,6 +35,9 @@
           padding: 0.5rem;
           border-radius: 10px;
           margin: 0rem 0.3rem;
+          @include media('>mid'){
+            font-size: 1.5rem;
+          };
         }
       }
     }

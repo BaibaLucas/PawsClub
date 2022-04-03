@@ -31,7 +31,7 @@ const Home = ({ loadStreamersData, news, sections, streams, getSectionDetails, s
         <div className='container__presentation'>
           <img className='container__presentation__image' src={illust} alt='illust'/>
         <div className='container__presentation__content'>
-          PAWS CLUB PLATFORME
+          Bienvenue sur le site web de la communauté Paws Club
         </div>
         </div>
         <div className='container__news'>

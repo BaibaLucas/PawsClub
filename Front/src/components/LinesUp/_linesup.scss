@@ -5,6 +5,8 @@
     flex-direction: column;
     text-align: center;
     height: 100%;
+    @include media('>mid'){
+    };
     &__presentation{
       &__title{
         margin: 1rem 0rem;
@@ -19,6 +21,9 @@
       display: flex;
       flex-direction: column;
       padding: 0.5rem;
+      @include media('>mid'){
+        height: 100%;
+      };
       &__card{
         border-radius: 20px;
         border: solid 2px yellow;

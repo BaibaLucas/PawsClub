@@ -105,7 +105,7 @@ const Section = ({ sections, section, getSectionDetails, section_id, newsSection
                     <div className='container__content__box__news__card__text__title'>
                       {news.title}
                     </div>
-                    <div className='container__content__box__news__card__text__section'>
+                    <div className='container__content__box__news__card__text__date'>
                     {moment.utc(news.date).format("MM/DD/YY")}
                     </div>
                     </div>
