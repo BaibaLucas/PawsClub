@@ -16,15 +16,21 @@
         text-transform: uppercase;
       }
       &__nav{
+        margin: 1rem;
         display: flex;
         justify-content: space-around;
-        padding: 0.5rem;
+        background-color: $dark-grey;
+        padding: 1rem;
+        border-radius: 20px;
+        align-items: center;
         &__item{
+          text-transform: uppercase;
+          font-weight: bold;
           background-color: $yellow;
           color: $dark-grey;
-          font-weight: bold;
           padding: 0.5rem;
           border-radius: 10px;
+          margin: 0rem 0.3rem;
         }
       }
     }

@@ -6,7 +6,7 @@
     text-align: center;
     flex-direction: column;
     background-color: $grey;
-    margin: 0rem 1rem;
+    margin: 0rem 0.5rem;
     &__presentation{
       margin-top: 2rem;
       padding: 1rem;
@@ -16,23 +16,14 @@
         margin-bottom: 2rem;
         text-transform: uppercase;
       }
-    }
-    &__content{
-      box-shadow: 5px 5px 15px 5px #212121;
-      margin-top: 2rem;
-      display: flex;
-      flex-direction: column;
       &__nav{
-        margin: 1rem;
+        width: 100%;
         display: flex;
         justify-content: space-around;
         background-color: $dark-grey;
         padding: 1rem;
         border-radius: 20px;
-        display: flex;
-        flex-direction: row;
-        flex-wrap: nowrap;
-        overflow-y: auto;
+        align-items: center;
         &__item{
           text-transform: uppercase;
           font-weight: bold;
@@ -43,23 +34,36 @@
           margin: 0rem 0.3rem;
         }
       }
-      &__roster{
+    }
+    &__roster{
+      box-shadow: 5px 5px 15px 5px #212121;
+      margin-top: 2rem;
+      display: flex;
+      flex-direction: column;
+      &__box{
         display: flex;
         flex-direction: column;
-        &__title{
-          margin: 1rem;
-        }
         &__card{
-          margin: 1rem;
+          min-height: 100%;
+          min-width: 100%;
+          margin: 0.2rem;
+          border: solid 3px $yellow;
+          border-radius: 20px;
+          position: relative;
           display: flex;
-          padding: 1rem 1rem;
           align-items: center;
-          background-color: #212121;
-          box-shadow: 5px 5px 15px 5px #212121;
-          img{
-            border-radius: 50%;
+          &__image{
+            height: 100px;
+            width: 200px;
+            border-radius: 20px;
           }
-          &__name{
+          img{
+            height: 64px;
+            width: 64px;
+            object-fit: cover;
+            border-radius: 20px;
+          }
+          &__text{
             margin-left: 2rem;
             font-size: 2rem;
             font-weight: bold;

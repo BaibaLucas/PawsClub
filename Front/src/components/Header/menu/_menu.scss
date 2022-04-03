@@ -27,6 +27,7 @@
         height: 25%;
         border-radius: 20px;
         color: $yellow;
+        z-index: 1000 !important;
         &:hover{
           background: $yellow;
           color: $dark-grey;
@@ -44,5 +45,6 @@
   }
   &.active{
     transform: translateY(0%);
+    z-index: 99;
   }
 }

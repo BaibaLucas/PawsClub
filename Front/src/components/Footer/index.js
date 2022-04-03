@@ -38,7 +38,7 @@ const Footer = ({ logged }) => {
                 roster
               </div>
             </NavLink>
-            <NavLink to='/stream'>
+            <NavLink to='/streams'>
               <div className='container__nav__items'>
                 streams
               </div>
