@@ -19,12 +19,11 @@
       @include media('>mid'){
         width: 100%;
         height: 100%;
-      };
-      @include media('>large'){
+        border: solid 2px yellow;
       };
       img{
         display: block;
-        height: 300px;
+        height: 100%;
         width: 100%;
         @include media('>mid'){
           object-fit: cover;
@@ -40,8 +39,10 @@
         font-weight: bold;
         color: white;
         padding: 0.5rem;
+        text-align: center;
         @include media('>mid'){
-          font-size: 5rem;
+          height: 30%;
+          font-size: 3rem;
           text-align: center;
         };
       }
@@ -77,6 +78,9 @@
           border: solid 3px $yellow;
           border-radius: 20px;
           position: relative;
+          @include media('>mid'){
+            height: 500px;
+          };
           &:first-child{
             margin-left: 0rem;
           }
@@ -84,12 +88,17 @@
             height: 100%;
             width: 100%;
             border-radius: 20px;
+            @include media('>mid'){
+              
+            };
           }
           img{
             height: 100%;
             width: 100%;
             object-fit: cover;
             border-radius: 20px;
+            @include media('>mid'){
+            };
           }
           &__text{
             position: absolute;
@@ -102,22 +111,31 @@
             color: white;
             padding: 0.5rem;
             border-radius: 0 0 20px 20px;
+            @include media('>mid'){
+            
+            };
             &__title{
               text-align: center;
               font-size: 1.2rem;
               font-weight: bold;
               text-transform: uppercase;
+              @include media('>mid'){
+                font-size: 3rem;
+              };
             }
             &__section{
               font-style: italic;
               text-align: center;
               margin: 0.3rem;
+              @include media('>mid'){
+                font-size: 2rem;
+              };
             }
           } 
         }
       }
       &__more{
-        @include media('>large'){
+        @include media('>mid'){
         };
         &__link{
           color: $dark-grey;
@@ -133,7 +151,8 @@
           border-radius: 0 20px 0 0;
           margin-bottom: 0.3rem;
           margin-right: 0.3rem;
-          @include media('>large'){
+          @include media('>mid'){
+            font-size: 1.3rem;
           };
         }
       }
@@ -198,6 +217,9 @@
           border-radius: 0 20px 0 0;
           margin-bottom: 0.3rem;
           margin-right: 0.3rem;
+          @include media('>mid'){
+            font-size: 1.3rem;
+          };
         }
       }
     }
@@ -255,6 +277,9 @@
           border-radius: 0 20px 0 0;
           margin-bottom: 0.3rem;
           margin-right: 0.3rem;
+          @include media('>mid'){
+            font-size: 1.3rem;
+          };
         }
       }
     }
