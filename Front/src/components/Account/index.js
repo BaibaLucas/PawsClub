@@ -223,6 +223,7 @@ const Account = ({ username, email, password, profilurl, logged, handleChange, h
               </>
             )}
             </div>
+            <div>Si vous êtes streamers n'hésitez pas à revenir vers l'admin du site web afin de pouvoir afficher votre chaine sur notre plateforme.</div>
           </div>
           </div>
         </div>

@@ -1,6 +1,8 @@
 /* Package imports */
 import { createStore, applyMiddleware } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
+import { persistStore, persistReducer} from 'redux-persist';
+import storage from 'redux-persist/lib/storage';
 
 /* Local imports */
 // Reducer
@@ -14,17 +16,24 @@ import usersMiddleware from '../middlewares/users';
 import tagsMiddleware from '../middlewares/tags';
 
 /* Store */
-const store = createStore(
-  rootReducer,
-  composeWithDevTools(
+
+const persistConfig = {
+  key:'root',
+  storage,
+};
+
+const enhancer = composeWithDevTools(
     applyMiddleware(authMiddleware),
     applyMiddleware(newsMiddleware),
     applyMiddleware(sectionsMiddleware),
     applyMiddleware(adminMiddleware),
     applyMiddleware(usersMiddleware),
     applyMiddleware(tagsMiddleware),
-  ),
-);
+  );
 
 
-export default store;
+const persistedReducer = persistReducer(persistConfig, rootReducer);
+const store = createStore(persistedReducer, enhancer);
+const persistor = persistStore(store);
+export { persistor, store};
+

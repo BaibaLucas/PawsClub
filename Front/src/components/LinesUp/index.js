@@ -19,7 +19,7 @@ const LinesUp = ({ sections, selectedSection }) => {
             <h1>LINES UP</h1>
           </div>
           <div className='container__presentation__content'>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec congue ipsum finibus, tempor neque a, imperdiet lorem. Donec interdum est consectetur magna fermentum tristique. Aliquam et dignissim leo. Donec mollis commodo sollicitudin.
+            Retrouvez les différentes lines-up de la communauté.
           </div>
         </div>
         <div className='container__box'>

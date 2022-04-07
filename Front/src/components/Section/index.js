@@ -1,9 +1,10 @@
 /* Package imports */
 import React, { useState, useEffect } from 'react';
 import moment from 'moment';
+import { NavLink, useParams } from 'react-router-dom';
 
 /* Local imports */
-import { NavLink } from 'react-router-dom';
+
 import defaultPic from '../../assets/images/defaultPic.jpeg';
 import { buildNewsUrl } from '../../utils';
 
@@ -11,19 +12,14 @@ import { buildNewsUrl } from '../../utils';
 
 
 
-const Section = ({ sections, section, getSectionDetails, section_id, newsSection, roster, selectedNews }) => {
+const Section = ({ sections, section, getSectionDetailsBySlug, section_id, newsSection, roster, selectedNews }) => {
 
 
+  const {slug} = useParams();
   useEffect(() => {
-    getSectionDetails(section.id);
+    getSectionDetailsBySlug(slug);
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
-  console.log('section_id', section_id);
-  console.log('sections',sections);
-  console.log('section', section);
-  console.log('newsSection', newsSection)
-  console.log('Roster', roster);
 
   const [openNews, setOpenNews] = useState(true);
   const [openRoster, setOpenRoster] = useState(false);

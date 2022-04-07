@@ -1,0 +1,35 @@
+.desktopmenu{
+  display: none;
+  @include media('>large'){
+    display: block;
+  };
+  &__nav{
+    margin-right: 2rem;
+    &__list{
+      display: flex;
+      width: 70vw;
+      justify-content: space-between;
+      &__item{
+        font-size: 1rem;
+        text-transform: uppercase;
+        font-weight: bold;
+        
+        &:hover{
+          
+        }
+        &__name{
+         
+        }
+      }
+    }
+  }
+  a{
+   
+  }
+  .active{
+    font-size: 1.1rem;
+    text-transform: uppercase;
+    font-weight: bold;
+    border-bottom: 2px solid $yellow;
+  }
+}

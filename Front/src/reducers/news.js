@@ -113,7 +113,7 @@ const Reducer = (oldState = initialState, action = {}) => {
 
       
     default:
-      return {...oldState}
+      return oldState
   }
 };
 

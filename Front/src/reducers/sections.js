@@ -13,6 +13,7 @@ import {
 /* Initial State user infos */
 const initialState = {
   sections: [],
+  section: [],
   roster: [],
   newsSection: [],
   section_id: '',
@@ -101,11 +102,12 @@ const Reducer = (oldState = initialState, action = {}) => {
     case SECTION_DETAILS_SUCCESS:
       return {
         ...oldState,
+        section: action.data.data.section,
         newsSection: action.data.data.sectionNews,
         roster: action.data.data.sectionUsers,
       }
     default:
-      return {...oldState}
+      return oldState
   }
 };
 

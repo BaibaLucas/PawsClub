@@ -23,11 +23,6 @@ const Footer = ({ logged }) => {
           <div className='container__nav__title'>
             NAVIGATION
           </div>
-            <NavLink to='/'>
-              <div className='container__nav__items'>
-                home
-              </div>
-            </NavLink>
             <NavLink to='/news'>
               <div className='container__nav__items'>
                 news
@@ -47,7 +42,7 @@ const Footer = ({ logged }) => {
             {logged && 
               <NavLink to='/account'>
               <div className='container__nav__items'>
-                Account
+                Compte
               </div>
               </NavLink>
             }
@@ -55,7 +50,7 @@ const Footer = ({ logged }) => {
             {!logged && <>
               <NavLink to='/login'>
               <div className='container__nav__items'>
-                se connecter
+                Connexion
               </div>
               </NavLink>
               <NavLink to='/signup'>
@@ -66,17 +61,17 @@ const Footer = ({ logged }) => {
             </>}
             <NavLink to='/linesup'>
               <div className='container__nav__items'>
-                lines-up
+                Lines-up
               </div>
             </NavLink>
             <NavLink to='/joinus'>
               <div className='container__nav__items'>
-                Join Us
+                Nous-rejoindre
               </div>
             </NavLink> 
             <NavLink to='/about'>
               <div className='container__nav__items'>
-                Who we are
+                À propos
               </div>
             </NavLink> 
         </div>
@@ -84,12 +79,7 @@ const Footer = ({ logged }) => {
           <div className='container__law__desc'>
             Copyright © Paws. All rights reserved.
           </div>
-          <NavLink to='#'>
-            <div className='container__law__link'>
-              TERMS
-            </div>
-          </NavLink>
-          <NavLink to='#'>
+          <NavLink to='/privacy'>
             <div className='container__law__link'>
               PRIVACY POLICY
             </div>

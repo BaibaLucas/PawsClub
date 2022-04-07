@@ -167,6 +167,21 @@ const Sections = (store) => (next) => (action) => {
         break;
       }
 
+      case 'GET_SECTION_DETAILS_BY_SLUG': {
+        axios.get(`${apiUrl}/lineup/${action.slug}`)
+          .then((response) => {
+            if (response.status !== 200) {
+              throw response.error;
+            } else {
+              console.log('GET SECTION DETAILS', response.data);
+              store.dispatch(sectionDetailsSuccess(response.data));
+            }
+          }).catch((error) => {
+            console.log('Savage error Appeared', error);
+          });
+          break;
+        }
+
     default: 
       next(action);
   }

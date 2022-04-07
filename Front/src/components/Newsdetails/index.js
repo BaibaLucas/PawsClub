@@ -3,10 +3,10 @@ import React, { useEffect } from 'react';
 import { BiArrowBack } from 'react-icons/bi';
 import { useNavigate, useParams } from 'react-router-dom';
 import moment from 'moment';
-import slugify from 'slugify';
+
 
 /* Local imports */
-import { getNewsBySlug } from '../../utils';
+
 // Components
 
 const Newsdetails = ({ loadNewsData, news, getNewsDetails, getNewsDetailsBySlug, newsId, allNews }) => {

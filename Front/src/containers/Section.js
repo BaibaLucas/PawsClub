@@ -14,7 +14,8 @@ import { selectNews } from '../store/action';
 // Component States (Section)
 const mapStateToProps = (state, ownProps) => ({
   sections: state.sections.sections,
-  section: getSectionBySlug(state.sections.sections, ownProps.match.params.slug),
+  // section: getSectionBySlug(state.sections.sections, ownProps.match.params.slug),
+  section: state.sections.section,
   section_id: state.sections.section_id,
   newsSection : state.sections.newsSection,
   roster: state.sections.roster,
@@ -25,6 +26,10 @@ const mapDispatchToProps = (dispatch) => ({
 
   getSectionDetails: (id) => {
     dispatch({type: 'GET_SECTION_DETAILS', id});
+  },
+
+  getSectionDetailsBySlug: (slug) => {
+    dispatch({type: 'GET_SECTION_DETAILS_BY_SLUG', slug});
   },
 
   selectedNews: (id, title, subtitle, content, newsurl) => {

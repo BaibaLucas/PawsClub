@@ -27,6 +27,7 @@ import AdminDashboardUsers from '../../containers/AdminDashboardUsers';
 import AdminDashboardTags from '../../containers/AdminDashboardTags';
 import AdminDashboardSections from '../../containers/AdminDashboardSections';
 import AdminDashboardNews from '../../containers/AdminDashboardNews';
+import Privacy from '../Privacy';
 import { GuardedRoute, AdminRoute } from '../GuardedRoute';
 
 const App = ({ loadNewsData, loadSectionsData, loadStreamersData, logged, role_id }) => {
@@ -58,6 +59,7 @@ const App = ({ loadNewsData, loadSectionsData, loadStreamersData, logged, role_i
         <Route path='/news/:slug' element={<NewsDetails />} />
         <Route path='/roster' element={<Roster />} />
         <Route path='/section/:slug' element={<Section />} />
+        <Route path='/privacy' element={<Privacy />} />
         {/* User route */}
         <Route element={<GuardedRoute logged={logged} />}>
           <Route path='/account' element={<Account />} />
