@@ -1,5 +1,5 @@
 .section{
-  height: 100%;
+  min-height: 100vh;
   padding-top: 6rem;
   .container{
     display: flex;
@@ -54,60 +54,103 @@
         justify-content: space-evenly;
         padding: 0.3rem;
         &__news{
+          height: 100%;
+          width: 100%;
+          display: flex;
+          flex-direction: column;
           &__card{
-            min-height: 100%;
-            min-width: 100%;
-            margin: 0.2rem;
-            border: solid 3px $yellow;
-            border-radius: 20px;
-            position: relative;
-            &:first-child{
-              margin-left: 0rem;
-            }
-            &__image{
+          min-height: 100%;
+          min-width: 100%;
+          margin: 0.2rem;
+          border: solid 3px $yellow;
+          border-radius: 20px;
+          position: relative;
+          @include media('>mid'){
+            height: 30vh;
+          };
+          @include media('>large'){
+            display: flex;
+          };
+          &:first-child{
+            margin-left: 0rem;
+          }
+            &__detail{
               height: 100%;
               width: 100%;
-              border-radius: 20px;
-            }
-            img{
-              height: 100%;
-              width: 100%;
-              object-fit: cover;
-              border-radius: 20px;
-            }
-            &__text{
-              position: absolute;
-              bottom: 0;
-              background-color: #494949c9;
-              width: 100%;
-              height: 20%;
-              font-size: 1.1rem;
-              font-weight: bold;
-              color: white;
-              padding: 0.5rem;
-              border-radius: 0 0 20px 20px;
               @include media('>mid'){
-                height: 20%;
-                align-content: center;
+                height: 100%;
               };
-              &__title{
-                text-align: center;
-                font-size: 1.2rem;
+              @include media('>large'){
+                display: flex;
+                width: 100vw;
+              };
+              &__image{
+                height: 100%;
+                width: 100%;
+                border-radius: 20px;
+                @include media('>mid'){
+                };
+                @include media('>large'){
+                  width: 50%;
+                };
+              }
+              img{
+                height: 100%;
+                width: 100%;
+                object-fit: cover;
+                border-radius: 20px;
+                @include media('>mid'){
+                };
+                @include media('>large'){
+                  width: 50%;
+                  border-radius: 20px 0 0 20px;
+                };
+              }
+              &__text{
+                position: absolute;
+                bottom: 0;
+                background-color: #494949c9;
+                width: 100%;
+                height: 20%;
+                font-size: 1.1rem;
                 font-weight: bold;
-                text-transform: uppercase;
+                color: white;
+                padding: 0.5rem;
+                border-radius: 0 0 20px 20px;
+                width: 100%;
                 @include media('>mid'){
-                  font-size: 2rem;
+                  height: 30%;
                 };
-              }
-              &__date{
-                font-style: italic;
-                text-align: center;
-                margin: 0.3rem;
-                @include media('>mid'){
-                  font-size: 2rem;
+                @include media('>large'){
+                  position: static;
+                  bottom: auto;
+                  height: 100%;
+                  width: 50vw;
+                  display: flex;
+                  flex-direction: column;
+                  align-items: center;
+                  justify-content: center;
+                  border-radius: 0 20px 20px 0;
                 };
+                &__title{
+                  text-align: center;
+                  font-size: 1.2rem;
+                  font-weight: bold;
+                  text-transform: uppercase;
+                  @include media('>mid'){
+                    font-size: 2rem;
+                  };
+                }
+                &__section{
+                  font-style: italic;
+                  text-align: center;
+                  margin: 0.3rem;
+                  @include media('>mid'){
+                    font-size: 1.5rem;
+                  };
+                }
               }
-            } 
+            }
           }
         }
         &__roster{

@@ -20,12 +20,24 @@ module.exports = {
         next(error);
     }
   },
-  /* Get One News */
-  async getOneNews(req, res, next) {
-    console.log('ici');
+  /* Get One News By Id */
+  async getOneNewsId(req, res, next) {
     try {
         const newsId = req.params.id;
-        const oneNews = await newsDataMapper.getOneNews(newsId);
+        const oneNews = await newsDataMapper.getOneNewsId(newsId);
+        res.status('200').json({
+            data: oneNews
+        });
+    } catch(error) {
+        next(error);
+    }
+  },
+
+  /* Get One News By Slug */
+  async getOneNewsSlug(req, res, next) {
+    try {
+        const newsSlug = req.params.slug;
+        const oneNews = await newsDataMapper.getOneNewsSlug(newsSlug);
         res.status('200').json({
             data: oneNews
         });

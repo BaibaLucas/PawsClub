@@ -16,7 +16,7 @@ const Streams = ({ streams }) => {
             <h1>STREAM</h1>
           </div>
           <div className='container__presentation__content'>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean interdum nisi tortor, porta ornare turpis placerat sit amet.
+            Retrouvez les streamers de la communauté.
           </div>
         </div>
         <div className='container__streambox'>

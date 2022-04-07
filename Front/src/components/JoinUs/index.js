@@ -14,7 +14,7 @@ const JoinUs = () => {
           <h1>JoinUs</h1>
         </div>
         <div className='container__discord'>
-         <iframe src="https://discord.com/widget?id=844693699589570580&theme=dark" title='discord server' width="80%" height="80%" allowtransparency="true" frameBorder="0" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
+         <iframe title='discord server' src="https://discord.com/widget?id=874991073070563369&theme=dark" width="80%" height="80%" allowtransparency="true" frameborder="0" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
         </div>
       </div>
     </div>

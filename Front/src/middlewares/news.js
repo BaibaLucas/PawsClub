@@ -182,6 +182,21 @@ const News = (store) => (next) => (action) => {
         break;
       }
 
+      case 'GET_NEWS_DETAILS_BY_SLUG': {
+        axios.get(`${apiUrl}/news/${action.slug}`)
+          .then((response) => {
+            if (response.status !== 200) {
+              throw response.error;
+            } else {
+              console.log('GET NEWS DETAILS', response.data);
+              store.dispatch(newsDetailsSuccess(response.data));
+            }
+          }).catch((error) => {
+            console.log('Savage error Appeared', error);
+          });
+          break;
+        }
+
     default: 
       next(action);
   }

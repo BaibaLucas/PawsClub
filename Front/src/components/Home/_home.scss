@@ -1,8 +1,10 @@
 .home {
   height: 100%;
   padding-top: 6rem;
+  display: flex;
+  justify-content: center;
   .container{
-    min-height: 100vh;
+    height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -10,6 +12,10 @@
     background-color: $grey;
     margin: 0rem 1rem;
     padding: 1rem 0.5rem;
+    @include media('>large'){
+      width: 80vw;
+      height: 100%;
+    };
     &__presentation{
       background-color: $dark-grey;
       display: inline-block;
@@ -33,7 +39,7 @@
             object-fit: cover;
           };
           @include media('>large'){
-           height: 500px;
+           height: 50vh;
            width: 100vw;
            object-fit: cover;
           };
@@ -101,11 +107,6 @@
         &::-webkit-scrollbar{
           display: none;
         }
-        a{
-          @include media('>large'){
-            margin: 0.5rem;
-          };
-        }
         &__card{
           min-height: 100%;
           min-width: 100%;
@@ -114,82 +115,88 @@
           border-radius: 20px;
           position: relative;
           @include media('>mid'){
-            height: 500px;
+            height: 30vh;
           };
           @include media('>large'){
             display: flex;
-            flex-direction: row;
-            width: 100%;
-            height: 300px;
           };
           &:first-child{
             margin-left: 0rem;
           }
-          &__image{
-            height: 100%;
-            width: 100%;
-            border-radius: 20px;
+          &__content{
             @include media('>mid'){
-            };
-            @include media('>large'){
-              object-fit: none;
-              height: 50%;
-              width: 50%;
-              
-            };
-          }
-          img{
-            height: 100%;
-            width: 100%;
-            object-fit: cover;
-            border-radius: 20px;
-            @include media('>mid'){
-            };
-            @include media('>large'){
-              border-radius: 20px 0 0 20px;
-              object-fit: cover;
-            };
-          }
-          &__text{
-            position: absolute;
-            bottom: 0;
-            background-color: #494949c9;
-            width: 100%;
-            height: 20%;
-            font-size: 1.1rem;
-            font-weight: bold;
-            color: white;
-            padding: 0.5rem;
-            border-radius: 0 0 20px 20px;
-            @include media('>mid'){
-            
-            };
-            @include media('>large'){
-              position: relative;
               height: 100%;
-              border-radius: 0 20px 20px 0;
-              display: flex;
-              flex-direction: column;
-              justify-content: center;
             };
-            &__title{
-              text-align: center;
-              font-size: 1.2rem;
+            @include media('>large'){
+              display: flex;
+              width: 100vw;
+            };
+            &__image{
+              height: 100%;
+              width: 100%;
+              border-radius: 20px;
+              @include media('>mid'){
+              };
+              @include media('>large'){
+                width: 50%;
+              };
+            }
+            img{
+              height: 100%;
+              width: 100%;
+              object-fit: cover;
+              border-radius: 20px;
+              @include media('>mid'){
+              };
+              @include media('>large'){
+                width: 50%;
+                border-radius: 20px 0 0 20px;
+              };
+            }
+            &__text{
+              position: absolute;
+              bottom: 0;
+              background-color: #494949c9;
+              width: 100%;
+              height: 20%;
+              font-size: 1.1rem;
               font-weight: bold;
-              text-transform: uppercase;
+              color: white;
+              padding: 0.5rem;
+              border-radius: 0 0 20px 20px;
               @include media('>mid'){
-                font-size: 2rem;
+                height: 30%;
               };
-            }
-            &__section{
-              font-style: italic;
-              text-align: center;
-              margin: 0.3rem;
-              @include media('>mid'){
-                font-size: 1.5rem;
+              @include media('>large'){
+                position: static;
+                bottom: auto;
+                height: 100%;
+                width: 50vw;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                border-radius: 0 20px 20px 0;
               };
+              &__title{
+                text-align: center;
+                font-size: 1.2rem;
+                font-weight: bold;
+                text-transform: uppercase;
+                @include media('>mid'){
+                  font-size: 2rem;
+                };
+              }
+              &__section{
+                font-style: italic;
+                text-align: center;
+                margin: 0.3rem;
+                @include media('>mid'){
+                  font-size: 1.5rem;
+                };
+              }
             }
-          } 
+          }
         }
       }
       &__more{
@@ -347,6 +354,8 @@
         }
       }
       &__more{
+        @include media('>mid'){
+        };
         &__link{
           color: $dark-grey;
           text-decoration: none;

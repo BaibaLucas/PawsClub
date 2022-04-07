@@ -47,16 +47,16 @@ const Home = ({ loadStreamersData, news, sections, streams, getSectionDetails, s
             {news && (
               news.map((news => {
                 return (
-                  <NavLink key={news.id} to={buildNewsUrl(news.title)} >
+                  <NavLink className='container__news__box__card' key={news.id} to={buildNewsUrl(news.title)} >
                     <div 
-                    className='container__news__box__card'
+                    className='container__news__box__card__content'
                     onClick={() => selectNews(news.id, news.title, news.subtitle, news.content, news.newsurl)}>
-                    <img className='container__news__box__card__image' src={news.newsurl} alt='news illustration' />
-                    <div className='container__news__box__card__text'>
-                    <div className='container__news__box__card__text__title'>
+                    <img className='container__news__box__card__content__image' src={news.newsurl} alt='news illustration' />
+                    <div className='container__news__box__card__content__text'>
+                    <div className='container__news__box__card__content__text__title'>
                       {news.title}
                     </div>
-                    <div className='container__news__box__card__text__section'>
+                    <div className='container__news__box__card__content__text__section'>
                       {news.section_name} : {moment.utc(news.date).format("MM/DD/YY")}
                     </div>
                     </div>

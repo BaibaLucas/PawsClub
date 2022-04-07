@@ -96,22 +96,21 @@ const Section = ({ sections, section, getSectionDetails, section_id, newsSection
             {newsSection && (
               newsSection.map((news => {
                 return (
-                  <NavLink key={news.id} to={buildNewsUrl(news.title)} >
-                    <div className='container__content__box__news__card'
-                    onClick={() => selectNews(news.id, news.title, news.subtitle, news.content, news.newsurl)}
-                    >
-                    <img className='container__content__box__news__card__image' src={news.newsurl} alt='news illustration' />
-                    <div className='container__content__box__news__card__text'>
-                    <div className='container__content__box__news__card__text__title'>
-                      {news.title}
-                    </div>
-                    <div className='container__content__box__news__card__text__date'>
-                    {moment.utc(news.date).format("MM/DD/YY")}
-                    </div>
-                    </div>
+                  <NavLink className='container__content__box__news__card' key={news.id} to={buildNewsUrl(news.title)} >
+                  <div 
+                  className='container__content__box__news__card__detail'
+                  onClick={() => selectNews(news.id, news.title, news.subtitle, news.content, news.newsurl)}>
+                  <img className='container__content__box__news__card__detail__image' src={news.newsurl} alt='news illustration' />
+                  <div className='container__content__box__news__card__detail__text'>
+                  <div className='container__content__box__news__card__detail__text__title'>
+                    {news.title}
                   </div>
-                  </NavLink>
-                  
+                  <div className='container__content__box__news__card__detail__text__section'>
+                    {news.section_name} : {moment.utc(news.date).format("MM/DD/YY")}
+                  </div>
+                  </div>
+                  </div>
+                </NavLink>
                 )
               }))
             )}

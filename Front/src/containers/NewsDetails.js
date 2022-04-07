@@ -15,6 +15,7 @@ import { getSectionBySlug, withRouter } from '../utils';
 const mapStateToProps = (state, ownProps) => ({
   newsId: state.news.id,
   news: state.news.currentNews,
+  allNews: state.news.news,
 });
 
 // Component Func (NewsDetails)
@@ -22,6 +23,14 @@ const mapDispatchToProps = (dispatch) => ({
 
   getNewsDetails: (id) => {
     dispatch({type: 'GET_NEWS_DETAILS', id});
+  },
+
+  loadNewsData: () => {
+    dispatch({type: 'GET_NEWS'});
+  },
+
+  getNewsDetailsBySlug: (slug) => {
+    dispatch({type: 'GET_NEWS_DETAILS_BY_SLUG', slug});
   },
 
 });

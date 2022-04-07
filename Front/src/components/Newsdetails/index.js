@@ -1,18 +1,46 @@
 /* Package imports */
 import React, { useEffect } from 'react';
 import { BiArrowBack } from 'react-icons/bi';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import moment from 'moment';
+import slugify from 'slugify';
 
 /* Local imports */
+import { getNewsBySlug } from '../../utils';
 // Components
 
-const Newsdetails = ({ news, getNewsDetails, newsId }) => {
+const Newsdetails = ({ loadNewsData, news, getNewsDetails, getNewsDetailsBySlug, newsId, allNews }) => {
+
+  const {slug} = useParams();
 
   useEffect(() => {
-    getNewsDetails(newsId);
+    loadNewsData();
+    getNewsDetailsBySlug(slug);
+    
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  console.log('newsId', newsId);
+    console.log('all news', allNews);
+    console.log('news', news);
+  console.log('slug', slug);
+  
+
+  // https://blog.openreplay.com/data-fetching-techniques-with-react 
+
+  
+  
+  // DEMAIN VA VOIR CA CHECK ASYNC // OR GET NEWS BY SLUG BACK END WITH router.get('/news/:slug', MW, controller);
+
+
+
+
+  // const result = allNews.find( ({ title }) => title === slug );
+
+  // console.log('result', result.id);
+  
+
+
 
   const navigate = useNavigate();
 

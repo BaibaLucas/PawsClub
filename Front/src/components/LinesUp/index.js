@@ -27,12 +27,12 @@ const LinesUp = ({ sections, selectedSection }) => {
             return(
             <NavLink
               key={section.id} 
-              className='container__linesup__box__card'
+              className='container__box__card'
               onClick={() => {selectedSection(section.id, section.name, section.title, section.sectionurl, section.desc, section.content)}}
               to={buildSectionUrl(section.name)}>
-            <div  className='container__box__card'>
-              <img className='container__box__card__image' src={section.sectionurl} alt='wow illustration' />
-              <div className='container__box__card__title'>
+            <div  className='container__box__card__content'>
+              <img className='container__box__card__content__image' src={section.sectionurl} alt='wow illustration' />
+              <div className='container__box__card__content__title'>
                 {section.name}
               </div>
             </div>

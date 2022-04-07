@@ -16,9 +16,18 @@ module.exports = {
     return result.rows;
   },
 
-  /* Get One News */
-  async getOneNews(newsId) {
+  /* Get One News By Id*/
+  async getOneNewsId(newsId) {
     const result = await client.query('SELECT n.id, n.title, n.subtitle, n.content, n.newsurl, n.date, n.time, u.id AS user_id, u.username FROM "news" AS n JOIN "user" AS u ON n.user_id = u.id WHERE n.id=$1', [newsId]);
+    if (result.rowCount == 0) {
+        return null
+    }
+    return result.rows[0];
+  },
+
+  /* Get One News By slug */
+  async getOneNewsSlug(newsSlug) {
+    const result = await client.query('SELECT n.id, n.title, n.subtitle, n.content, n.newsurl, n.date, n.time, u.id AS user_id, u.username FROM "news" AS n JOIN "user" AS u ON n.user_id = u.id WHERE n.title=$1', [newsSlug]);
     if (result.rowCount == 0) {
         return null
     }
