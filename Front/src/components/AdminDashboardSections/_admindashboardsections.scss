@@ -1,0 +1,168 @@
+.admindashboardsections{
+  min-height: 100vh;
+  .container{
+    height: 100%;
+    padding-top: 5rem;
+    text-align: center;
+    align-items: center;
+    &__title{
+      margin: 1rem;
+    }
+    &__choice{
+      display: flex;
+      width: 100%;
+      justify-content: center;
+      &__item{
+        color: $dark-grey;
+        font-weight: bold;
+        margin: 1rem;
+        padding: 1rem;
+        background-color: $yellow;
+        border-radius: 10px;
+      }
+    }
+    &__box{
+      margin: 1rem;
+      margin: 1rem 0.5rem;
+      height: 75%;
+      display: flex;
+      flex-direction: column;
+      overflow: auto;
+      background-color: $mid-grey;
+      &__card{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        margin: 0.2rem;
+        background-color: $dark-grey;
+        padding: 0.5rem;
+        &__image{
+          height: 70px;
+          width: 70px;
+          object-fit: cover;
+          img{
+            height: 70px;
+            width: 70px;
+          }
+        }
+        &__username{
+          font-size: 1.2rem;
+        }
+        &__role{
+          font-size: 1.2rem;
+        }
+        &:hover{
+          background-color: $yellow;
+          color: $dark-grey;
+        }
+      }
+    }
+    &__modal{
+      min-height: calc(100vh - 95px);
+      margin: 1rem 0rem;
+      width: 100%;
+      position: absolute;
+      z-index: 2;
+      top: 80px;
+      background: #232323;
+      display: flex;
+      justify-content: center;
+      &__create{
+        position: relative;
+        height: 100%;
+        width: 90%;
+        border-radius: 10px;
+        background-color: $mid-grey;
+        align-self: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        &__title{
+          margin: 1rem;
+          font-size: 1.5rem;
+        }
+        &__form{
+          margin: 1rem 0rem;
+          width: 95%;
+          height: 100%;
+          display: flex;
+          flex-direction: column;
+          &__image{
+            height: 250px;
+            width: 100%;
+            object-fit: cover;
+            img{
+              height: 250px;
+              width: 100%;
+              object-fit: contain;
+            }
+          }
+          &__input{
+            padding: 0.5rem;
+          }
+          &__textarea{
+            height: 20%;
+            padding: 0.5rem;
+          }
+        }
+        &__button{
+          margin: 0.5rem;
+        }
+      }
+      &__update{
+        position: relative;
+        height: 100%;
+        width: 80%;
+        border-radius: 10%;
+        background-color: $mid-grey;
+        align-self: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-evenly;
+        &__title{
+          margin: 1rem;
+          font-size: 1.5rem;
+        }
+        &__user{
+          margin-bottom: 1rem;
+        }
+        &__form{
+          height: 100%;
+          display: flex;
+          flex-direction: column;
+        }
+        &__button{
+          margin: 0.5rem;
+        }
+      }
+      &__delete{
+        position: relative;
+        height: 25%;
+        width: 80%;
+        border-radius: 10%;
+        background-color: $mid-grey;
+        align-self: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-evenly;
+        &__title{
+          margin: 1rem;
+          font-size: 1.5rem;
+        }
+        &__user{
+          margin-bottom: 1rem;
+        }
+        &__form{
+          display: flex;
+          flex-direction: column;
+        }
+        &__button{
+          margin: 0.5rem;
+        }
+      }
+    }
+  }
+}

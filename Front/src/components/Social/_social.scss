@@ -1,0 +1,14 @@
+.social{
+  .container{
+    &__list{
+      display:flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      padding: 1rem;
+      justify-content: space-evenly;
+      &__items{
+        margin: 0.2rem;
+      }
+    }
+  }
+}

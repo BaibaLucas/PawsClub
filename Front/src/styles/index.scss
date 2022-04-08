@@ -1,0 +1,72 @@
+/* Import fonts
+@link https://fonts.google.com 
+*/
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700;1,900&display=swap');
+
+/* Breakpoints vars */
+@import './breakpoints';
+
+/* Colors vars*/
+@import './vars';
+
+/* Components styles */
+@import '../components/App/app';
+@import '../components/Home/home';
+@import '../components/Header/header';
+@import '../components/Header/burger/burger';
+@import '../components/Header/menu/menu';
+@import '../components/Header/desktopmenu/desktopmenu';
+@import '../components/Footer/footer';
+@import '../components/Social/social';
+@import '../components/Login/login';
+@import '../components/SignUp/signup';
+@import '../components/JoinUs/joinus';
+@import '../components/About/about';
+@import '../components/LinesUp/linesup';
+@import '../components/Section/section';
+@import '../components/News/news';
+@import '../components/Newsdetails/newsdetails';
+@import '../components/Streams/streams';
+@import '../components/Account/account';
+@import '../components/Roster/roster';
+@import '../components/ImgProfil/imgprofil.scss';
+@import '../components/CreateNews/createNews';
+@import '../components/Admin/admin';
+@import '../components/AdminDashboard/adminDashboard';
+@import '../components/AdminDashboardUsers/admindashboardusers';
+@import '../components/AdminDashboardTags/admindashboardtags';
+@import '../components/AdminDashboardSections/admindashboardsections';
+@import '../components/AdminDashboardNews/admindashboardnews';
+@import '../components/Privacy/privacy';
+
+/* Base */
+
+html,
+body {
+  font-family: 'Lato', sans-serif;
+  height: 100%;
+  width: 100%;
+  color: white;
+}
+
+/* Upgrade */
+
+*{
+  box-sizing: border-box;
+}
+h1{
+  font-size: 2rem;
+  font-weight: bold;
+  @include media('>mid'){
+    font-size: 2.5rem;
+  };
+}
+h2{
+  margin: 1rem;
+  font-size: 1.5rem;
+  font-style: italic;
+}
+a{
+  text-decoration: none;
+  color: white;
+}

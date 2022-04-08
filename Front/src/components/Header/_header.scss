@@ -1,0 +1,22 @@
+.header{
+  position: fixed;
+  z-index: 100;
+  .container{
+    background-color: $grey;
+    width: 100vw;
+    height: 80px;
+    display:flex;
+    justify-content: space-between;
+    flex-direction: row;
+    align-items: center;
+    &__pawslogo{
+      margin: 0 1rem;
+      width: 160px;
+      height: 50px;
+      img{
+        width: 160px;
+        height: 50px;
+      }
+    }
+  }
+}

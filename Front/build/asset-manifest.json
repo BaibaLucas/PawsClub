@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/static/css/main.d7a33032.css",
+    "main.js": "/static/js/main.e2e0d779.js",
+    "static/media/pawspaper.jpg": "/static/media/pawspaper.f6f24e1fb1e6190551af.jpg",
+    "static/media/pawswhite.png": "/static/media/pawswhite.b7916a78607e54f6caaa.png",
+    "index.html": "/index.html",
+    "main.d7a33032.css.map": "/static/css/main.d7a33032.css.map",
+    "main.e2e0d779.js.map": "/static/js/main.e2e0d779.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.d7a33032.css",
+    "static/js/main.e2e0d779.js"
+  ]
+}
