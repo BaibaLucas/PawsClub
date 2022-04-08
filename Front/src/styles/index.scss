@@ -15,6 +15,7 @@
 @import '../components/Header/header';
 @import '../components/Header/burger/burger';
 @import '../components/Header/menu/menu';
+@import '../components/Header/desktopmenu/desktopmenu';
 @import '../components/Footer/footer';
 @import '../components/Social/social';
 @import '../components/Login/login';
@@ -36,6 +37,7 @@
 @import '../components/AdminDashboardTags/admindashboardtags';
 @import '../components/AdminDashboardSections/admindashboardsections';
 @import '../components/AdminDashboardNews/admindashboardnews';
+@import '../components/Privacy/privacy';
 
 /* Base */
 
@@ -58,6 +60,11 @@ h1{
   @include media('>mid'){
     font-size: 2.5rem;
   };
+}
+h2{
+  margin: 1rem;
+  font-size: 1.5rem;
+  font-style: italic;
 }
 a{
   text-decoration: none;

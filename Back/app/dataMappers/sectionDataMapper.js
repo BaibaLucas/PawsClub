@@ -18,12 +18,30 @@ module.exports = {
 
   /* Get One Section */
 
+
   async sectionNews(sectionId) {
     const result = await client.query('SELECT * FROM "news" WHERE "section_id" = $1', [sectionId]);
     if (result.rowCount == 0) {
       return null;
     }
     return result.rows;
+  },
+
+
+  async getOneSection(sectionSlug) {
+    const result = await client.query('SELECT * FROM "section" WHERE "title" ILIKE $1', [sectionSlug]);
+    if (result.rowCount == 0) {
+      return null;
+    }
+    return result.rows[0];
+  },
+
+  async getOneSectionById(id) {
+    const result = await client.query('SELECT * FROM "section" WHERE "id" = $1', [id]);
+    if (result.rowCount == 0) {
+      return null;
+    }
+    return result.rows[0];
   },
 
   async sectionUsers(sectionId) {
@@ -44,7 +62,6 @@ module.exports = {
   async oneSection2(sectionId) {
     const result = await client.query(`SELECT JSON_AGG(JSON_build_object('id', news.id, 'title', news.title, 'subtitle', news.subtitle, 'content', news.content, 'newsurl', news.newsurl, 'date', news.date, 'time', news.time, 'user_id', news.user_id, 'section_id', news.section_id)) AS "newsSection" FROM "news" WHERE news.section_id=$1`, [sectionId]);
     if (result.rowCount == 0) {
-      console.log("pb")
         return null;
     }
     return result.rows;

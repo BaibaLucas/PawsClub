@@ -1,9 +1,9 @@
 /* Package imports */
 import React, { useState, useEffect } from 'react';
-import moment from 'moment';
+import { NavLink, useParams } from 'react-router-dom';
 
 /* Local imports */
-import { NavLink } from 'react-router-dom';
+
 import defaultPic from '../../assets/images/defaultPic.jpeg';
 import { buildNewsUrl } from '../../utils';
 
@@ -11,19 +11,15 @@ import { buildNewsUrl } from '../../utils';
 
 
 
-const Section = ({ sections, section, getSectionDetails, section_id, newsSection, roster, selectedNews }) => {
+const Section = ({ sections, section, getSectionDetailsBySlug, section_id, newsSection, roster, selectedNews }) => {
 
+
+  const {slug} = useParams();
 
   useEffect(() => {
-    getSectionDetails(section.id);
+    getSectionDetailsBySlug(slug);
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
-  console.log('section_id', section_id);
-  console.log('sections',sections);
-  console.log('section', section);
-  console.log('newsSection', newsSection)
-  console.log('Roster', roster);
 
   const [openNews, setOpenNews] = useState(true);
   const [openRoster, setOpenRoster] = useState(false);
@@ -38,7 +34,6 @@ const Section = ({ sections, section, getSectionDetails, section_id, newsSection
   };
 
   const selectNews = (id, title, subtitle, content, newsurl) => {
-    console.log(id, title, subtitle, content, newsurl);
     selectedNews(id, title, subtitle, content, newsurl);
   };
 
@@ -96,22 +91,21 @@ const Section = ({ sections, section, getSectionDetails, section_id, newsSection
             {newsSection && (
               newsSection.map((news => {
                 return (
-                  <NavLink key={news.id} to={buildNewsUrl(news.title)} >
-                    <div className='container__content__box__news__card'
-                    onClick={() => selectNews(news.id, news.title, news.subtitle, news.content, news.newsurl)}
-                    >
-                    <img className='container__content__box__news__card__image' src={news.newsurl} alt='news illustration' />
-                    <div className='container__content__box__news__card__text'>
-                    <div className='container__content__box__news__card__text__title'>
-                      {news.title}
-                    </div>
-                    <div className='container__content__box__news__card__text__date'>
-                    {moment.utc(news.date).format("MM/DD/YY")}
-                    </div>
-                    </div>
+                  <NavLink className='container__content__box__news__card' key={news.id} to={buildNewsUrl(news.title)} >
+                  <div 
+                  className='container__content__box__news__card__detail'
+                  onClick={() => selectNews(news.id, news.title, news.subtitle, news.content, news.newsurl)}>
+                  <img className='container__content__box__news__card__detail__image' src={news.newsurl} alt='news illustration' />
+                  <div className='container__content__box__news__card__detail__text'>
+                  <div className='container__content__box__news__card__detail__text__title'>
+                    {news.title}
                   </div>
-                  </NavLink>
-                  
+                  <div className='container__content__box__news__card__detail__text__section'>
+                    {news.section_name}
+                  </div>
+                  </div>
+                  </div>
+                </NavLink>
                 )
               }))
             )}

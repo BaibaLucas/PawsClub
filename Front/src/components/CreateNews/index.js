@@ -58,8 +58,6 @@ const CreateNews = ({ title, handleChange, handleSubmit, handleImgSubmit, subtit
     const canvas = await getCanvasImage(image);
     const canvasDataUrl = canvas.toDataURL('image/jpeg');
     const convertedUrlToFile = dataURLtoFile(canvasDataUrl, 'news-picture.jpeg');
-    console.log('click');
-    console.log(convertedUrlToFile);
     handleImgSubmit(convertedUrlToFile);
   };
 

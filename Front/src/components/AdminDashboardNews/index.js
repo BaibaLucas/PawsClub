@@ -7,11 +7,10 @@ import moment from 'moment';
 /* Local imports */
 import getCanvasImage from '../../utils';
 import { dataURLtoFile } from '../../utils';
-import { getSectionsSuccess } from '../../store/action';
 
 // Components
 
-const AdminDashboardNews = ({ loadNews, news, handleChange, submitCreate, submitUpdate, selectedNews, title, subtitle, content, tag, id, submitDelete, success, msg, refreshNewsStatus, newsurl, news_sectionId, news_section, sections }) => {
+const AdminDashboardNews = ({ loadNews, news, handleChange, submitCreate, submitUpdate, selectedNews, title, subtitle, content, tag, id, submitDelete, success, msg, refreshNewsStatus, newsurl, sections }) => {
 
   // Loading Users
   useEffect(() => {
@@ -45,7 +44,6 @@ const AdminDashboardNews = ({ loadNews, news, handleChange, submitCreate, submit
 
 
   const selectNews = (id, title, subtitle, content, newsurl) => {
-    console.log(id, title, subtitle, content, newsurl)
     selectedNews(id, title, subtitle, content, newsurl);
   };
 
@@ -66,15 +64,12 @@ const AdminDashboardNews = ({ loadNews, news, handleChange, submitCreate, submit
 
   const openModalCreate = () => {
     setOpenCreate(!openCreate);
-    console.log(openCreate);
   };
   const openModalUpdate = () => {
     setOpenUpdate(!openUpdate);
-    console.log(openUpdate);
   };
   const openModalDelete = () => {
     setOpenDelete(!openDelete);
-    console.log('click')
   };
 
   const backToNews = () => {
@@ -120,7 +115,6 @@ const AdminDashboardNews = ({ loadNews, news, handleChange, submitCreate, submit
           )}
         {news && (
           news.map((news => {
-            console.log(news);
             return (
               <div key={news.id} className='container__box__card'
               onClick={() => selectNews(news.id, news.title, news.subtitle, news.content, news.newsurl)}>

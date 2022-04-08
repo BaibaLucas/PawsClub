@@ -1,4 +1,5 @@
 .linesup{
+  min-height: 100vh;
   .container{
     padding: 5rem 0.3rem 0rem 0.3rem;
     display: flex;
@@ -24,33 +25,43 @@
       @include media('>mid'){
         height: 100%;
       };
+      @include media('>large'){
+        justify-content: center;
+        align-items: center;
+      };
       &__card{
         border-radius: 20px;
         border: solid 2px yellow;
-        margin: 1rem 0rem;
+        margin: 0.5rem 0rem;
         position: relative;
-        height: 250px;
-        &__image{
-          border-radius: 20px;
-          width: 100%;
+        height: 30vh;
+        @include media('>large'){
+          width: 65vw;
+        };
+        &__content{
           height: 100%;
-          @include media('>mid'){
+          &__image{
+            border-radius: 20px;
+            width: 100%;
+            height: 100%;
             object-fit: cover;
-          };
-        }
-        &__title{
-          font-size: 1.2rem;
-          font-weight: bold;
-          bottom: 20px;
-          left: 20px;
-          position: absolute;
-        }
-        &__status{
-          font-size: 1.2rem;
-          font-weight: bold;
-          position: absolute;
-          bottom: 20px;
-          right: 20px;
+            @include media('>mid'){
+            };
+          }
+          &__title{
+            font-size: 1.2rem;
+            font-weight: bold;
+            bottom: 20px;
+            left: 20px;
+            position: absolute;
+          }
+          &__status{
+            font-size: 1.2rem;
+            font-weight: bold;
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+          }
         }
       }
     }

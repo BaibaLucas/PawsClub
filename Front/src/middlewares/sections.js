@@ -26,11 +26,10 @@ const Sections = (store) => (next) => (action) => {
           if (response.status !== 200) {
             throw response.error;
           } else {
-            console.log('req ans',response.data.data)
             store.dispatch(getSectionsSuccess(response.data.data));
           }
         }).catch((error) => {
-          console.log('Savage error Appeared', error);
+          console.log(error);
         });
         break;
     }
@@ -41,11 +40,10 @@ const Sections = (store) => (next) => (action) => {
           if (response.status !== 200) {
             throw response.error;
           } else {
-            console.log(response.data);
             store.dispatch(getRosterSuccess(response.data.data));
           }
         }).catch((error) => {
-          console.log('Savage error Appeared', error);
+          console.log(error);
         });
         break;
     }
@@ -84,14 +82,13 @@ const Sections = (store) => (next) => (action) => {
             };
             axios.post(`${apiUrl}/lineup/image/${response.data.data.id}`, formData, config2)
             .then((response) => {
-              console.log('response after create', response.data);
               store.dispatch(createSectionSuccess(response.data, response.data.message));
             }).catch((error) => {
-              console.log('Oups', error);
+              console.log(error);
             });
           }
         }).catch((error) => {
-          console.log(error, 'ERROR');
+          console.log(error);
         });
       break;
     };
@@ -121,7 +118,7 @@ const Sections = (store) => (next) => (action) => {
             store.dispatch(updateSectionSuccess(response.data));
           }
         }).catch((error) => {
-          console.log('Oups !', error);
+          console.log(error);
         });
         break;
     }
@@ -144,10 +141,9 @@ const Sections = (store) => (next) => (action) => {
             throw response.error;
           } else {
             store.dispatch(deleteSectionSuccess(response.data));
-            console.log('response.data', response.data);
           }
         }).catch((error) => {
-          console.log('Oups !', error);
+          console.log(error);
         });
         break;
     }
@@ -158,14 +154,27 @@ const Sections = (store) => (next) => (action) => {
           if (response.status !== 200) {
             throw response.error;
           } else {
-            console.log('GET SECTION DETAILS', response.data);
             store.dispatch(sectionDetailsSuccess(response.data));
           }
         }).catch((error) => {
-          console.log('Savage error Appeared', error);
+          console.log(error);
         });
         break;
       }
+
+      case 'GET_SECTION_DETAILS_BY_SLUG': {
+        axios.get(`${apiUrl}/lineup/${action.slug}`)
+          .then((response) => {
+            if (response.status !== 200) {
+              throw response.error;
+            } else {
+              store.dispatch(sectionDetailsSuccess(response.data));
+            }
+          }).catch((error) => {
+            console.log(error);
+          });
+          break;
+        }
 
     default: 
       next(action);

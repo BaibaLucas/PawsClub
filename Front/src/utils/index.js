@@ -64,6 +64,14 @@ export const buildNewsUrl = (title) => `/news/${slugifyTitle(title)}`;
 export const getSectionBySlug = (sections, slug) => (
   sections.find((section) => slugifyTitle(section.title) === slug)
 );
+/** 
+ * --FIND SECTION BY SLUG--
+ * 
+ * section.title === (SLUG)section-title
+ */
+ export const getNewsBySlug = (news, slug) => (
+  [news].find((curNews) => slugifyTitle(curNews.title) === slug)
+ );
 
 /** React-router-dom v5 withRouter to v6 with own Hooks
 https://reactrouter.com/docs/en/v6/faq#what-happened-to-withrouter-i-need-it 

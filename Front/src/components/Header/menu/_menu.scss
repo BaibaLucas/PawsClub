@@ -7,6 +7,9 @@
   transition: transform 0.3s ease-in-out;
   background-color: $dark-grey;
   transform: translateY(-150%);
+  @include media('>large'){
+    display: none;
+  };
   &__nav{
     margin-top: 4rem;
     height: 100%;

@@ -14,13 +14,10 @@ module.exports = {
   async createNewUser(req, res, next) {
     try{
       const newUser = req.body;
-      console.log('New user =', newUser);
       const saltRounds = 10;
       const regexPassword = /(?=.*[\d])(?=.*[A-Z])(?=.*[a-z])(?=.*[!@#$%^&*])[\w!@#$%^&*]{8,}/;
       const verification = regexPassword.test(newUser.password);
-      console.log(verification);
       if (!verification) {
-        console.log('verification failed')
         res.status('401').json({message: 'Votre mot de passe doit contenir au minimum une majuscule, un nombre et un caractère spéciale.'});
       };
       if (verification) {
@@ -30,9 +27,15 @@ module.exports = {
           email: newUser.email,
           password: hashedPassword,
         });
+        const jwtContent = {userId: createdUser.id, roleId: createdUser.role_id};
+          const jwtOptions = {
+            algorithm: 'HS256',
+            expiresIn: '3h'
+          };
         res.status('200').json({
           message: 'new user created',
           data: createdUser,
+          token: jwt.sign(jwtContent, process.env.JWTSECRET, jwtOptions)
         })
       }
     } catch (error) {
@@ -47,7 +50,6 @@ module.exports = {
   /* Get All Users */
   async getAllUsers(req, res, next) {
     try {
-        console.log('je suis bien dans le controller');
         const allUsers = await userDataMapper.getAllUsers();
         res.status('200').json({
             data: allUsers
@@ -86,14 +88,12 @@ module.exports = {
 
   /* Update user */
   async updateUser(req, res, next) {
-    console.log('userController => Update user');
     try {
       const token = req.headers.authorization.split(' ');
       const tokenDecoded = jwt.verify(token[1], process.env.JWTSECRET);
       const tokenRoleId = tokenDecoded.roleId;
       const tokenUserId = tokenDecoded.userId;
       // 1° Step Verif if user is admin or only member
-      console.log(req.params.id);
       if (tokenRoleId === 3 || (tokenRoleId === 1 && tokenUserId == req.params.id)) {
         userId = req.params.id;
       } else {
@@ -101,10 +101,8 @@ module.exports = {
           next();
       };
       const userToUpdate = req.body;
-      console.log('userToUpdate =>', userToUpdate);
-      if (typeof userToUpdate.password == 'undefined' && typeof userToUpdate.email == 'undefined' && typeof userToUpdate.username == 'undefined'){
+      if (typeof userToUpdate.password == 'undefined' && typeof userToUpdate.email == 'undefined' && typeof userToUpdate.username == 'undefined' && typeof userToUpdate.section_id == 'undefined'){
         /* UPDATE ONLY ROLE */
-        console.log('ONLY ROLE');
         try {
           const userUpdated = await userDataMapper.updateRole(userId, {
             role_id: userToUpdate.role_id,
@@ -117,9 +115,22 @@ module.exports = {
         } catch (error) {
           next();
         }
+      } else if (typeof userToUpdate.password == 'undefined' && typeof userToUpdate.email == 'undefined' && typeof userToUpdate.username == 'undefined' && userToUpdate.section_id !== 0){
+        /* UPDATE ONLY SECTION */
+        try {
+          const userUpdated = await userDataMapper.updateSection(userId, {
+            section_id: userToUpdate.section_id,
+            });
+            res.json({
+              message: 'Utilisateur modifié avec succès',
+              success: true,
+              data: userUpdated,
+            });
+        } catch (error) {
+          next();
+        }
       } else if (userToUpdate.password.length === 0 && userToUpdate.email.length === 0) {
         /* UPDATE ONLY NAME */
-        console.log('ONLY NAME');
         try {
           const userUpdated = await userDataMapper.updateUsername(userId, {
             username: userToUpdate.username,
@@ -129,17 +140,14 @@ module.exports = {
               success: true,
               data: userUpdated
             });
-            console.log('userUpdated', userUpdated);
         } catch (error) {
           next();
         }
       } else if (userToUpdate.username.length === 0 && userToUpdate.email.length === 0) {
         /* UPDATE ONLY PW */
-        console.log('ONLY PW');
         const regexPassword = /(?=.*[\d])(?=.*[A-Z])(?=.*[a-z])(?=.*[!@#$%^&*])[\w!@#$%^&*]{8,}/;
         const pwverif = regexPassword.test(userToUpdate.password);
         // PW VERIF OK
-        console.log(pwverif);
         if (pwverif) {
           try {
             const saltRounds = 10;
@@ -152,7 +160,6 @@ module.exports = {
                 success: true,
                 data: userUpdated
               });
-              console.log('userUpdated', userUpdated);
           } catch (error) {
             next();
           }
@@ -164,7 +171,6 @@ module.exports = {
         }
       } else if (userToUpdate.password.length === 0 && userToUpdate.username.length === 0) {
         /* UPDATE ONLY EMAIL */
-        console.log('ONLY EMAIL');
         try {
           const userUpdated = await userDataMapper.updateEmail(userId, {
             email: userToUpdate.email,
@@ -174,17 +180,14 @@ module.exports = {
               success: true,
               data: userUpdated
             });
-            console.log('userUpdated', userUpdated);
         } catch (error) {
           next();
         }
       } else if (userToUpdate.email.length === 0) {
         /* UPDATE NAME & PASSWORD */
-        console.log('NAME & PASSWORD');
         const regexPassword = /(?=.*[\d])(?=.*[A-Z])(?=.*[a-z])(?=.*[!@#$%^&*])[\w!@#$%^&*]{8,}/;
         const pwverif = regexPassword.test(userToUpdate.password);
         // PW VERIF OK
-        console.log(pwverif);
         if (pwverif) {
           try {
             const saltRounds = 10;
@@ -198,7 +201,6 @@ module.exports = {
                 success: true,
                 data: userUpdated
               });
-              console.log('userUpdated', userUpdated);
           } catch (error) {
             next();
           }
@@ -208,10 +210,9 @@ module.exports = {
             data: userToUpdate
           });
         }
-      } else if (userToUpdate.password.length === 0) {
+      } else if (userToUpdate.password.length === 0 && userToUpdate.section_id.lengeth === 0) {
         /* UPDATE NAME & MAIL */
         try { 
-          console.log('NAME & EMAIL');
           const userUpdated = await userDataMapper.updateNameMail(userId, {
             username: userToUpdate.username,
             email: userToUpdate.email,
@@ -226,11 +227,9 @@ module.exports = {
         }
       } else if (userToUpdate.username.length === 0) {
         /* UPDATE PASSWORD & MAIL */
-        console.log('PASSWORD & EMAIL');
         const regexPassword = /(?=.*[\d])(?=.*[A-Z])(?=.*[a-z])(?=.*[!@#$%^&*])[\w!@#$%^&*]{8,}/;
         const pwverif = regexPassword.test(userToUpdate.password);
         // PW VERIF OK
-        console.log(pwverif);
         if (pwverif) {
           try {
             const saltRounds = 10;
@@ -244,7 +243,6 @@ module.exports = {
                 success: true,
                 data: userUpdated
               });
-              console.log('userUpdated', userUpdated);
           } catch (error) {
             next();
           }
@@ -256,11 +254,9 @@ module.exports = {
         }
       } else {
         /* UPDATE ALL */
-        console.log('ALL');
         const regexPassword = /(?=.*[\d])(?=.*[A-Z])(?=.*[a-z])(?=.*[!@#$%^&*])[\w!@#$%^&*]{8,}/;
         const pwverif = regexPassword.test(userToUpdate.password);
         // PW VERIF OK
-        console.log(pwverif);
         if (pwverif) {
           try {
             const saltRounds = 10;
@@ -275,7 +271,6 @@ module.exports = {
                 success: true,
                 data: userUpdated
               });
-              console.log('userUpdated', userUpdated);
           } catch (error) {
             next();
           }
@@ -311,7 +306,6 @@ module.exports = {
                 message: 'deleted user',
                 data: userDeleted
             });
-            console.log('User deleted');
     } catch(error){
       next(error);
     }
@@ -320,7 +314,6 @@ module.exports = {
   /* Get all streamers */
   async getStreamers(req, res, next) {
     try {
-        console.log('je suis bien dans le controller');
         const allStreamers = await userDataMapper.getAllStreamers();
         res.status('200').json({
             data: allStreamers

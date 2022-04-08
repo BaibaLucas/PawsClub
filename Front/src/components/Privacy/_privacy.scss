@@ -1,0 +1,17 @@
+.privacy{
+  min-height: 100Vh;
+  padding-top: 6rem;
+  max-width: 100vw;
+  .container{
+    display: flex;
+    flex-direction: column;
+    padding: 3rem;
+    max-width: 100vw;
+  }
+  h1{
+    margin: 1rem 0rem;
+  }
+  a{
+    color: $yellow;
+  }
+}

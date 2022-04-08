@@ -6,6 +6,9 @@
   height: 2rem;
   padding: 0;
   margin-right: 1rem;
+  @include media('>large'){
+    display: none;
+  };
   span{
     width: 2rem;
     height: 0.25rem;

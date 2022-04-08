@@ -22,11 +22,13 @@ router.post('/user', userController.createNewUser); // CREATE USER
 router.get('/user', userController.getAllUsers); // GET ALL USERS
 router.get('/user/:id(\\d+)', userController.getOneUser); // GET USER BY ID
 router.get('/news', newsController.getAllNews);  // GET ALL NEWS
-router.get('/news/:id(\\d+)', newsController.getOneNews); // GET NEWS BY ID 
+router.get('/news/:id(\\d+)', newsController.getOneNewsId); // GET NEWS BY ID
+router.get('/news/:slug', newsController.getOneNewsSlug); // GET NEWS BY SLUG
 router.post('/searchNews', newsController.searchNews); // GET NEWS BY LINE-UP
 router.post('/searchUser', userController.searchUsers); // GET USERS BY SEARCHBAR
 router.get('/lineup', sectionController.getAllSections); // GET ALL LINES-UP
-router.get('/lineup/:id(\\d+)', sectionController.getOneSection); // GET LINEUP BY ID
+router.get('/lineup/:id(\\d+)', sectionController.getOneSectionId); // GET LINEUP BY ID
+router.get('/lineup/:slug', sectionController.getOneSectionSlug); // GET LINEUP BY SLUG
 router.get('/tag', tagController.getAllTags); // GET ALL TAGS
 router.get('/streams', userController.getStreamers); // GET ALL STREAMERS
 

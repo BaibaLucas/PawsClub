@@ -1,21 +1,25 @@
 /* Package imports */
 import React, { useEffect } from 'react';
 import { BiArrowBack } from 'react-icons/bi';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import moment from 'moment';
 
+
 /* Local imports */
+
 // Components
 
-const Newsdetails = ({ news, getNewsDetails, newsId }) => {
+const Newsdetails = ({ loadNewsData, news, getNewsDetailsBySlug, newsId, allNews }) => {
+
+  const {slug} = useParams();
 
   useEffect(() => {
-    getNewsDetails(newsId);
+    loadNewsData();
+    getNewsDetailsBySlug(slug);  
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const navigate = useNavigate();
-
 
   return(
     <div className='newsdetails'>
@@ -31,12 +35,13 @@ const Newsdetails = ({ news, getNewsDetails, newsId }) => {
           <div className='container__details__date'> {moment.utc(news.date).format("MM/DD/YY")}</div>
           <div className='container__details__title'>
             <h1>{news.title}</h1>
+            <h2>{news.subtitle}</h2>
           </div>
           <div className='container__details__content'>
             {news.content}
           </div>
           <div className='container__details__author'>
-            {news.user_id}
+            {news.username}
           </div>
         </div>
       </div>

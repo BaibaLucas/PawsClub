@@ -1,17 +1,21 @@
 .home {
   height: 100%;
   padding-top: 6rem;
+  display: flex;
+  justify-content: center;
   .container{
-    min-height: 100vh;
+    height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    background-color: $grey;
     margin: 0rem 1rem;
     padding: 1rem 0.5rem;
+    @include media('>large'){
+      width: 70vw;
+      height: 100%;
+    };
     &__presentation{
-      background-color: $dark-grey;
       display: inline-block;
       position: relative;
       -webkit-box-shadow: 5px 5px 15px 5px #212121; 
@@ -19,15 +23,31 @@
       @include media('>mid'){
         width: 100%;
         height: 100%;
-        border: solid 2px yellow;
       };
-      img{
-        display: block;
-        height: 100%;
-        width: 100%;
-        @include media('>mid'){
-          object-fit: cover;
-        };
+      @include media('>large'){
+        border: solid 2px $yellow;
+        display: flex;
+        flex-direction: row;
+      };
+      &__image{
+          display: block;
+          height: 100%;
+          width: 100%;
+          @include media('>mid'){
+            object-fit: cover;
+          };
+          @include media('>large'){
+           height: 50vh;
+           width: 100%;
+           object-fit: cover;
+          };
+        img{
+          display: block;
+          height: 100%;
+          width: 100%;
+          @include media('>large'){
+          };
+        }
       }
       &__content{
         position: absolute;
@@ -40,17 +60,22 @@
         color: white;
         padding: 0.5rem;
         text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         @include media('>mid'){
-          height: 30%;
-          font-size: 3rem;
+          height: 35%;
+          font-size: 2.5rem;
           text-align: center;
+        };
+        @include media('>large'){
         };
       }
     }
     &__news{
       margin: 1.5rem 0rem;
-      -webkit-box-shadow: 5px 5px 15px 5px #212121; 
-      box-shadow: 5px 5px 15px 5px #212121;
+      // -webkit-box-shadow: 5px 5px 15px 5px #212121; 
+      // box-shadow: 5px 5px 15px 5px #212121;
       border-radius: 0 20px 0 0;
       width: 100%;
       @include media('>mid'){
@@ -59,10 +84,10 @@
       &__title{
         font-weight: bold;
         font-size: 1.3rem;
-        color: white;
         padding: 0.5rem;
-        background-color: #212121;
         border-radius: 0 20px 0 0;
+        color: $dark-grey;
+        background-color: #F0FF00;
         @include media('>mid'){
           font-size: 2rem;
         };
@@ -71,75 +96,118 @@
         display: flex;
         flex-direction: column;
         margin: 1rem 0rem;
+        @include media('>large'){
+          width: 100%;
+          flex-direction: row;
+          flex-wrap: wrap;
+          justify-content: center
+        };
         &::-webkit-scrollbar{
           display: none;
         }
         &__card{
-          min-height: 100%;
-          min-width: 100%;
-          margin: 0.2rem;
-          border: solid 3px $yellow;
+          -webkit-box-shadow: 5px 5px 15px 5px #212121; 
+          box-shadow: 5px 5px 15px 5px #212121;
+          height: 45vh;
+          width: 100%;
+          margin: 0.4rem;
           border-radius: 20px;
           position: relative;
+          border: solid 2px $yellow;
           @include media('>mid'){
-            height: 500px;
+            height: 30vh;
+          };
+          @include media('>large'){
+            display: flex;
           };
           &:first-child{
             margin-left: 0rem;
           }
-          &__image{
+          &__content{
+            display: flex;
             height: 100%;
             width: 100%;
-            border-radius: 20px;
             @include media('>mid'){
+              height: 100%;
             };
-          }
-          img{
-            height: 100%;
-            width: 100%;
-            object-fit: cover;
-            border-radius: 20px;
-            @include media('>mid'){
+            @include media('>large'){
+              display: flex;
+              width: 100vw;
             };
-          }
-          &__text{
-            position: absolute;
-            bottom: 0;
-            background-color: #494949c9;
-            width: 100%;
-            height: 20%;
-            font-size: 1.1rem;
-            font-weight: bold;
-            color: white;
-            padding: 0.5rem;
-            border-radius: 0 0 20px 20px;
-            @include media('>mid'){
-            
-            };
-            &__title{
-              text-align: center;
-              font-size: 1.2rem;
+            &__image{
+              height: 100%;
+              width: 50%;
+              border-radius: 20px;
+              @include media('>mid'){
+              };
+              @include media('>large'){
+                width: 50%;
+              };
+            }
+            img{
+              height: 100%;
+              width: 100%;
+              object-fit: cover;
+              border-radius: 20px;
+              @include media('>mid'){
+              };
+              @include media('>large'){
+                max-width: 50%;
+                border-radius: 20px 0 0 20px;
+              };
+            }
+            &__text{
+              position: absolute;
+              bottom: 0;
+              background-color: #494949c9;
+              width: 100%;
+              height: 20%;
+              font-size: 1.1rem;
               font-weight: bold;
-              text-transform: uppercase;
+              color: white;
+              padding: 0.5rem;
+              border-radius: 0 0 20px 20px;
               @include media('>mid'){
-                font-size: 2rem;
+                height: 30%;
               };
-            }
-            &__section{
-              font-style: italic;
-              text-align: center;
-              margin: 0.3rem;
-              @include media('>mid'){
-                font-size: 1.5rem;
+              @include media('>large'){
+                position: static;
+                bottom: auto;
+                height: 100%;
+                width: 50vw;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                border-radius: 0 20px 20px 0;
               };
+              &__title{
+                text-align: center;
+                font-size: 1.2rem;
+                font-weight: bold;
+                text-transform: uppercase;
+                @include media('>mid'){
+                  font-size: 2rem;
+                };
+              }
+              &__section{
+                font-style: italic;
+                text-align: center;
+                margin: 0.3rem;
+                @include media('>mid'){
+                  font-size: 1.5rem;
+                };
+              }
             }
-          } 
+          }
         }
       }
       &__more{
         @include media('>mid'){
         };
         &__link{
+          -webkit-box-shadow: 5px 5px 15px 5px #212121; 
+          box-shadow: 5px 5px 15px 5px #212121;
           color: $dark-grey;
           text-decoration: none;
           background-color: #F0FF00;
@@ -161,18 +229,16 @@
     }
     &__linesup{
       margin: 1.5rem 0rem;
-      -webkit-box-shadow: 5px 5px 15px 5px #212121; 
-      box-shadow: 5px 5px 15px 5px #212121;
       border-radius: 0 20px 0 0;
       width: 100%;
       flex-direction: column;
       &__title{
         font-weight: bold;
         font-size: 1.3rem;
-        color: white;
         padding: 0.5rem;
-        background-color: #212121;
         border-radius: 0 20px 0 0;
+        color: $dark-grey;
+        background-color: #F0FF00;
         @include media('>mid'){
           font-size: 2rem;
         };
@@ -182,8 +248,24 @@
         margin: 1rem 0rem;
         overflow-x: auto;
         scroll-snap-type: x mandatory;
+        -webkit-box-shadow: 5px 5px 15px 5px #212121; 
+        box-shadow: 5px 5px 15px 5px #212121;
+        border-radius: 20px;
+        @include media('>large'){
+          display:flex;
+          flex-wrap: nowrap;
+          justify-content: center;
+        }
         &::-webkit-scrollbar{
           display: none;
+          @include media('>large'){
+          }
+        }
+        a{
+          @include media('>large'){
+            height: 400px;
+            width: 49%;
+           }
         }
         &__card{
           min-height: 100%;
@@ -192,23 +274,32 @@
           border: solid 3px $yellow;
           border-radius: 20px;
           scroll-snap-align: start;
+          @include media('>large'){
+           min-width: 20%;
+          }
           &:first-child{
             margin-left: 0rem;
           }
           &__image{
             height: 100%;
             width: 100%; 
+            @include media('>large'){
+            }
           }
           img{
             height: 100%;
             width: 100%;
             object-fit: cover;
             border-radius: 20px;
+            @include media('>large'){
+            }
           }
         }
       }
       &__more{
         &__link{
+          -webkit-box-shadow: 5px 5px 15px 5px #212121; 
+          box-shadow: 5px 5px 15px 5px #212121;
           color: $dark-grey;
           text-decoration: none;
           background-color: #F0FF00;
@@ -230,8 +321,6 @@
     }
     &__stream{
       margin: 1.5rem 0rem;
-      -webkit-box-shadow: 5px 5px 15px 5px #212121; 
-      box-shadow: 5px 5px 15px 5px #212121;
       border-radius: 0 20px 0 0;
       width: 100%;
       height: 100%;
@@ -241,10 +330,10 @@
       &__title{
         font-weight: bold;
         font-size: 1.3rem;
-        color: white;
         padding: 0.5rem;
-        background-color: #212121;
         border-radius: 0 20px 0 0;
+        color: $dark-grey;
+        background-color: #F0FF00;
         @include media('>mid'){
           font-size: 2rem;
         };
@@ -262,16 +351,22 @@
           justify-content: space-evenly;
         };
         &__card{
+          -webkit-box-shadow: 5px 5px 15px 5px #212121; 
+          box-shadow: 5px 5px 15px 5px #212121;
           height: 350px;
           width: 100%;
           margin: 0.5rem;
           @include media('>large'){
-            width: 40%;
+            height: 400px;
           };
         }
       }
       &__more{
+        @include media('>mid'){
+        };
         &__link{
+          -webkit-box-shadow: 5px 5px 15px 5px #212121; 
+          box-shadow: 5px 5px 15px 5px #212121;
           color: $dark-grey;
           text-decoration: none;
           background-color: #F0FF00;

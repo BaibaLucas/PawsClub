@@ -27,8 +27,8 @@ getSectionDetails: (sectionId) => {
   dispatch({type: 'GET_SECTION_DETAILS', sectionId})
 },
 
-selectedSection: (id, name, title, sectionurl, desc, content) => {
-  dispatch(selectSection(id, name, title, sectionurl, desc, content));
+selectedSection: (id, name, title, sectionurl, description, content) => {
+  dispatch(selectSection(id, name, title, sectionurl, description, content));
 },
 
 selectedNews: (id, title, subtitle, content, newsurl) => {

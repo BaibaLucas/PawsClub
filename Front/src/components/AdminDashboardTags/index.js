@@ -20,11 +20,9 @@ const AdminDashboardTags = ({ loadTags, tags, handleChange, submitTag, submitDel
 
   const openModalCreate = () => {
     setOpenCreate(!openCreate);
-    console.log(openCreate);
   };
   const openModalDelete = () => {
     setOpenDelete(!openDelete);
-    console.log('click')
   };
 
   const onChange = (event) => {
@@ -42,7 +40,6 @@ const AdminDashboardTags = ({ loadTags, tags, handleChange, submitTag, submitDel
   };
 
   const selectTag = (id, name) => {
-    console.log(id, name);
     selectedTag(id, name);
   };
 

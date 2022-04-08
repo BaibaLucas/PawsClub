@@ -13,8 +13,6 @@ const Roster = ({ loadRoster, roster, loadUsers, users, sections, loadSectionsDa
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  console.log('roster', roster);
-
   const [openAllUsers, setOpenAllUsers] = useState(true);
   const [openUsersBySection, setOpenUsersBySection] = useState(false);
 
@@ -55,7 +53,7 @@ const Roster = ({ loadRoster, roster, loadUsers, users, sections, loadSectionsDa
             )}
             <div className='container__presentation__nav__item'
             onClick={() => handleAllUsers()}>
-                Community members
+                Membres
             </div>
            {sections && (
               sections.map((section => {

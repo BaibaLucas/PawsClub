@@ -53,7 +53,7 @@ CREATE TABLE "section" (
 -------------------------------------
 CREATE TABLE "news" (
   "id" INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-  "title" TEXT NOT NULL,
+  "title" TEXT NOT NULL UNIQUE,
   "subtitle" TEXT NOT NULL,
   "content" TEXT NOT NULL,
   "newsurl" TEXT,

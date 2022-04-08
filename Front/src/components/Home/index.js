@@ -2,7 +2,6 @@
 import React, { useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import ReactPlayer from 'react-player';
-import moment from 'moment';
 
 /* Local imports */
 import illust from '../../assets/images/pawspaper.jpg';
@@ -11,8 +10,6 @@ import { buildSectionUrl, buildNewsUrl } from '../../utils';
 
 
 // Components
-
-
 const Home = ({ loadStreamersData, news, sections, streams, getSectionDetails, selectedSection, selectedNews }) => {
   
   useEffect(() => {
@@ -21,8 +18,11 @@ const Home = ({ loadStreamersData, news, sections, streams, getSectionDetails, s
   }, []);
 
   const selectNews = (id, title, subtitle, content, newsurl) => {
-    console.log(id, title, subtitle, content, newsurl);
     selectedNews(id, title, subtitle, content, newsurl);
+  };
+
+  const selectSection = (id, name, title, sectionurl, description, content) => {
+    selectedSection(id, name, title, sectionurl, description, content);
   };
 
   return (
@@ -47,17 +47,17 @@ const Home = ({ loadStreamersData, news, sections, streams, getSectionDetails, s
             {news && (
               news.map((news => {
                 return (
-                  <NavLink key={news.id} to={buildNewsUrl(news.title)} >
+                  <NavLink className='container__news__box__card' key={news.id} to={buildNewsUrl(news.title)} >
                     <div 
-                    className='container__news__box__card'
+                    className='container__news__box__card__content'
                     onClick={() => selectNews(news.id, news.title, news.subtitle, news.content, news.newsurl)}>
-                    <img className='container__news__box__card__image' src={news.newsurl} alt='news illustration' />
-                    <div className='container__news__box__card__text'>
-                    <div className='container__news__box__card__text__title'>
+                    <img className='container__news__box__card__content__image' src={news.newsurl} alt='news illustration' />
+                    <div className='container__news__box__card__content__text'>
+                    <div className='container__news__box__card__content__text__title'>
                       {news.title}
                     </div>
-                    <div className='container__news__box__card__text__section'>
-                      {news.section_name} : {moment.utc(news.date).format("MM/DD/YY")}
+                    <div className='container__news__box__card__content__text__section'>
+                      {news.section_name}
                     </div>
                     </div>
                     </div>
@@ -88,7 +88,7 @@ const Home = ({ loadStreamersData, news, sections, streams, getSectionDetails, s
                   <NavLink 
                     key={section.id} 
                     className='container__linesup__box__card'
-                    onClick={() => {selectedSection(section.id, section.name, section.title, section.sectionurl, section.desc, section.content)}}
+                    onClick={() => {selectSection(section.id, section.name, section.title, section.sectionurl, section.description, section.content)}}
                     to={buildSectionUrl(section.name)}
                     >
                     <img className='container__linesup__box__card__image' src={section.sectionurl} alt='linesup illustration' />

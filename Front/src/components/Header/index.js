@@ -7,6 +7,7 @@ import { NavLink } from 'react-router-dom';
 import logo from '../../assets/images/pawswhite.png';
 import Burger from './burger/index';
 import Menu from './menu/index';
+import DesktopMenu from './desktopmenu/index';
 
 
 // Components
@@ -28,6 +29,7 @@ const Header = ({ logged, role }) => {
         <div className='container__nav'>
             <Burger open={open} setOpen={setOpen} />
             <Menu open={open} setOpen={setOpen} logged={logged} role={role} />
+            <DesktopMenu logged={logged} role={role} />
         </div>
       </div>
     </div>

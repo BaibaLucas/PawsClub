@@ -46,7 +46,6 @@ module.exports = {
       const email = req.body.email;
       const password = req.body.password;
       const login = await loginDataMapper.login(email);
-      console.log(login);
       if (login === null) {
         res.status('404').json({message: 'Cette information ne nous permet pas de vérifier votre compte.'});
       } else if (login.role_id === 1 || login.role_id === 2) {

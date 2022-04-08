@@ -8,6 +8,8 @@ import {
   IMG_UPLOAD_SUCCESS,
   ADMIN_LOGIN_SUCCESS,
   ADMIN_AUTH_FAILED,
+  EDIT_USER_SECTION_SUCCESS,
+  REFRESH_USER_SUCCESS,
 } from '../store/action';
 
 /* Initial State user infos */
@@ -19,6 +21,8 @@ const initialState = {
   profilurl: '',
   role_id: '',
   token: '',
+  section_name: '',
+  section_id: '',
   logged: false,
   error: false,
   success: false,
@@ -44,6 +48,7 @@ const Reducer = (oldState = initialState, action = {}) => {
         ...oldState,
         id: action.id,
         username: action.username,
+        token: action.token,
         email: action.email,
         password: '',
         profilurl: action.profilurl,
@@ -67,6 +72,8 @@ const Reducer = (oldState = initialState, action = {}) => {
         email: action.email,
         profilurl: action.profilurl,
         role_id: action.role_id,
+        section_name: action.section_name,
+        section_id: action.section_id,
         password: '',
         logged: true,
       };
@@ -74,16 +81,18 @@ const Reducer = (oldState = initialState, action = {}) => {
     case EDIT_USER_SUCCESS:
       return {
         ...oldState,
-        id: action.id,
-        token: action.token,
-        username: action.username,
-        email: action.email,
-        profilurl: action.profilurl,
-        role_id: action.role_id,
+        id: action.data.id,
+        token: action.data.token,
+        username: action.data.username,
+        email: action.data.email,
+        profilurl: action.data.profilurl,
+        role_id: action.data.role_id,
+        section_name: action.data.section_name,
+        section_id: action.data.section_id,
         password: '',
         logged: true,
-        success: action.success,
-        msg: action.msg,
+        success: true,
+        msg: action.data.message,
       };
 
       case IMG_UPLOAD_SUCCESS:
@@ -106,6 +115,24 @@ const Reducer = (oldState = initialState, action = {}) => {
           msg: '',
           success: false,
         };
+
+      case 'DISCONNECT':
+        return {
+          ...oldState,
+          id: '',
+          username: '',
+          email: '',
+          password: '',
+          profilurl: '',
+          role_id: '',
+          token: '',
+          section_name: '',
+          section_id: '',
+          logged: false,
+          error: false,
+          success: false,
+          msg: '',
+        };
       
       case ADMIN_LOGIN_SUCCESS:
         return {
@@ -126,9 +153,41 @@ const Reducer = (oldState = initialState, action = {}) => {
           error: true,
           msg: action.message,
         };
+
+      case EDIT_USER_SECTION_SUCCESS:
+        return {
+          ...oldState,
+          id: action.data.data.id,
+          username: action.data.data.username,
+          email: action.data.data.email,
+          profilurl: action.data.data.profilurl,
+          role_id: action.data.data.role_id,
+          section_name: action.data.data.section_name,
+          section_id: action.data.data.section_id,
+          password: '',
+          logged: true,
+          success: true,
+          msg: action.data.message,
+        };
+
+      case REFRESH_USER_SUCCESS:
+        return {
+          ...oldState,
+          id: action.data.data.id,
+          username: action.data.data.username,
+          email: action.data.data.email,
+          profilurl: action.data.data.profilurl,
+          role_id: action.data.data.role_id,
+          section_name: action.data.data.section_name,
+          section_id: action.data.data.section_id,
+          password: '',
+          logged: true,
+          success: false,
+          msg: '',
+        }
         
     default:
-      return {...oldState}
+      return oldState
   }
 };
 

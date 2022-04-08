@@ -3,6 +3,7 @@ import React from 'react';
 import { render } from 'react-dom';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { Provider as StoreProvider } from 'react-redux';
+import {PersistGate} from 'redux-persist/es/integration/react';
 
 /*  Local imports */
 // Styles
@@ -11,13 +12,15 @@ import './styles/index.scss';
 // Components
 import App from './containers/App';
 // Store
-import store from './store';
+import {store, persistor} from './store';
 
 
 const rootReactElement = (
   <Router>
     <StoreProvider store={store}>
+    <PersistGate loading={null} persistor={persistor}>
       <App />
+    </PersistGate >
     </StoreProvider>
   </Router>
 );

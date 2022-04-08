@@ -29,7 +29,7 @@ const mapDispatchToProps = (dispatch) => ({
   },
 
   handleSubmit: () => {
-    dispatch({type: 'ADMIN_LOGIN'}, console.log('CONTAINER'));
+    dispatch({type: 'ADMIN_LOGIN'});
   },
 
 });

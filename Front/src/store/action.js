@@ -31,6 +31,8 @@ export const CHANGE_USERS_FIELD = 'CHANGE_USERS_FIELD';
 export const SELECT_USER = 'SELECT_USER';
 export const GET_STREAMERS_SUCCESS = 'GET_STREAMERS_SUCCESS';
 export const EDIT_ROLE_SUCCESS = 'EDIT_ROLE_SUCCESS';
+export const EDIT_USER_SECTION_SUCCESS = 'EDIT_USER_SECTION_SUCCESS';
+export const REFRESH_USER_SUCCESS = 'REFRESH_USER_SUCCESS';
 
 // Image Types
 export const IMG_UPLOAD_SUCCESS = 'IMG_UPLOAD_SUCCESS';
@@ -52,9 +54,10 @@ export const changeAuthField = (value, name) => ({
   value,
   name,
 });
-export const signUpSuccess = (user) => ({
+export const signUpSuccess = (user, token) => ({
   type: SIGNUP_SUCCESS,
   ...user,
+  token,
 });
 export const authFailed = (data) => ({
   type: AUTH_FAILED,
@@ -65,9 +68,10 @@ export const loginSuccess = (data, token) => ({
   ...data,
   token,
 });
-export const editUserSuccess = (data) => ({
+export const editUserSuccess = (data, msg) => ({
   type: EDIT_USER_SUCCESS,
-  ...data,
+  data,
+  msg,
 });
 
 // News actions
@@ -171,6 +175,14 @@ export const getStreamersSuccess = (data) => ({
 });
 export const editRoleSuccess = (data) => ({
   type: EDIT_ROLE_SUCCESS,
+  data,
+});
+export const editUserSectionSuccess = (data) => ({
+  type: EDIT_USER_SECTION_SUCCESS,
+  data,
+});
+export const refreshUserSuccess = (data) => ({
+  type: REFRESH_USER_SUCCESS,
   data,
 });
 

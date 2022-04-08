@@ -4,7 +4,6 @@ import { NavLink } from 'react-router-dom';
 
 
 /* Local imports */
-import defaultPic from '../../assets/images/defaultPic.jpeg';
 import getCanvasImage from '../../utils';
 import { dataURLtoFile } from '../../utils';
 
@@ -40,7 +39,6 @@ const AdminDashboardSections = ({ loadSections, sections, handleChange, submitCr
   };
 
   const selectSection = (id, name, title, sectionurl, desc, content) => {
-    console.log(id, name, title, sectionurl, desc, content)
     selectedSection(id, name, title, sectionurl, desc, content);
   };
 
@@ -60,15 +58,12 @@ const AdminDashboardSections = ({ loadSections, sections, handleChange, submitCr
 
   const openModalCreate = () => {
     setOpenCreate(!openCreate);
-    console.log(openCreate);
   };
   const openModalUpdate = () => {
     setOpenUpdate(!openUpdate);
-    console.log(openUpdate);
   };
   const openModalDelete = () => {
     setOpenDelete(!openDelete);
-    console.log('click')
   };
 
 
