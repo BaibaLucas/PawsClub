@@ -26,11 +26,10 @@ const News = (store) => (next) => (action) => {
           if (response.status !== 200) {
             throw response.error;
           } else {
-            console.log('allnews MW', response.data);
             store.dispatch(getNewsSuccess(response.data.data));
           }
         }).catch((error) => {
-          console.log('Savage error Appeared', error);
+          console.log(error);
         });
         break;
       }
@@ -61,7 +60,6 @@ const News = (store) => (next) => (action) => {
           if (response.status !== 200) {
             throw response.error;
           } else {
-            console.log('OK ICI');
             const config2 = {
               headers: {
                 'Content-Type': 'multipart/form-data',
@@ -70,14 +68,13 @@ const News = (store) => (next) => (action) => {
             };
             axios.post(`${apiUrl}/news/image/${response.data.data.id}`, formData, config2)
             .then((response) => {
-              console.log('response after create', response.data);
               store.dispatch(newsContentSuccess(response.data, response.data.message));
             }).catch((error) => {
-              console.log('Oups', error);
+              console.log(error);
             });
           }
         }).catch((error) => {
-          console.log(error, 'ERROR');
+          console.log(error);
         });
       break;
     };
@@ -97,13 +94,9 @@ const News = (store) => (next) => (action) => {
       };
       axios.post(`${apiUrl}/news/image/${id}`, formData, config)
         .then((response) => {
-          console.log('The file is successfully uploaded');
-          console.log('response.data --->', response.data);
-          console.log("imgProfile---->", response.data.data.profilurl);
-          console.log('message', response.data.message);
           store.dispatch(imgNewsUploadSuccess(response.data.data, response.data.message));
         }).catch((error) => {
-          console.log('Oups', error);
+          console.log(error);
         });
       break;
     };
@@ -128,15 +121,13 @@ const News = (store) => (next) => (action) => {
       };
       axios(config)
         .then((response) => {
-          console.log('ICI');
           if (response.status !== 200) {
             throw response.error;
           } else {
             store.dispatch(updateNewsSuccess(response.data));
-            console.log(response.data);
           }
         }).catch((error) => {
-          console.log('Oups !', error);
+          console.log(error);
         });
         break;
     }
@@ -159,10 +150,9 @@ const News = (store) => (next) => (action) => {
             throw response.error;
           } else {
             store.dispatch(deleteNewsSuccess(response.data));
-            console.log(response.data);
           }
         }).catch((error) => {
-          console.log('Oups !', error);
+          console.log(error);
         });
         break;
     }
@@ -173,11 +163,10 @@ const News = (store) => (next) => (action) => {
           if (response.status !== 200) {
             throw response.error;
           } else {
-            console.log('GET NEWS DETAILS', response.data);
             store.dispatch(newsDetailsSuccess(response.data));
           }
         }).catch((error) => {
-          console.log('Savage error Appeared', error);
+          console.log(error);
         });
         break;
       }
@@ -188,11 +177,10 @@ const News = (store) => (next) => (action) => {
             if (response.status !== 200) {
               throw response.error;
             } else {
-              console.log('GET NEWS DETAILS', response.data);
               store.dispatch(newsDetailsSuccess(response.data));
             }
           }).catch((error) => {
-            console.log('Savage error Appeared', error);
+            console.log(error);
           });
           break;
         }

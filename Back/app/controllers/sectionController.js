@@ -21,17 +21,34 @@ module.exports = {
     }
   },
 
-  /* Get One Section */
-  async getOneSection(req, res, next) {
+  /* Get One Section Id*/
+  async getOneSectionId(req, res, next) {
     try {
         const sectionId = req.params.id;
+        const section = await sectionDataMapper.getOneSectionById(sectionId);
         const sectionNews = await sectionDataMapper.sectionNews(sectionId);
         const sectionUsers = await sectionDataMapper.sectionUsers(sectionId);
-        console.log('sectionNews', sectionNews);
-        console.log('sectionUsers', sectionUsers)
         res.status('200').json({
             message: 'News & Users section',
-            data: {sectionNews, sectionUsers},
+            data: {section, sectionNews, sectionUsers},
+            success: true,
+        });
+    } catch(error) {
+        next(error);
+    }
+  },
+
+  /* Get One Section Slug*/
+  async getOneSectionSlug(req, res, next) {
+    try {
+        const slug = req.params.slug;
+        const sectionSlug = slug.replaceAll('-', ' ');
+        const section = await sectionDataMapper.getOneSection(sectionSlug);
+        const sectionNews = await sectionDataMapper.sectionNews(section.id);
+        const sectionUsers = await sectionDataMapper.sectionUsers(section.id);
+        res.status('200').json({
+            message: 'News & Users section',
+            data: {section, sectionNews, sectionUsers},
             success: true,
         });
     } catch(error) {
@@ -43,7 +60,6 @@ module.exports = {
   async createSection(req, res, next) {
     try {
         const section = req.body;
-        console.log(section);
         const sectionCreated = await sectionDataMapper.createSection(section);
         res.json({
             message: 'Section created',
@@ -59,7 +75,6 @@ module.exports = {
     try {
         const section = req.body;
         const sectionId = req.params.id;
-        console.log(section);
         const sectionUpdated = await sectionDataMapper.updateSection(section, sectionId);
         res.json({
             message: 'Section modifié avec succès',

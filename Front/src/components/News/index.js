@@ -33,7 +33,6 @@ const News = ({ news, loadNewsData, loadSectionsData, sections, selectedNews, ge
   }
 
   const selectNews = (id, title, subtitle, content, newsurl) => {
-    console.log(id, title, subtitle, content, newsurl);
     selectedNews(id, title, subtitle, content, newsurl);
   };
 

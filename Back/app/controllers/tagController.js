@@ -23,7 +23,6 @@ async getAllTags(req, res, next) {
 async createTag(req, res, next) {
   try {
       const tag = req.body;
-      console.log(tag);
       const tagCreated = await tagDataMapper.createTag(tag);
       res.json({
           message: 'Tag créer avec succès',
@@ -46,7 +45,6 @@ async deleteTag(req, res, next) {
               data: tagDeleted,
               success: true,
           });
-          console.log('Tag deleted');
   } catch(error){
     next(error);
   }

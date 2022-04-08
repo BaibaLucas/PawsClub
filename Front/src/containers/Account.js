@@ -18,6 +18,11 @@ const mapStateToProps = (state) => ({
   password: state.auth.password,
   avatar: state.auth.profilurl,
   profilurl: state.auth.profilurl,
+  section_name: state.auth.section_name,
+  section_id: state.auth.section_id,
+  sections: state.sections.sections,
+  success: state.auth.success,
+  msg: state.auth.msg,
 });
 
 // Component Func (Account)
@@ -30,6 +35,26 @@ const mapDispatchToProps = (dispatch) => ({
   handleSubmit: () => {
     dispatch({type: 'EDIT_USER'});
   },
+
+  loadSectionsData: () => {
+    dispatch({type: 'GET_SECTIONS'});
+  },
+
+  handleSubmitSection: () => {
+    dispatch({type: 'EDIT_USER_SECTION'});
+  },
+
+  refreshStatus: () => {
+    dispatch({type: 'CHANGE_STATUS'});
+  },
+
+  refreshUser: () => {
+    dispatch({type: 'REFRESH_USER'});
+  },
+
+  disconnected: () => {
+    dispatch({type: 'DISCONNECT'});
+  }
 
 });
 

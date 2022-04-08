@@ -36,7 +36,8 @@ module.exports = {
   /* Get One News By Slug */
   async getOneNewsSlug(req, res, next) {
     try {
-        const newsSlug = req.params.slug;
+        const slug = req.params.slug;
+        const newsSlug = slug.replaceAll('-', ' ');
         const oneNews = await newsDataMapper.getOneNewsSlug(newsSlug);
         res.status('200').json({
             data: oneNews
@@ -64,7 +65,6 @@ module.exports = {
   async createNews(req, res, next) {
     try {
         const news = req.body;
-        console.log('news', news);
         // Create current date
         const today = new Date();
         const day = String(today.getDate()).padStart(2, '0');
@@ -76,17 +76,12 @@ module.exports = {
         const hours = time.getHours();
         const mins = time.getMinutes();
         const timeatm = hours + ':' + mins;
-        console.log('today', date);
-        console.log('time', timeatm);
-        console.log('news', news);
         const createdNews = await newsDataMapper.createNews(news, date, timeatm);
         res.status(200).json({
             data: createdNews,
             message: 'Votre news à été créer avec succès'
           });
-          console.log('NEWS CREATED SUCCESSFULLY');
     } catch(error) {
-      console.log('NEWS CONTROLLER CREATENEWS ---> ERROR ');
         next(error);
     }
   },
@@ -96,7 +91,6 @@ module.exports = {
     try {
       const news = req.body;
       const newsId = req.params.id;
-      console.log('news', news);
       // Create current date
       const today = new Date();
       const day = String(today.getDate()).padStart(2, '0');
@@ -108,11 +102,8 @@ module.exports = {
       const hours = time.getHours();
       const mins = time.getMinutes();
       const timeatm = hours + ':' + mins;
-      console.log('today', date);
-      console.log('time', timeatm);
       // FUTUR TAG REWORK
       const tag = 2;
-      console.log('news', news);
       const updatedNews = await newsDataMapper.updateNews(news, date, timeatm, tag, newsId);
         res.json({
             message: 'News modifié avec succès',

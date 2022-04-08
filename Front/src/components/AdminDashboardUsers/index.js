@@ -51,7 +51,6 @@ const AdminDashboardUsers = ({ loadUsers, users, handleChange, submitRole, selec
   }
 
   const selectUser = (id, username, user) => {
-    console.log(id, username, user);
     selectedUser(id, username);
   };
 
@@ -62,11 +61,9 @@ const AdminDashboardUsers = ({ loadUsers, users, handleChange, submitRole, selec
 
   const openModalUpdate = () => {
     setOpenUpdate(!openUpdate);
-    console.log(openUpdate);
   };
   const openModalDelete = () => {
     setOpenDelete(!openDelete);
-    console.log('click')
   };
 
   const backToUser = () => {

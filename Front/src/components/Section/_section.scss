@@ -59,12 +59,14 @@
           display: flex;
           flex-direction: column;
           &__card{
-          min-height: 100%;
-          min-width: 100%;
-          margin: 0.2rem;
-          border: solid 3px $yellow;
-          border-radius: 20px;
-          position: relative;
+            -webkit-box-shadow: 5px 5px 15px 5px #212121; 
+            box-shadow: 5px 5px 15px 5px #212121;
+            height: 45vh;
+            width: 100%;
+            margin: 0.2rem;
+            border-radius: 20px;
+            position: relative;
+            border: solid 2px $yellow;
           @include media('>mid'){
             height: 30vh;
           };

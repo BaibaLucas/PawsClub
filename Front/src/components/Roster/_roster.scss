@@ -1,14 +1,22 @@
 .roster{
-  height: 100%;
+  min-height: 100vh;
   padding-top: 6rem;
+  display: flex;
+  justify-content: center;
   .container{
+    height: 100%;
     display: flex;
-    text-align: center;
     flex-direction: column;
-    background-color: $grey;
-    margin: 0rem 0.5rem;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0rem 1rem;
+    padding: 1rem 0.5rem;
     @include media('>mid'){
       min-height: 100vh;
+    };
+    @include media('>large'){
+      width: 60vw;
+      height: 100%;
     };
     &__presentation{
       margin-top: 2rem;
@@ -16,6 +24,7 @@
       display: flex;
       flex-direction: column;
       &__title{
+        text-align: center;
         margin-bottom: 2rem;
         text-transform: uppercase;
       }
@@ -23,10 +32,11 @@
         width: 100%;
         display: flex;
         justify-content: space-around;
-        background-color: $dark-grey;
+        background-color: $grey;
         padding: 1rem;
         border-radius: 20px;
         align-items: center;
+        text-align: center;
         &__item{
           text-transform: uppercase;
           font-weight: bold;
@@ -42,7 +52,6 @@
       }
     }
     &__roster{
-      box-shadow: 5px 5px 15px 5px #212121;
       margin-top: 2rem;
       display: flex;
       flex-direction: column;
@@ -50,14 +59,17 @@
         display: flex;
         flex-direction: column;
         &__card{
+          -webkit-box-shadow: 5px 5px 15px 5px #212121; 
+          box-shadow: 5px 5px 15px 5px #212121;
           min-height: 100%;
           min-width: 100%;
-          margin: 0.2rem;
-          border: solid 3px $yellow;
+          margin: 0.3rem;
+          border: solid 2px $yellow;
           border-radius: 20px;
           position: relative;
           display: flex;
           align-items: center;
+          background-color: $grey;
           &__image{
             height: 100px;
             width: 200px;

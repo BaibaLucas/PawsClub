@@ -24,10 +24,6 @@ const mapStateToProps = (state, ownProps) => ({
 // Component Func (Section)
 const mapDispatchToProps = (dispatch) => ({
 
-  getSectionDetails: (id) => {
-    dispatch({type: 'GET_SECTION_DETAILS', id});
-  },
-
   getSectionDetailsBySlug: (slug) => {
     dispatch({type: 'GET_SECTION_DETAILS_BY_SLUG', slug});
   },

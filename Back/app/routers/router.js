@@ -27,7 +27,8 @@ router.get('/news/:slug', newsController.getOneNewsSlug); // GET NEWS BY SLUG
 router.post('/searchNews', newsController.searchNews); // GET NEWS BY LINE-UP
 router.post('/searchUser', userController.searchUsers); // GET USERS BY SEARCHBAR
 router.get('/lineup', sectionController.getAllSections); // GET ALL LINES-UP
-router.get('/lineup/:id(\\d+)', sectionController.getOneSection); // GET LINEUP BY ID
+router.get('/lineup/:id(\\d+)', sectionController.getOneSectionId); // GET LINEUP BY ID
+router.get('/lineup/:slug', sectionController.getOneSectionSlug); // GET LINEUP BY SLUG
 router.get('/tag', tagController.getAllTags); // GET ALL TAGS
 router.get('/streams', userController.getStreamers); // GET ALL STREAMERS
 

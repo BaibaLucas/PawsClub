@@ -11,8 +11,6 @@ import {
   loginSuccess,
   editUserSuccess,
   imgUploadSuccess,
-  AdminAuthFailed,
-  AdminLoginSuccess
  } from '../store/action';
 
 
@@ -39,13 +37,12 @@ const Auth = (store) => (next) => (action) => {
           if (response.status !== 200) {
             throw response.error;
           } else {
-            store.dispatch(signUpSuccess(response.data.data));
+            store.dispatch(signUpSuccess(response.data.data, response.data.token));
           }
         }).catch((error) => {
           if (error.response.status === 401) {
             store.dispatch(authFailed(error.response.data));
           } else {
-            console.log('Error has been appeared 2 =>', error);
           }
         });
         break;
@@ -69,21 +66,20 @@ const Auth = (store) => (next) => (action) => {
         if (response.status !== 200) {
           throw response.error;
         } else {
-          console.log(response.data);
           store.dispatch(loginSuccess(response.data.data, response.data.token));
         }
       }).catch((error) => {
         if (error.response.status === 401 || 404) {
           store.dispatch(authFailed(error.response.data));
         } else {
-          console.log('Error has been appeared 2 =>', error);
+          console.log(error);
         }
       });
       break;
     };
 
     case 'EDIT_USER': {
-      const { auth: { username, email, password, id, token } } = store.getState();
+      const { auth: { username, email, password, id, section_id, token } } = store.getState();
 
       const config = {
         method: 'patch',
@@ -96,18 +92,18 @@ const Auth = (store) => (next) => (action) => {
           username,
           email,
           password,
+          section_id,
         },
       };
       axios(config)
         .then((response) => {
-          console.log('ICI');
           if (response.status !== 200) {
             throw response.error;
           } else {
-            store.dispatch(editUserSuccess(response.data));
+            store.dispatch(editUserSuccess(response.data.data, response.data.message));
           }
         }).catch((error) => {
-          console.log('Oups !', error);
+          console.log(error);
         });
         break;
     };
@@ -126,7 +122,7 @@ const Auth = (store) => (next) => (action) => {
         .then((response) => {
           store.dispatch(imgUploadSuccess(response.data.data, response.data.message));
         }).catch((error) => {
-          console.log('Oups', error);
+          console.log(error);
         });
       break;
     };

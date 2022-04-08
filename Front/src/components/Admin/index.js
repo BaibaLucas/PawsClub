@@ -15,7 +15,6 @@ const Admin = ({ email, password, logged, error, msg, handleChange, handleSubmit
   /* Handle Submit */
   const onSubmit = (event) => {
     event.preventDefault();
-    console.log('click');
     handleSubmit();
   };
 

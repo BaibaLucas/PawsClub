@@ -1,14 +1,15 @@
 /* Package imports */
 import React, { useEffect, useState } from 'react';
-import { Link, useNavigate, NavLink } from 'react-router-dom';
-import { MdAddPhotoAlternate, MdNavigateBefore } from 'react-icons/md';
+import { useNavigate, NavLink } from 'react-router-dom';
+import { MdAddPhotoAlternate } from 'react-icons/md';
+import { ImCross } from 'react-icons/im';
 
 /* Local imports */
 import defaultPic from '../../assets/images/defaultPic.jpeg';
 
 // Components
 
-const Account = ({ username, email, password, profilurl, logged, handleChange, handleSubmit }) => {
+const Account = ({ username, email, password, profilurl, logged, handleChange, handleSubmit, section_name, handleSubmitSection, sections, success, msg, refreshStatus, refreshUser, disconnected }) => {
 
   /** Redirect to /login if user is not logged */
   const navigate = useNavigate();
@@ -22,22 +23,32 @@ const Account = ({ username, email, password, profilurl, logged, handleChange, h
   const [openUsername, setOpenUsername] = useState(false);
   const [openEmail, setOpenEmail] = useState(false);
   const [openPassword, setOpenPassword] = useState(false);
+  const [openSection, setOpenSection] = useState(false);
   
   /** () => for opening form edit {refactoring}*/
   const usernameClick = () => {
     setOpenUsername(!openUsername);
     setOpenEmail(false);
     setOpenPassword(false);
+    setOpenSection(false);
   };
   const emailClick = () => {
     setOpenEmail(!openEmail);
     setOpenUsername(false);
     setOpenPassword(false);
+    setOpenSection(false);
   };
   const passwordClick = () => {
     setOpenPassword(!openPassword);
     setOpenUsername(false);
     setOpenEmail(false);
+    setOpenSection(false);
+  };
+  const sectionClick = () => {
+    setOpenSection(!openSection);
+    setOpenUsername(false);
+    setOpenEmail(false);
+    setOpenPassword(false);
   };
   
   /** Handle input value */
@@ -61,6 +72,20 @@ const Account = ({ username, email, password, profilurl, logged, handleChange, h
     setOpenEmail(false);
     handleSubmit();
   };
+  const onSubmitSection = (event) => {
+    event.preventDefault();
+    setOpenSection(false);
+    handleSubmitSection();
+  }
+
+  const closeModal = () => {
+    refreshStatus();
+    refreshUser();
+  }
+
+  const disconnect = () => {
+    disconnected();
+  }
 
   // If user haven't profile picture return default pic
   const usrImg = () => {
@@ -76,7 +101,7 @@ const Account = ({ username, email, password, profilurl, logged, handleChange, h
       <div className='account'>
         <div className='container'>
           <div className='container__title'>
-            <h1>MY account</h1>
+            <h1>Mon Compte</h1>
           </div>
           <div className='container__card'>
           <div className='container__card__header'>
@@ -223,7 +248,64 @@ const Account = ({ username, email, password, profilurl, logged, handleChange, h
               </>
             )}
             </div>
-            <div>Si vous êtes streamers n'hésitez pas à revenir vers l'admin du site web afin de pouvoir afficher votre chaine sur notre plateforme.</div>
+            {/* SECTION EDIT */}
+            <div className='container__card__content__section'>
+              <div className='container__card__content__section__box'>
+                <div className='container__card__content__section__box__left'>
+                <div className='container__card__content__section__box__left__desc'>
+                  Section
+                </div>
+                <div className='container__card__content__section__box__left__name'>
+                  {section_name}
+                </div>
+                </div>
+                <div className='container__card__content__section__box__right'>
+                {!openSection && (
+                  <button className='container__card__content__section__box__right button' onClick={sectionClick}>
+                  Edit
+                </button>
+                )}
+                </div>
+              </div>
+            {/* SECTION EDIT */}
+            {openSection && (
+              <>
+              <form className='container__card__content__section__form' onSubmit={onSubmitSection}>
+                <label className='container__card__content__section__form__label' htmlFor="email">Change Section</label>
+                <select name='section_id'
+                    className='container__card__content__section__form__label' 
+                    onChange={onChange}
+                    >
+                     <option value="">Section</option>
+                      {sections.map(s => {
+                        return <option key={s.id} value={s.id}>{s.title}</option>
+                      })}
+                    </select>
+                <button className='container__card__content__section button' type='submit'>
+                  Save
+                </button>
+                <button className='container__card__content__section button' type='reset' onClick={sectionClick}>
+                  Cancel
+                </button>
+              </form>
+              </>
+            )}
+            </div>
+            {success && (
+              <>
+              <div className='modal'>
+                {msg}
+                <button className='modal__button' onClick={closeModal}> Retour au profil </button>  
+              </div>
+              </>
+            )}
+            <div>Si vous êtes streamers n'hésitez pas à revenir vers le staff afin de pouvoir afficher votre chaine sur notre plateforme.</div>
+            <div className='container__card__content__disconnect' onClick={disconnect}>
+              <div className='container__card__content__disconnect__text'> Se deconnecter </div>
+              <div className='container__card__content__disconnect__logo'>
+                <ImCross size={30}/>
+              </div>
+            </div>
           </div>
           </div>
         </div>

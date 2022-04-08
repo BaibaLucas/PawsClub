@@ -9,6 +9,8 @@ import {
   getUsersSuccess,
   getStreamersSuccess,
   editRoleSuccess,
+  editUserSectionSuccess,
+  refreshUserSuccess,
  } from '../store/action';
 
 
@@ -22,11 +24,10 @@ const Admin = (store) => (next) => (action) => {
           if (response.status !== 200) {
             throw response.error;
           } else {
-            console.log(response.data);
             store.dispatch(getUsersSuccess(response.data.data));
           }
         }).catch((error) => {
-          console.log('Savage error Appeared', error);
+          console.log(error);
         });
         break;
     }
@@ -49,17 +50,42 @@ const Admin = (store) => (next) => (action) => {
       };
       axios(config)
         .then((response) => {
-          console.log('ICI');
           if (response.status !== 200) {
             throw response.error;
           } else {
             store.dispatch(editRoleSuccess(response.data));
-            console.log('res', response.data);
-            console.log('msg', response.data.msg);
-            console.log('succes',response.data.success);
           }
         }).catch((error) => {
-          console.log('Oups !', error);
+          console.log(error);
+        });
+        break;
+    }
+
+    case 'EDIT_USER_SECTION': {
+      const { auth: { id, section_id },
+              auth: { token },
+    } = store.getState();
+
+      const config = {
+        method: 'patch',
+        url: `${apiUrl}/user/${id}`,
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Baerer ${token}`,
+        },
+        data: {
+          section_id
+        },
+      };
+      axios(config)
+        .then((response) => {
+          if (response.status !== 200) {
+            throw response.error;
+          } else {
+            store.dispatch(editUserSectionSuccess(response.data));
+          }
+        }).catch((error) => {
+          console.log(error);
         });
         break;
     }
@@ -82,10 +108,9 @@ const Admin = (store) => (next) => (action) => {
             throw response.error;
           } else {
             // store.dispatch(deleteUserSuccess(response.data));
-            console.log(response.data);
           }
         }).catch((error) => {
-          console.log('Oups !', error);
+          console.log(error);
         });
         break;
     }
@@ -96,11 +121,36 @@ const Admin = (store) => (next) => (action) => {
           if (response.status !== 200) {
             throw response.error;
           } else {
-            console.log(response.data);
             store.dispatch(getStreamersSuccess(response.data.data));
           }
         }).catch((error) => {
-          console.log('Savage error Appeared', error);
+          console.log(error);
+        });
+        break;
+    }
+
+    case 'REFRESH_USER': {
+      const { auth: { id },
+              auth: { token },
+    } = store.getState();
+      const config = {
+        method: 'get',
+        url: `${apiUrl}/user/${id}`,
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Baerer ${token}`,
+        },
+      };
+      axios(config)
+        .then((response) => {
+          if (response.status !==200) {
+            throw response.error;
+          } else {
+            store.dispatch(refreshUserSuccess(response.data));
+            console.log(response.data);
+          }
+        }).catch((error) => {
+          console.log(error);
         });
         break;
     }

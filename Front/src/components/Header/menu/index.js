@@ -30,7 +30,7 @@ const Menu = ({ open, setOpen, logged, role }) => {
           <NavLink className='menu__nav__list__item'  onClick={close} to='/'>
             <AiFillHome size={50}/>
             <li className='menu__nav__list__item__name'>
-              Home
+              Accueil
             </li>
           </NavLink>
           {/* Case : user logged */}
@@ -38,7 +38,7 @@ const Menu = ({ open, setOpen, logged, role }) => {
             <NavLink className='menu__nav__list__item'  onClick={close} to='/account'>
             <MdManageAccounts size={50} />
             <li className='menu__nav__list__item__name'>
-              Account
+              Compte
             </li>
           </NavLink>
           )}
@@ -57,13 +57,13 @@ const Menu = ({ open, setOpen, logged, role }) => {
             <NavLink className='menu__nav__list__item'  onClick={close} to='/login'>
             <BiUserCircle size={50} />
             <li className='menu__nav__list__item__name'>
-              Login
+              Connexion
             </li>
             </NavLink>
             <NavLink className='menu__nav__list__item'  onClick={close} to='/signup'>
             <RiUserAddFill size={50} />
               <li className='menu__nav__list__item__name'>
-                Sign-Up
+                S'inscrire
               </li>
             </NavLink>
           </> 
@@ -95,13 +95,13 @@ const Menu = ({ open, setOpen, logged, role }) => {
           <NavLink className='menu__nav__list__item'  onClick={close} to='/joinus'>
             <FaHandsHelping size={50} />
             <li className='menu__nav__list__item__name'>
-              Join Us
+              Nous rejoindre
             </li>
           </NavLink>
           <NavLink className='menu__nav__list__item'  onClick={close} to='/about'>
             <MdQuestionAnswer size={50} />
             <li className='menu__nav__list__item__name'>
-              Who we are
+              À propos
             </li>
           </NavLink>
         </ul>

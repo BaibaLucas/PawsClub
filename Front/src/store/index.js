@@ -20,6 +20,7 @@ import tagsMiddleware from '../middlewares/tags';
 const persistConfig = {
   key:'root',
   storage,
+  whitelist: ['auth']
 };
 
 const enhancer = composeWithDevTools(

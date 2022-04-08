@@ -26,7 +26,7 @@ const Tags = (store) => (next) => (action) => {
             store.dispatch(getTagsSuccess(response.data.data));
           }
         }).catch((error) => {
-          console.log('Savage error Appeared', error);
+          console.log(error);
         });
         break;
     }
@@ -44,15 +44,13 @@ const Tags = (store) => (next) => (action) => {
       };
       axios(config)
         .then((response) => {
-          console.log('ICI');
           if (response.status !== 200) {
             throw response.error;
           } else {
             store.dispatch(createTagSuccess(response.data));
-            console.log(response.data);
           }
         }).catch((error) => {
-          console.log('Oups !', error);
+          console.log(error);
         });
         break;
     }
@@ -74,7 +72,7 @@ const Tags = (store) => (next) => (action) => {
             store.dispatch(deleteTagSuccess(response.data));
           }
         }).catch((error) => {
-          console.log('Oups !', error);
+          console.log(error);
         });
         break;
     }

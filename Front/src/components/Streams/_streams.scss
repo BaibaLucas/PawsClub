@@ -7,7 +7,6 @@
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    background-color: $grey;
     margin: 0rem 1rem;
     padding: 1rem 0.5rem;
     &__presentation{
@@ -30,7 +29,7 @@
       &__card{
         height: 300px;
         border: solid 1px $yellow;
-        margin: 0 0 1rem 0;
+        margin: 0 1rem 1rem 0;
         background-color: #212121;
       }
       @include media('>mid'){

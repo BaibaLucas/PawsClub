@@ -1,6 +1,5 @@
 /* Package imports */
 import React, { useState, useEffect } from 'react';
-import moment from 'moment';
 import { NavLink, useParams } from 'react-router-dom';
 
 /* Local imports */
@@ -16,6 +15,7 @@ const Section = ({ sections, section, getSectionDetailsBySlug, section_id, newsS
 
 
   const {slug} = useParams();
+
   useEffect(() => {
     getSectionDetailsBySlug(slug);
   // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -34,7 +34,6 @@ const Section = ({ sections, section, getSectionDetailsBySlug, section_id, newsS
   };
 
   const selectNews = (id, title, subtitle, content, newsurl) => {
-    console.log(id, title, subtitle, content, newsurl);
     selectedNews(id, title, subtitle, content, newsurl);
   };
 
@@ -102,7 +101,7 @@ const Section = ({ sections, section, getSectionDetailsBySlug, section_id, newsS
                     {news.title}
                   </div>
                   <div className='container__content__box__news__card__detail__text__section'>
-                    {news.section_name} : {moment.utc(news.date).format("MM/DD/YY")}
+                    {news.section_name}
                   </div>
                   </div>
                   </div>
