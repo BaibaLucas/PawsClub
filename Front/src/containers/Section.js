@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 /* Local imports */
 import Section from '../components/Section';
-import { getSectionBySlug, withRouter } from '../utils';
+import { withRouter } from '../utils';
 import { selectNews } from '../store/action';
 
 // Action
