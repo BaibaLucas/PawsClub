@@ -21,6 +21,8 @@ const News = (store) => (next) => (action) => {
   switch (action.type) {
 
     case 'GET_NEWS': {
+      console.log(apiUrl);
+      console.log(process.env.NODE_ENV);
       axios.get(`${apiUrl}/news`)
         .then((response) => {
           if (response.status !== 200) {

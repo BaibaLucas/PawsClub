@@ -5,9 +5,13 @@
  ---- @apiUrl = Back Paws API
 */
 
-const baseURL =
-  process.env.NODE_ENV === "production"
-  ? "api"
-  : "http://localhost:3001";
+// const baseURL =
+//   process.env.NODE_ENV === "production"
+//   ? "/api"
+//   : "http://localhost:3001/api";
+
+
+const baseURL = "http://localhost:3001/api";
+// const baseURL = "/api";
   
 export const apiUrl = baseURL;
