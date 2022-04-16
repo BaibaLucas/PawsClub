@@ -1,0 +1,42 @@
+.streams{
+  min-height: 100vh;
+  padding-top: 6rem;
+  .container{
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0rem 1rem;
+    padding: 1rem 0.5rem;
+    &__presentation{
+      text-align: center;
+      padding: 1rem 0rem;
+      background-color: $dark-grey;
+      display: inline-block;
+      position: relative;
+      -webkit-box-shadow: 5px 5px 15px 5px #212121; 
+      box-shadow: 5px 5px 15px 5px #212121;
+      margin: 1rem 0rem;
+      &__title{
+        margin: 1rem;
+      }
+      &__content{
+        margin: 1rem;
+        display: flex;
+        flex-direction: column;
+        &__button{
+          align-items: center;
+          margin-top: 1rem;
+          background-color: $yellow;
+          border-radius: 10px;
+          color: $dark-grey;
+          font-size: 1.5rem;
+          padding: 1.2rem 0rem;
+          font-weight: bold;
+          text-align: center;
+         }
+      }
+    }
+  }
+}

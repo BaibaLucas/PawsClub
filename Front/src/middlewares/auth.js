@@ -6,11 +6,11 @@ import { apiUrl } from './url';
 
 // Action
 import { 
-  signUpSuccess,
   authFailed,
   loginSuccess,
   editUserSuccess,
   imgUploadSuccess,
+  signUpPending,
  } from '../store/action';
 
 
@@ -20,6 +20,7 @@ const Auth = (store) => (next) => (action) => {
 
     case 'USER_SIGNUP': {
       const { auth: { username, email, password } } = store.getState();
+      const capitalizeUsername = username.charAt(0).toUpperCase() + username.slice(1);
       const config = {
         method: 'post',
         url: `${apiUrl}/user`,
@@ -27,7 +28,7 @@ const Auth = (store) => (next) => (action) => {
           'Content-Type': 'application/json',
         },
         data: {
-          username,
+          username: capitalizeUsername,
           email,
           password,
         },
@@ -37,7 +38,7 @@ const Auth = (store) => (next) => (action) => {
           if (response.status !== 200) {
             throw response.error;
           } else {
-            store.dispatch(signUpSuccess(response.data.data, response.data.token));
+            store.dispatch(signUpPending(response.data.message));
           }
         }).catch((error) => {
           if (error.response.status === 401) {
@@ -126,6 +127,20 @@ const Auth = (store) => (next) => (action) => {
         });
       break;
     };
+
+    case 'ACCOUNT_VALIDATION': {
+      const token = action.token;
+      axios.get(`${apiUrl}/verify/${token}`)
+        .then((response) => {
+          if (response.status !== 200) {
+            throw response.error;
+          } else {
+          }
+        }).catch((error) => {
+          console.log(error);
+        });
+        break;
+    }
 
 
     default: 

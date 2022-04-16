@@ -10,6 +10,7 @@ import {
   ADMIN_AUTH_FAILED,
   EDIT_USER_SECTION_SUCCESS,
   REFRESH_USER_SUCCESS,
+  SIGNUP_PENDING,
 } from '../store/action';
 
 /* Initial State user infos */
@@ -27,6 +28,7 @@ const initialState = {
   error: false,
   success: false,
   msg: '',
+  pending: false,
 };
 
 /* Auth reducer */
@@ -54,6 +56,13 @@ const Reducer = (oldState = initialState, action = {}) => {
         profilurl: action.profilurl,
         role_id: action.role_id,
         logged: true,
+      };
+
+    case SIGNUP_PENDING:
+      return {
+        ...oldState,
+        msg: action.msg,
+        pending: true,
       };
     
     case AUTH_FAILED:
@@ -184,7 +193,14 @@ const Reducer = (oldState = initialState, action = {}) => {
           logged: true,
           success: false,
           msg: '',
-        }
+        };
+
+        case 'REFRESH_PENDING':
+          return {
+            ...oldState,
+            msg: '',
+            pending: false
+          };
         
     default:
       return oldState

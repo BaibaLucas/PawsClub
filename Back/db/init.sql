@@ -7,32 +7,12 @@
 
 BEGIN;
 
-DROP TABLE IF EXISTS "role", "user", "tag", "section", "news", "m2m_user_belong_section" CASCADE;
+DROP TABLE IF EXISTS "role", "user", "tag", "section", "news" CASCADE;
 
 -------------------------------------
 -- Create role table
 -------------------------------------
 CREATE TABLE "role" (
-  "id" INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-  "name" TEXT NOT NULL
-);
--------------------------------------
--- Create user table
--------------------------------------
-CREATE TABLE "user" (
-  "id" INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-  "username" TEXT NOT NULL,
-  "email" TEXT NOT NULL UNIQUE,
-  "password" TEXT NOT NULL,
-  "profilurl" TEXT,
-  "stream" TEXT,
-  "role_id" INT REFERENCES "role"(id) DEFAULT 1,
-  "section_id" INT REFERENCES "section"(id),
-);
--------------------------------------
--- Create tag table
--------------------------------------
-CREATE TABLE "tag" (
   "id" INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
   "name" TEXT NOT NULL
 );
@@ -47,6 +27,27 @@ CREATE TABLE "section" (
   "sectionurl" TEXT,
   "description" TEXT NOT NULL,
   "content" TEXT NOT NULL
+);
+-------------------------------------
+-- Create user table
+-------------------------------------
+CREATE TABLE "user" (
+  "id" INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+  "username" TEXT NOT NULL,
+  "email" TEXT NOT NULL UNIQUE,
+  "password" TEXT NOT NULL,
+  "profilurl" TEXT,
+  "stream" TEXT,
+  "verified" BOOLEAN NOT NULL DEFAULT FALSE,
+  "role_id" INT REFERENCES "role"(id) DEFAULT 1,
+  "section_id" INT REFERENCES "section"(id)
+);
+-------------------------------------
+-- Create tag table
+-------------------------------------
+CREATE TABLE "tag" (
+  "id" INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+  "name" TEXT NOT NULL
 );
 -------------------------------------
 -- Create news table
@@ -64,17 +65,9 @@ CREATE TABLE "news" (
   "tag_id" INT REFERENCES "tag"(id)
 );
 -------------------------------------
--- Create relation between M2M table
--------------------------------------
-CREATE TABLE "m2m_user_belong_section" (
-  "id" INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-  "user_id" INT REFERENCES "user"(id) ON DELETE CASCADE,
-  "section_id" INT REFERENCES "section"(id) ON DELETE CASCADE
-);
--------------------------------------
 -- Grant privileges for user
 -------------------------------------
-GRANT ALL PRIVILEGES ON "role", "user", "tag", "section", "news", "m2m_user_belong_section" TO noway;
+GRANT ALL PRIVILEGES ON "role", "user", "tag", "section", "news" TO noway;
 -------------------------------------
 -- Insert values into tables
 -------------------------------------
@@ -82,10 +75,7 @@ INSERT INTO "role"("name") VALUES
 ('member'),
 ('moderator'),
 ('administrator');
-
-INSERT INTO "user"("username", "email", "password", "profilurl", "stream", "role_id") VALUES
-('heda', 'heda@gmail.com', 'Reape2022*', '', 'https://www.twitch.tv/hedarim', '1'),
-('liwest', 'li@gmail.com', 'Reape2022*', '', 'https://www.twitch.tv/liwesttv', '1');
+-------------------------------------
 
 
 COMMIT;

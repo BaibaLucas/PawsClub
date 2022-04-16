@@ -28,7 +28,7 @@ const Streams = ({ streams }) => {
             {streams && (
               streams.map((stream => {
                 return (
-                  <div className='container__streambox__card'>
+                  <div key={stream.id} className='container__streambox__card'>
                     <ReactPlayer 
                       url={stream.stream}
                       height='100%'

@@ -31,6 +31,7 @@ router.get('/api/lineup/:id(\\d+)', sectionController.getOneSectionId); // GET L
 router.get('/api/lineup/:slug', sectionController.getOneSectionSlug); // GET LINEUP BY SLUG
 router.get('/api/tag', tagController.getAllTags); // GET ALL TAGS
 router.get('/api/streams', userController.getStreamers); // GET ALL STREAMERS
+router.get('/api/verify/:id', userController.verify); // VERIFY USER ACCOUNT
 
 // Accessible while connected
 

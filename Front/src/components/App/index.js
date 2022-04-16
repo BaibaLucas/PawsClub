@@ -27,6 +27,7 @@ import AdminDashboardUsers from '../../containers/AdminDashboardUsers';
 import AdminDashboardTags from '../../containers/AdminDashboardTags';
 import AdminDashboardSections from '../../containers/AdminDashboardSections';
 import AdminDashboardNews from '../../containers/AdminDashboardNews';
+import Verify from '../../containers/Verify';
 import Privacy from '../Privacy';
 import { GuardedRoute, AdminRoute } from '../GuardedRoute';
 
@@ -59,6 +60,7 @@ const App = ({ loadNewsData, loadSectionsData, loadStreamersData, logged, role_i
         <Route path='/news/:slug' element={<NewsDetails />} />
         <Route path='/roster' element={<Roster />} />
         <Route path='/section/:slug' element={<Section />} />
+        <Route path='/verify/:id' element={<Verify />} />
         <Route path='/privacy' element={<Privacy />} />
         {/* User route */}
         <Route element={<GuardedRoute logged={logged} />}>
