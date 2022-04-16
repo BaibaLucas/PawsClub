@@ -1,11 +1,11 @@
 /* Packages import */
 import React from 'react';
-import { Navigate } from 'react-router-dom';
+import { Navigate, NavLink } from 'react-router-dom';
 
 /* Local import */
 
 // Components
-const SignUp = ({ username, email, password, logged, error, msg, handleChange, handleSubmit }) => {
+const SignUp = ({ username, email, password, logged, error, msg, handleChange, handleSubmit, pending, refresh }) => {
 
   /* Handle Change */
     const onChange = (event) => {
@@ -14,7 +14,12 @@ const SignUp = ({ username, email, password, logged, error, msg, handleChange, h
   /* Handle Submit */
   const onSubmit = (event) => {
     event.preventDefault();
+    refresh();
     handleSubmit();
+  };
+
+  const refreshPending = () => {
+    refresh();
   };
 
 
@@ -29,6 +34,8 @@ const SignUp = ({ username, email, password, logged, error, msg, handleChange, h
           <h1>Signup</h1>
         </div>
         <form className='container__form' onSubmit={onSubmit}>
+        {!pending && (
+          <>
           <label className='container__form__label' htmlFor='username'>Username</label>
           <input
           className='container__form__input'
@@ -62,7 +69,19 @@ const SignUp = ({ username, email, password, logged, error, msg, handleChange, h
           {error && (
             <div className='container__form__error'>{msg}</div>
           )}
-          <button className='container__form__button' type='submit'>Signup</button>
+            <>
+            <button className='container__form__button' type='submit'>Signup</button>
+            </>
+            </>
+          )}
+          {pending && (
+            <>
+            <div className='container__form__pending'>{msg}</div>
+            <NavLink to='/login' className='container__form__pending__button' onClick={refreshPending}>
+               Login
+            </NavLink>
+            </>
+          )}
         </form>
       </div>
     </div>

@@ -16,8 +16,11 @@ module.exports = {
       const password = req.body.password;
       const login = await loginDataMapper.login(email);
       if (login === null) {
-        res.status('404').json({message: 'Cette information ne nous permet pas de vérifier votre compte.'});
+        return res.status('404').json({message: 'Cette information ne nous permet pas de vérifier votre compte.'});
       } else {
+        if (!login.verified){
+          return res.status('404').json({message: `Veuillez activer votre compte via l'email de confirmation envoyer lors de l'inscription. (Spam)`});
+          };
         const verification = bcrypt.compareSync(password, login.password);
         if (!verification) {
           res.status('401').json({message: 'Veuillez retaper votre mot de passe.'});

@@ -49,8 +49,24 @@
        font-size: 1.5rem;
        padding: 1.2rem 0rem;
        font-weight: bold;
-       
-     }
+      }
+      &__pending{
+        text-align: center;
+        color: green;
+        font-weight: bold;
+        font-size: 1.1rem;
+        &__button{
+          align-items: center;
+          margin-top: 1rem;
+          background-color: $yellow;
+          border-radius: 10px;
+          color: $dark-grey;
+          font-size: 1.5rem;
+          padding: 1.2rem 0rem;
+          font-weight: bold;
+          text-align: center;
+         }
+      }
     }
   }
 }

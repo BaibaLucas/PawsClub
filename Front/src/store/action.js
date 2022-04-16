@@ -6,6 +6,7 @@ export const SIGNUP_SUCCESS = 'SIGNUP_SUCCESS';
 export const AUTH_FAILED = 'AUTH_FAILED';
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 export const EDIT_USER_SUCCESS = 'EDIT_USER_SUCCESS';
+export const SIGNUP_PENDING = 'SIGNUP_PENDING';
 
 // News types
 export const GET_NEWS_SUCCESS = 'GET_NEWS_SUCCESS';
@@ -71,6 +72,10 @@ export const loginSuccess = (data, token) => ({
 export const editUserSuccess = (data, msg) => ({
   type: EDIT_USER_SUCCESS,
   data,
+  msg,
+});
+export const signUpPending = (msg) => ({
+  type: SIGNUP_PENDING,
   msg,
 });
 

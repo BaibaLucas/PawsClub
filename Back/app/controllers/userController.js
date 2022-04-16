@@ -1,9 +1,11 @@
 /* Package required */
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
+const nodemailer = require('nodemailer');
 
 /* Local required */
 const userDataMapper = require('../dataMappers/userDataMapper');
+const { CodePipeline } = require('aws-sdk');
 
 
 /* Controllers */
@@ -24,19 +26,43 @@ module.exports = {
         const hashedPassword = bcrypt.hashSync(newUser.password, saltRounds);
         const createdUser = await userDataMapper.createNewUser({
           username: newUser.username,
-          email: newUser.email,
+          email: newUser.email.toLowerCase(),
           password: hashedPassword,
         });
-        const jwtContent = {userId: createdUser.id, roleId: createdUser.role_id};
-          const jwtOptions = {
-            algorithm: 'HS256',
-            expiresIn: '3h'
-          };
+        console.log('createdUser', createdUser);
+        // Generate Verification Token with user ID func
+        const generateVerificationToken = (id) => {
+          const verificationToken = jwt.sign(
+            { ID: id },
+            process.env.JWTSECRET,
+            { expiresIn: "7d" }
+          );
+          return verificationToken;
+        };
+        // Call Func for generating token
+        const verificationToken = generateVerificationToken(createdUser.id);
+          // NODEMAILER
+          const transporter = nodemailer.createTransport({
+            service: "GMAIL",
+            auth: {
+              user: process.env.EMAIL_USERNAME,
+              pass: process.env.EMAIL_PASSWORD,
+            },
+          });
+          const mailUrl = `http://localhost:3000/verify/${verificationToken}`
+          console.log('mailUrl', mailUrl);
+          transporter.sendMail({
+            to: newUser.email,
+            subject: '[PawsClub] Vérification du compte',
+            html: `Veuillez cliquez <a href = '${mailUrl}'> ici </a> afin de confirmer votre compte`
+
+          })
         res.status('200').json({
-          message: 'new user created',
-          data: createdUser,
-          token: jwt.sign(jwtContent, process.env.JWTSECRET, jwtOptions)
-        })
+          // message: 'new user created',
+          message: `Un email de vérification a été envoyé à l'adresse mail suivante : ${newUser.email} / Pensez à vérifier vos "spams"`,
+          // data: createdUser,
+          // token: jwt.sign(jwtContent, process.env.JWTSECRET, jwtOptions)
+        });
       }
     } catch (error) {
       console.log(error);
@@ -321,6 +347,39 @@ module.exports = {
     } catch(error) {
         next(error);
     }
+  },
+
+  /* Verify your account*/
+  async verify(req, res, next) {
+    console.log('VERIFY CONTROLLER');
+    try {
+      const token = req.params
+      console.log('token', token);
+      // TOKEN DOESN'T EXIST
+      if (!token) {
+        return res.status(422).send({
+          message: 'Missing Token'
+        });
+      } else {
+        console.log('ici')
+        const tokenDecoded = jwt.verify(token.id, process.env.JWTSECRET);
+        console.log('tokenDecoded', tokenDecoded);
+        const id = tokenDecoded.ID;
+        const user = await userDataMapper.getOneUser(id);
+        if (!user) {
+          return res.status(404).send({
+          message: "Utilisateur inexistant."
+          });
+        }
+        const userVerified = await userDataMapper.verified(user.id);
+        res.json({
+          message: 'Compte activer avec succès',
+          success: true,
+        });
+      }
+      } catch (err) {
+        return res.status(500).send(err);
+      }
   },
 
 };

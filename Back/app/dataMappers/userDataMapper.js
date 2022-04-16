@@ -26,6 +26,16 @@ module.exports = {
   async oneUser(userId) {
     const result = await client.query('SELECT u.id, u.email, u.password, u.username, u.profilurl, u.role_id, u.section_id, s.name AS section_name FROM "user" AS u JOIN "section" AS s ON u.section_id = s.id WHERE u.id = $1', [userId]);
     if (result.rowCount == 0) {
+      console.log('oneUser null');
+        return null;
+    }
+    return result.rows[0];
+  },
+
+  async getOneUser(id) {
+    const result = await client.query('SELECT * FROM "user" WHERE id=$1', [id]);
+    if (result.rowCount == 0) {
+      console.log('oneUser null');
         return null;
     }
     return result.rows[0];
@@ -146,6 +156,15 @@ module.exports = {
   /* Get All Streamers */
   async getAllStreamers() {
     const result = await client.query(`SELECT u.id, u.username, u.stream FROM "user" AS u WHERE "stream" IS NOT NULL and "stream" != '' `);
+    return result.rows;
+  },
+
+  /* Verify user */
+  async verified(userId) {
+    const result = await client.query('UPDATE "user" SET verified=true WHERE id=$1 RETURNING *', [userId]);
+    if (result.rowCount == 0) {
+      return null;
+    }
     return result.rows;
   },
 
