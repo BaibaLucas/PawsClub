@@ -4,4 +4,11 @@
 /**
  ---- @apiUrl = Back Paws API
 */
-export const apiUrl = 'http://localhost:3001';
+
+const baseURL =
+  process.env.NODE_ENV === "production"
+  ? "/api"
+  : "http://localhost:3001/api";
+
+  
+export const apiUrl = baseURL;

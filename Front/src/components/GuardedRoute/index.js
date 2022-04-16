@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Outlet, Navigate } from 'react-router-dom';
+import { Outlet, Navigate } from 'react-router-dom';
 
 /**
  * @param {logged} = Redux State if user isLogged or not Logged = condition

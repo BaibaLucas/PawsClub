@@ -25,14 +25,16 @@ const Home = ({ loadStreamersData, news, sections, streams, getSectionDetails, s
     selectedSection(id, name, title, sectionurl, description, content);
   };
 
+  console.log('stream', streams);
+
   return (
     <div className='home'>
       <div className='container'>
         <div className='container__presentation'>
           <img className='container__presentation__image' src={illust} alt='illust'/>
-        <div className='container__presentation__content'>
+        {/* <div className='container__presentation__content'>
           Bienvenue sur le site web de la communauté Paws Club
-        </div>
+        </div> */}
         </div>
         <div className='container__news'>
           <div className='container__news__title'>
@@ -108,7 +110,7 @@ const Home = ({ loadStreamersData, news, sections, streams, getSectionDetails, s
             Stream
           </div>
           <div className='container__stream__box'>
-            {!streams && (
+            {streams.length === 0 && (
               <>
               Aucun stream actuellement disponible
               </>

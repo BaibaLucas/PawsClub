@@ -1,6 +1,5 @@
 /* Package imports */
 import React, { useState, useEffect } from 'react';
-import { MdNextPlan } from 'react-icons/md';
 import { NavLink, useNavigate } from 'react-router-dom';
 
 /* Local imports */

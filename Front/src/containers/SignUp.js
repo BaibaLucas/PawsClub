@@ -16,6 +16,7 @@ const mapStateToProps = (state) => ({
   logged: state.auth.logged,
   error: state.auth.error,
   msg: state.auth.msg,
+  pending: state.auth.pending,
 });
 
 // Component Func (Signup)
@@ -27,6 +28,10 @@ const mapDispatchToProps = (dispatch) => ({
 
   handleSubmit: () => {
     dispatch({type: 'USER_SIGNUP'});
+  },
+
+  refresh: () => {
+    dispatch({type: 'REFRESH_PENDING'});
   },
 
 

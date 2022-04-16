@@ -31,5 +31,5 @@ app.use((req, res, next) => {
 app.use(router);
 
 app.listen(process.env.PORT, () => {
-  ('Server running on :', process.env.PORT);
+  console.log('Server running on :', process.env.PORT);
 });
