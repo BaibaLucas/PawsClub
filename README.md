@@ -1,4 +1,13 @@
-<div id="top"></div>
+<div id="top">
+  <img src="https://img.shields.io/badge/Amazon_AWS-FF9900?style=for-the-badge&logo=amazonaws&logoColor=white" />
+  <img src="https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white" />
+  <img src="https://img.shields.io/badge/JWT-000000?style=for-the-badge&logo=JSON%20web%20tokens&logoColor=white" />
+  <img src="https://img.shields.io/badge/Nginx-009639?style=for-the-badge&logo=nginx&logoColor=white" />
+  <img src="https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white" />
+  <img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" />
+  <img src="https://img.shields.io/badge/Redux-593D88?style=for-the-badge&logo=redux&logoColor=white" />
+  <img src="https://img.shields.io/badge/Sass-CC6699?style=for-the-badge&logo=sass&logoColor=white" />
+</div>
 <!-- PROJECT SHIELDS -->
 <!--
 *** I'm using markdown "reference style" links for readability.
@@ -24,7 +33,7 @@
     <a href="https://github.com/BaibaLucas/PawsClub"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/BaibaLucas/PawsClub">View Demo</a>
+    <a href="https://pawsclub.fr">View Website</a>
     ·
     <a href="https://github.com/BaibaLucas/PawsClub/issues">Report Bug</a>
     ·
@@ -74,6 +83,9 @@
 ### Built With
 
 * [React.js](https://reactjs.org/)
+* [NodeJs](https://nodejs.org/en/)
+* [Redux](https://redux.js.org)
+* [Sass](https://sass-lang.com)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -93,20 +105,15 @@ This is an example of how to list things you need to use the software and how to
 
 ### Installation
 
-1. Get a free API Key at [https://example.com](https://example.com)
-2. Clone the repo
+1. Clone the repo
    ```sh
-   git clone https://github.com/github_username/repo_name.git
+   git clone https://github.com/BaibaLucas/PawsClub.git
    ```
-3. Install NPM packages
+2. Install NPM packages
    ```sh
    npm install
    ```
-4. Enter your API in `config.js`
-   ```js
-   const API_KEY = 'ENTER YOUR API';
-   ```
-
+  
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 
