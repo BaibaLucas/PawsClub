@@ -123,21 +123,13 @@ This is an example of how to list things you need to use the software and how to
 4. Install NPM packages Back
    ```sh
    cd PawsClub/Back
-   ```
-   ```sh
    npm install
-   ```
-   ```sh
    npm start
    ```
 5. Install NPM packages Front
    ```sh
    cd PawsClub/Front
-   ```
-   ```sh
    npm install
-   ```
-   ```sh
    npm start
    ```
 6. Enjoy
