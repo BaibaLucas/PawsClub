@@ -141,26 +141,13 @@ This is an example of how to list things you need to use the software and how to
 
 
 
-<!-- USAGE EXAMPLES -->
-## Usage
-
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
-
-_For more examples, please refer to the [Documentation](https://example.com)_
-
-<p align="right">(<a href="#top">back to top</a>)</p>
-
-
-
 <!-- ROADMAP -->
 ## Roadmap
 
-- [] Feature 1
-- [] Feature 2
-- [] Feature 3
-    - [] Nested Feature
+- [x] V1 PawsClub
+  - [WIP] Design SCSS/UI/UX
 
-See the [open issues](https://github.com/github_username/repo_name/issues) for a full list of proposed features (and known issues).
+See the [open issues](https://github.com/BaibaLucas/PawsClub/issues) for a full list of proposed features (and known issues).
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -196,37 +183,11 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 <!-- CONTACT -->
 ## Contact
 
-Your Name - [@twitter_handle](https://twitter.com/twitter_handle) - email@email_client.com
+- paws.contact@gmail.com
 
-Project Link: [https://github.com/github_username/repo_name](https://github.com/github_username/repo_name)
-
-<p align="right">(<a href="#top">back to top</a>)</p>
-
-
-
-<!-- ACKNOWLEDGMENTS -->
-## Acknowledgments
-
-* []()
-* []()
-* []()
+Project Link: [https://github.com/BaibaLucas/PawsClub](https://github.com/BaibaLucas/PawsClub)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
+<p align="right">(<a href="#top">back to top</a>)</p>
 
-
-<!-- MARKDOWN LINKS & IMAGES -->
-<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/BaibaLucas/PawsClub.svg?style=for-the-badge
-[contributors-url]: https://github.com/BaibaLucas/PawsClub/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/BaibaLucas/PawsClub.svg?style=for-the-badge
-[forks-url]: https://github.com/BaibaLucas/PawsClub/network/members
-[stars-shield]: https://img.shields.io/github/stars/BaibaLucas/PawsClub.svg?style=for-the-badge
-[stars-url]: https://github.com/BaibaLucas/PawsClub/stargazers
-[issues-shield]: https://img.shields.io/github/issues/BaibaLucas/PawsClub.svg?style=for-the-badge
-[issues-url]: https://github.com/BaibaLucas/PawsClub/issues
-[license-shield]: https://img.shields.io/github/license/BaibaLucas/PawsClub.svg?style=for-the-badge
-[license-url]: https://github.com/BaibaLucas/PawsClub/blob/master/LICENSE.txt
-[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
-[linkedin-url]: https://www.linkedin.com/in/lucas-baiba/
-[product-screenshot]: images/illust.png
