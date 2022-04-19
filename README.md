@@ -109,9 +109,40 @@ This is an example of how to list things you need to use the software and how to
    ```sh
    git clone https://github.com/BaibaLucas/PawsClub.git
    ```
-2. Install NPM packages
+2. Create your .env var
+   ```sh
+   cd PawsClub
+   touch .env
+   Set your variable (you can follow example.env file)
+   ```
+3. Create DB
+   ```sh
+   cd PawsClub/Back/db/db.sql
+   Follow each step in comment
+   ```
+4. Install NPM packages Back
+   ```sh
+   cd PawsClub/Back
+   ```
    ```sh
    npm install
+   ```
+   ```sh
+   npm start
+   ```
+5. Install NPM packages Front
+   ```sh
+   cd PawsClub/Front
+   ```
+   ```sh
+   npm install
+   ```
+   ```sh
+   npm start
+   ```
+6. Enjoy
+   ```sh
+   go to localhost
    ```
   
 <p align="right">(<a href="#top">back to top</a>)</p>
