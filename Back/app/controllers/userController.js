@@ -5,7 +5,6 @@ const nodemailer = require('nodemailer');
 
 /* Local required */
 const userDataMapper = require('../dataMappers/userDataMapper');
-const { CodePipeline } = require('aws-sdk');
 
 
 /* Controllers */
