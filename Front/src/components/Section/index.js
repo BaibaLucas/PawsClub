@@ -1,9 +1,9 @@
 /* Package imports */
 import React, { useState, useEffect } from 'react';
 import { NavLink, useParams } from 'react-router-dom';
+import moment from 'moment';
 
 /* Local imports */
-
 import defaultPic from '../../assets/images/defaultPic.jpeg';
 import { buildNewsUrl } from '../../utils';
 
@@ -101,7 +101,7 @@ const Section = ({ sections, section, getSectionDetailsBySlug, section_id, newsS
                     {news.title}
                   </div>
                   <div className='container__content__box__news__card__detail__text__section'>
-                    {news.section_name}
+                    {news.section_name} {moment.utc(news.date).format("MM/DD/YY")}
                   </div>
                   </div>
                   </div>
@@ -129,9 +129,6 @@ const Section = ({ sections, section, getSectionDetailsBySlug, section_id, newsS
                   />
                 <div className='container__content__box__roster__card__username'>
                   {member.username}
-                </div>
-                <div className='container__content__box__roster__card__role'>
-                  {memberRole(member.role_id)}
                 </div>
                 </div>
               )

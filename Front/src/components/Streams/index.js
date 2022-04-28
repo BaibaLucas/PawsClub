@@ -10,16 +10,16 @@ import ReactPlayer from 'react-player';
 const Streams = ({ streams }) => {
   return (
     <div className='streams'>
-      <div className='container'>
-        <div className='container__presentation'>
-          <div className='container__presentation__title'>
+      <div className='streams__container'>
+        <div className='streams__container__presentation'>
+          <div className='streams__container__presentation__title'>
             <h1>STREAM</h1>
           </div>
-          <div className='container__presentation__content'>
+          <div className='streams__container__presentation__content'>
             Retrouvez les streamers de la communauté.
           </div>
         </div>
-        <div className='container__streambox'>
+        <div className='streams__container__streambox'>
             {!streams && (
               <>
               NULL
@@ -28,7 +28,7 @@ const Streams = ({ streams }) => {
             {streams && (
               streams.map((stream => {
                 return (
-                  <div key={stream.id} className='container__streambox__card'>
+                  <div key={stream.id} className='streams__container__streambox__card'>
                     <ReactPlayer 
                       url={stream.stream}
                       height='100%'

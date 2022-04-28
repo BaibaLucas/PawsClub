@@ -4,7 +4,8 @@ import { NavLink } from 'react-router-dom';
 import ReactPlayer from 'react-player';
 
 /* Local imports */
-import illust from '../../assets/images/pawspaper.jpg';
+import illust from '../../assets/images/Baneer.jpg';
+import pawsLogo from '../../assets/images/pawsWhiteLogo.svg';
 import { buildSectionUrl, buildNewsUrl } from '../../utils';
 
 
@@ -20,25 +21,21 @@ const Home = ({ loadStreamersData, news, sections, streams, getSectionDetails, s
   const selectNews = (id, title, subtitle, content, newsurl) => {
     selectedNews(id, title, subtitle, content, newsurl);
   };
-
   const selectSection = (id, name, title, sectionurl, description, content) => {
     selectedSection(id, name, title, sectionurl, description, content);
   };
-
-  console.log('stream', streams);
+  const latestNews = news.slice(0, 3);
 
   return (
     <div className='home'>
       <div className='container'>
         <div className='container__presentation'>
           <img className='container__presentation__image' src={illust} alt='illust'/>
-        {/* <div className='container__presentation__content'>
-          Bienvenue sur le site web de la communauté Paws Club
-        </div> */}
+          <img className='container__presentation__logo' src={pawsLogo} alt='paws logo'/>
         </div>
         <div className='container__news'>
           <div className='container__news__title'>
-            Latest news
+            Dernières News
           </div>
           <div className='container__news__box'>
             {!news && (
@@ -47,7 +44,7 @@ const Home = ({ loadStreamersData, news, sections, streams, getSectionDetails, s
               </>
             )}
             {news && (
-              news.map((news => {
+              latestNews.map((news => {
                 return (
                   <NavLink className='container__news__box__card' key={news.id} to={buildNewsUrl(news.title)} >
                     <div 

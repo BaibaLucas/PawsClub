@@ -1,8 +1,9 @@
 .header{
   position: fixed;
   z-index: 100;
+  border: solid 1px #343232;
   .container{
-    background-color: $grey;
+    background-color: #0d0d0d;
     width: 100vw;
     height: 80px;
     display:flex;
@@ -11,11 +12,9 @@
     align-items: center;
     &__pawslogo{
       margin: 0 1rem;
-      width: 160px;
-      height: 50px;
+      width: 50px;
       img{
-        width: 160px;
-        height: 50px;
+        width: 50px;
       }
     }
   }
