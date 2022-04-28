@@ -22,7 +22,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/BaibaLucas/PawsClub">
-    <img src="images/logo.jpg" alt="Logo" width="380" height="300">
+    <img src="images/Banneer.jpg" alt="Logo" width="380" height="300">
   </a>
 
 <h3 align="center">Paws Plateforme</h3>
