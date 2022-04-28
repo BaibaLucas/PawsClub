@@ -10,7 +10,6 @@
     margin: 0rem 1rem;
     padding: 1rem 0.5rem;
     border-radius: 20px;
-    background-color: $grey;
     @include media('>large'){
       width: 50%;
     };
@@ -47,7 +46,7 @@
       }
       &__content{
         font-size: 1.1rem;
-        line-height: 1.2rem;
+        line-height: 1.3rem;
       }
       &__author{
         font-weight: bold;

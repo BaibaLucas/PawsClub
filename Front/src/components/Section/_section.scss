@@ -1,34 +1,28 @@
 .section{
   min-height: 100vh;
-  padding-top: 6rem;
+  padding-top: 5rem;
   .container{
     display: flex;
     text-align: center;
     flex-direction: column;
-    background-color: $grey;
     margin: 0rem 1rem;
     &__presentation{
-      background-color: $dark-grey;
       margin-top: 2rem;
       padding: 1rem;
       display: flex;
       flex-direction: column;
-      box-shadow: 5px 5px 15px 5px #212121;
       &__title{
         margin-bottom: 2rem;
         text-transform: uppercase;
       }
     }
     &__content{
-      box-shadow: 5px 5px 15px 5px #212121;
-      margin-top: 2rem;
       display: flex;
       flex-direction: column;
       &__nav{
         margin: 1rem;
         display: flex;
         justify-content: space-around;
-        background-color: $dark-grey;
         padding: 1rem;
         border-radius: 20px;
         @include media('>mid'){
@@ -48,7 +42,6 @@
         }
       }
       &__box{
-        box-shadow: 5px 5px 15px 5px #212121;
         display: flex;
         flex-direction: column;
         justify-content: space-evenly;
@@ -59,8 +52,6 @@
           display: flex;
           flex-direction: column;
           &__card{
-            -webkit-box-shadow: 5px 5px 15px 5px #212121; 
-            box-shadow: 5px 5px 15px 5px #212121;
             height: 45vh;
             width: 100%;
             margin: 0.2rem;
@@ -160,22 +151,26 @@
           flex-direction: column;
           width: 100%;
           &__card{
-            display: flex;
-            margin: 0.2rem 0rem;
-            border: 2px solid $yellow;
+            min-height: 100%;
+            min-width: 100%;
+            margin: 0.3rem;
+            border: solid 2px $yellow;
             border-radius: 20px;
+            position: relative;
+            display: flex;
+            padding-right: 0.3rem;
             align-items: center;
             background-color: $dark-grey;
-            box-shadow: 5px 5px 15px 5px #212121;
             &__image{
+              height: 100px;
+              width: 200px;
               border-radius: 20px;
-              height: 100%;
-              width: 60px;
             }
             img{
+              height: 64px;
+              width: 64px;
+              object-fit: cover;
               border-radius: 20px;
-              height: 100%;
-              width: 20%;
               @include media('>mid'){
                 height: 100px;
                 width: 100px;
@@ -187,12 +182,6 @@
               font-weight: bold;
               @include media('>mid'){
                 font-size: 2.5rem;
-              };
-            }
-            &__role{
-              margin-left: 3rem;
-              @include media('>mid'){
-                font-size: 2rem;
               };
             }
           }

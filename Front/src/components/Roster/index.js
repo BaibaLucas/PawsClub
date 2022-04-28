@@ -18,7 +18,7 @@ const Roster = ({ loadRoster, roster, loadUsers, users, sections, loadSectionsDa
 
   const handleAllUsers = () => {
     setOpenUsersBySection(false);
-    setOpenAllUsers(!openAllUsers);
+    setOpenAllUsers(true);
   };
 
   const handleUsersBySection = () => {
