@@ -24,7 +24,7 @@ const News = ({ news, loadNewsData, loadSectionsData, sections, selectedNews, ge
   
   const handleAllNews = () => {
     setOpenNewsBySection(false);
-    setOpenAllNews(!openAllNews);
+    setOpenAllNews(true);
   };
 
   const handleNewsBySection = () => {
@@ -56,7 +56,7 @@ const News = ({ news, loadNewsData, loadSectionsData, sections, selectedNews, ge
             )}
             <div className='container__presentation__nav__item'
             onClick={() => handleAllNews()}>
-                All News
+                Toutes les News
             </div>
            {sections && (
               sections.map((section => {
@@ -121,7 +121,7 @@ const News = ({ news, loadNewsData, loadSectionsData, sections, selectedNews, ge
                       {news.title}
                     </div>
                     <div className='container__news__box__card__content__text__section'>
-                      {news.section_name} : {moment.utc(news.date).format("MM/DD/YY")}
+                      {moment.utc(news.date).format("MM/DD/YY")}
                     </div>
                     </div>
                     </div>
