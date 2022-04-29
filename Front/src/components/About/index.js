@@ -2,7 +2,7 @@
 import React from 'react';
 
 /* Local imports */
-import pawsLogo from '../../assets/images/pawswhite.png';
+import pawsLogo from '../../assets/images/pawsWhiteLogo.svg';
 // Components
 
 

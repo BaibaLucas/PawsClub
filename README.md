@@ -1,4 +1,13 @@
-<div id="top"></div>
+<div id="top">
+  <img src="https://img.shields.io/badge/Amazon_AWS-FF9900?style=for-the-badge&logo=amazonaws&logoColor=white" />
+  <img src="https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white" />
+  <img src="https://img.shields.io/badge/JWT-000000?style=for-the-badge&logo=JSON%20web%20tokens&logoColor=white" />
+  <img src="https://img.shields.io/badge/Nginx-009639?style=for-the-badge&logo=nginx&logoColor=white" />
+  <img src="https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white" />
+  <img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" />
+  <img src="https://img.shields.io/badge/Redux-593D88?style=for-the-badge&logo=redux&logoColor=white" />
+  <img src="https://img.shields.io/badge/Sass-CC6699?style=for-the-badge&logo=sass&logoColor=white" />
+</div>
 <!-- PROJECT SHIELDS -->
 <!--
 *** I'm using markdown "reference style" links for readability.
@@ -13,7 +22,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/BaibaLucas/PawsClub">
-    <img src="images/logo.jpg" alt="Logo" width="380" height="300">
+    <img src="images/Baneer.jpg" alt="Logo" width="380" height="300">
   </a>
 
 <h3 align="center">Paws Plateforme</h3>
@@ -24,7 +33,7 @@
     <a href="https://github.com/BaibaLucas/PawsClub"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/BaibaLucas/PawsClub">View Demo</a>
+    <a href="https://pawsclub.fr">View Website</a>
     ·
     <a href="https://github.com/BaibaLucas/PawsClub/issues">Report Bug</a>
     ·
@@ -74,6 +83,9 @@
 ### Built With
 
 * [React.js](https://reactjs.org/)
+* [NodeJs](https://nodejs.org/en/)
+* [Redux](https://redux.js.org)
+* [Sass](https://sass-lang.com)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -93,31 +105,38 @@ This is an example of how to list things you need to use the software and how to
 
 ### Installation
 
-1. Get a free API Key at [https://example.com](https://example.com)
-2. Clone the repo
+1. Clone the repo
    ```sh
-   git clone https://github.com/github_username/repo_name.git
+   git clone https://github.com/BaibaLucas/PawsClub.git
    ```
-3. Install NPM packages
+2. Create your .env var
    ```sh
+   cd PawsClub
+   touch .env
+   Set your variable (you can follow example.env file)
+   ```
+3. Create DB
+   ```sh
+   cd PawsClub/Back/db/db.sql
+   Follow each step in comment
+   ```
+4. Install NPM packages Back
+   ```sh
+   cd PawsClub/Back
    npm install
+   npm start
    ```
-4. Enter your API in `config.js`
-   ```js
-   const API_KEY = 'ENTER YOUR API';
+5. Install NPM packages Front
+   ```sh
+   cd PawsClub/Front
+   npm install
+   npm start
    ```
-
-<p align="right">(<a href="#top">back to top</a>)</p>
-
-
-
-<!-- USAGE EXAMPLES -->
-## Usage
-
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
-
-_For more examples, please refer to the [Documentation](https://example.com)_
-
+6. Enjoy
+   ```sh
+   go to localhost
+   ```
+  
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 
@@ -125,12 +144,10 @@ _For more examples, please refer to the [Documentation](https://example.com)_
 <!-- ROADMAP -->
 ## Roadmap
 
-- [] Feature 1
-- [] Feature 2
-- [] Feature 3
-    - [] Nested Feature
+- [x] V1 PawsClub
+  - [WIP] Design SCSS/UI/UX
 
-See the [open issues](https://github.com/github_username/repo_name/issues) for a full list of proposed features (and known issues).
+See the [open issues](https://github.com/BaibaLucas/PawsClub/issues) for a full list of proposed features (and known issues).
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -166,37 +183,11 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 <!-- CONTACT -->
 ## Contact
 
-Your Name - [@twitter_handle](https://twitter.com/twitter_handle) - email@email_client.com
+- paws.contact@gmail.com
 
-Project Link: [https://github.com/github_username/repo_name](https://github.com/github_username/repo_name)
-
-<p align="right">(<a href="#top">back to top</a>)</p>
-
-
-
-<!-- ACKNOWLEDGMENTS -->
-## Acknowledgments
-
-* []()
-* []()
-* []()
+Project Link: [https://github.com/BaibaLucas/PawsClub](https://github.com/BaibaLucas/PawsClub)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
+<p align="right">(<a href="#top">back to top</a>)</p>
 
-
-<!-- MARKDOWN LINKS & IMAGES -->
-<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/BaibaLucas/PawsClub.svg?style=for-the-badge
-[contributors-url]: https://github.com/BaibaLucas/PawsClub/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/BaibaLucas/PawsClub.svg?style=for-the-badge
-[forks-url]: https://github.com/BaibaLucas/PawsClub/network/members
-[stars-shield]: https://img.shields.io/github/stars/BaibaLucas/PawsClub.svg?style=for-the-badge
-[stars-url]: https://github.com/BaibaLucas/PawsClub/stargazers
-[issues-shield]: https://img.shields.io/github/issues/BaibaLucas/PawsClub.svg?style=for-the-badge
-[issues-url]: https://github.com/BaibaLucas/PawsClub/issues
-[license-shield]: https://img.shields.io/github/license/BaibaLucas/PawsClub.svg?style=for-the-badge
-[license-url]: https://github.com/BaibaLucas/PawsClub/blob/master/LICENSE.txt
-[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
-[linkedin-url]: https://www.linkedin.com/in/lucas-baiba/
-[product-screenshot]: images/illust.png

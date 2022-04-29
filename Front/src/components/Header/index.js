@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom';
 
 /* Local imports */
 
-import logo from '../../assets/images/pawswhite.png';
+import logo from '../../assets/images/pawsLogo.png';
 import Burger from './burger/index';
 import Menu from './menu/index';
 import DesktopMenu from './desktopmenu/index';

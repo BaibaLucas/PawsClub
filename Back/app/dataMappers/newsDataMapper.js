@@ -9,7 +9,7 @@ module.exports = {
 
   /* Get All News */
   async getAllNews() {
-    const result = await client.query('SELECT n.id, n.title, n.subtitle, n.content, n.newsurl, n.date, n.time, n.section_id, n.tag_id, u.id AS user_id, u.username, s.name AS section_name FROM "news" AS n JOIN "user" AS u ON n.user_id = u.id JOIN "section" AS s ON n.section_id = s.id;');
+    const result = await client.query('SELECT n.id, n.title, n.subtitle, n.content, n.newsurl, n.date, n.time, n.section_id, n.tag_id, u.id AS user_id, u.username, s.name AS section_name FROM "news" AS n JOIN "user" AS u ON n.user_id = u.id JOIN "section" AS s ON n.section_id = s.id ORDER BY n.date DESC;');
     if (result.rowCount == 0) {
         return null
     }

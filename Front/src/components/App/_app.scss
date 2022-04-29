@@ -1,4 +1,5 @@
 .app {
-  background-color: $dark-grey;
+  background: rgb(5,5,5);
+  background: linear-gradient(180deg, rgba(5,5,5,1) 0%, rgba(25,25,25,1) 100%);
   height: 100%;
 }
