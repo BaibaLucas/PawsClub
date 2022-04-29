@@ -49,7 +49,7 @@ module.exports = {
               pass: process.env.EMAIL_PASSWORD,
             },
           });
-          const mailUrl = `http://localhost:3000/verify/${verificationToken}`
+          const mailUrl = `https://pawsclub.fr/verify/${verificationToken}`
           console.log('mailUrl', mailUrl);
           transporter.sendMail({
             to: newUser.email,
