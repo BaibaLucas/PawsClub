@@ -52,7 +52,7 @@ const Menu = ({ open, setOpen, logged, role }) => {
             </NavLink>
           )}
           {/* Case : user is not logged */}
-          {!logged && (
+          {/* {!logged && (
           <>
             <NavLink className='menu__nav__list__item'  onClick={close} to='/login'>
             <BiUserCircle size={50} />
@@ -67,7 +67,7 @@ const Menu = ({ open, setOpen, logged, role }) => {
               </li>
             </NavLink>
           </> 
-          )}
+          )} */}
           <NavLink className='menu__nav__list__item'  onClick={close} to='/news'>
             <BsNewspaper size={50} />
             <li className='menu__nav__list__item__name'>

@@ -50,8 +50,8 @@ const App = ({ loadNewsData, loadSectionsData, loadStreamersData, logged, role_i
       <Routes>
         {/* General route */}
         <Route path='/' element={<Home />} />
-        <Route path='/login' element={<Login />} />
-        <Route path='/signup' element={<Signup />} />
+        {/* <Route path='/login' element={<Login />} />
+        <Route path='/signup' element={<Signup />} /> */}
         <Route path='/joinus' element={<JoinUs />} />
         <Route path='/about' element={<About />} />
         <Route path='/streams' element={<Streams />}/>

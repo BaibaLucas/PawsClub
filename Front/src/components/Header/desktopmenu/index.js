@@ -29,7 +29,7 @@ const DesktopMenu = ({ logged, role }) => {
             </NavLink>
           )}
           {/* Case : user is not logged */}
-          {!logged && (
+          {/* {!logged && (
           <>
             <NavLink className={(navData) => (navData.isActive ? 'active' : 'desktopmenu__nav__list__item')} to='/login'>
             <li className='desktopmenu__nav__list__item__name'>
@@ -42,7 +42,7 @@ const DesktopMenu = ({ logged, role }) => {
               </li>
             </NavLink>
           </> 
-          )}
+          )} */}
           <NavLink className={(navData) => (navData.isActive ? 'active' : 'desktopmenu__nav__list__item')} to='/news'>
             <li className='desktopmenu__nav__list__item__name'>
               News

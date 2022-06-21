@@ -47,7 +47,7 @@ const Footer = ({ logged }) => {
               </NavLink>
             }
             {/* Case : user is not logged */}
-            {!logged && <>
+            {/* {!logged && <>
               <NavLink to='/login'>
               <div className='container__nav__items'>
                 Connexion
@@ -58,7 +58,7 @@ const Footer = ({ logged }) => {
                 S'inscrire
               </div>
               </NavLink>
-            </>}
+            </>} */}
             <NavLink to='/linesup'>
               <div className='container__nav__items'>
                 Lines-up

@@ -5,7 +5,7 @@ import ReactPlayer from 'react-player';
 
 /* Local imports */
 import illust from '../../assets/images/Baneer.jpg';
-import pawsLogo from '../../assets/images/pawsWhiteLogo.svg';
+import pawsLogo from '../../assets/images/pawsWhiteLogo1.png';
 import { buildSectionUrl, buildNewsUrl } from '../../utils';
 
 
